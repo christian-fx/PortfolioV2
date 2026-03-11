@@ -1,0 +1,1323 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <title>Christian · front‑end developer</title>
+  <!-- preconnect & fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Boogaloo&family=Cinzel+Decorative:wght@400;700;900&family=Google+Sans+Flex:opsz,wght@6..144,1..1000&family=Luckiest+Guy&family=Momo+Trust+Display&family=Rubik+Wet+Paint&family=Skranji:wght@400;700&family=Yatra+One&display=swap');
+
+    /* dark mode variables — applied via .dark class */
+    .dark {
+      --background: #121212;
+      --foreground: #ededed;
+      --border: #ffffff1a;
+      --input: #1e1e1e;
+      --primary: #ffffff;
+      --primary-foreground: #000000;
+      --secondary: #2a2a2a;
+      --secondary-foreground: #ededed;
+      --muted: #1a1a1a;
+      --muted-foreground: #a0a0a0;
+      --success: #1a2e1f;
+      --success-foreground: #7ad98b;
+      --accent: #ffffff;
+      --accent-foreground: #000000;
+      --destructive: #2c1a1a;
+      --destructive-foreground: #f28b8b;
+      --warning: #2f2816;
+      --warning-foreground: #f5d742;
+      --card: #1a1a1a;
+      --card-foreground: #ededed;
+      --sidebar: #1a1a1a;
+      --sidebar-foreground: #ededed;
+      --sidebar-primary: #ffffff;
+      --sidebar-primary-foreground: #000000;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+  </style>
+  <!-- Font Awesome 6 (free) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@100;200;300;400;500;600;700;800;900&family=Geist:wght@100;200;300;400;500;600;700;800;900&family=IBM+Plex+Mono:wght@100;200;300;400;500;600;700&family=IBM+Plex+Sans:wght@100;200;300;400;500;600;700&family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Nunito:wght@200;300;400;500;600;700;800;900&family=PT+Serif:wght@400;700&family=Roboto+Slab:wght@100;200;300;400;500;600;700;800;900&family=Roboto:wght@100;300;400;500;700;900&family=Shantell+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet">
+  <!-- iconify script (for Lucide + custom icons) -->
+  <script src="https://code.iconify.design/iconify-icon/3.0.0/iconify-icon.min.js"></script>
+  <style>
+    /* global reset + variables — base light mode */
+    :root {
+      --background: #ffffff;
+      --foreground: #000000;
+      --border: #00000014;
+      --input: #f7f7f7;
+      --primary: #000000;
+      --primary-foreground: #ffffff;
+      --secondary: #f0f0f0;
+      --secondary-foreground: #000000;
+      --muted: #f5f5f5;
+      --muted-foreground: #9b9b9b;
+      --success: #e6f4ea;
+      --success-foreground: #0b7a3d;
+      --accent: #000000;
+      --accent-foreground: #ffffff;
+      --destructive: #fff5f5;
+      --destructive-foreground: #c92a2a;
+      --warning: #fffbeb;
+      --warning-foreground: #7a5f00;
+      --card: #ffffff;
+      --card-foreground: #000000;
+      --sidebar: #fafafa;
+      --sidebar-foreground: #000000;
+      --sidebar-primary: #000000;
+      --sidebar-primary-foreground: #ffffff;
+      --radius-sm: 4px;
+      --radius-md: 6px;
+      --radius-lg: 8px;
+      --radius-xl: 12px;
+      --font-family-body: Inter;
+    }
+
+    /* dark mode variables — applied via .dark class */
+    .dark {
+      --background: #121212;
+      --foreground: #ededed;
+      --border: #ffffff1a;
+      --input: #1e1e1e;
+      --primary: #ffffff;
+      --primary-foreground: #000000;
+      --secondary: #2a2a2a;
+      --secondary-foreground: #ededed;
+      --muted: #1a1a1a;
+      --muted-foreground: #a0a0a0;
+      --success: #1a2e1f;
+      --success-foreground: #7ad98b;
+      --accent: #ffffff;
+      --accent-foreground: #000000;
+      --destructive: #2c1a1a;
+      --destructive-foreground: #f28b8b;
+      --warning: #2f2816;
+      --warning-foreground: #f5d742;
+      --card: #1a1a1a;
+      --card-foreground: #ededed;
+      --sidebar: #1a1a1a;
+      --sidebar-foreground: #ededed;
+      --sidebar-primary: #ffffff;
+      --sidebar-primary-foreground: #000000;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--background);
+      color: var(--foreground);
+      font-family: var(--font-family-body), system-ui, -apple-system, sans-serif;
+      line-height: 1.4;
+      width: 100%;
+      min-height: 100vh;
+      transition: background-color 0.2s ease, color 0.2s ease;
+    }
+
+    /* fixed header with overlay */
+    .header-fixed-wrapper {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(8px);
+      background-color: color-mix(in srgb, var(--background) 75%, transparent);
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 12px;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    .section-title {
+      font-size: 26px;
+      letter-spacing: -0.03em;
+      margin: 0 0 28px;
+      padding-bottom: 12px;
+      border-bottom: 2px solid var(--foreground);
+      font-family: "Cinzel Decorative", serif;
+      font-weight: 900;
+      font-style: normal;
+    }
+
+    /* base link style */
+    a,
+    .btn,
+    .nav-link,
+    .view-details,
+    .footer-link,
+    .work-link-icon,
+    .footer-icon-link,
+    .theme-toggle,
+    .hero-actions .btn,
+    .view-more-btn,
+    .btn-inverse {
+      cursor: pointer;
+      text-decoration: none;
+      color: var(--foreground);
+    }
+
+    /* HOVER: only scale-in (no underline) */
+    .nav-link:hover,
+    .footer-link:hover,
+    .view-details:hover,
+    .work-link-icon:hover,
+    .footer-icon-link:hover,
+    .theme-toggle:hover {
+
+      transition: transform 0.15s ease;
+      color: var(--muted-foreground);
+    }
+
+    /* underline only on active/click */
+    .nav-link:active,
+    .footer-link:active,
+    .view-details:active,
+    .btn:active:not(.work-link-icon):not(.footer-icon-link):not(.theme-toggle) {
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    /* images inside work cards hover */
+    .work-image-wrapper img:hover {
+      filter: grayscale(0%);
+      transform: scale(1.02);
+      transition: transform 0.2s ease, filter 0.2s ease;
+    }
+
+    /* tech stack cards — NO hover effects */
+    .stack-card {
+      border: 1px solid var(--border);
+      background: var(--card);
+      padding: 18px 12px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      min-height: 110px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      padding: 10px 12px;
+      font-size: 13px;
+      font-weight: 500;
+      line-height: 1;
+      border: 2px solid var(--foreground);
+      background: transparent;
+      color: var(--foreground);
+      text-decoration: none;
+      white-space: nowrap;
+      border-radius: 0;
+      transition: transform 0.15s ease;
+    }
+
+    .btn-primary {
+      background: var(--foreground);
+      color: var(--background);
+    }
+
+    .btn-primary .btn-text {
+      color: var(--background);
+    }
+
+    .btn-primary iconify-icon {
+      color: var(--background);
+    }
+
+    /* header */
+    .header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 0 14px;
+      gap: 16px;
+      flex-wrap: wrap;
+      font-family: "Bebas Neue", sans-serif;
+      font-weight: 600;
+      font-style: normal;
+    }
+
+    .theme-toggle {
+      width: 30px;
+      height: 30px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      background: transparent;
+    }
+
+    .header-nav {
+      display: flex;
+      align-items: flex-end;
+      gap: 15px;
+      margin-left: auto;
+      flex-wrap: wrap;
+    }
+
+    .nav-link {
+      font-size: 16px;
+      color: var(--foreground);
+      text-decoration: none;
+      white-space: nowrap;
+      letter-spacing: 0.02em;
+    }
+
+    /* hero */
+    .hero-section {
+      padding: 16px 0 56px;
+    }
+
+    .hero-copy {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    /* new profile image row */
+    .hero-profile-row {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .profile-image {
+      width: 100px;
+      height: 120px;
+      border-radius: 20px;
+      object-fit: cover;
+      border: 2px solid var(--border);
+    }
+
+    .hero-heading-group {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      flex: 1;
+      font-family: "Bebas Neue", sans-serif;
+      font-weight: 400;
+      font-style: normal;
+    }
+
+    .hero-title {
+      margin: 0;
+      font-size: 40px;
+      line-height: 0.98;
+      font-weight: 900;
+      word-break: break-word;
+    }
+
+    .hero-role {
+      margin: 0;
+      font-size: 20px;
+      line-height: 1.1;
+      font-weight: 600;
+      letter-spacing: -0.03em;
+      white-space: normal;
+    }
+
+    .hero-subtitle {
+      margin: 0;
+      font-size: 17px;
+      line-height: 1.5;
+      color: var(--muted-foreground);
+      max-width: 680px;
+      font-family: "Momo Trust Display", system-ui;
+      font-weight: 200;
+      font-style: normal;
+    }
+
+    .hero-social-block {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      margin-top: 8px;
+    }
+
+    .hero-social-label {
+      font-size: xx-small;
+      font-weight: 300;
+      color: var(--foreground);
+      font-family: "Momo Trust Display", system-ui;
+      font-style: normal;
+      letter-spacing: 0.03em;
+    }
+
+    .hero-social-row {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      gap: 10px;
+      width: 100%;
+      flex-wrap: wrap;
+    }
+
+    .hero-socials {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      flex-wrap: wrap;
+    }
+
+    .social-item {
+      width: 38px;
+      height: 38px;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      padding: 0;
+    }
+
+    .social-name {
+      display: none;
+    }
+
+    .hero-actions {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 10px;
+      margin-left: 0;
+      flex-shrink: 0;
+      flex-wrap: wrap;
+      font-family: "Bebas Neue", sans-serif;
+      font-weight: 400;
+      font-style: normal;
+    }
+
+    .hero-actions-next-line {
+      width: 100%;
+      margin-top: 16px;
+      justify-content: flex-end;
+    }
+
+    .resume-btn,
+    .social-cta {
+      min-width: auto;
+      padding: 12px 16px;
+      font-size: 13px;
+    }
+
+    /* work section */
+    .work-section {
+      padding: 0 0 56px;
+    }
+
+    .work-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 28px;
+    }
+
+    .work-card {
+      display: flex;
+      flex-direction: column;
+      background: var(--card);
+      border: 1px solid var(--border);
+    }
+
+    .work-image-wrapper {
+      width: 100%;
+      background: var(--muted);
+      border-bottom: 1px solid var(--border);
+      overflow: hidden;
+    }
+
+    .work-image-wrapper img {
+      width: 100%;
+      height: auto;
+      display: block;
+      object-fit: cover;
+      filter: grayscale(100%);
+      transition: filter 0.2s ease, transform 0.2s ease;
+    }
+
+    .work-meta {
+      padding: 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .work-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+      font-family: "Momo Trust Display", system-ui;
+      font-weight: 400;
+      font-style: normal;
+    }
+
+    .work-title {
+      font-size: 20px;
+      font-weight: 100;
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+      margin: 0;
+      white-space: normal;
+      overflow: visible;
+      text-overflow: clip;
+    }
+
+    .work-links {
+      display: flex;
+      align-items: center;
+      flex-shrink: 0;
+    }
+
+    .work-link-icon {
+      width: 30px;
+      height: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .work-desc {
+      margin: 0;
+      font-size: 17px;
+      line-height: 1.6;
+      color: var(--foreground);
+      font-family: "Google Sans Flex", sans-serif;
+      font-weight: 400;
+      font-style: normal;
+    }
+
+    .work-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .work-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 2px;
+      padding: 6px 10px;
+      border: 1px solid var(--border);
+
+      font-size: 12px;
+      white-space: nowrap;
+      font-family: "Momo Trust Display", system-ui;
+      font-weight: 200;
+      font-style: normal;
+    }
+
+    /* completed status row */
+    .work-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 8px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+
+    .completed-status {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12px;
+      font-family: "Momo Trust Display", system-ui;
+      font-weight: 200;
+      font-style: normal;
+      color: var(--muted-foreground);
+    }
+
+    .green-dot {
+      width: 8px;
+      height: 8px;
+      background-color: #10b981;
+      /* green */
+      border-radius: 50%;
+      display: inline-block;
+    }
+
+    .view-details {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 12px;
+      text-decoration: none;
+      white-space: nowrap;
+      font-family: "Momo Trust Display", system-ui;
+      font-weight: 200;
+      font-style: normal;
+      color: var(--muted-foreground);
+    }
+
+    .view-more-wrap {
+      display: flex;
+      justify-content: flex-end;
+      margin-top: 32px;
+    }
+
+    .view-more-btn {
+      width: 132px;
+      font-family: "Momo Trust Display", sans-serif;
+      font-weight: 400;
+      font-style: normal;
+    }
+
+    .view-more-btn:hover {
+      cursor: pointer;
+      transform: translateY(-1px);
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+    }
+
+    .view-more-btn:active {
+      transform: translateY(1px);
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+    }
+
+    /* tech stack — official icons via iconify (skill-icons) */
+    .stack-section {
+      padding: 0 0 56px;
+    }
+
+    .stack-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+    }
+
+    .stack-card {
+      border: 1px solid var(--border);
+      background: var(--card);
+      padding: 18px 12px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      min-height: 110px;
+    }
+
+    .stack-icon-wrap {
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .stack-name {
+      font-size: 14px;
+      line-height: 1.2;
+      text-align: center;
+      white-space: nowrap;
+      font-family: "Rubik Wet Paint", system-ui;
+      font-weight: 200;
+      font-style: normal;
+    }
+
+    /* cta */
+    .cta-section {
+      padding: 0 0 28px;
+      margin-top: 10px;
+    }
+
+    .cta-panel {
+      background: #000000;
+      color: #ffffff;
+      padding: 32px 28px;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .dark .cta-panel {
+      background: #000000;
+      color: #ffffff;
+    }
+
+    .cta-panel .cta-eyebrow,
+    .cta-panel .cta-title,
+    .cta-panel .cta-text {
+      color: #ffffff;
+    }
+
+    .cta-panel .cta-text {
+      color: rgba(255, 255, 255, 0.72);
+    }
+
+    .cta-copy {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .cta-eyebrow {
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      opacity: 0.72;
+      font-family: "Momo Trust Display", sans-serif;
+      font-weight: 300;
+      font-style: normal;
+    }
+
+    .cta-title {
+      margin: 0;
+      font-size: 30px;
+      line-height: 1.05;
+      letter-spacing: -0.04em;
+      font-family: "Momo Trust Display", sans-serif;
+      font-weight: 700;
+      font-style: normal;
+    }
+
+    .cta-text {
+      margin: 0;
+      font-size: 16px;
+      line-height: 1.5;
+      font-family: "Momo Trust Display", sans-serif;
+      font-weight: 300;
+      font-style: normal;
+    }
+
+    .btn-inverse {
+      background: #ffffff;
+      color: #000000;
+      border: 1px solid #ffffff;
+      align-self: flex-start;
+      font-family: "Momo Trust Display", sans-serif;
+      font-weight: 400;
+      font-style: normal;
+    }
+
+    .dark .btn-inverse {
+      background: #ffffff;
+      color: #000000;
+      border: 1px solid #ffffff;
+    }
+
+    /* footer with names after connect icons */
+    .exclusive-footer {
+      padding: 12px 0 32px;
+    }
+
+    .footer-shell {
+      border-top: 3px solid var(--border);
+      padding-top: 28px;
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+    }
+
+    .footer-brand {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .footer-kicker {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--muted-foreground);
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .footer-big {
+      font-size: 20px;
+      line-height: 1.2;
+      font-weight: 600;
+      letter-spacing: -0.03em;
+      max-width: 350px;
+      font-family: "Momo Trust Display", sans-serif;
+      font-style: normal;
+    }
+
+    .footer-row {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+
+    .footer-column {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .footer-label {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--muted-foreground);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      white-space: nowrap;
+    }
+
+    .footer-nav-links {
+      display: flex;
+      align-items: left;
+      flex-direction: column;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .footer-link {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--foreground);
+      text-decoration: none;
+      white-space: nowrap;
+    }
+
+    .footer-connect-icons {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .footer-connect-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .footer-icon-link {
+      width: 30px;
+      height: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+    }
+
+
+    .footer-bottom {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      padding-top: 24px;
+      border-top: 3px solid var(--border);
+      align-items: center;
+      text-align: center;
+    }
+
+    .footer-meta {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--muted-foreground);
+      text-align: center;
+      width: 100%;
+    }
+
+    iconify-icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--foreground);
+    }
+
+
+
+
+    body {
+      margin: 0;
+    }
+
+    /* DESKTOP OVERRIDES */
+    @media (min-width: 768px) {
+      .container {
+        padding: 0 24px;
+        max-width: 840px;
+        /* Expand slightly to hold 2 grid cards better */
+      }
+
+      .hero-title {
+        font-size: 56px;
+      }
+
+      .hero-role {
+        font-size: 24px;
+      }
+
+      .cta-title {
+        font-size: 42px;
+      }
+
+      .work-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 24px;
+      }
+
+      .work-meta {
+        padding: 16px;
+        gap: 10px;
+      }
+
+      .work-title {
+        font-size: 18px;
+        line-height: 1.1;
+      }
+
+      .work-desc {
+        font-size: 16px;
+        line-height: 1.4;
+      }
+
+      .work-tag {
+        font-size: 11px;
+        padding: 4px 8px;
+      }
+
+      .work-footer {
+        padding-top: 12px;
+        margin-top: 6px;
+      }
+
+      .view-details {
+        font-size: 11px;
+      }
+
+      .work-header {
+        gap: 8px;
+      }
+
+      .work-link-icon {
+        width: 28px;
+        height: 28px;
+      }
+
+      .hero-profile-row {
+        gap: 24px;
+        flex-direction: row;
+      }
+
+      .stack-grid {
+        grid-template-columns: repeat(4, 1fr);
+      }
+
+      .footer-shell {
+        flex-direction: row;
+        justify-content: space-between;
+      }
+
+      .footer-brand {
+        flex: 1;
+      }
+
+      .footer-bottom {
+        flex-direction: row;
+        justify-content: space-between;
+      }
+
+      .footer-meta {
+        text-align: left;
+        width: auto;
+      }
+
+      .social-item {
+        width: auto;
+        padding: 8px 16px;
+        gap: 8px;
+        height: auto;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+      }
+
+
+      .social-item:hover {
+        cursor: pointer;
+        transform: translateY(-1px);
+        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+      }
+
+      .social-item:active {
+        transform: translateY(1px);
+        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+      }
+
+      .social-cta:hover,
+      .resume-btn:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+      }
+
+      .social-cta:active,
+      .resume-btn:active {
+        transform: translateY(1px);
+        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+      }
+
+      .social-name {
+        display: inline;
+        font-family: "Bebas Neue", sans-serif;
+        font-weight: 500;
+        font-style: normal;
+        font-size: 13px;
+        margin-top: 5px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app"
+    style="background-color: var(--background); color: var(--foreground); min-height: 100vh; display: flex; flex-direction: column; font-family: var(--font-family-body); transition: background-color 0.2s, color 0.2s;">
+    <!-- fixed header overlay wrapper -->
+    <div class="header-fixed-wrapper">
+      <div class="container">
+        <header class="header" id="header">
+          <div class="theme-toggle" id="theme-toggle" role="button" tabindex="0" aria-label="Toggle dark mode">
+            <div style="width: 22px; height: 22px; display: flex; align-items: center; justify-content: center;">
+              <iconify-icon icon="lucide:moon-star" id="theme-icon" style="font-size: 22px;"></iconify-icon>
+            </div>
+          </div>
+          <nav class="header-nav" id="header-nav">
+            <a href="#" class="nav-link" data-media-type="banani-button">WORK</a>
+            <a href="#" class="nav-link" data-media-type="banani-button">ABOUT</a>
+            <a href="#" class="nav-link" data-media-type="banani-button">CONTACT</a>
+          </nav>
+        </header>
+      </div>
+    </div>
+
+    <div class="container" id="page-container">
+      <!-- hero -->
+      <section class="hero-section" id="hero-section">
+        <div class="hero-copy" id="hero-copy">
+          <!-- profile image row (left side) -->
+          <div class="hero-profile-row">
+            <img src="christian.JPG" alt="Christian" class="profile-image" id="profile-image"
+              data-media-type="banani-button">
+            <div class="hero-heading-group" id="hero-heading-group">
+              <p class="hero-role">I'm</p>
+              <h1 class="hero-title">Christian.</h1>
+              <p class="hero-role">A Frontend Developer.</p>
+            </div>
+          </div>
+          <p class="hero-subtitle">I design and build clean front-end experiences with a strong focus on clarity,
+            performance, accessibility, and minimalist visual systems that feel effortless to use.</p>
+          <div class="hero-social-block" id="hero-social-block">
+            <div class="hero-social-label">Here are my socials</div>
+            <div class="hero-social-row" id="hero-social-row">
+              <div class="hero-socials" id="hero-socials">
+                <a href="#" class="social-item" data-media-type="banani-button"><iconify-icon icon="lucide:github"
+                    style="font-size: 18px;"></iconify-icon><span class="social-name">GitHub</span></a>
+                <a href="#" class="social-item" data-media-type="banani-button"><iconify-icon icon="lucide:linkedin"
+                    style="font-size: 18px;"></iconify-icon><span class="social-name">LinkedIn</span></a>
+                <!-- X (Twitter) brand icon via Font Awesome -->
+                <a href="#" class="social-item" data-media-type="banani-button"><i
+                    class="fa-brands fa-x-twitter"></i><span class="social-name">Twitter</span></a>
+
+                <a href="#" class="social-item" data-media-type="banani-button"><iconify-icon icon="lucide:mail"
+                    style="font-size: 18px;"></iconify-icon><span class="social-name">Email</span></a>
+              </div>
+            </div>
+            <div class="hero-actions hero-actions-next-line" id="hero-actions">
+              <a href="#" class="btn btn-primary social-cta" data-media-type="banani-button">
+                <iconify-icon icon="lucide:hand" style="font-size: 14px;"></iconify-icon><span class="btn-text">Say
+                  Hello</span>
+              </a>
+              <a href="#" class="btn resume-btn" data-media-type="banani-button">Resume<iconify-icon
+                  icon="lucide:file-text" style="font-size: 14px;"></iconify-icon></a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- work -->
+      <section class="work-section" id="work-section">
+        <h2 class="section-title">Selected Projects</h2>
+        <div class="work-grid" id="work-grid">
+          <!-- card 1 -->
+          <div class="work-card" data-media-type="banani-button">
+            <div class="work-image-wrapper"><a href="#"><img data-aspect-ratio="16:9"
+                  data-query="minimalist black and white finance dashboard ui"
+                  src="https://storage.googleapis.com/banani-generated-images/generated-images/94f1209d-354a-4bbf-8387-9d17992f8af2.jpg"></a>
+            </div>
+            <div class="work-meta">
+              <div class="work-header">
+                <div class="work-title">Fintech Dashboard</div>
+                <div class="work-links"><a href="#" class="work-link-icon" data-media-type="banani-button"><iconify-icon
+                      icon="lucide:github" style="font-size: 16px;"></iconify-icon></a><a href="#"
+                    class="work-link-icon" data-media-type="banani-button"><iconify-icon icon="lucide:globe"
+                      style="font-size: 16px;"></iconify-icon></a></div>
+              </div>
+              <p class="work-desc">A clean dashboard for tracking daily expenses, managing portfolios, and monitoring
+                crypto assets in real time.</p>
+              <div class="work-tags">
+                <div class="work-tag"><iconify-icon icon="skill-icons:react-dark"
+                    style="font-size: 14px;"></iconify-icon>React</div>
+                <div class="work-tag"><iconify-icon icon="skill-icons:typescript"
+                    style="font-size: 14px;"></iconify-icon>TypeScript</div>
+                <div class="work-tag"><iconify-icon icon="skill-icons:tailwindcss-dark"
+                    style="font-size: 14px;"></iconify-icon>Tailwind</div>
+              </div>
+              <!-- work footer with completed on left, view details on right -->
+              <div class="work-footer">
+                <div class="completed-status">
+                  <span class="green-dot"></span>
+                  <span>completed</span>
+                </div>
+                <a href="#" class="view-details" data-media-type="banani-button">
+                  <span>View Details</span><iconify-icon icon="lucide:arrow-up-right"
+                    style="font-size: 16px;"></iconify-icon>
+                </a>
+              </div>
+            </div>
+          </div>
+          <!-- card 2 -->
+          <div class="work-card" data-media-type="banani-button">
+            <div class="work-image-wrapper"><a href="#"><img data-aspect-ratio="16:9"
+                  data-query="minimalist black and white fashion ecommerce website"
+                  src="https://storage.googleapis.com/banani-generated-images/generated-images/dbbf9b07-e2b2-46e4-9fe6-067c9dd31bbd.jpg"></a>
+            </div>
+            <div class="work-meta">
+              <div class="work-header">
+                <div class="work-title">Aura E-Commerce</div>
+                <div class="work-links"><a href="#" class="work-link-icon" data-media-type="banani-button"><iconify-icon
+                      icon="lucide:github" style="font-size: 16px;"></iconify-icon></a><a href="#"
+                    class="work-link-icon" data-media-type="banani-button"><iconify-icon icon="lucide:globe"
+                      style="font-size: 16px;"></iconify-icon></a></div>
+              </div>
+              <p class="work-desc">A performant headless storefront with dynamic routing, cart management, and seamless
+                Stripe integration.</p>
+              <div class="work-tags">
+                <div class="work-tag"><iconify-icon icon="skill-icons:nextjs-dark"
+                    style="font-size: 14px;"></iconify-icon>Next.js</div>
+                <div class="work-tag"><iconify-icon icon="simple-icons:zustand"
+                    style="font-size: 14px; color: var(--foreground);"></iconify-icon>Zustand</div>
+                <div class="work-tag"><iconify-icon icon="simple-icons:framer"
+                    style="font-size: 14px; color: var(--foreground);"></iconify-icon>Framer Motion</div>
+              </div>
+              <!-- work footer with completed on left, view details on right -->
+              <div class="work-footer">
+                <div class="completed-status">
+                  <span class="green-dot"></span>
+                  <span>completed</span>
+                </div>
+                <a href="#" class="view-details" data-media-type="banani-button">
+                  <span>View Details</span><iconify-icon icon="lucide:arrow-up-right"
+                    style="font-size: 16px;"></iconify-icon>
+                </a>
+              </div>
+            </div>
+          </div>
+          <!-- card 3 -->
+          <div class="work-card" data-media-type="banani-button">
+            <div class="work-image-wrapper"><a href="#"><img data-aspect-ratio="16:9"
+                  data-query="minimalist black and white saas platform landing page"
+                  src="https://storage.googleapis.com/banani-generated-images/generated-images/2931f37a-6689-4bd4-86c9-9276f20d1539.jpg"></a>
+            </div>
+            <div class="work-meta">
+              <div class="work-header">
+                <div class="work-title">Nexus Platform</div>
+                <div class="work-links"><a href="#" class="work-link-icon" data-media-type="banani-button"><iconify-icon
+                      icon="lucide:github" style="font-size: 16px;"></iconify-icon></a><a href="#"
+                    class="work-link-icon" data-media-type="banani-button"><iconify-icon icon="lucide:globe"
+                      style="font-size: 16px;"></iconify-icon></a></div>
+              </div>
+              <p class="work-desc">Landing page and authentication flow for a B2B SaaS platform focused on collaboration
+                and async communication.</p>
+              <div class="work-tags">
+                <div class="work-tag"><iconify-icon icon="skill-icons:vuejs-dark"
+                    style="font-size: 14px;"></iconify-icon>Vue 3</div>
+                <div class="work-tag"><iconify-icon icon="skill-icons:sass" style="font-size: 14px;"></iconify-icon>Sass
+                </div>
+                <div class="work-tag"><iconify-icon icon="skill-icons:firebase-dark"
+                    style="font-size: 14px;"></iconify-icon>Firebase</div>
+              </div>
+              <!-- work footer with completed on left, view details on right -->
+              <div class="work-footer">
+                <div class="completed-status">
+                  <span class="green-dot"></span>
+                  <span>completed</span>
+                </div>
+                <a href="#" class="view-details" data-media-type="banani-button">
+                  <span>View Details</span><iconify-icon icon="lucide:arrow-up-right"
+                    style="font-size: 16px;"></iconify-icon>
+                </a>
+              </div>
+            </div>
+          </div>
+          <!-- card 4 -->
+          <div class="work-card" data-media-type="banani-button">
+            <div class="work-image-wrapper"><a href="#"><img data-aspect-ratio="16:9"
+                  data-query="minimalist black and white creative agency website"
+                  src="https://storage.googleapis.com/banani-generated-images/generated-images/d298266c-443a-4430-a988-7c164818a359.jpg"></a>
+            </div>
+            <div class="work-meta">
+              <div class="work-header">
+                <div class="work-title">Studio Agency</div>
+                <div class="work-links"><a href="#" class="work-link-icon" data-media-type="banani-button"><iconify-icon
+                      icon="lucide:github" style="font-size: 16px;"></iconify-icon></a><a href="#"
+                    class="work-link-icon" data-media-type="banani-button"><iconify-icon icon="lucide:globe"
+                      style="font-size: 16px;"></iconify-icon></a></div>
+              </div>
+              <p class="work-desc">A portfolio website for a creative agency focused on scroll-led storytelling and
+                immersive presentation.</p>
+              <div class="work-tags">
+                <div class="work-tag"><iconify-icon icon="skill-icons:javascript"
+                    style="font-size: 14px;"></iconify-icon>Vanilla JS</div>
+                <div class="work-tag"><iconify-icon icon="skill-icons:threejs-dark"
+                    style="font-size: 14px;"></iconify-icon>Three.js</div>
+                <div class="work-tag"><iconify-icon icon="simple-icons:greensock"
+                    style="font-size: 14px; color: var(--foreground);"></iconify-icon>GSAP</div>
+              </div>
+              <!-- work footer with completed on left, view details on right -->
+              <div class="work-footer">
+                <div class="completed-status">
+                  <span class="green-dot"></span>
+                  <span>completed</span>
+                </div>
+                <a href="#" class="view-details" data-media-type="banani-button">
+                  <span>View Details</span><iconify-icon icon="lucide:arrow-up-right"
+                    style="font-size: 16px;"></iconify-icon>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="view-more-wrap" id="view-more-wrap">
+          <a href="#" class="btn view-more-btn" data-media-type="banani-button">View More <iconify-icon
+              icon="lucide:arrow-right" style="font-size: 14px;"></iconify-icon></a>
+        </div>
+      </section>
+
+      <!-- tech stack — official icons (skill-icons for most, simple-icons for others) -->
+      <section id="tech-stack-section" class="stack-section">
+        <h2 class="section-title">Tech Stack</h2>
+        <div class="stack-grid">
+          <div class="stack-card">
+            <div class="stack-icon-wrap"><iconify-icon icon="skill-icons:html" style="font-size: 32px;"></iconify-icon>
+            </div>
+            <div class="stack-name">HTML5</div>
+          </div>
+          <div class="stack-card">
+            <div class="stack-icon-wrap"><iconify-icon icon="skill-icons:css" style="font-size: 32px;"></iconify-icon>
+            </div>
+            <div class="stack-name">CSS3</div>
+          </div>
+          <div class="stack-card">
+            <div class="stack-icon-wrap"><iconify-icon icon="skill-icons:javascript"
+                style="font-size: 32px;"></iconify-icon></div>
+            <div class="stack-name">JavaScript</div>
+          </div>
+          <div class="stack-card">
+            <div class="stack-icon-wrap"><iconify-icon icon="skill-icons:react-dark"
+                style="font-size: 32px;"></iconify-icon></div>
+            <div class="stack-name">React</div>
+          </div>
+          <div class="stack-card">
+            <div class="stack-icon-wrap"><iconify-icon icon="skill-icons:nextjs-dark"
+                style="font-size: 32px;"></iconify-icon></div>
+            <div class="stack-name">Next.js</div>
+          </div>
+          <div class="stack-card">
+            <div class="stack-icon-wrap"><iconify-icon icon="skill-icons:typescript"
+                style="font-size: 32px;"></iconify-icon></div>
+            <div class="stack-name">TypeScript</div>
+          </div>
+          <div class="stack-card">
+            <div class="stack-icon-wrap"><iconify-icon icon="skill-icons:tailwindcss-dark"
+                style="font-size: 32px;"></iconify-icon></div>
+            <div class="stack-name">Tailwind</div>
+          </div>
+          <div class="stack-card">
+            <div class="stack-icon-wrap"><iconify-icon icon="skill-icons:figma-dark"
+                style="font-size: 32px;"></iconify-icon></div>
+            <div class="stack-name">Figma</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- cta with forward arrow -->
+      <section id="cta-section" class="cta-section">
+        <div class="cta-panel">
+          <div class="cta-copy">
+            <div class="cta-eyebrow">Open for selected collaborations</div>
+            <h2 class="cta-title">Let’s build a product people remember.</h2>
+            <p class="cta-text">Available for freelance projects, long-term front-end roles, and design-driven digital
+              products that need clarity, speed, and craft.</p>
+          </div>
+          <a href="#" class="btn btn-inverse" data-media-type="banani-button">Start a Project <iconify-icon
+              icon="lucide:arrow-right" style="font-size: 16px;"></iconify-icon></a>
+        </div>
+      </section>
+
+      <div class="footer-bottom">
+        <div class="footer-meta">© 2026 Christian. All Rights Reserved.</div>
+      </div>
+    </div> <!-- container -->
+  </div> <!-- #app -->
+
+  <script>
+    (function () {
+      const toggle = document.getElementById('theme-toggle');
+      const icon = document.getElementById('theme-icon');
+      const root = document.documentElement;
+
+      // Check local storage or system preference
+      const storedTheme = localStorage.getItem('theme');
+      if (storedTheme === 'dark') {
+        root.classList.add('dark');
+        if (icon) icon.setAttribute('icon', 'lucide:sun');
+      } else if (storedTheme === 'light') {
+        root.classList.remove('dark');
+        if (icon) icon.setAttribute('icon', 'lucide:moon-star');
+      } else {
+        // default light
+        root.classList.remove('dark');
+        if (icon) icon.setAttribute('icon', 'lucide:moon-star');
+      }
+
+      if (toggle) {
+        toggle.addEventListener('click', (e) => {
+          e.preventDefault();
+          if (root.classList.contains('dark')) {
+            root.classList.remove('dark');
+            localStorage.setItem('theme', 'light');
+            if (icon) icon.setAttribute('icon', 'lucide:moon-star');
+          } else {
+            root.classList.add('dark');
+            localStorage.setItem('theme', 'dark');
+            if (icon) icon.setAttribute('icon', 'lucide:sun');
+          }
+        });
+      }
+    })();
+  </script>
+</body>
+
+</html>
