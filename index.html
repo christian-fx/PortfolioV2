@@ -82,6 +82,7 @@
       --radius-lg: 8px;
       --radius-xl: 12px;
       --font-family-body: Inter;
+      --scroll-direction: 1;
     }
     
     /* dark mode variables — applied via .dark class */
@@ -116,6 +117,183 @@
       box-sizing: border-box;
       margin: 0;
       padding: 0;
+    }
+    
+    /* Scroll Progress Bar */
+    .scroll-progress {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 0%;
+      height: 3px;
+      background: var(--foreground);
+      z-index: 1000;
+      transition: width 0.1s ease, background-color 0.2s ease;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    
+    .dark .scroll-progress {
+      background: var(--foreground);
+      box-shadow: 0 0 10px rgba(255,255,255,0.1);
+    }
+    
+    /* Scroll Direction Indicator */
+    .scroll-direction {
+      position: fixed;
+      top: 8px;
+      right: 20px;
+      font-size: 12px;
+      color: var(--muted-foreground);
+      z-index: 1000;
+      background: color-mix(in srgb, var(--background) 75%, transparent);
+      backdrop-filter: blur(4px);
+      padding: 2px 8px;
+      border-radius: 20px;
+      border: 1px solid var(--border);
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+      opacity: 0.7;
+    }
+    
+    .scroll-direction.hidden {
+      opacity: 0;
+    }
+    
+    /* Back to Top Button */
+    .back-to-top {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: var(--foreground);
+      color: var(--background);
+      border: 2px solid var(--border);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.2s ease;
+      z-index: 100;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    }
+    
+    .back-to-top.visible {
+      opacity: 1;
+      visibility: visible;
+    }
+    
+    .back-to-top:hover {
+      transform: scale(1.1);
+    }
+    
+    .back-to-top iconify-icon {
+      color: var(--background);
+      font-size: 24px;
+    }
+    
+    .dark .back-to-top {
+      background: var(--foreground);
+      color: var(--background);
+    }
+    
+    .dark .back-to-top iconify-icon {
+      color: var(--background);
+    }
+    
+    /* Skeleton Loading */
+    .skeleton {
+      background: linear-gradient(
+        90deg,
+        var(--muted) 25%,
+        var(--border) 50%,
+        var(--muted) 75%
+      );
+      background-size: 200% 100%;
+      animation: skeleton-loading 1.5s infinite;
+    }
+    
+    @keyframes skeleton-loading {
+      0% {
+        background-position: 200% 0;
+      }
+      100% {
+        background-position: -200% 0;
+      }
+    }
+    
+    .work-image-wrapper {
+      position: relative;
+      min-height: 200px;
+    }
+    
+    .skeleton-image {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: var(--muted);
+      z-index: 1;
+    }
+    
+    .work-image-wrapper img {
+      position: relative;
+      z-index: 2;
+      opacity: 0;
+      transition: opacity 0.5s ease;
+    }
+    
+    .work-image-wrapper img.loaded {
+      opacity: 1;
+    }
+    
+    /* Smooth Page Transitions */
+    .page-transition {
+      animation: fadeIn 0.5s ease;
+    }
+    
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    .hero-section,
+    .work-section,
+    .stack-section,
+    .cta-section {
+      animation: slideUp 0.6s ease forwards;
+      opacity: 0;
+    }
+    
+    .hero-section { animation-delay: 0.1s; }
+    .work-section { animation-delay: 0.2s; }
+    .stack-section { animation-delay: 0.3s; }
+    .cta-section { animation-delay: 0.4s; }
+    
+    @keyframes slideUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    /* Adjust header for progress bar */
+    .header-fixed-wrapper {
+      top: 3px;
     }
     
     body {
@@ -191,6 +369,7 @@
     .btn:active:not(.work-link-icon):not(.footer-icon-link):not(.theme-toggle) {
       text-decoration: underline;
       text-underline-offset: 3px;
+      color: var(--muted-foreground);
     }
     
     /* images inside work cards hover */
@@ -244,13 +423,15 @@
       color: var(--background);
     }
     
+    
+    
     /* header */
     .header {
       display: flex;
       align-items: center;
       justify-content: space-between;
       padding: 16px 0 14px;
-      gap: 16px;
+      gap: 14px;
       flex-wrap: wrap;
       font-family: "Bebas Neue", sans-serif;
       font-weight: 400;
@@ -258,8 +439,8 @@
     }
     
     .theme-toggle {
-      width: 30px;
-      height: 30px;
+      width: 28px;
+      height:28px;
       
       display: flex;
       align-items: center;
@@ -277,11 +458,11 @@
     }
     
     .nav-link {
-      font-size: 16px;
+      font-size: 14px;
       color: var(--foreground);
       text-decoration: none;
       white-space: nowrap;
-      letter-spacing: 0.04em;
+      letter-spacing: 0.03em;
     }
     
     /* hero */
@@ -447,6 +628,8 @@
       background: var(--muted);
       border-bottom: 1px solid var(--border);
       overflow: hidden;
+      position: relative;
+      min-height: 200px;
     }
     
     .work-image-wrapper img {
@@ -455,7 +638,14 @@
       display: block;
       object-fit: cover;
       filter: grayscale(100%);
-      transition: filter 0.2s ease, transform 0.2s ease;
+      transition: filter 0.2s ease, transform 0.2s ease, opacity 0.5s ease;
+      position: relative;
+      z-index: 2;
+      opacity: 0;
+    }
+    
+    .work-image-wrapper img.loaded {
+      opacity: 1;
     }
     
     .work-meta {
@@ -1039,6 +1229,17 @@
 </head>
 
 <body>
+  <!-- Scroll Progress Bar -->
+  <div class="scroll-progress" id="scroll-progress"></div>
+  
+  <!-- Scroll Direction Indicator -->
+  <div class="scroll-direction hidden" id="scroll-direction"> </div>
+  
+  <!-- Back to Top Button -->
+  <button class="back-to-top" id="back-to-top" aria-label="Back to top">
+    <iconify-icon icon="lucide:arrow-up"></iconify-icon>
+  </button>
+
   <div id="app" style="background-color: var(--background); color: var(--foreground); min-height: 100vh; display: flex; flex-direction: column; font-family: var(--font-family-body); transition: background-color 0.2s, color 0.2s;">
     <!-- fixed header overlay wrapper -->
     <div class="header-fixed-wrapper">
@@ -1050,6 +1251,7 @@
             </div>
           </div>
           <nav class="header-nav" id="header-nav">
+            <a href="#" class="nav-link active" data-media-type="banani-button">HOME</a>
             <a href="#" class="nav-link" data-media-type="banani-button">WORK</a>
             <a href="#" class="nav-link" data-media-type="banani-button">ABOUT</a>
             <a href="#" class="nav-link" data-media-type="banani-button">CONTACT</a>
@@ -1064,7 +1266,7 @@
         <div class="hero-copy" id="hero-copy">
           <!-- profile image row (left side) -->
           <div class="hero-profile-row">
-            <img src="christian.JPG" alt="Christian photo" class="profile-image" id="profile-image" data-media-type="banani-button">
+            <img src="christian.jpeg" alt="Christian photo" class="profile-image" id="profile-image" data-media-type="banani-button">
             <div class="hero-heading-group" id="hero-heading-group">
               <p class="hero-role">I'm</p>
               <h1 class="hero-title">Christian.</h1>
@@ -1102,7 +1304,9 @@
         <div class="work-grid" id="work-grid">
           <!-- card 1 -->
           <div class="work-card" data-media-type="banani-button">
-            <div class="work-image-wrapper"><a href="#"><img data-aspect-ratio="16:9" data-query="minimalist black and white finance dashboard ui" src="https://storage.googleapis.com/banani-generated-images/generated-images/94f1209d-354a-4bbf-8387-9d17992f8af2.jpg"></a>
+            <div class="work-image-wrapper">
+              <div class="skeleton-image skeleton"></div>
+              <a href="#"><img data-aspect-ratio="16:9" data-query="minimalist black and white finance dashboard ui" src="https://storage.googleapis.com/banani-generated-images/generated-images/94f1209d-354a-4bbf-8387-9d17992f8af2.jpg" loading="lazy"></a>
             </div>
             <div class="work-meta">
               <div class="work-header">
@@ -1132,7 +1336,9 @@
           </div>
           <!-- card 2 -->
           <div class="work-card" data-media-type="banani-button">
-            <div class="work-image-wrapper"><a href="#"><img data-aspect-ratio="16:9" data-query="minimalist black and white fashion ecommerce website" src="https://storage.googleapis.com/banani-generated-images/generated-images/dbbf9b07-e2b2-46e4-9fe6-067c9dd31bbd.jpg"></a>
+            <div class="work-image-wrapper">
+              <div class="skeleton-image skeleton"></div>
+              <a href="#"><img data-aspect-ratio="16:9" data-query="minimalist black and white fashion ecommerce website" src="https://storage.googleapis.com/banani-generated-images/generated-images/dbbf9b07-e2b2-46e4-9fe6-067c9dd31bbd.jpg" loading="lazy"></a>
             </div>
             <div class="work-meta">
               <div class="work-header">
@@ -1161,7 +1367,9 @@
           </div>
           <!-- card 3 -->
           <div class="work-card" data-media-type="banani-button">
-            <div class="work-image-wrapper"><a href="#"><img data-aspect-ratio="16:9" data-query="minimalist black and white saas platform landing page" src="https://storage.googleapis.com/banani-generated-images/generated-images/2931f37a-6689-4bd4-86c9-9276f20d1539.jpg"></a>
+            <div class="work-image-wrapper">
+              <div class="skeleton-image skeleton"></div>
+              <a href="#"><img data-aspect-ratio="16:9" data-query="minimalist black and white saas platform landing page" src="https://storage.googleapis.com/banani-generated-images/generated-images/2931f37a-6689-4bd4-86c9-9276f20d1539.jpg" loading="lazy"></a>
             </div>
             <div class="work-meta">
               <div class="work-header">
@@ -1191,7 +1399,9 @@
           </div>
           <!-- card 4 -->
           <div class="work-card" data-media-type="banani-button">
-            <div class="work-image-wrapper"><a href="#"><img data-aspect-ratio="16:9" data-query="minimalist black and white creative agency website" src="https://storage.googleapis.com/banani-generated-images/generated-images/d298266c-443a-4430-a988-7c164818a359.jpg"></a>
+            <div class="work-image-wrapper">
+              <div class="skeleton-image skeleton"></div>
+              <a href="#"><img data-aspect-ratio="16:9" data-query="minimalist black and white creative agency website" src="https://storage.googleapis.com/banani-generated-images/generated-images/d298266c-443a-4430-a988-7c164818a359.jpg" loading="lazy"></a>
             </div>
             <div class="work-meta">
               <div class="work-header">
@@ -1319,7 +1529,80 @@
           }
         });
       }
+
+      // Scroll Progress Bar, and Back to Top
+      const progressBar = document.getElementById('scroll-progress');
+      const directionIndicator = document.getElementById('scroll-direction');
+      const backToTop = document.getElementById('back-to-top');
+      let lastScrollTop = 0;
+      let scrollTimeout;
+
+      function updateScrollProgress() {
+        const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+        const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        const scrolled = (winScroll / height) * 100;
+        progressBar.style.width = scrolled + '%';
+
+
+
+        // Show/hide back to top button (show when near bottom - last 300px)
+        const scrollPosition = winScroll + window.innerHeight;
+        const pageHeight = document.documentElement.scrollHeight;
+        
+        if (pageHeight - scrollPosition < 1000) {
+          backToTop.classList.add('visible');
+        } else {
+          backToTop.classList.remove('visible');
+        }
+
+        lastScrollTop = winScroll <= 0 ? 0 : winScroll;
+      }
+
+      window.addEventListener('scroll', updateScrollProgress);
+      window.addEventListener('resize', updateScrollProgress);
+
+      // Back to top functionality
+      backToTop.addEventListener('click', () => {
+        window.scrollTo({
+          top: 0,
+          behavior: 'smooth'
+        });
+      });
+
+      // Image lazy loading with skeleton
+      const images = document.querySelectorAll('.work-image-wrapper img');
+      
+      images.forEach(img => {
+        img.addEventListener('load', function() {
+          this.classList.add('loaded');
+          const skeleton = this.closest('.work-image-wrapper').querySelector('.skeleton-image');
+          if (skeleton) {
+            skeleton.style.opacity = '0';
+            setTimeout(() => {
+              skeleton.remove();
+            }, 500);
+          }
+        });
+
+        // If image is already cached
+        if (img.complete) {
+          img.classList.add('loaded');
+          const skeleton = img.closest('.work-image-wrapper').querySelector('.skeleton-image');
+          if (skeleton) {
+            skeleton.style.opacity = '0';
+            setTimeout(() => {
+              skeleton.remove();
+            }, 500);
+          }
+        }
+      });
+
+      // Initial call
+      updateScrollProgress();
     })();
+    
+    
+    
   </script>
 </body>
 
