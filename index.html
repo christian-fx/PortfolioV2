@@ -10,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Boogaloo&family=Cinzel+Decorative:wght@400;700;900&family=Google+Sans+Flex:opsz,wght@6..144,1..1000&family=Luckiest+Guy&family=Momo+Trust+Display&family=Rubik+Wet+Paint&family=Skranji:wght@400;700&family=Yatra+One&display=swap');
-    
+
     /* dark mode variables — applied via .dark class */
     .dark {
       --background: #121212;
@@ -38,7 +38,7 @@
       --sidebar-primary: #ffffff;
       --sidebar-primary-foreground: #000000;
     }
-    
+
     * {
       box-sizing: border-box;
       margin: 0;
@@ -47,7 +47,9 @@
   </style>
   <!-- Font Awesome 6 (free) -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@100;200;300;400;500;600;700;800;900&family=Geist:wght@100;200;300;400;500;600;700;800;900&family=IBM+Plex+Mono:wght@100;200;300;400;500;600;700&family=IBM+Plex+Sans:wght@100;200;300;400;500;600;700&family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Nunito:wght@200;300;400;500;600;700;800;900&family=PT+Serif:wght@400;700&family=Roboto+Slab:wght@100;200;300;400;500;600;700;800;900&family=Roboto:wght@100;300;400;500;700;900&family=Shantell+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@100;200;300;400;500;600;700;800;900&family=Geist:wght@100;200;300;400;500;600;700;800;900&family=IBM+Plex+Mono:wght@100;200;300;400;500;600;700&family=IBM+Plex+Sans:wght@100;200;300;400;500;600;700&family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Nunito:wght@200;300;400;500;600;700;800;900&family=PT+Serif:wght@400;700&family=Roboto+Slab:wght@100;200;300;400;500;600;700;800;900&family=Roboto:wght@100;300;400;500;700;900&family=Shantell+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet">
   <!-- iconify script (for Lucide + custom icons) -->
   <script src="https://code.iconify.design/iconify-icon/3.0.0/iconify-icon.min.js"></script>
   <style>
@@ -84,7 +86,7 @@
       --font-family-body: Inter;
       --scroll-direction: 1;
     }
-    
+
     /* dark mode variables — applied via .dark class */
     .dark {
       --background: #121212;
@@ -112,13 +114,13 @@
       --sidebar-primary: #ffffff;
       --sidebar-primary-foreground: #000000;
     }
-    
+
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
     }
-    
+
     /* Scroll Progress Bar */
     .scroll-progress {
       position: fixed;
@@ -129,14 +131,14 @@
       background: var(--foreground);
       z-index: 1000;
       transition: width 0.1s ease, background-color 0.2s ease;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     }
-    
+
     .dark .scroll-progress {
       background: var(--foreground);
-      box-shadow: 0 0 10px rgba(255,255,255,0.1);
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
     }
-    
+
     /* Scroll Direction Indicator */
     .scroll-direction {
       position: fixed;
@@ -154,11 +156,11 @@
       transition: opacity 0.3s ease;
       opacity: 0.7;
     }
-    
+
     .scroll-direction.hidden {
       opacity: 0;
     }
-    
+
     /* Back to Top Button */
     .back-to-top {
       position: fixed;
@@ -178,58 +180,57 @@
       visibility: hidden;
       transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.2s ease;
       z-index: 100;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
     }
-    
+
     .back-to-top.visible {
       opacity: 1;
       visibility: visible;
     }
-    
+
     .back-to-top:hover {
       transform: scale(1.1);
     }
-    
+
     .back-to-top iconify-icon {
       color: var(--background);
       font-size: 24px;
     }
-    
+
     .dark .back-to-top {
       background: var(--foreground);
       color: var(--background);
     }
-    
+
     .dark .back-to-top iconify-icon {
       color: var(--background);
     }
-    
+
     /* Skeleton Loading */
     .skeleton {
-      background: linear-gradient(
-        90deg,
-        var(--muted) 25%,
-        var(--border) 50%,
-        var(--muted) 75%
-      );
+      background: linear-gradient(90deg,
+          var(--muted) 25%,
+          var(--border) 50%,
+          var(--muted) 75%);
       background-size: 200% 100%;
       animation: skeleton-loading 1.5s infinite;
     }
-    
+
     @keyframes skeleton-loading {
       0% {
         background-position: 200% 0;
       }
+
       100% {
         background-position: -200% 0;
       }
     }
-    
+
     .work-image-wrapper {
       position: relative;
       min-height: 200px;
     }
-    
+
     .skeleton-image {
       position: absolute;
       top: 0;
@@ -239,34 +240,35 @@
       background: var(--muted);
       z-index: 1;
     }
-    
+
     .work-image-wrapper img {
       position: relative;
       z-index: 2;
       opacity: 0;
       transition: opacity 0.5s ease;
     }
-    
+
     .work-image-wrapper img.loaded {
       opacity: 1;
     }
-    
+
     /* Smooth Page Transitions */
     .page-transition {
       animation: fadeIn 0.5s ease;
     }
-    
+
     @keyframes fadeIn {
       from {
         opacity: 0;
         transform: translateY(20px);
       }
+
       to {
         opacity: 1;
         transform: translateY(0);
       }
     }
-    
+
     .hero-section,
     .work-section,
     .stack-section,
@@ -274,28 +276,40 @@
       animation: slideUp 0.6s ease forwards;
       opacity: 0;
     }
-    
-    .hero-section { animation-delay: 0.1s; }
-    .work-section { animation-delay: 0.2s; }
-    .stack-section { animation-delay: 0.3s; }
-    .cta-section { animation-delay: 0.4s; }
-    
+
+    .hero-section {
+      animation-delay: 0.1s;
+    }
+
+    .work-section {
+      animation-delay: 0.2s;
+    }
+
+    .stack-section {
+      animation-delay: 0.3s;
+    }
+
+    .cta-section {
+      animation-delay: 0.4s;
+    }
+
     @keyframes slideUp {
       from {
         opacity: 0;
         transform: translateY(30px);
       }
+
       to {
         opacity: 1;
         transform: translateY(0);
       }
     }
-    
+
     /* Adjust header for progress bar */
     .header-fixed-wrapper {
       top: 3px;
     }
-    
+
     body {
       background-color: var(--background);
       color: var(--foreground);
@@ -305,7 +319,7 @@
       min-height: 100vh;
       transition: background-color 0.2s ease, color 0.2s ease;
     }
-    
+
     /* fixed header with overlay */
     .header-fixed-wrapper {
       position: sticky;
@@ -316,14 +330,14 @@
       border-bottom: 1px solid var(--border);
       margin-bottom: 12px;
     }
-    
+
     .container {
       width: 100%;
       max-width: 680px;
       margin: 0 auto;
       padding: 0 20px;
     }
-    
+
     .section-title {
       font-size: 26px;
       letter-spacing: -0.03em;
@@ -334,7 +348,7 @@
       font-weight: 600;
       font-style: normal;
     }
-    
+
     /* base link style */
     a,
     .btn,
@@ -351,7 +365,7 @@
       text-decoration: none;
       color: var(--foreground);
     }
-    
+
     /* HOVER: only scale-in (no underline) */
     .nav-link:hover,
     .footer-link:hover,
@@ -361,7 +375,7 @@
       transition: transform 0.15s ease;
       color: var(--muted-foreground);
     }
-    
+
     /* underline only on active/click */
     .nav-link:active,
     .footer-link:active,
@@ -371,14 +385,14 @@
       text-underline-offset: 3px;
       color: var(--muted-foreground);
     }
-    
+
     /* images inside work cards hover */
     .work-image-wrapper img:hover {
       filter: grayscale(0%);
       transform: scale(1.02);
       transition: transform 0.2s ease, filter 0.2s ease;
     }
-    
+
     /* tech stack cards — NO hover effects */
     .stack-card {
       border: 1px solid var(--border);
@@ -391,7 +405,7 @@
       gap: 10px;
       min-height: 110px;
     }
-    
+
     .btn {
       display: inline-flex;
       align-items: center;
@@ -409,22 +423,22 @@
       border-radius: 0;
       transition: transform 0.15s ease;
     }
-    
+
     .btn-primary {
       background: var(--foreground);
       color: var(--background);
     }
-    
+
     .btn-primary .btn-text {
       color: var(--background);
     }
-    
+
     .btn-primary iconify-icon {
       color: var(--background);
     }
-    
-    
-    
+
+
+
     /* header */
     .header {
       display: flex;
@@ -434,29 +448,30 @@
       gap: 14px;
       flex-wrap: wrap;
       font-family: "Bebas Neue", sans-serif;
-      font-weight: 200;
+      font-weight: 100;
       font-style: normal;
     }
-    
+
     .theme-toggle {
       width: 28px;
-      height:28px;
-      
+      height: 28px;
+
       display: flex;
       align-items: center;
       justify-content: center;
       flex-shrink: 0;
       background: transparent;
     }
-    
+
     .header-nav {
       display: flex;
       align-items: flex-end;
       gap: 10px;
       margin-left: auto;
       flex-wrap: wrap;
+      letter-spacing: 0.09;
     }
-    
+
     .nav-link {
       font-size: 16px;
       color: var(--foreground);
@@ -464,19 +479,19 @@
       white-space: nowrap;
       letter-spacing: -0.04em;
     }
-    
+
     /* hero */
     .hero-section {
       padding: 16px 0 56px;
-      margin-top:50px;
+      margin-top: 50px;
     }
-    
+
     .hero-copy {
       display: flex;
       flex-direction: column;
       gap: 20px;
     }
-    
+
     /* new profile image row */
     .hero-profile-row {
       display: flex;
@@ -484,7 +499,7 @@
       gap: 14px;
       flex-wrap: wrap;
     }
-    
+
     .profile-image {
       width: 100px;
       height: 120px;
@@ -492,7 +507,7 @@
       object-fit: cover;
       border: 2px solid var(--border);
     }
-    
+
     .hero-heading-group {
       display: flex;
       flex-direction: column;
@@ -501,7 +516,7 @@
       font-family: "Bebas Neue", sans-serif;
       font-style: normal;
     }
-    
+
     .hero-title {
       margin: 0;
       font-size: 44px;
@@ -509,7 +524,7 @@
       font-weight: 700;
       word-break: break-word;
     }
-    
+
     .hero-role {
       margin: 0;
       font-size: 20px;
@@ -518,7 +533,7 @@
       letter-spacing: 0.02em;
       white-space: normal;
     }
-    
+
     .hero-subtitle {
       margin: 0;
       font-size: 17px;
@@ -529,14 +544,14 @@
       font-weight: 100;
       font-style: normal;
     }
-    
+
     .hero-social-block {
       display: flex;
       flex-direction: column;
       gap: 14px;
       margin-top: 8px;
     }
-    
+
     .hero-social-label {
       font-size: xx-small;
       font-weight: 300;
@@ -545,7 +560,7 @@
       font-style: normal;
       letter-spacing: 0.03em;
     }
-    
+
     .hero-social-row {
       display: flex;
       align-items: center;
@@ -554,14 +569,14 @@
       width: 100%;
       flex-wrap: wrap;
     }
-    
+
     .hero-socials {
       display: flex;
       align-items: center;
       gap: 4px;
       flex-wrap: wrap;
     }
-    
+
     .social-item {
       width: 38px;
       height: 38px;
@@ -573,11 +588,11 @@
       flex-shrink: 0;
       padding: 0;
     }
-    
+
     .social-name {
       display: none;
     }
-    
+
     .hero-actions {
       display: flex;
       align-items: center;
@@ -590,13 +605,13 @@
       font-weight: 400;
       font-style: normal;
     }
-    
+
     .hero-actions-next-line {
       width: 100%;
       margin-top: 16px;
       justify-content: flex-end;
     }
-    
+
     .resume-btn,
     .social-cta {
       min-width: auto;
@@ -604,25 +619,25 @@
       font-size: 13px;
       border: 3px solid var(--border);
     }
-    
+
     /* work section */
     .work-section {
       padding: 0 0 56px;
     }
-    
+
     .work-grid {
       display: grid;
       grid-template-columns: 1fr;
       gap: 28px;
     }
-    
+
     .work-card {
       display: flex;
       flex-direction: column;
       background: var(--card);
       border: 1px solid var(--border);
     }
-    
+
     .work-image-wrapper {
       width: 100%;
       background: var(--muted);
@@ -631,7 +646,7 @@
       position: relative;
       min-height: 200px;
     }
-    
+
     .work-image-wrapper img {
       width: 100%;
       height: auto;
@@ -643,18 +658,18 @@
       z-index: 2;
       opacity: 0;
     }
-    
+
     .work-image-wrapper img.loaded {
       opacity: 1;
     }
-    
+
     .work-meta {
       padding: 18px;
       display: flex;
       flex-direction: column;
       gap: 14px;
     }
-    
+
     .work-header {
       display: flex;
       align-items: center;
@@ -665,7 +680,7 @@
       font-weight: 400;
       font-style: normal;
     }
-    
+
     .work-title {
       font-size: 20px;
       font-weight: 100;
@@ -676,13 +691,13 @@
       overflow: visible;
       text-overflow: clip;
     }
-    
+
     .work-links {
       display: flex;
       align-items: center;
       flex-shrink: 0;
     }
-    
+
     .work-link-icon {
       width: 30px;
       height: 30px;
@@ -691,13 +706,13 @@
       justify-content: center;
       transition: transform 0.2s ease, color 0.2s ease;
     }
-    
+
     /* HOVER STATE FOR WORK LINK ICON (explicitly added) */
     .work-link-icon:hover {
       transform: scale(1.15);
       color: var(--muted-foreground);
     }
-    
+
     .work-desc {
       margin: 0;
       font-size: 17px;
@@ -707,14 +722,14 @@
       font-weight: 400;
       font-style: normal;
     }
-    
+
     .work-tags {
       display: flex;
       flex-wrap: wrap;
       align-items: center;
       gap: 4px 8px;
     }
-    
+
     /* "Tech Stacks" */
     .tech-stacks-label {
       font-size: 14px;
@@ -725,12 +740,12 @@
       line-height: 1;
       width: 100%;
     }
-    
+
     .work-tag {
       display: inline-flex;
       align-items: center;
       padding: 6px 10px;
-      border:none;
+      border: none;
       margin-left: -6px;
       font-size: 12px;
       white-space: nowrap;
@@ -738,7 +753,7 @@
       font-weight: 500;
       font-style: normal;
     }
-    
+
     /* completed status row */
     .work-footer {
       display: flex;
@@ -748,7 +763,7 @@
       padding-top: 16px;
       border-top: 1px solid var(--border);
     }
-    
+
     .completed-status {
       display: flex;
       align-items: center;
@@ -759,7 +774,7 @@
       font-style: normal;
       color: var(--muted-foreground);
     }
-    
+
     .green-dot {
       position: relative;
       width: 10px;
@@ -768,7 +783,7 @@
       /* green */
       border-radius: 50%;
     }
-    
+
     .green-dot::before,
     .green-dot::after {
       content: "";
@@ -778,29 +793,29 @@
       background: rgba(34, 197, 94, 0.6);
       animation: ping 2s infinite;
     }
-    
+
     .green-dot::before {
       animation-delay: 1s;
     }
-    
+
     @keyframes ping {
       0% {
         transform: scale(1);
         opacity: 0.8;
       }
-      
+
       70% {
         transform: scale(2.5);
         opacity: 0;
       }
-      
+
       100% {
         transform: scale(2.5);
         opacity: 0;
       }
     }
-    
-    
+
+
     .view-details {
       display: flex;
       align-items: center;
@@ -813,42 +828,42 @@
       font-style: normal;
       color: var(--muted-foreground);
     }
-    
+
     .view-more-wrap {
       display: flex;
       justify-content: flex-end;
       margin-top: 32px;
     }
-    
+
     .view-more-btn {
       width: 132px;
       font-family: "Bebas Neue", sans-serif;
       font-weight: 400;
       font-style: normal;
     }
-    
+
     .view-more-btn:hover {
       cursor: pointer;
       transform: translateY(-1px);
       box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
     }
-    
+
     .view-more-btn:active {
       transform: translateY(1px);
       box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
     }
-    
+
     /* tech stack — official icons via iconify (skill-icons) */
     .stack-section {
       padding: 0 0 56px;
     }
-    
+
     .stack-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
       gap: 16px;
     }
-    
+
     .stack-card {
       border: 1px solid var(--border);
       background: var(--card);
@@ -860,7 +875,7 @@
       gap: 10px;
       min-height: 110px;
     }
-    
+
     .stack-icon-wrap {
       width: 40px;
       height: 40px;
@@ -868,7 +883,7 @@
       align-items: center;
       justify-content: center;
     }
-    
+
     .stack-name {
       font-size: 14px;
       line-height: 1.2;
@@ -878,13 +893,13 @@
       font-weight: 900;
       font-style: normal;
     }
-    
+
     /* cta */
     .cta-section {
       padding: 0 0 28px;
       margin-top: 10px;
     }
-    
+
     .cta-panel {
       background: #000000;
       color: #ffffff;
@@ -893,28 +908,28 @@
       flex-direction: column;
       gap: 24px;
     }
-    
+
     .dark .cta-panel {
       background: #000000;
       color: #ffffff;
     }
-    
+
     .cta-panel .cta-eyebrow,
     .cta-panel .cta-title,
     .cta-panel .cta-text {
       color: #ffffff;
     }
-    
+
     .cta-panel .cta-text {
       color: rgba(255, 255, 255, 0.72);
     }
-    
+
     .cta-copy {
       display: flex;
       flex-direction: column;
       gap: 14px;
     }
-    
+
     .cta-eyebrow {
       font-size: 12px;
       font-weight: 500;
@@ -925,7 +940,7 @@
       font-weight: 300;
       font-style: normal;
     }
-    
+
     .cta-title {
       margin: 0;
       font-size: 30px;
@@ -935,7 +950,7 @@
       font-weight: 700;
       font-style: normal;
     }
-    
+
     .cta-text {
       margin: 0;
       font-size: 16px;
@@ -944,7 +959,7 @@
       font-weight: 300;
       font-style: normal;
     }
-    
+
     .btn-inverse {
       background: #ffffff;
       color: #000000;
@@ -954,18 +969,18 @@
       font-weight: 400;
       font-style: normal;
     }
-    
+
     .dark .btn-inverse {
       background: #ffffff;
       color: #000000;
       border: 1px solid #ffffff;
     }
-    
+
     /* footer with names after connect icons */
     .exclusive-footer {
       padding: 12px 0 32px;
     }
-    
+
     .footer-shell {
       border-top: 3px solid var(--border);
       padding-top: 28px;
@@ -973,13 +988,13 @@
       flex-direction: column;
       gap: 28px;
     }
-    
+
     .footer-brand {
       display: flex;
       flex-direction: column;
       gap: 12px;
     }
-    
+
     .footer-kicker {
       font-size: 13px;
       font-weight: 500;
@@ -987,7 +1002,7 @@
       letter-spacing: 0.04em;
       text-transform: uppercase;
     }
-    
+
     .footer-big {
       font-size: 20px;
       line-height: 1.2;
@@ -997,7 +1012,7 @@
       font-family: "Momo Trust Display", sans-serif;
       font-style: normal;
     }
-    
+
     .footer-row {
       display: flex;
       align-items: flex-start;
@@ -1005,13 +1020,13 @@
       gap: 24px;
       flex-wrap: wrap;
     }
-    
+
     .footer-column {
       display: flex;
       flex-direction: column;
       gap: 14px;
     }
-    
+
     .footer-label {
       font-size: 13px;
       font-weight: 500;
@@ -1020,7 +1035,7 @@
       letter-spacing: 0.05em;
       white-space: nowrap;
     }
-    
+
     .footer-nav-links {
       display: flex;
       align-items: left;
@@ -1028,7 +1043,7 @@
       gap: 16px;
       flex-wrap: wrap;
     }
-    
+
     .footer-link {
       font-size: 14px;
       font-weight: 500;
@@ -1036,20 +1051,20 @@
       text-decoration: none;
       white-space: nowrap;
     }
-    
+
     .footer-connect-icons {
       display: flex;
       flex-direction: row;
       align-items: center;
       gap: 10px;
     }
-    
+
     .footer-connect-item {
       display: flex;
       align-items: center;
       gap: 6px;
     }
-    
+
     .footer-icon-link {
       width: 30px;
       height: 30px;
@@ -1058,8 +1073,8 @@
       justify-content: center;
       font-size: 18px;
     }
-    
-    
+
+
     .footer-bottom {
       display: flex;
       flex-direction: column;
@@ -1069,7 +1084,7 @@
       align-items: center;
       text-align: center;
     }
-    
+
     .footer-meta {
       font-size: 13px;
       font-weight: 500;
@@ -1077,21 +1092,21 @@
       text-align: center;
       width: 100%;
     }
-    
+
     iconify-icon {
       display: flex;
       align-items: center;
       justify-content: center;
       color: var(--foreground);
     }
-    
-    
-    
-    
+
+
+
+
     body {
       margin: 0;
     }
-    
+
     /* DESKTOP OVERRIDES */
     @media (min-width: 768px) {
       .container {
@@ -1099,91 +1114,91 @@
         max-width: 840px;
         /* Expand slightly to hold 2 grid cards better */
       }
-      
+
       .hero-title {
         font-size: 56px;
       }
-      
+
       .hero-role {
         font-size: 24px;
       }
-      
+
       .cta-title {
         font-size: 42px;
       }
-      
+
       .work-grid {
         display: grid;
         grid-template-columns: repeat(2, minmax(0, 1fr));
         gap: 24px;
       }
-      
+
       .work-meta {
         padding: 16px;
         gap: 10px;
       }
-      
+
       .work-title {
         font-size: 18px;
         line-height: 1.1;
       }
-      
+
       .work-desc {
         font-size: 16px;
         line-height: 1.4;
       }
-      
+
       .work-tag {
         font-size: 11px;
         padding: 4px 8px;
       }
-      
+
       .work-footer {
         padding-top: 12px;
         margin-top: 6px;
       }
-      
+
       .view-details {
         font-size: 11px;
       }
-      
+
       .work-header {
         gap: 8px;
       }
-      
+
       .work-link-icon {
         width: 28px;
         height: 28px;
       }
-      
+
       .hero-profile-row {
         gap: 24px;
         flex-direction: row;
       }
-      
+
       .stack-grid {
         grid-template-columns: repeat(4, 1fr);
       }
-      
+
       .footer-shell {
         flex-direction: row;
         justify-content: space-between;
       }
-      
+
       .footer-brand {
         flex: 1;
       }
-      
+
       .footer-bottom {
         flex-direction: row;
         justify-content: space-between;
       }
-      
+
       .footer-meta {
         text-align: left;
         width: auto;
       }
-      
+
       .social-item {
         width: auto;
         padding: 8px 16px;
@@ -1191,31 +1206,31 @@
         height: auto;
         transition: transform 0.2s ease, box-shadow 0.2s ease;
       }
-      
-      
+
+
       .social-item:hover {
         cursor: pointer;
         transform: translateY(-1px);
         box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
       }
-      
+
       .social-item:active {
         transform: translateY(1px);
         box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
       }
-      
+
       .social-cta:hover,
       .resume-btn:hover {
         transform: translateY(-1px);
         box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
       }
-      
+
       .social-cta:active,
       .resume-btn:active {
         transform: translateY(1px);
         box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
       }
-      
+
       .social-name {
         display: inline;
         font-family: "Bebas Neue", sans-serif;
@@ -1225,22 +1240,98 @@
         margin-top: 5px;
       }
     }
+
+    /* LARGE SCREEN RESPONSIVENESS */
+    @media (min-width: 1200px) {
+      .container {
+        max-width: 1000px;
+        padding: 0 40px;
+      }
+
+      .hero-title {
+        font-size: 72px;
+      }
+
+      .hero-role {
+        font-size: 28px;
+      }
+
+      .hero-subtitle {
+        font-size: 19px;
+        max-width: 800px;
+      }
+
+      .section-title {
+        font-size: 32px;
+        margin-bottom: 36px;
+      }
+
+      .work-grid {
+        gap: 32px;
+      }
+
+      .stack-grid {
+        grid-template-columns: repeat(6, 1fr);
+        gap: 20px;
+      }
+
+      .cta-title {
+        font-size: 48px;
+      }
+
+      .cta-panel {
+        padding: 48px 40px;
+        gap: 32px;
+      }
+    }
+
+    @media (min-width: 1600px) {
+      .container {
+        max-width: 1100px;
+      }
+
+      .hero-title {
+        font-size: 84px;
+      }
+
+      .hero-role {
+        font-size: 32px;
+      }
+
+      .hero-subtitle {
+        font-size: 21px;
+        max-width: 900px;
+      }
+
+      .section-title {
+        font-size: 36px;
+      }
+
+      .cta-title {
+        font-size: 56px;
+      }
+
+      .stack-grid {
+        gap: 24px;
+      }
+    }
   </style>
 </head>
 
 <body>
   <!-- Scroll Progress Bar -->
   <div class="scroll-progress" id="scroll-progress"></div>
-  
+
   <!-- Scroll Direction Indicator -->
   <div class="scroll-direction hidden" id="scroll-direction"> </div>
-  
+
   <!-- Back to Top Button -->
   <button class="back-to-top" id="back-to-top" aria-label="Back to top">
     <iconify-icon icon="lucide:arrow-up"></iconify-icon>
   </button>
 
-  <div id="app" style="background-color: var(--background); color: var(--foreground); min-height: 100vh; display: flex; flex-direction: column; font-family: var(--font-family-body); transition: background-color 0.2s, color 0.2s;">
+  <div id="app"
+    style="background-color: var(--background); color: var(--foreground); min-height: 100vh; display: flex; flex-direction: column; font-family: var(--font-family-body); transition: background-color 0.2s, color 0.2s;">
     <!-- fixed header overlay wrapper -->
     <div class="header-fixed-wrapper">
       <div class="container">
@@ -1253,20 +1344,21 @@
           <nav class="header-nav" id="header-nav">
             <a href="#" class="nav-link active" data-media-type="banani-button">HOME</a>
             <a href="#" class="nav-link" data-media-type="banani-button">WORK</a>
-            <a href="#" class="nav-link" data-media-type="banani-button">ABOUT</a>
+            <a href="about.html" class="nav-link" data-media-type="banani-button">ABOUT</a>
             <a href="#" class="nav-link" data-media-type="banani-button">CONTACT</a>
           </nav>
         </header>
       </div>
     </div>
-    
+
     <div class="container" id="page-container">
       <!-- hero -->
       <section class="hero-section" id="hero-section">
         <div class="hero-copy" id="hero-copy">
           <!-- profile image row (left side) -->
           <div class="hero-profile-row">
-            <img src="christian.JPG" alt="Christian photo" class="profile-image" id="profile-image" data-media-type="banani-button">
+            <img src="christian.JPG" alt="Christian photo" class="profile-image" id="profile-image"
+              data-media-type="banani-button">
             <div class="hero-heading-group" id="hero-heading-group">
               <p class="hero-role">I'm</p>
               <h1 class="hero-title">Christian.</h1>
@@ -1279,12 +1371,16 @@
             <div class="hero-social-label">Here are my socials</div>
             <div class="hero-social-row" id="hero-social-row">
               <div class="hero-socials" id="hero-socials">
-                <a href="#" class="social-item" data-media-type="banani-button"><iconify-icon icon="lucide:github" style="font-size: 18px;"></iconify-icon><span class="social-name">GitHub</span></a>
-                <a href="#" class="social-item" data-media-type="banani-button"><iconify-icon icon="lucide:linkedin" style="font-size: 18px;"></iconify-icon><span class="social-name">LinkedIn</span></a>
+                <a href="#" class="social-item" data-media-type="banani-button"><iconify-icon icon="lucide:github"
+                    style="font-size: 18px;"></iconify-icon><span class="social-name">GitHub</span></a>
+                <a href="#" class="social-item" data-media-type="banani-button"><iconify-icon icon="lucide:linkedin"
+                    style="font-size: 18px;"></iconify-icon><span class="social-name">LinkedIn</span></a>
                 <!-- X (Twitter) brand icon via Font Awesome -->
-                <a href="#" class="social-item" data-media-type="banani-button"><i class="fa-brands fa-x-twitter"></i><span class="social-name">Twitter</span></a>
-                
-                <a href="#" class="social-item" data-media-type="banani-button"><iconify-icon icon="lucide:mail" style="font-size: 18px;"></iconify-icon><span class="social-name">Email</span></a>
+                <a href="#" class="social-item" data-media-type="banani-button"><i
+                    class="fa-brands fa-x-twitter"></i><span class="social-name">Twitter</span></a>
+
+                <a href="#" class="social-item" data-media-type="banani-button"><iconify-icon icon="lucide:mail"
+                    style="font-size: 18px;"></iconify-icon><span class="social-name">Email</span></a>
               </div>
             </div>
             <div class="hero-actions hero-actions-next-line" id="hero-actions">
@@ -1292,12 +1388,13 @@
                 <iconify-icon icon="lucide:hand" style="font-size: 14px;"></iconify-icon><span class="btn-text">Say
                   Hello</span>
               </a>
-              <a href="#" class="btn resume-btn" data-media-type="banani-button">Resume<iconify-icon icon="lucide:file-text" style="font-size: 14px;"></iconify-icon></a>
+              <a href="#" class="btn resume-btn" data-media-type="banani-button">Resume<iconify-icon
+                  icon="lucide:file-text" style="font-size: 14px;"></iconify-icon></a>
             </div>
           </div>
         </div>
       </section>
-      
+
       <!-- work -->
       <section class="work-section" id="work-section">
         <h2 class="section-title">Selected Projects</h2>
@@ -1306,21 +1403,29 @@
           <div class="work-card" data-media-type="banani-button">
             <div class="work-image-wrapper">
               <div class="skeleton-image skeleton"></div>
-              <a href="#"><img data-aspect-ratio="16:9" data-query="minimalist black and white finance dashboard ui" src="https://storage.googleapis.com/banani-generated-images/generated-images/94f1209d-354a-4bbf-8387-9d17992f8af2.jpg" loading="lazy"></a>
+              <a href="#"><img data-aspect-ratio="16:9" data-query="minimalist black and white finance dashboard ui"
+                  src="https://storage.googleapis.com/banani-generated-images/generated-images/94f1209d-354a-4bbf-8387-9d17992f8af2.jpg"
+                  loading="lazy"></a>
             </div>
             <div class="work-meta">
               <div class="work-header">
                 <div class="work-title">Fintech Dashboard</div>
-                <div class="work-links"><a href="#" class="work-link-icon" data-media-type="banani-button"><iconify-icon icon="lucide:github" style="font-size: 16px;"></iconify-icon></a><a href="#" class="work-link-icon" data-media-type="banani-button"><iconify-icon icon="lucide:globe" style="font-size: 16px;"></iconify-icon></a></div>
+                <div class="work-links"><a href="#" class="work-link-icon" data-media-type="banani-button"><iconify-icon
+                      icon="lucide:github" style="font-size: 16px;"></iconify-icon></a><a href="#"
+                    class="work-link-icon" data-media-type="banani-button"><iconify-icon icon="lucide:globe"
+                      style="font-size: 16px;"></iconify-icon></a></div>
               </div>
               <p class="work-desc">A clean dashboard for tracking daily expenses, managing portfolios, and monitoring
                 crypto assets in real time.</p>
               <div class="work-tags">
                 <!-- "Tech Stacks" sub-title added before tags -->
                 <span class="tech-stacks-label">Tech Stacks</span>
-                <div class="work-tag"><iconify-icon icon="skill-icons:react-dark" style="font-size: 14px;"></iconify-icon>React</div>
-                <div class="work-tag"><iconify-icon icon="skill-icons:typescript" style="font-size: 14px;"></iconify-icon>TypeScript</div>
-                <div class="work-tag"><iconify-icon icon="skill-icons:tailwindcss-dark" style="font-size: 14px;"></iconify-icon>Tailwind</div>
+                <div class="work-tag"><iconify-icon icon="skill-icons:react-dark"
+                    style="font-size: 14px;"></iconify-icon>React</div>
+                <div class="work-tag"><iconify-icon icon="skill-icons:typescript"
+                    style="font-size: 14px;"></iconify-icon>TypeScript</div>
+                <div class="work-tag"><iconify-icon icon="skill-icons:tailwindcss-dark"
+                    style="font-size: 14px;"></iconify-icon>Tailwind</div>
               </div>
               <!-- work footer with completed on left, view details on right -->
               <div class="work-footer">
@@ -1329,7 +1434,8 @@
                   <span>completed</span>
                 </div>
                 <a href="#" class="view-details" data-media-type="banani-button">
-                  <span>View Details</span><iconify-icon icon="lucide:arrow-up-right" style="font-size: 16px;"></iconify-icon>
+                  <span>View Details</span><iconify-icon icon="lucide:arrow-up-right"
+                    style="font-size: 16px;"></iconify-icon>
                 </a>
               </div>
             </div>
@@ -1338,20 +1444,29 @@
           <div class="work-card" data-media-type="banani-button">
             <div class="work-image-wrapper">
               <div class="skeleton-image skeleton"></div>
-              <a href="#"><img data-aspect-ratio="16:9" data-query="minimalist black and white fashion ecommerce website" src="https://storage.googleapis.com/banani-generated-images/generated-images/dbbf9b07-e2b2-46e4-9fe6-067c9dd31bbd.jpg" loading="lazy"></a>
+              <a href="#"><img data-aspect-ratio="16:9"
+                  data-query="minimalist black and white fashion ecommerce website"
+                  src="https://storage.googleapis.com/banani-generated-images/generated-images/dbbf9b07-e2b2-46e4-9fe6-067c9dd31bbd.jpg"
+                  loading="lazy"></a>
             </div>
             <div class="work-meta">
               <div class="work-header">
                 <div class="work-title">Aura E-Commerce</div>
-                <div class="work-links"><a href="#" class="work-link-icon" data-media-type="banani-button"><iconify-icon icon="lucide:github" style="font-size: 16px;"></iconify-icon></a><a href="#" class="work-link-icon" data-media-type="banani-button"><iconify-icon icon="lucide:globe" style="font-size: 16px;"></iconify-icon></a></div>
+                <div class="work-links"><a href="#" class="work-link-icon" data-media-type="banani-button"><iconify-icon
+                      icon="lucide:github" style="font-size: 16px;"></iconify-icon></a><a href="#"
+                    class="work-link-icon" data-media-type="banani-button"><iconify-icon icon="lucide:globe"
+                      style="font-size: 16px;"></iconify-icon></a></div>
               </div>
               <p class="work-desc">A performant headless storefront with dynamic routing, cart management, and seamless
                 Stripe integration.</p>
               <div class="work-tags">
                 <span class="tech-stacks-label">Tech Stacks</span>
-                <div class="work-tag"><iconify-icon icon="skill-icons:nextjs-dark" style="font-size: 14px;"></iconify-icon>Next.js</div>
-                <div class="work-tag"><iconify-icon icon="simple-icons:zustand" style="font-size: 14px; color: var(--foreground);"></iconify-icon>Zustand</div>
-                <div class="work-tag"><iconify-icon icon="simple-icons:framer" style="font-size: 14px; color: var(--foreground);"></iconify-icon>Framer Motion</div>
+                <div class="work-tag"><iconify-icon icon="skill-icons:nextjs-dark"
+                    style="font-size: 14px;"></iconify-icon>Next.js</div>
+                <div class="work-tag"><iconify-icon icon="simple-icons:zustand"
+                    style="font-size: 14px; color: var(--foreground);"></iconify-icon>Zustand</div>
+                <div class="work-tag"><iconify-icon icon="simple-icons:framer"
+                    style="font-size: 14px; color: var(--foreground);"></iconify-icon>Framer Motion</div>
               </div>
               <!-- work footer with completed on left, view details on right -->
               <div class="work-footer">
@@ -1360,7 +1475,8 @@
                   <span>completed</span>
                 </div>
                 <a href="#" class="view-details" data-media-type="banani-button">
-                  <span>View Details</span><iconify-icon icon="lucide:arrow-up-right" style="font-size: 16px;"></iconify-icon>
+                  <span>View Details</span><iconify-icon icon="lucide:arrow-up-right"
+                    style="font-size: 16px;"></iconify-icon>
                 </a>
               </div>
             </div>
@@ -1369,21 +1485,29 @@
           <div class="work-card" data-media-type="banani-button">
             <div class="work-image-wrapper">
               <div class="skeleton-image skeleton"></div>
-              <a href="#"><img data-aspect-ratio="16:9" data-query="minimalist black and white saas platform landing page" src="https://storage.googleapis.com/banani-generated-images/generated-images/2931f37a-6689-4bd4-86c9-9276f20d1539.jpg" loading="lazy"></a>
+              <a href="#"><img data-aspect-ratio="16:9"
+                  data-query="minimalist black and white saas platform landing page"
+                  src="https://storage.googleapis.com/banani-generated-images/generated-images/2931f37a-6689-4bd4-86c9-9276f20d1539.jpg"
+                  loading="lazy"></a>
             </div>
             <div class="work-meta">
               <div class="work-header">
                 <div class="work-title">Nexus Platform</div>
-                <div class="work-links"><a href="#" class="work-link-icon" data-media-type="banani-button"><iconify-icon icon="lucide:github" style="font-size: 16px;"></iconify-icon></a><a href="#" class="work-link-icon" data-media-type="banani-button"><iconify-icon icon="lucide:globe" style="font-size: 16px;"></iconify-icon></a></div>
+                <div class="work-links"><a href="#" class="work-link-icon" data-media-type="banani-button"><iconify-icon
+                      icon="lucide:github" style="font-size: 16px;"></iconify-icon></a><a href="#"
+                    class="work-link-icon" data-media-type="banani-button"><iconify-icon icon="lucide:globe"
+                      style="font-size: 16px;"></iconify-icon></a></div>
               </div>
               <p class="work-desc">Landing page and authentication flow for a B2B SaaS platform focused on collaboration
                 and async communication.</p>
               <div class="work-tags">
                 <span class="tech-stacks-label">Tech Stacks</span>
-                <div class="work-tag"><iconify-icon icon="skill-icons:vuejs-dark" style="font-size: 14px;"></iconify-icon>Vue 3</div>
+                <div class="work-tag"><iconify-icon icon="skill-icons:vuejs-dark"
+                    style="font-size: 14px;"></iconify-icon>Vue 3</div>
                 <div class="work-tag"><iconify-icon icon="skill-icons:sass" style="font-size: 14px;"></iconify-icon>Sass
                 </div>
-                <div class="work-tag"><iconify-icon icon="vscode-icons:file-type-firebase" style="font-size: 14px;"></iconify-icon>Firebase</div>
+                <div class="work-tag"><iconify-icon icon="vscode-icons:file-type-firebase"
+                    style="font-size: 14px;"></iconify-icon>Firebase</div>
               </div>
               <!-- work footer with completed on left, view details on right -->
               <div class="work-footer">
@@ -1392,7 +1516,8 @@
                   <span>completed</span>
                 </div>
                 <a href="#" class="view-details" data-media-type="banani-button">
-                  <span>View Details</span><iconify-icon icon="lucide:arrow-up-right" style="font-size: 16px;"></iconify-icon>
+                  <span>View Details</span><iconify-icon icon="lucide:arrow-up-right"
+                    style="font-size: 16px;"></iconify-icon>
                 </a>
               </div>
             </div>
@@ -1401,20 +1526,28 @@
           <div class="work-card" data-media-type="banani-button">
             <div class="work-image-wrapper">
               <div class="skeleton-image skeleton"></div>
-              <a href="#"><img data-aspect-ratio="16:9" data-query="minimalist black and white creative agency website" src="https://storage.googleapis.com/banani-generated-images/generated-images/d298266c-443a-4430-a988-7c164818a359.jpg" loading="lazy"></a>
+              <a href="#"><img data-aspect-ratio="16:9" data-query="minimalist black and white creative agency website"
+                  src="https://storage.googleapis.com/banani-generated-images/generated-images/d298266c-443a-4430-a988-7c164818a359.jpg"
+                  loading="lazy"></a>
             </div>
             <div class="work-meta">
               <div class="work-header">
                 <div class="work-title">Studio Agency</div>
-                <div class="work-links"><a href="#" class="work-link-icon" data-media-type="banani-button"><iconify-icon icon="lucide:github" style="font-size: 16px;"></iconify-icon></a><a href="#" class="work-link-icon" data-media-type="banani-button"><iconify-icon icon="lucide:globe" style="font-size: 16px;"></iconify-icon></a></div>
+                <div class="work-links"><a href="#" class="work-link-icon" data-media-type="banani-button"><iconify-icon
+                      icon="lucide:github" style="font-size: 16px;"></iconify-icon></a><a href="#"
+                    class="work-link-icon" data-media-type="banani-button"><iconify-icon icon="lucide:globe"
+                      style="font-size: 16px;"></iconify-icon></a></div>
               </div>
               <p class="work-desc">A portfolio website for a creative agency focused on scroll-led storytelling and
                 immersive presentation.</p>
               <div class="work-tags">
                 <span class="tech-stacks-label">Tech Stacks</span>
-                <div class="work-tag"><iconify-icon icon="skill-icons:javascript" style="font-size: 14px;"></iconify-icon>Vanilla JS</div>
-                <div class="work-tag"><iconify-icon icon="skill-icons:threejs-dark" style="font-size: 14px;"></iconify-icon>Three.js</div>
-                <div class="work-tag"><iconify-icon icon="simple-icons:greensock" style="font-size: 14px; color: var(--foreground);"></iconify-icon>GSAP</div>
+                <div class="work-tag"><iconify-icon icon="skill-icons:javascript"
+                    style="font-size: 14px;"></iconify-icon>Vanilla JS</div>
+                <div class="work-tag"><iconify-icon icon="skill-icons:threejs-dark"
+                    style="font-size: 14px;"></iconify-icon>Three.js</div>
+                <div class="work-tag"><iconify-icon icon="simple-icons:greensock"
+                    style="font-size: 14px; color: var(--foreground);"></iconify-icon>GSAP</div>
               </div>
               <!-- work footer with completed on left, view details on right -->
               <div class="work-footer">
@@ -1423,17 +1556,19 @@
                   <span>completed</span>
                 </div>
                 <a href="#" class="view-details" data-media-type="banani-button">
-                  <span>View Details</span><iconify-icon icon="lucide:arrow-up-right" style="font-size: 16px;"></iconify-icon>
+                  <span>View Details</span><iconify-icon icon="lucide:arrow-up-right"
+                    style="font-size: 16px;"></iconify-icon>
                 </a>
               </div>
             </div>
           </div>
         </div>
         <div class="view-more-wrap" id="view-more-wrap">
-          <a href="#" class="btn view-more-btn" data-media-type="banani-button">View More <iconify-icon icon="lucide:arrow-right" style="font-size: 14px;"></iconify-icon></a>
+          <a href="#" class="btn view-more-btn" data-media-type="banani-button">View More <iconify-icon
+              icon="lucide:arrow-right" style="font-size: 14px;"></iconify-icon></a>
         </div>
       </section>
-      
+
       <!-- tech stack — official icons, Figma removed, Firebase added -->
       <section id="tech-stack-section" class="stack-section">
         <h2 class="section-title">Tech Stack</h2>
@@ -1449,33 +1584,39 @@
             <div class="stack-name">CSS3</div>
           </div>
           <div class="stack-card">
-            <div class="stack-icon-wrap"><iconify-icon icon="skill-icons:javascript" style="font-size: 32px;"></iconify-icon></div>
+            <div class="stack-icon-wrap"><iconify-icon icon="skill-icons:javascript"
+                style="font-size: 32px;"></iconify-icon></div>
             <div class="stack-name">JavaScript</div>
           </div>
           <div class="stack-card">
-            <div class="stack-icon-wrap"><iconify-icon icon="skill-icons:react-dark" style="font-size: 32px;"></iconify-icon></div>
+            <div class="stack-icon-wrap"><iconify-icon icon="skill-icons:react-dark"
+                style="font-size: 32px;"></iconify-icon></div>
             <div class="stack-name">React</div>
           </div>
           <div class="stack-card">
-            <div class="stack-icon-wrap"><iconify-icon icon="skill-icons:nextjs-dark" style="font-size: 32px;"></iconify-icon></div>
+            <div class="stack-icon-wrap"><iconify-icon icon="skill-icons:nextjs-dark"
+                style="font-size: 32px;"></iconify-icon></div>
             <div class="stack-name">Next.js</div>
           </div>
           <div class="stack-card">
-            <div class="stack-icon-wrap"><iconify-icon icon="skill-icons:typescript" style="font-size: 32px;"></iconify-icon></div>
+            <div class="stack-icon-wrap"><iconify-icon icon="skill-icons:typescript"
+                style="font-size: 32px;"></iconify-icon></div>
             <div class="stack-name">TypeScript</div>
           </div>
           <div class="stack-card">
-            <div class="stack-icon-wrap"><iconify-icon icon="skill-icons:tailwindcss-dark" style="font-size: 32px;"></iconify-icon></div>
+            <div class="stack-icon-wrap"><iconify-icon icon="skill-icons:tailwindcss-dark"
+                style="font-size: 32px;"></iconify-icon></div>
             <div class="stack-name">Tailwind</div>
           </div>
           <!-- Firebase icon (replaces Figma) using skill-icons:firebase-dark -->
           <div class="stack-card">
-            <div class="stack-icon-wrap"><iconify-icon icon="vscode-icons:file-type-firebase" style="font-size: 32px;"></iconify-icon></div>
+            <div class="stack-icon-wrap"><iconify-icon icon="vscode-icons:file-type-firebase"
+                style="font-size: 32px;"></iconify-icon></div>
             <div class="stack-name">Firebase</div>
           </div>
         </div>
       </section>
-      
+
       <!-- cta with forward arrow -->
       <section id="cta-section" class="cta-section">
         <div class="cta-panel">
@@ -1485,22 +1626,23 @@
             <p class="cta-text">Available for freelance projects, long-term front-end roles, and design-driven digital
               products that need clarity, speed, and craft.</p>
           </div>
-          <a href="#" class="btn btn-inverse" data-media-type="banani-button">Start a Project <iconify-icon icon="lucide:arrow-right" style="font-size: 16px;"></iconify-icon></a>
+          <a href="#" class="btn btn-inverse" data-media-type="banani-button">Start a Project <iconify-icon
+              icon="lucide:arrow-right" style="font-size: 16px;"></iconify-icon></a>
         </div>
       </section>
-      
+
       <div class="footer-bottom">
         <div class="footer-meta">© 2026 Christian. All Rights Reserved.</div>
       </div>
     </div> <!-- container -->
   </div> <!-- #app -->
-  
+
   <script>
-    (function() {
+    (function () {
       const toggle = document.getElementById('theme-toggle');
       const icon = document.getElementById('theme-icon');
       const root = document.documentElement;
-      
+
       // Check local storage or system preference
       const storedTheme = localStorage.getItem('theme');
       if (storedTheme === 'dark') {
@@ -1514,7 +1656,7 @@
         root.classList.remove('dark');
         if (icon) icon.setAttribute('icon', 'lucide:moon-star');
       }
-      
+
       if (toggle) {
         toggle.addEventListener('click', (e) => {
           e.preventDefault();
@@ -1548,7 +1690,7 @@
         // Show/hide back to top button (show when near bottom - last 300px)
         const scrollPosition = winScroll + window.innerHeight;
         const pageHeight = document.documentElement.scrollHeight;
-        
+
         if (pageHeight - scrollPosition < 1000) {
           backToTop.classList.add('visible');
         } else {
@@ -1571,9 +1713,9 @@
 
       // Image lazy loading with skeleton
       const images = document.querySelectorAll('.work-image-wrapper img');
-      
+
       images.forEach(img => {
-        img.addEventListener('load', function() {
+        img.addEventListener('load', function () {
           this.classList.add('loaded');
           const skeleton = this.closest('.work-image-wrapper').querySelector('.skeleton-image');
           if (skeleton) {
@@ -1600,9 +1742,9 @@
       // Initial call
       updateScrollProgress();
     })();
-    
-    
-    
+
+
+
   </script>
 </body>
 
