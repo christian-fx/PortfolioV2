@@ -1,0 +1,803 @@
+<div
+  class="export-wrapper"
+  style="
+    width: 375px;
+    min-height: 812px;
+    position: relative;
+    font-family: var(--font-family-body);
+    background-color: var(--background);
+  "
+>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@100;200;300;400;500;600;700;800;900&family=Geist:wght@100;200;300;400;500;600;700;800;900&family=IBM+Plex+Mono:wght@100;200;300;400;500;600;700&family=IBM+Plex+Sans:wght@100;200;300;400;500;600;700&family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Nunito:wght@200;300;400;500;600;700;800;900&family=PT+Serif:wght@400;700&family=Roboto+Slab:wght@100;200;300;400;500;600;700;800;900&family=Roboto:wght@100;300;400;500;700;900&family=Shantell+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
+  <html>
+    <head></head>
+    <body>
+      <div
+        id="app"
+        style="
+          background-color: var(--background);
+          color: var(--foreground);
+          min-height: 812px;
+          display: flex;
+          flex-direction: column;
+          font-family: var(--font-family-body);
+          overflow-x: hidden;
+        "
+      >
+        <style id="global-styles">
+          * {
+            box-sizing: border-box;
+          }
+          .container {
+            width: 100%;
+            padding: 0 20px;
+            margin: 0 auto;
+          }
+          .section-title {
+            font-size: 24px;
+            font-weight: 600;
+            letter-spacing: -0.03em;
+            margin: 0 0 16px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid var(--foreground);
+          }
+          .section-block {
+            padding: 24px 0;
+          }
+          .text-body {
+            font-size: 14px;
+            line-height: 1.6;
+            color: var(--muted-foreground);
+            margin: 0;
+          }
+          .text-list {
+            padding-left: 20px;
+            margin: 12px 0 0;
+            font-size: 14px;
+            line-height: 1.6;
+            color: var(--muted-foreground);
+          }
+          .text-list li {
+            margin-bottom: 8px;
+          }
+          .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            padding: 10px 12px;
+            font-size: 12px;
+            font-weight: 500;
+            line-height: 1;
+            border: 1px solid var(--foreground);
+            background: transparent;
+            color: var(--foreground);
+            text-decoration: none;
+            white-space: nowrap;
+            border-radius: 0;
+          }
+          .btn-primary {
+            background: var(--foreground);
+            color: var(--background);
+          }
+
+          .project-pagination {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            padding: 8px 0 0;
+          }
+          .project-pagination .btn {
+            flex: 1;
+          }
+          .project-pagination .btn.next {
+            justify-content: flex-end;
+          }
+        </style>
+
+        <style id="nav-styles">
+          .header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 18px 0 10px;
+            gap: 12px;
+          }
+          .theme-toggle {
+            width: 34px;
+            height: 34px;
+            border: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+          }
+          .header-nav {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-left: auto;
+          }
+          .nav-link {
+            font-size: 12px;
+            font-weight: 500;
+            color: var(--foreground);
+            text-decoration: none;
+            white-space: nowrap;
+            text-transform: uppercase;
+          }
+        </style>
+
+        <style id="case-study-hero-styles">
+          .cs-hero {
+            padding: 32px 0 24px;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+          }
+          .breadcrumb {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 12px;
+            font-weight: 500;
+            color: var(--muted-foreground);
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+          }
+          .cs-title {
+            font-size: 32px;
+            font-weight: 600;
+            margin: 0;
+            letter-spacing: -0.04em;
+            line-height: 1.1;
+          }
+          .cs-desc {
+            font-size: 16px;
+            line-height: 1.5;
+            color: var(--muted-foreground);
+            margin: 0;
+          }
+          .cs-actions {
+            display: flex;
+            gap: 12px;
+            margin-top: 8px;
+            flex-wrap: wrap;
+          }
+        </style>
+
+        <style id="gallery-styles">
+          .gallery-container {
+            margin: 24px 0;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+          }
+          .gallery-img {
+            width: 100%;
+            object-fit: cover;
+            border: 1px solid var(--border);
+            display: block;
+          }
+        </style>
+
+        <style id="tech-scroll-styles">
+          .tech-scroll-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            overflow-x: auto;
+            padding: 12px 0;
+            scrollbar-width: none;
+          }
+          .tech-scroll-container::-webkit-scrollbar {
+            display: none;
+          }
+          .tech-item {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            min-width: max-content;
+            border: 1px solid var(--border);
+            padding: 8px 10px;
+            background: var(--card);
+            flex-shrink: 0;
+          }
+          .tech-name {
+            font-size: 10px;
+            font-weight: 500;
+            white-space: nowrap;
+          }
+        </style>
+
+        <style id="cta-styles">
+          .cta-section {
+            padding: 32px 0 24px;
+          }
+          .cta-panel {
+            background: var(--foreground);
+            color: var(--background);
+            padding: 24px 18px;
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+          }
+          .cta-copy {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+          }
+          .cta-eyebrow {
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            opacity: 0.72;
+          }
+          .cta-title {
+            margin: 0;
+            font-size: 28px;
+            line-height: 1.05;
+            font-weight: 600;
+            letter-spacing: -0.04em;
+          }
+          .cta-text {
+            margin: 0;
+            font-size: 14px;
+            line-height: 1.5;
+            color: rgba(255, 255, 255, 0.72);
+          }
+          .btn-inverse {
+            background: var(--background);
+            color: var(--foreground);
+            border: 1px solid var(--background);
+            align-self: flex-start;
+          }
+        </style>
+
+        <style id="footer-styles">
+          .exclusive-footer {
+            padding: 8px 0 28px;
+          }
+          .footer-shell {
+            border-top: 1px solid var(--border);
+            padding-top: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+          }
+          .footer-brand {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+          }
+          .footer-kicker {
+            font-size: 11px;
+            font-weight: 500;
+            color: var(--muted-foreground);
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+          }
+          .footer-big {
+            font-size: 18px;
+            line-height: 1.15;
+            font-weight: 600;
+            letter-spacing: -0.03em;
+          }
+          .footer-row {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 16px;
+          }
+          .footer-column {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+          }
+          .footer-label {
+            font-size: 11px;
+            font-weight: 500;
+            color: var(--muted-foreground);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            white-space: nowrap;
+          }
+          .footer-nav-links {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: nowrap;
+          }
+          .footer-link {
+            font-size: 12px;
+            font-weight: 500;
+            color: var(--foreground);
+            text-decoration: none;
+            white-space: nowrap;
+          }
+          .footer-connect-icons {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+          }
+          .footer-icon-link {
+            width: 26px;
+            height: 26px;
+            border: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+          }
+          .footer-bottom {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            padding-top: 16px;
+            border-top: 1px solid var(--border);
+            align-items: center;
+            text-align: center;
+          }
+          .footer-meta {
+            font-size: 12px;
+            font-weight: 500;
+            color: var(--muted-foreground);
+            text-align: center;
+            width: 100%;
+          }
+        </style>
+
+        <div class="container" id="page-container">
+          <header class="header" id="header">
+            <div
+              class="theme-toggle"
+              id="theme-toggle"
+              data-media-type="banani-button"
+            >
+              <div
+                style="
+                  width: 18px;
+                  height: 18px;
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                "
+              >
+                <iconify-icon
+                  icon="lucide:moon-star"
+                  style="font-size: 18px; color: var(--foreground)"
+                ></iconify-icon>
+              </div>
+            </div>
+            <nav class="header-nav" id="header-nav">
+              <div class="nav-link" data-media-type="banani-button">WORK</div>
+              <div class="nav-link" data-media-type="banani-button">ABOUT</div>
+              <div class="nav-link" data-media-type="banani-button">
+                CONTACT
+              </div>
+            </nav>
+          </header>
+
+          <section class="cs-hero">
+            <div class="breadcrumb" data-media-type="banani-button">
+              <div
+                style="
+                  width: 12px;
+                  height: 12px;
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                "
+              >
+                <iconify-icon
+                  icon="lucide:arrow-left"
+                  style="font-size: 12px; color: var(--muted-foreground)"
+                ></iconify-icon>
+              </div>
+              Back to works
+            </div>
+            <h1 class="cs-title">E-Commerce Platform Redesign</h1>
+            <p class="cs-desc">
+              A complete overhaul of an enterprise e-commerce storefront,
+              focusing on performance, mobile conversions, and accessibility.
+            </p>
+            <div class="cs-actions">
+              <div class="btn btn-primary" data-media-type="banani-button">
+                Live Demo
+                <div
+                  style="
+                    width: 12px;
+                    height: 12px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                  "
+                >
+                  <iconify-icon
+                    icon="lucide:external-link"
+                    style="font-size: 12px; color: var(--background)"
+                  ></iconify-icon>
+                </div>
+              </div>
+              <div class="btn" data-media-type="banani-button">
+                GitHub
+                <div
+                  style="
+                    width: 12px;
+                    height: 12px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                  "
+                >
+                  <iconify-icon
+                    icon="lucide:github"
+                    style="font-size: 12px; color: var(--foreground)"
+                  ></iconify-icon>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <div class="gallery-container">
+            <img
+              src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&amp;fit=crop&amp;q=80&amp;w=800"
+              alt="Project Hero Image"
+              class="gallery-img"
+              style="aspect-ratio: 16/9"
+            />
+          </div>
+
+          <section class="section-block">
+            <h2 class="section-title">Overview</h2>
+            <p class="text-body">
+              The client needed a modernized storefront that could handle high
+              traffic volumes during seasonal sales while providing a
+              frictionless checkout experience for mobile users.
+            </p>
+          </section>
+
+          <section class="section-block">
+            <h2 class="section-title">Problem</h2>
+            <p class="text-body">
+              The legacy system was built on a monolithic architecture that
+              resulted in slow page loads, high bounce rates on mobile devices,
+              and a checkout flow that caused significant cart abandonment.
+            </p>
+          </section>
+
+          <section class="section-block">
+            <h2 class="section-title">Goals</h2>
+            <ul class="text-list">
+              <li>Decrease page load times to under 1.5 seconds.</li>
+              <li>Improve mobile conversion rates by at least 20%.</li>
+              <li>
+                Implement a fully accessible, WCAG AA compliant interface.
+              </li>
+              <li>Establish a scalable design system for future updates.</li>
+            </ul>
+          </section>
+
+          <section class="section-block">
+            <h2 class="section-title">Tech Stack</h2>
+            <div class="tech-scroll-container">
+              <div class="tech-item">
+                <div
+                  style="
+                    width: 14px;
+                    height: 14px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                  "
+                >
+                  <iconify-icon
+                    icon="lucide:triangle"
+                    style="font-size: 14px; color: var(--foreground)"
+                  ></iconify-icon>
+                </div>
+                <span class="tech-name">Next.js</span>
+              </div>
+              <div class="tech-item">
+                <div
+                  style="
+                    width: 14px;
+                    height: 14px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                  "
+                >
+                  <iconify-icon
+                    icon="lucide:badge-check"
+                    style="font-size: 14px; color: var(--foreground)"
+                  ></iconify-icon>
+                </div>
+                <span class="tech-name">TypeScript</span>
+              </div>
+              <div class="tech-item">
+                <div
+                  style="
+                    width: 14px;
+                    height: 14px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                  "
+                >
+                  <iconify-icon
+                    icon="lucide:wind"
+                    style="font-size: 14px; color: var(--foreground)"
+                  ></iconify-icon>
+                </div>
+                <span class="tech-name">Tailwind CSS</span>
+              </div>
+              <div class="tech-item">
+                <div
+                  style="
+                    width: 14px;
+                    height: 14px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                  "
+                >
+                  <iconify-icon
+                    icon="lucide:database"
+                    style="font-size: 14px; color: var(--foreground)"
+                  ></iconify-icon>
+                </div>
+                <span class="tech-name">Prisma</span>
+              </div>
+            </div>
+          </section>
+
+          <section class="section-block">
+            <h2 class="section-title">Features</h2>
+            <ul class="text-list">
+              <li>
+                Dynamic product filtering and real-time search capabilities.
+              </li>
+              <li>Optimized multi-step checkout with cart persistence.</li>
+              <li>Integrated headless CMS for marketing content management.</li>
+              <li>Dark mode support utilizing system preferences.</li>
+            </ul>
+          </section>
+
+          <div class="gallery-container" id="main-gallery">
+            <img
+              src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&amp;fit=crop&amp;q=80&amp;w=800"
+              alt="Project Gallery Image 1"
+              class="gallery-img"
+              style="aspect-ratio: 16/9"
+            />
+            <img
+              src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&amp;fit=crop&amp;q=80&amp;w=800"
+              alt="Project Gallery Image 2"
+              class="gallery-img"
+              style="aspect-ratio: 16/9"
+            />
+            <img
+              src="https://images.unsplash.com/photo-1522542550221-31fd19575a2d?auto=format&amp;fit=crop&amp;q=80&amp;w=800"
+              alt="Project Gallery Image 3"
+              class="gallery-img"
+              style="aspect-ratio: 16/9"
+            />
+          </div>
+
+          <div class="project-pagination" id="project-pagination">
+            <div class="btn" data-media-type="banani-button">
+              <div
+                style="
+                  width: 12px;
+                  height: 12px;
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                "
+              >
+                <iconify-icon
+                  icon="lucide:arrow-left"
+                  style="font-size: 12px; color: var(--foreground)"
+                ></iconify-icon>
+              </div>
+              Previous Project
+            </div>
+            <div class="btn next" data-media-type="banani-button">
+              Next Project
+              <div
+                style="
+                  width: 12px;
+                  height: 12px;
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                "
+              >
+                <iconify-icon
+                  icon="lucide:arrow-right"
+                  style="font-size: 12px; color: var(--foreground)"
+                ></iconify-icon>
+              </div>
+            </div>
+          </div>
+
+          <section class="cta-section">
+            <div class="cta-panel">
+              <div class="cta-copy">
+                <span class="cta-eyebrow">Let's Talk</span>
+                <h2 class="cta-title">Have a project in mind?</h2>
+                <p class="cta-text">
+                  Let's build something exceptional together. I'm currently open
+                  for new opportunities.
+                </p>
+              </div>
+              <div class="btn btn-inverse" data-media-type="banani-button">
+                Start a Project
+                <div
+                  style="
+                    width: 14px;
+                    height: 14px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                  "
+                >
+                  <iconify-icon
+                    icon="lucide:arrow-right"
+                    style="font-size: 14px; color: var(--foreground)"
+                  ></iconify-icon>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <footer class="exclusive-footer">
+            <div class="footer-shell">
+              <div class="footer-brand">
+                <span class="footer-kicker">Find Me Online</span>
+                <div class="footer-big">Say Hello.</div>
+              </div>
+              <div class="footer-row">
+                <div class="footer-column">
+                  <div class="footer-label">NAVIGATION</div>
+                  <div class="footer-nav-links">
+                    <a
+                      href="#"
+                      class="footer-link"
+                      data-media-type="banani-button"
+                      >WORK</a
+                    >
+                    <a
+                      href="#"
+                      class="footer-link"
+                      data-media-type="banani-button"
+                      >ABOUT</a
+                    >
+                    <a
+                      href="#"
+                      class="footer-link"
+                      data-media-type="banani-button"
+                      >CONTACT</a
+                    >
+                  </div>
+                </div>
+                <div class="footer-column" style="align-items: flex-end">
+                  <div class="footer-label">CONNECT</div>
+                  <div class="footer-connect-icons">
+                    <a
+                      href="#"
+                      class="footer-icon-link"
+                      data-media-type="banani-button"
+                    >
+                      <div
+                        style="
+                          width: 14px;
+                          height: 14px;
+                          display: flex;
+                          align-items: center;
+                          justify-content: center;
+                        "
+                      >
+                        <iconify-icon
+                          icon="lucide:github"
+                          style="font-size: 14px; color: var(--foreground)"
+                        ></iconify-icon>
+                      </div>
+                    </a>
+                    <a
+                      href="#"
+                      class="footer-icon-link"
+                      data-media-type="banani-button"
+                    >
+                      <div
+                        style="
+                          width: 14px;
+                          height: 14px;
+                          display: flex;
+                          align-items: center;
+                          justify-content: center;
+                        "
+                      >
+                        <iconify-icon
+                          icon="lucide:twitter"
+                          style="font-size: 14px; color: var(--foreground)"
+                        ></iconify-icon>
+                      </div>
+                    </a>
+                    <a
+                      href="#"
+                      class="footer-icon-link"
+                      data-media-type="banani-button"
+                    >
+                      <div
+                        style="
+                          width: 14px;
+                          height: 14px;
+                          display: flex;
+                          align-items: center;
+                          justify-content: center;
+                        "
+                      >
+                        <iconify-icon
+                          icon="lucide:linkedin"
+                          style="font-size: 14px; color: var(--foreground)"
+                        ></iconify-icon>
+                      </div>
+                    </a>
+                  </div>
+                </div>
+              </div>
+              <div class="footer-bottom">
+                <div class="footer-meta">
+                  © 2024 Christian. Crafted with Intent.
+                </div>
+                <div class="footer-meta">Lagos, Nigeria</div>
+              </div>
+            </div>
+          </footer>
+        </div>
+      </div>
+    </body>
+  </html>
+  <script src="https://code.iconify.design/iconify-icon/3.0.0/iconify-icon.min.js"></script>
+  <style>
+    :root {
+      --background: #ffffff;
+      --foreground: #0a0a0a;
+      --border: #00000014;
+      --input: #f5f5f5;
+      --primary: #000000;
+      --primary-foreground: #ffffff;
+      --secondary: #f8f8f8;
+      --secondary-foreground: #111111;
+      --muted: #f0f0f0;
+      --muted-foreground: #9a9a9a;
+      --success: #e6f4ea;
+      --success-foreground: #065f46;
+      --accent: #000000;
+      --accent-foreground: #ffffff;
+      --destructive: #fff1f2;
+      --destructive-foreground: #641220;
+      --warning: #fffaeb;
+      --warning-foreground: #7a4b00;
+      --card: #ffffff;
+      --card-foreground: #0a0a0a;
+      --sidebar: #fafafa;
+      --sidebar-foreground: #0a0a0a;
+      --sidebar-primary: #000000;
+      --sidebar-primary-foreground: #ffffff;
+      --radius-sm: 4px;
+      --radius-md: 6px;
+      --radius-lg: 8px;
+      --radius-xl: 12px;
+      --font-family-body: Inter;
+    }
+  </style>
+</div>
