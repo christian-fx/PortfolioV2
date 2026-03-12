@@ -178,10 +178,8 @@
     .nav-link:hover,
     .footer-link:hover,
     .view-details:hover,
-    .work-link-icon:hover,
     .footer-icon-link:hover,
     .theme-toggle:hover {
-      
       transition: transform 0.15s ease;
       color: var(--muted-foreground);
     }
@@ -379,7 +377,7 @@
     .hero-socials {
       display: flex;
       align-items: center;
-      gap: 5px;
+      gap: 4px;
       flex-wrap: wrap;
     }
     
@@ -500,6 +498,13 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      transition: transform 0.2s ease, color 0.2s ease;
+    }
+    
+    /* HOVER STATE FOR WORK LINK ICON (explicitly added) */
+    .work-link-icon:hover {
+      transform: scale(1.15);
+      color: var(--muted-foreground);
     }
     
     .work-desc {
@@ -515,6 +520,19 @@
     .work-tags {
       display: flex;
       flex-wrap: wrap;
+      align-items: center;
+      gap: 4px 8px;
+    }
+    
+    /* "Tech Stacks" */
+    .tech-stacks-label {
+      font-size: 14px;
+      font-weight: 500;
+      letter-spacing: 0.03em;
+      color: var(--muted-foreground);
+      font-family: "Bebas Neue", sans-serif;
+      line-height: 1;
+      width: 100%;
     }
     
     .work-tag {
@@ -522,7 +540,8 @@
       align-items: center;
       padding: 6px 10px;
       border:none;
-      font-size: 11px;
+      margin-left: -6px;
+      font-size: 12px;
       white-space: nowrap;
       font-family: "Google Sans Flex", sans-serif;
       font-weight: 500;
@@ -1092,6 +1111,8 @@
               <p class="work-desc">A clean dashboard for tracking daily expenses, managing portfolios, and monitoring
                 crypto assets in real time.</p>
               <div class="work-tags">
+                <!-- "Tech Stacks" sub-title added before tags -->
+                <span class="tech-stacks-label">Tech Stacks</span>
                 <div class="work-tag"><iconify-icon icon="skill-icons:react-dark" style="font-size: 14px;"></iconify-icon>React</div>
                 <div class="work-tag"><iconify-icon icon="skill-icons:typescript" style="font-size: 14px;"></iconify-icon>TypeScript</div>
                 <div class="work-tag"><iconify-icon icon="skill-icons:tailwindcss-dark" style="font-size: 14px;"></iconify-icon>Tailwind</div>
@@ -1120,6 +1141,7 @@
               <p class="work-desc">A performant headless storefront with dynamic routing, cart management, and seamless
                 Stripe integration.</p>
               <div class="work-tags">
+                <span class="tech-stacks-label">Tech Stacks</span>
                 <div class="work-tag"><iconify-icon icon="skill-icons:nextjs-dark" style="font-size: 14px;"></iconify-icon>Next.js</div>
                 <div class="work-tag"><iconify-icon icon="simple-icons:zustand" style="font-size: 14px; color: var(--foreground);"></iconify-icon>Zustand</div>
                 <div class="work-tag"><iconify-icon icon="simple-icons:framer" style="font-size: 14px; color: var(--foreground);"></iconify-icon>Framer Motion</div>
@@ -1148,10 +1170,11 @@
               <p class="work-desc">Landing page and authentication flow for a B2B SaaS platform focused on collaboration
                 and async communication.</p>
               <div class="work-tags">
+                <span class="tech-stacks-label">Tech Stacks</span>
                 <div class="work-tag"><iconify-icon icon="skill-icons:vuejs-dark" style="font-size: 14px;"></iconify-icon>Vue 3</div>
                 <div class="work-tag"><iconify-icon icon="skill-icons:sass" style="font-size: 14px;"></iconify-icon>Sass
                 </div>
-                <div class="work-tag"><iconify-icon icon="skill-icons:firebase-dark" style="font-size: 14px;"></iconify-icon>Firebase</div>
+                <div class="work-tag"><iconify-icon icon="vscode-icons:file-type-firebase" style="font-size: 14px;"></iconify-icon>Firebase</div>
               </div>
               <!-- work footer with completed on left, view details on right -->
               <div class="work-footer">
@@ -1177,6 +1200,7 @@
               <p class="work-desc">A portfolio website for a creative agency focused on scroll-led storytelling and
                 immersive presentation.</p>
               <div class="work-tags">
+                <span class="tech-stacks-label">Tech Stacks</span>
                 <div class="work-tag"><iconify-icon icon="skill-icons:javascript" style="font-size: 14px;"></iconify-icon>Vanilla JS</div>
                 <div class="work-tag"><iconify-icon icon="skill-icons:threejs-dark" style="font-size: 14px;"></iconify-icon>Three.js</div>
                 <div class="work-tag"><iconify-icon icon="simple-icons:greensock" style="font-size: 14px; color: var(--foreground);"></iconify-icon>GSAP</div>
@@ -1199,7 +1223,7 @@
         </div>
       </section>
       
-      <!-- tech stack — official icons (skill-icons for most, simple-icons for others) -->
+      <!-- tech stack — official icons, Figma removed, Firebase added -->
       <section id="tech-stack-section" class="stack-section">
         <h2 class="section-title">Tech Stack</h2>
         <div class="stack-grid">
@@ -1233,9 +1257,10 @@
             <div class="stack-icon-wrap"><iconify-icon icon="skill-icons:tailwindcss-dark" style="font-size: 32px;"></iconify-icon></div>
             <div class="stack-name">Tailwind</div>
           </div>
+          <!-- Firebase icon (replaces Figma) using skill-icons:firebase-dark -->
           <div class="stack-card">
-            <div class="stack-icon-wrap"><iconify-icon icon="skill-icons:figma-dark" style="font-size: 32px;"></iconify-icon></div>
-            <div class="stack-name">Figma</div>
+            <div class="stack-icon-wrap"><iconify-icon icon="vscode-icons:file-type-firebase" style="font-size: 32px;"></iconify-icon></div>
+            <div class="stack-name">Firebase</div>
           </div>
         </div>
       </section>
