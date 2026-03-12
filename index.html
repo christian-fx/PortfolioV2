@@ -340,12 +340,12 @@
 
     .section-title {
       font-size: 26px;
-      letter-spacing: -0.03em;
+      letter-spacing: -0.02em;
       margin: 0 0 28px;
       padding-bottom: 12px;
       border-bottom: 2px solid var(--foreground);
       font-family: "Bebas Neue", sans-serif;
-      font-weight: 600;
+      font-weight: 400;
       font-style: normal;
     }
 
@@ -721,6 +721,7 @@
       font-family: "Google Sans Flex", sans-serif;
       font-weight: 400;
       font-style: normal;
+      letter-spacing: 0.02em;
     }
 
     .work-tags {
@@ -752,6 +753,7 @@
       font-family: "Google Sans Flex", sans-serif;
       font-weight: 500;
       font-style: normal;
+      letter-spacing: 0.02em;
     }
 
     /* completed status row */
@@ -838,8 +840,9 @@
     .view-more-btn {
       width: 132px;
       font-family: "Bebas Neue", sans-serif;
-      font-weight: 400;
+      font-weight: 200;
       font-style: normal;
+      letter-spacing: 0.02em;
     }
 
     .view-more-btn:hover {
@@ -890,7 +893,7 @@
       text-align: center;
       white-space: nowrap;
       font-family: "Google Sans Flex", sans-serif;
-      font-weight: 900;
+      font-weight: 600;
       font-style: normal;
     }
 
@@ -943,11 +946,11 @@
 
     .cta-title {
       margin: 0;
-      font-size: 30px;
+      font-size: 26px;
       line-height: 1.05;
-      letter-spacing: -0.04em;
+      letter-spacing: -0.0em;
       font-family: "Momo Trust Display", sans-serif;
-      font-weight: 700;
+      font-weight: 600;
       font-style: normal;
     }
 
@@ -1111,8 +1114,13 @@
     @media (min-width: 768px) {
       .container {
         padding: 0 24px;
-        max-width: 840px;
+        max-width: 750px;
         /* Expand slightly to hold 2 grid cards better */
+      }
+
+      .nav-link {
+        font-size: 18px;
+        letter-spacing: -0.02em;
       }
 
       .hero-title {
@@ -1123,8 +1131,15 @@
         font-size: 24px;
       }
 
+      .social-name,
+      .hero-actions {
+        font-size: 14px;
+        letter-spacing: 0.08em;
+        font-weight: 400;
+      }
+
       .cta-title {
-        font-size: 42px;
+        font-size: 28px;
       }
 
       .work-grid {
@@ -1244,8 +1259,19 @@
     /* LARGE SCREEN RESPONSIVENESS */
     @media (min-width: 1200px) {
       .container {
-        max-width: 1000px;
+        max-width: 800px;
         padding: 0 40px;
+      }
+
+      body {
+        background-color: black;
+      }
+
+
+      .nav-link {
+        font-size: 22px;
+        letter-spacing: -0.06em;
+        color: var(--muted-foreground);
       }
 
       .hero-title {
@@ -1259,6 +1285,13 @@
       .hero-subtitle {
         font-size: 19px;
         max-width: 800px;
+      }
+
+      .social-name,
+      .hero-actions {
+        font-size: 16px;
+        letter-spacing: 0.08em;
+        font-weight: 400;
       }
 
       .section-title {
@@ -1276,7 +1309,7 @@
       }
 
       .cta-title {
-        font-size: 48px;
+        font-size: 36px;
       }
 
       .cta-panel {
@@ -1288,6 +1321,11 @@
     @media (min-width: 1600px) {
       .container {
         max-width: 1100px;
+      }
+
+      .nav-link {
+        font-size: 26px;
+        letter-spacing: 0.04em;
       }
 
       .hero-title {
@@ -1303,12 +1341,19 @@
         max-width: 900px;
       }
 
+      .social-name,
+      .hero-actions {
+        font-size: 24px;
+        letter-spacing: 0.08em;
+        font-weight: 400;
+      }
+
       .section-title {
         font-size: 36px;
       }
 
       .cta-title {
-        font-size: 56px;
+        font-size: 48px;
       }
 
       .stack-grid {
