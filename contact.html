@@ -216,21 +216,36 @@
       color: var(--muted-foreground);
     }
     
+    /* Applies to all primary buttons */
     .btn {
       display: inline-flex;
       align-items: center;
       justify-content: center;
       gap: 6px;
-      padding: 10px 12px;
-      font-size: 13px;
+      padding: 10px 20px;
+      font-size: 14px;
       font-weight: 500;
-      line-height: 1;
+      border-radius: 6px;
       border: 2px solid var(--foreground);
-      background: transparent;
-      color: var(--foreground);
-      white-space: nowrap;
-      border-radius: 0;
-      transition: transform 0.15s ease;
+      background: var(--foreground);
+      color: var(--background);
+      cursor: pointer;
+      transition: transform 0.1s ease, box-shadow 0.1s ease, font-size 0.1s ease;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    
+    .btn:hover,
+    .btn-submit:hover,
+    .resume-btn:hover {
+      transform: translateY(-2px) scale(1);
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    }
+    
+    .btn:active,
+    .btn-submit:active{
+      transform: translateY(1px) scale(0.95);
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+      font-size: 13.3px;
     }
     
     .btn-primary {
@@ -320,19 +335,45 @@
       color: var(--muted-foreground);
     }
     
+    .form-group {
+      position: relative;
+      margin-bottom: 28px;
+    }
+    
+    .form-group:focus-within label {
+      color: var(--foreground);
+    }
+    
     .form-group input,
     .form-group textarea {
       width: 100%;
       background: transparent;
       border: none;
       border-bottom: 2px solid var(--border);
-      padding: 10px 0 8px;
+      padding: 8px 0;
       font-size: 16px;
       font-family: "Google Sans Flex", sans-serif;
       color: var(--foreground);
       outline: none;
-      transition: border-color 0.2s;
+      box-shadow: none;
+      border-radius: 0;
     }
+    
+    .form-group::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0%;
+      height: 2px;
+      background: var(--foreground);
+      transition: width 0.3s ease;
+    }
+    
+    .form-group:focus-within::after {
+      width: 100%;
+    }
+    
     
     
     .form-group textarea {
@@ -357,12 +398,13 @@
       color: var(--background);
       border: 2px solid var(--foreground);
       padding: 12px 28px;
-     
+      font-family: "Bebas Neue", sans-serif;
     }
     
     .btn-submit iconify-icon {
       color: var(--background);
     }
+    
     
     /* contact directly section (social icons from home) */
     .direct-section {
@@ -442,8 +484,10 @@
       transition: transform 0.15s ease;
     }
     
+    
     .social-item:hover {
-      transform: translateY(-2px);
+      
+      transform: translate(-2px);
     }
     
     .social-item iconify-icon,
@@ -454,7 +498,85 @@
     .social-item span {
       font-family: "Bebas Neue", sans-serif;
       font-size: 14px;
+      margin-bottom: -5px;
     }
+    
+    /* make the email card layout */
+    .email-card {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      border: 2px solid var(--border);
+      padding: 8px 16px;
+      background: var(--card);
+      position: relative;
+    }
+    
+    .email-card:hover {
+      transform: translate(-2px);
+    }
+    
+    .email-card .email-text {
+      flex: 1;
+      /* push copy button to the right */
+      font-family: "Google Sans Flex", sans-serif;
+      font-size: 14px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    
+    .copy-email {
+      border: none;
+      background: transparent;
+      cursor: pointer;
+      padding: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.15s ease;
+    }
+    
+    .copy-email:hover {
+      transform: translateY(-2px);
+    }
+    
+    .copy-email iconify-icon {
+      font-size: 16px;
+    }
+    
+    #copy-toast {
+      position: fixed;
+      bottom: 10px;
+      left: 80%;
+      transform: translateX(-50%) translateY(15px);
+      background: var(--foreground);
+      color: var(--background);
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-family: "Google Sans Flex", sans-serif;
+      font-size: 14px;
+      opacity: 0;
+      pointer-events: none;
+      z-index: 9999;
+      
+      white-space: nowrap;
+      /* keep it in one line */
+      text-align: center;
+      max-width: 90%;
+      box-sizing: border-box;
+      
+      /* animation setup */
+      transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+    
+    #copy-toast.show {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+      /* slide up */
+    }
+    
+    
     
     /* footer bottom same as home (no cta) */
     .footer-bottom {
@@ -584,11 +706,11 @@
         </div>
         <div class="form-group">
           <label for="subject">Subject</label>
-          <input type="text" id="subject" name="subject" placeholder="Project inquiry">
+          <input type="text" id="subject" name="subject" placeholder="Portfolio Collaboration">
         </div>
         <div class="form-group">
           <label for="message">Message</label>
-          <textarea id="message" name="message" placeholder="Tell me about your idea..." required></textarea>
+          <textarea id="message" name="message" placeholder="Tell me about your project or idea..." required></textarea>
         </div>
         <div class="submit-btn">
           <button type="submit" class="btn btn-submit">Send message <iconify-icon icon="lucide:send" style="font-size: 14px;"></iconify-icon></button>
@@ -598,7 +720,7 @@
     
     <!-- Contact me directly section (socials from home) -->
     <section class="direct-section">
-      <h2>Contact me directly</h2>
+      <h2>Prefer Social?</h2>
       
       
       <!-- social row exactly like home -->
@@ -606,7 +728,17 @@
         <a href="#" class="social-item"><iconify-icon icon="lucide:github"></iconify-icon><span>GitHub</span></a>
         <a href="#" class="social-item"><iconify-icon icon="lucide:linkedin"></iconify-icon><span>LinkedIn</span></a>
         <a href="#" class="social-item"><i class="fa-brands fa-x-twitter"></i><span>Twitter</span></a>
-        <a href="#" class="social-item"><iconify-icon icon="lucide:mail"></iconify-icon><span>Email</span></a>
+        
+        <a href="mailto:akabuezechris432@gmail.com" class="social-item email-card">
+          <iconify-icon icon="lucide:mail"></iconify-icon>
+          <span class="email-text">hello@christian.dev</span>
+          <button class="copy-email" data-email="hello@christian.dev" aria-label="Copy email">
+            <iconify-icon icon="lucide:copy"></iconify-icon>
+          </button>
+        </a>
+        
+        <!-- Toast notification -->
+        <div id="copy-toast">Copied to clipboard!</div>
       </div>
     </section>
     
@@ -643,6 +775,8 @@
         });
       }
       
+      
+      
       // scroll progress & back to top
       const progressBar = document.getElementById('scroll-progress');
       const backToTop = document.getElementById('back-to-top');
@@ -671,6 +805,29 @@
         });
       }
     })();
+    
+    const copyBtn = document.querySelector('.copy-email');
+    const toast = document.getElementById('copy-toast');
+    
+    if (copyBtn && toast) {
+      copyBtn.addEventListener('click', (e) => {
+        e.preventDefault(); // prevent mailto
+        
+        const email = copyBtn.dataset.email;
+        
+        navigator.clipboard.writeText(email).then(() => {
+          // show toast with animation
+          toast.classList.add('show');
+          
+          // hide toast after 2 seconds
+          setTimeout(() => {
+            toast.classList.remove('show');
+          }, 2000);
+        }).catch(() => {
+          alert('Failed to copy!');
+        });
+      });
+    }
   </script>
 </body>
 
