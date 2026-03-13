@@ -377,7 +377,6 @@
     }
 
     /* underline only on active/click */
-    .nav-link:active,
     .footer-link:active,
     .view-details:active,
     .btn:active:not(.work-link-icon):not(.footer-icon-link):not(.theme-toggle) {
@@ -436,8 +435,11 @@
     .btn-primary iconify-icon {
       color: var(--background);
     }
-
-
+    
+    .nav-link.active {
+  border-bottom: 1px solid var(--muted-foreground);
+  color: var(--muted-foreground);
+}
 
     /* header */
     .header {
@@ -553,12 +555,12 @@
     }
 
     .hero-social-label {
-      font-size: xx-small;
+      font-size: small;
       font-weight: 300;
       color: var(--foreground);
       font-family: "Momo Trust Display", system-ui;
       font-style: normal;
-      letter-spacing: 0.03em;
+      letter-spacing: 0.06em;
     }
 
     .hero-social-row {
@@ -728,7 +730,7 @@
       display: flex;
       flex-wrap: wrap;
       align-items: center;
-      gap: 4px 8px;
+      gap: 6px 10px;
     }
 
     /* "Tech Stacks" */
@@ -984,37 +986,7 @@
       padding: 12px 0 32px;
     }
 
-    .footer-shell {
-      border-top: 3px solid var(--border);
-      padding-top: 28px;
-      display: flex;
-      flex-direction: column;
-      gap: 28px;
-    }
 
-    .footer-brand {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-    }
-
-    .footer-kicker {
-      font-size: 13px;
-      font-weight: 500;
-      color: var(--muted-foreground);
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
-    }
-
-    .footer-big {
-      font-size: 20px;
-      line-height: 1.2;
-      font-weight: 600;
-      letter-spacing: -0.03em;
-      max-width: 350px;
-      font-family: "Momo Trust Display", sans-serif;
-      font-style: normal;
-    }
 
     .footer-row {
       display: flex;
@@ -1037,44 +1009,6 @@
       text-transform: uppercase;
       letter-spacing: 0.05em;
       white-space: nowrap;
-    }
-
-    .footer-nav-links {
-      display: flex;
-      align-items: left;
-      flex-direction: column;
-      gap: 16px;
-      flex-wrap: wrap;
-    }
-
-    .footer-link {
-      font-size: 14px;
-      font-weight: 500;
-      color: var(--foreground);
-      text-decoration: none;
-      white-space: nowrap;
-    }
-
-    .footer-connect-icons {
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .footer-connect-item {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-
-    .footer-icon-link {
-      width: 30px;
-      height: 30px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 18px;
     }
 
 
@@ -1388,9 +1322,9 @@
           </div>
           <nav class="header-nav" id="header-nav">
             <a href="#" class="nav-link active" data-media-type="banani-button">HOME</a>
-            <a href="#" class="nav-link" data-media-type="banani-button">WORK</a>
+            <a href="works.html" class="nav-link" data-media-type="banani-button">WORKS</a>
             <a href="about.html" class="nav-link" data-media-type="banani-button">ABOUT</a>
-            <a href="#" class="nav-link" data-media-type="banani-button">CONTACT</a>
+            <a href="contact.html" class="nav-link" data-media-type="banani-button">CONTACT</a>
           </nav>
         </header>
       </div>
@@ -1472,13 +1406,13 @@
                 <div class="work-tag"><iconify-icon icon="skill-icons:tailwindcss-dark"
                     style="font-size: 14px;"></iconify-icon>Tailwind</div>
               </div>
-              <!-- work footer with completed on left, view details on right -->
+
               <div class="work-footer">
                 <div class="completed-status">
                   <span class="green-dot"></span>
                   <span>completed</span>
                 </div>
-                <a href="#" class="view-details" data-media-type="banani-button">
+                <a href="casestudy.html" class="view-details" data-media-type="banani-button">
                   <span>View Details</span><iconify-icon icon="lucide:arrow-up-right"
                     style="font-size: 16px;"></iconify-icon>
                 </a>
@@ -1513,13 +1447,13 @@
                 <div class="work-tag"><iconify-icon icon="simple-icons:framer"
                     style="font-size: 14px; color: var(--foreground);"></iconify-icon>Framer Motion</div>
               </div>
-              <!-- work footer with completed on left, view details on right -->
+
               <div class="work-footer">
                 <div class="completed-status">
                   <span class="green-dot"></span>
                   <span>completed</span>
                 </div>
-                <a href="#" class="view-details" data-media-type="banani-button">
+                <a href="casestudy.html" class="view-details" data-media-type="banani-button">
                   <span>View Details</span><iconify-icon icon="lucide:arrow-up-right"
                     style="font-size: 16px;"></iconify-icon>
                 </a>
@@ -1554,13 +1488,13 @@
                 <div class="work-tag"><iconify-icon icon="vscode-icons:file-type-firebase"
                     style="font-size: 14px;"></iconify-icon>Firebase</div>
               </div>
-              <!-- work footer with completed on left, view details on right -->
+
               <div class="work-footer">
                 <div class="completed-status">
                   <span class="green-dot"></span>
                   <span>completed</span>
                 </div>
-                <a href="#" class="view-details" data-media-type="banani-button">
+                <a href="casestudy.html" class="view-details" data-media-type="banani-button">
                   <span>View Details</span><iconify-icon icon="lucide:arrow-up-right"
                     style="font-size: 16px;"></iconify-icon>
                 </a>
@@ -1594,13 +1528,13 @@
                 <div class="work-tag"><iconify-icon icon="simple-icons:greensock"
                     style="font-size: 14px; color: var(--foreground);"></iconify-icon>GSAP</div>
               </div>
-              <!-- work footer with completed on left, view details on right -->
+
               <div class="work-footer">
                 <div class="completed-status">
                   <span class="green-dot"></span>
                   <span>completed</span>
                 </div>
-                <a href="#" class="view-details" data-media-type="banani-button">
+                <a href="casestudy.html" class="view-details" data-media-type="banani-button">
                   <span>View Details</span><iconify-icon icon="lucide:arrow-up-right"
                     style="font-size: 16px;"></iconify-icon>
                 </a>
@@ -1609,7 +1543,7 @@
           </div>
         </div>
         <div class="view-more-wrap" id="view-more-wrap">
-          <a href="#" class="btn view-more-btn" data-media-type="banani-button">View More <iconify-icon
+          <a href="works.html" class="btn view-more-btn" data-media-type="banani-button">View More <iconify-icon
               icon="lucide:arrow-right" style="font-size: 14px;"></iconify-icon></a>
         </div>
       </section>
@@ -1671,7 +1605,7 @@
             <p class="cta-text">Available for freelance projects, long-term front-end roles, and design-driven digital
               products that need clarity, speed, and craft.</p>
           </div>
-          <a href="#" class="btn btn-inverse" data-media-type="banani-button">Start a Project <iconify-icon
+          <a href="contact.html" class="btn btn-inverse" data-media-type="banani-button">Start a Project <iconify-icon
               icon="lucide:arrow-right" style="font-size: 16px;"></iconify-icon></a>
         </div>
       </section>

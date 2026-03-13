@@ -1,782 +1,79 @@
-<div
-  class="export-wrapper"
-  style="
-    width: 375px;
-    min-height: 812px;
-    position: relative;
-    font-family: var(--font-family-body);
-    background-color: var(--background);
-  "
->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link
-    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@100;200;300;400;500;600;700;800;900&family=Geist:wght@100;200;300;400;500;600;700;800;900&family=IBM+Plex+Mono:wght@100;200;300;400;500;600;700&family=IBM+Plex+Sans:wght@100;200;300;400;500;600;700&family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Nunito:wght@200;300;400;500;600;700;800;900&family=PT+Serif:wght@400;700&family=Roboto+Slab:wght@100;200;300;400;500;600;700;800;900&family=Roboto:wght@100;300;400;500;700;900&family=Shantell+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
-    rel="stylesheet"
-  />
-  <html>
-    <head></head>
-    <body>
-      <div
-        id="app"
-        style="
-          background-color: var(--background);
-          color: var(--foreground);
-          min-height: 812px;
-          display: flex;
-          flex-direction: column;
-          font-family: var(--font-family-body);
-          overflow-x: hidden;
-        "
-      >
-        <style id="global-styles">
-          * {
-            box-sizing: border-box;
-          }
-          .container {
-            width: 100%;
-            padding: 0 20px;
-            margin: 0 auto;
-          }
-          .section-title {
-            font-size: 24px;
-            font-weight: 600;
-            letter-spacing: -0.03em;
-            margin: 0 0 24px;
-            padding-bottom: 12px;
-            border-bottom: 2px solid var(--foreground);
-          }
-          .btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 6px;
-            padding: 10px 12px;
-            font-size: 12px;
-            font-weight: 500;
-            line-height: 1;
-            border: 1px solid var(--foreground);
-            background: transparent;
-            color: var(--foreground);
-            text-decoration: none;
-            white-space: nowrap;
-            border-radius: 0;
-          }
-          .btn-primary {
-            background: var(--foreground);
-            color: var(--background);
-          }
-          .icon-box {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-          }
-        </style>
+<!DOCTYPE html>
+<html lang="en">
 
-        <style id="nav-styles">
-          .header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 18px 0 10px;
-            gap: 12px;
-          }
-          .theme-toggle {
-            width: 34px;
-            height: 34px;
-            border: 1px solid var(--border);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
-          }
-          .header-nav {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            margin-left: auto;
-          }
-          .nav-link {
-            font-size: 12px;
-            font-weight: 500;
-            color: var(--foreground);
-            text-decoration: none;
-            white-space: nowrap;
-          }
-        </style>
-
-        <style id="about-hero-styles">
-          .about-hero {
-            padding: 48px 0 40px;
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
-          }
-          .hero-name {
-            font-size: 32px;
-            font-weight: 600;
-            margin: 0;
-            letter-spacing: -0.04em;
-            line-height: 1.1;
-          }
-          .hero-title {
-            font-size: 20px;
-            font-weight: 800;
-            margin: 0;
-            letter-spacing: -0.02em;
-            line-height: 1.2;
-          }
-          .hero-summary {
-            font-size: 15px;
-            line-height: 1.6;
-            color: var(--muted-foreground);
-            margin: 0;
-          }
-          .resume-wrapper {
-            display: flex;
-            justify-content: flex-end;
-            margin-top: 8px;
-          }
-
-          .about-me-section {
-            padding: 0 0 8px;
-          }
-          .about-me-copy {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-          }
-          .about-me-text {
-            margin: 0;
-            font-size: 14px;
-            line-height: 1.6;
-            color: var(--muted-foreground);
-          }
-        </style>
-
-        <style id="methodology-styles">
-          .methodology-section {
-            padding: 32px 0;
-          }
-          .timeline {
-            display: flex;
-            flex-direction: column;
-            position: relative;
-            padding-left: 24px;
-          }
-          .timeline::before {
-            content: "";
-            position: absolute;
-            left: 8px;
-            top: 0;
-            bottom: 0;
-            width: 1px;
-            background: var(--border);
-          }
-          .timeline-item {
-            position: relative;
-            margin-bottom: 32px;
-          }
-          .timeline-item:last-child {
-            margin-bottom: 0;
-          }
-          .timeline-num {
-            position: absolute;
-            left: -32px;
-            top: 0;
-            width: 18px;
-            height: 18px;
-            background: var(--background);
-            border: 1px solid var(--foreground);
-            font-size: 9px;
-            font-weight: 700;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-          }
-          .timeline-content {
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-          }
-          .timeline-title {
-            font-size: 16px;
-            font-weight: 600;
-            margin: 0;
-          }
-          .timeline-desc {
-            font-size: 14px;
-            line-height: 1.5;
-            color: var(--muted-foreground);
-            margin: 0;
-          }
-        </style>
-
-        <style id="tech-scroll-styles">
-          .tech-section {
-            padding: 24px 0 48px;
-          }
-          .tech-scroll-container {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            overflow-x: auto;
-            padding: 0 0 8px;
-            scrollbar-width: none;
-          }
-          .tech-scroll-container::-webkit-scrollbar {
-            display: none;
-          }
-          .tech-item {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            min-width: max-content;
-            border: 1px solid var(--border);
-            padding: 8px 10px;
-            background: var(--card);
-            flex-shrink: 0;
-          }
-          .tech-name {
-            font-size: 10px;
-            font-weight: 500;
-            white-space: nowrap;
-          }
-        </style>
-
-        <style id="cta-styles">
-          .cta-section {
-            padding: 0 0 24px;
-          }
-          .cta-panel {
-            background: var(--foreground);
-            color: var(--background);
-            padding: 24px 18px;
-            display: flex;
-            flex-direction: column;
-            gap: 18px;
-          }
-          .cta-copy {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-          }
-          .cta-eyebrow {
-            font-size: 11px;
-            font-weight: 500;
-            letter-spacing: 0.06em;
-            text-transform: uppercase;
-            opacity: 0.72;
-          }
-          .cta-title {
-            margin: 0;
-            font-size: 28px;
-            line-height: 1.05;
-            font-weight: 600;
-            letter-spacing: -0.04em;
-          }
-          .cta-text {
-            margin: 0;
-            font-size: 14px;
-            line-height: 1.5;
-            color: rgba(255, 255, 255, 0.72);
-          }
-          .btn-inverse {
-            background: var(--background);
-            color: var(--foreground);
-            border: 1px solid var(--background);
-            align-self: flex-start;
-          }
-        </style>
-
-        <style id="footer-styles">
-          .exclusive-footer {
-            padding: 8px 0 28px;
-          }
-          .footer-shell {
-            border-top: 1px solid var(--border);
-            padding-top: 20px;
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-          }
-          .footer-brand {
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-          }
-          .footer-kicker {
-            font-size: 11px;
-            font-weight: 500;
-            color: var(--muted-foreground);
-            letter-spacing: 0.04em;
-            text-transform: uppercase;
-          }
-          .footer-big {
-            font-size: 18px;
-            line-height: 1.15;
-            font-weight: 600;
-            letter-spacing: -0.03em;
-          }
-          .footer-row {
-            display: flex;
-            align-items: flex-start;
-            justify-content: space-between;
-            gap: 16px;
-          }
-          .footer-column {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-          }
-          .footer-label {
-            font-size: 11px;
-            font-weight: 500;
-            color: var(--muted-foreground);
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            white-space: nowrap;
-          }
-          .footer-nav-links {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            flex-wrap: nowrap;
-          }
-          .footer-link {
-            font-size: 12px;
-            font-weight: 500;
-            color: var(--foreground);
-            text-decoration: none;
-            white-space: nowrap;
-          }
-          .footer-connect-icons {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-          }
-          .footer-icon-link {
-            width: 26px;
-            height: 26px;
-            border: 1px solid var(--border);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-          }
-          .footer-bottom {
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-            padding-top: 16px;
-            border-top: 1px solid var(--border);
-            align-items: center;
-            text-align: center;
-          }
-          .footer-meta {
-            font-size: 12px;
-            font-weight: 500;
-            color: var(--muted-foreground);
-            text-align: center;
-            width: 100%;
-          }
-        </style>
-
-        <div class="container" id="page-container">
-          <header class="header" id="header">
-            <div
-              class="theme-toggle"
-              id="theme-toggle"
-              data-media-type="banani-button"
-            >
-              <div
-                style="
-                  width: 18px;
-                  height: 18px;
-                  display: flex;
-                  align-items: center;
-                  justify-content: center;
-                "
-              >
-                <iconify-icon
-                  icon="lucide:moon-star"
-                  style="font-size: 18px; color: var(--foreground)"
-                ></iconify-icon>
-              </div>
-            </div>
-            <nav class="header-nav" id="header-nav">
-              <div class="nav-link" data-media-type="banani-button">WORK</div>
-              <div class="nav-link" data-media-type="banani-button">ABOUT</div>
-              <div class="nav-link" data-media-type="banani-button">
-                CONTACT
-              </div>
-            </nav>
-          </header>
-
-          <section class="about-hero" id="about-hero">
-            <h1 class="hero-name">I'm Christian</h1>
-            <h2 class="hero-title">A Front End Developer</h2>
-            <p class="hero-summary">
-              I build scalable, performant, and accessible front-end
-              architectures. Specializing in minimal interfaces, I focus on
-              writing clean code that bridges the gap between design and robust
-              engineering.
-            </p>
-            <div class="resume-wrapper">
-              <div class="btn btn-primary" data-media-type="banani-button">
-                Resume
-                <div
-                  style="
-                    width: 12px;
-                    height: 12px;
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                  "
-                >
-                  <iconify-icon
-                    icon="lucide:file-text"
-                    style="font-size: 12px; color: var(--background)"
-                  ></iconify-icon>
-                </div>
-              </div>
-            </div>
-          </section>
-
-          <section class="about-me-section" id="about-me-section">
-            <h2 class="section-title">About Me</h2>
-            <div class="about-me-copy">
-              <p class="about-me-text">
-                I’m a front-end developer focused on crafting clean digital
-                experiences that feel intentional from the first interaction to
-                the last detail. My work balances structure, speed, and visual
-                restraint.
-              </p>
-              <p class="about-me-text">
-                I enjoy turning complex product ideas into simple interfaces,
-                building scalable component systems, and shipping responsive
-                experiences that stay consistent across devices.
-              </p>
-            </div>
-          </section>
-
-          <section class="methodology-section" id="methodology-section">
-            <h2 class="section-title">How I Work</h2>
-            <div class="timeline">
-              <div class="timeline-item">
-                <div class="timeline-num">I</div>
-                <div class="timeline-content">
-                  <h3 class="timeline-title">Discovery &amp; Architecture</h3>
-                  <p class="timeline-desc">
-                    Understanding project constraints, defining data structures,
-                    and planning the optimal component hierarchy before writing
-                    a single line of code.
-                  </p>
-                </div>
-              </div>
-              <div class="timeline-item">
-                <div class="timeline-num">II</div>
-                <div class="timeline-content">
-                  <h3 class="timeline-title">Prototyping &amp; Layout</h3>
-                  <p class="timeline-desc">
-                    Translating designs into pixel-perfect structures using
-                    semantic HTML and scalable CSS methodologies, focusing on
-                    mobile-first responsiveness.
-                  </p>
-                </div>
-              </div>
-              <div class="timeline-item">
-                <div class="timeline-num">III</div>
-                <div class="timeline-content">
-                  <h3 class="timeline-title">Logic &amp; State</h3>
-                  <p class="timeline-desc">
-                    Implementing complex state management, data fetching, and
-                    interactivity using modern JavaScript frameworks with strict
-                    typing.
-                  </p>
-                </div>
-              </div>
-              <div class="timeline-item">
-                <div class="timeline-num">IV</div>
-                <div class="timeline-content">
-                  <h3 class="timeline-title">Optimization &amp; Delivery</h3>
-                  <p class="timeline-desc">
-                    Auditing for accessibility, optimizing performance metrics,
-                    and ensuring cross-browser consistency before continuous
-                    deployment.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </section>
-
-          <section class="tech-section" id="tech-section">
-            <div class="tech-scroll-container" data-media-type="banani-button">
-              <div class="tech-item">
-                <div
-                  style="
-                    width: 18px;
-                    height: 18px;
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                  "
-                >
-                  <iconify-icon
-                    icon="lucide:atom"
-                    style="font-size: 18px; color: var(--foreground)"
-                  ></iconify-icon>
-                </div>
-                <div class="tech-name">React</div>
-              </div>
-              <div class="tech-item">
-                <div
-                  style="
-                    width: 18px;
-                    height: 18px;
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                  "
-                >
-                  <iconify-icon
-                    icon="lucide:badge-check"
-                    style="font-size: 18px; color: var(--foreground)"
-                  ></iconify-icon>
-                </div>
-                <div class="tech-name">TypeScript</div>
-              </div>
-              <div class="tech-item">
-                <div
-                  style="
-                    width: 18px;
-                    height: 18px;
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                  "
-                >
-                  <iconify-icon
-                    icon="lucide:triangle"
-                    style="font-size: 18px; color: var(--foreground)"
-                  ></iconify-icon>
-                </div>
-                <div class="tech-name">Next.js</div>
-              </div>
-              <div class="tech-item">
-                <div
-                  style="
-                    width: 18px;
-                    height: 18px;
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                  "
-                >
-                  <iconify-icon
-                    icon="lucide:wind"
-                    style="font-size: 18px; color: var(--foreground)"
-                  ></iconify-icon>
-                </div>
-                <div class="tech-name">Tailwind</div>
-              </div>
-              <div class="tech-item">
-                <div
-                  style="
-                    width: 18px;
-                    height: 18px;
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                  "
-                >
-                  <iconify-icon
-                    icon="lucide:component"
-                    style="font-size: 18px; color: var(--foreground)"
-                  ></iconify-icon>
-                </div>
-                <div class="tech-name">Vue</div>
-              </div>
-              <div class="tech-item">
-                <div
-                  style="
-                    width: 18px;
-                    height: 18px;
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                  "
-                >
-                  <iconify-icon
-                    icon="lucide:braces"
-                    style="font-size: 18px; color: var(--foreground)"
-                  ></iconify-icon>
-                </div>
-                <div class="tech-name">Svelte</div>
-              </div>
-              <div class="tech-item">
-                <div
-                  style="
-                    width: 18px;
-                    height: 18px;
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                  "
-                >
-                  <iconify-icon
-                    icon="lucide:figma"
-                    style="font-size: 18px; color: var(--foreground)"
-                  ></iconify-icon>
-                </div>
-                <div class="tech-name">Figma</div>
-              </div>
-            </div>
-          </section>
-
-          <section id="cta-section" class="cta-section">
-            <div class="cta-panel">
-              <div class="cta-copy">
-                <div class="cta-eyebrow">Open for selected collaborations</div>
-                <h2 class="cta-title">
-                  Let’s build a product people remember.
-                </h2>
-                <p class="cta-text">
-                  Available for freelance projects, long-term front-end roles,
-                  and design-driven digital products that need clarity, speed,
-                  and craft.
-                </p>
-              </div>
-              <div class="btn btn-inverse" data-media-type="banani-button">
-                Start a Project
-              </div>
-            </div>
-          </section>
-
-          <footer id="exclusive-footer" class="exclusive-footer">
-            <div class="footer-shell">
-              <div class="footer-brand">
-                <div class="footer-kicker">Christian</div>
-                <div class="footer-big">
-                  Front-end systems with a sharp minimalist edge.
-                </div>
-              </div>
-              <div class="footer-row" id="footer-row">
-                <div class="footer-column">
-                  <div class="footer-label">Navigation</div>
-                  <div class="footer-nav-links">
-                    <div class="footer-link" data-media-type="banani-button">
-                      Work
-                    </div>
-                    <div class="footer-link" data-media-type="banani-button">
-                      Tech Stack
-                    </div>
-                    <div class="footer-link" data-media-type="banani-button">
-                      Contact
-                    </div>
-                  </div>
-                </div>
-                <div class="footer-column">
-                  <div class="footer-label">Connect</div>
-                  <div class="footer-connect-icons">
-                    <div
-                      class="footer-icon-link"
-                      data-media-type="banani-button"
-                    >
-                      <div
-                        style="
-                          width: 12px;
-                          height: 12px;
-                          display: flex;
-                          align-items: center;
-                          justify-content: center;
-                        "
-                      >
-                        <iconify-icon
-                          icon="lucide:github"
-                          style="font-size: 12px; color: var(--foreground)"
-                        ></iconify-icon>
-                      </div>
-                    </div>
-                    <div
-                      class="footer-icon-link"
-                      data-media-type="banani-button"
-                    >
-                      <div
-                        style="
-                          width: 12px;
-                          height: 12px;
-                          display: flex;
-                          align-items: center;
-                          justify-content: center;
-                        "
-                      >
-                        <iconify-icon
-                          icon="lucide:linkedin"
-                          style="font-size: 12px; color: var(--foreground)"
-                        ></iconify-icon>
-                      </div>
-                    </div>
-                    <div
-                      class="footer-icon-link"
-                      data-media-type="banani-button"
-                    >
-                      <div
-                        style="
-                          width: 12px;
-                          height: 12px;
-                          display: flex;
-                          align-items: center;
-                          justify-content: center;
-                        "
-                      >
-                        <iconify-icon
-                          icon="lucide:twitter"
-                          style="font-size: 12px; color: var(--foreground)"
-                        ></iconify-icon>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="footer-bottom">
-                <div class="footer-meta">
-                  © 2024 Christian. Crafted with Intent.
-                </div>
-                <div class="footer-meta">
-                  Based in Europe · Available worldwide
-                </div>
-              </div>
-            </div>
-          </footer>
-        </div>
-      </div>
-    </body>
-  </html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <title>Christian · about</title>
+  <!-- preconnect & fonts (same as home example) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Boogaloo&family=Cinzel+Decorative:wght@400;700;900&family=Google+Sans+Flex:opsz,wght@6..144,1..1000&family=Luckiest+Guy&family=Momo+Trust+Display&family=Rubik+Wet+Paint&family=Skranji:wght@400;700&family=Yatra+One&display=swap');
+    
+    /* dark mode variables — same as home */
+    .dark {
+      --background: #121212;
+      --foreground: #ededed;
+      --border: #ffffff1a;
+      --input: #1e1e1e;
+      --primary: #ffffff;
+      --primary-foreground: #000000;
+      --secondary: #2a2a2a;
+      --secondary-foreground: #ededed;
+      --muted: #1a1a1a;
+      --muted-foreground: #a0a0a0;
+      --success: #1a2e1f;
+      --success-foreground: #7ad98b;
+      --accent: #ffffff;
+      --accent-foreground: #000000;
+      --destructive: #2c1a1a;
+      --destructive-foreground: #f28b8b;
+      --warning: #2f2816;
+      --warning-foreground: #f5d742;
+      --card: #1a1a1a;
+      --card-foreground: #ededed;
+      --sidebar: #1a1a1a;
+      --sidebar-foreground: #ededed;
+      --sidebar-primary: #ffffff;
+      --sidebar-primary-foreground: #000000;
+    }
+    
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+  </style>
+  <script src="https://kit.fontawesome.com/0cfdf5a883.js" crossorigin="anonymous"></script>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@100;200;300;400;500;600;700;800;900&family=Geist:wght@100;200;300;400;500;600;700;800;900&family=IBM+Plex+Mono:wght@100;200;300;400;500;600;700&family=IBM+Plex+Sans:wght@100;200;300;400;500;600;700&family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Nunito:wght@200;300;400;500;600;700;800;900&family=PT+Serif:wght@400;700&family=Roboto+Slab:wght@100;200;300;400;500;600;700;800;900&family=Roboto:wght@100;300;400;500;700;900&family=Shantell+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <!-- iconify (for all icons) -->
   <script src="https://code.iconify.design/iconify-icon/3.0.0/iconify-icon.min.js"></script>
   <style>
+    /* global reset + variables — base light mode (same as home) */
     :root {
       --background: #ffffff;
-      --foreground: #0a0a0a;
+      --foreground: #000000;
       --border: #00000014;
-      --input: #f5f5f5;
+      --input: #f7f7f7;
       --primary: #000000;
       --primary-foreground: #ffffff;
-      --secondary: #f8f8f8;
-      --secondary-foreground: #111111;
-      --muted: #f0f0f0;
-      --muted-foreground: #9a9a9a;
+      --secondary: #f0f0f0;
+      --secondary-foreground: #000000;
+      --muted: #f5f5f5;
+      --muted-foreground: #9b9b9b;
       --success: #e6f4ea;
-      --success-foreground: #065f46;
+      --success-foreground: #0b7a3d;
       --accent: #000000;
       --accent-foreground: #ffffff;
-      --destructive: #fff1f2;
-      --destructive-foreground: #641220;
-      --warning: #fffaeb;
-      --warning-foreground: #7a4b00;
+      --destructive: #fff5f5;
+      --destructive-foreground: #c92a2a;
+      --warning: #fffbeb;
+      --warning-foreground: #7a5f00;
       --card: #ffffff;
-      --card-foreground: #0a0a0a;
+      --card-foreground: #000000;
       --sidebar: #fafafa;
-      --sidebar-foreground: #0a0a0a;
+      --sidebar-foreground: #000000;
       --sidebar-primary: #000000;
       --sidebar-primary-foreground: #ffffff;
       --radius-sm: 4px;
@@ -785,5 +82,760 @@
       --radius-xl: 12px;
       --font-family-body: Inter;
     }
+    
+    .dark {
+      --background: #121212;
+      --foreground: #ededed;
+      --border: #ffffff1a;
+      --input: #1e1e1e;
+      --primary: #ffffff;
+      --primary-foreground: #000000;
+      --secondary: #2a2a2a;
+      --secondary-foreground: #ededed;
+      --muted: #1a1a1a;
+      --muted-foreground: #a0a0a0;
+      --success: #1a2e1f;
+      --success-foreground: #7ad98b;
+      --accent: #ffffff;
+      --accent-foreground: #000000;
+      --destructive: #2c1a1a;
+      --destructive-foreground: #f28b8b;
+      --warning: #2f2816;
+      --warning-foreground: #f5d742;
+      --card: #1a1a1a;
+      --card-foreground: #ededed;
+      --sidebar: #1a1a1a;
+      --sidebar-foreground: #ededed;
+      --sidebar-primary: #ffffff;
+      --sidebar-primary-foreground: #000000;
+    }
+    
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    
+    /* ---- PAGE TRANSITION (smooth fade + slide from home example) ---- */
+    .page-transition {
+      animation: fadeIn 0.5s ease;
+    }
+    
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    /* apply to all main sections */
+    .about-hero,
+    .about-me-section,
+    .methodology-section,
+    .tech-section,
+    .cta-section,
+    .footer-bottom {
+      animation: slideUp 0.6s ease forwards;
+      opacity: 0;
+    }
+    
+    .about-hero {
+      animation-delay: 0.1s;
+    }
+    
+    .about-me-section {
+      animation-delay: 0.15s;
+    }
+    
+    .methodology-section {
+      animation-delay: 0.2s;
+    }
+    
+    .tech-section {
+      animation-delay: 0.25s;
+    }
+    
+    .cta-section {
+      animation-delay: 0.3s;
+    }
+    
+    .footer-bottom {
+      animation-delay: 0.35s;
+    }
+    
+    @keyframes slideUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    /* Scroll Progress Bar (same) */
+    .scroll-progress {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 0%;
+      height: 3px;
+      background: var(--foreground);
+      z-index: 1000;
+      transition: width 0.1s ease;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    
+    .dark .scroll-progress {
+      background: var(--foreground);
+    }
+    
+    /* Back to Top Button */
+    .back-to-top {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: var(--foreground);
+      color: var(--background);
+      border: 2px solid var(--border);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.2s ease;
+      z-index: 100;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    }
+    
+    .back-to-top.visible {
+      opacity: 1;
+      visibility: visible;
+    }
+    
+    .back-to-top:hover {
+      transform: scale(1.1);
+    }
+    
+    .back-to-top iconify-icon {
+      color: var(--background);
+      font-size: 24px;
+    }
+    
+    /* header wrapper same as home */
+    .header-fixed-wrapper {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(8px);
+      background-color: color-mix(in srgb, var(--background) 75%, transparent);
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 12px;
+    }
+    
+    .container {
+      width: 100%;
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    
+    .section-title {
+      font-size: 26px;
+      letter-spacing: -0.02em;
+      margin: 0 0 28px;
+      padding-bottom: 12px;
+      border-bottom: 2px solid var(--foreground);
+      font-family: "Bebas Neue", sans-serif;
+      font-weight: 400;
+    }
+    
+    /* base link style from home */
+    a,
+    .btn,
+    .nav-link,
+    .view-details,
+    .footer-link,
+    .footer-icon-link,
+    .theme-toggle {
+      cursor: pointer;
+      text-decoration: none;
+      color: var(--foreground);
+    }
+    
+    .nav-link:hover,
+    .footer-link:hover,
+    .footer-icon-link:hover,
+    .theme-toggle:hover {
+      transition: transform 0.15s ease;
+      color: var(--muted-foreground);
+    }
+    
+     .nav-link.active {
+   border-bottom: 1px solid var(--muted-foreground);
+   color: var(--muted-foreground);
+ }
+    
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      padding: 10px 12px;
+      font-size: 13px;
+      font-weight: 500;
+      line-height: 1;
+      border: 2px solid var(--foreground);
+      background: transparent;
+      color: var(--foreground);
+      white-space: nowrap;
+      border-radius: 0;
+      transition: transform 0.15s ease;
+      font-family: "Bebas Neue", sans-serif;
+      border: 2px solid var(--muted-foreground);
+    }
+    
+    .btn-primary {
+      background: var(--foreground);
+      color: var(--background);
+    }
+    
+    .btn-primary .btn-text {
+      color: var(--background);
+    }
+    
+    .btn-primary iconify-icon {
+      color: var(--background);
+    }
+    
+    
+    /* header (exact same as home) */
+    .header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 0 14px;
+      gap: 14px;
+      flex-wrap: wrap;
+      font-family: "Bebas Neue", sans-serif;
+      font-weight: 100;
+    }
+    
+    .theme-toggle {
+      width: 28px;
+      height: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      background: transparent;
+    }
+    
+    .header-nav {
+      display: flex;
+      align-items: flex-end;
+      gap: 10px;
+      margin-left: auto;
+      flex-wrap: wrap;
+      letter-spacing: 0.09;
+    }
+    
+    .nav-link {
+      font-size: 16px;
+      color: var(--foreground);
+      white-space: nowrap;
+      letter-spacing: -0.04em;
+    }
+    
+    /* about hero — keep content exactly, but apply home fonts/colors */
+    .about-hero {
+      padding: 48px 0 40px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    
+    .hero-name {
+      font-size: 44px;
+      font-family: "Bebas Neue", sans-serif;
+      font-weight: 400;
+      margin: 0;
+      letter-spacing: -0.02em;
+      line-height: 0.98;
+    }
+    
+    .hero-title {
+      font-size: 22px;
+      font-weight: 400;
+      margin: 0;
+      font-family: "Bebas Neue", system-ui;
+      letter-spacing: 0.02em;
+    }
+    
+    .hero-summary {
+      font-size: 18px;
+      line-height: 1.5;
+      color: var(--muted-foreground);
+      margin: 0;
+      font-family: "Momo Trust Display", system-ui;
+    }
+    
+    .resume-wrapper {
+      display: flex;
+      justify-content: flex-end;
+      margin-top: 8px;
+    }
+    
+    .about-me-section {
+      padding: 0 0 8px;
+    }
+    
+    .about-me-copy {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    
+    .about-me-text {
+      margin: 0;
+      font-size: 17px;
+      line-height: 1.6;
+      color: var(--foreground);
+      font-family: "Google Sans Flex", sans-serif;
+    }
+    
+    /* methodology / timeline — keep content but style with home fonts */
+    .methodology-section {
+      padding: 32px 0;
+    }
+    
+    .timeline {
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      padding-left: 24px;
+    }
+    
+    .timeline::before {
+      content: "";
+      position: absolute;
+      left: 8px;
+      top: 0;
+      bottom: 0;
+      width: 1px;
+      background: var(--border);
+    }
+    
+    .timeline-item {
+      position: relative;
+      margin-bottom: 32px;
+    }
+    
+    .timeline-item:last-child {
+      margin-bottom: 0;
+    }
+    
+    .timeline-num {
+      position: absolute;
+      left: -32px;
+      top: 0;
+      width: 24px;
+      height: 24px;
+      background: var(--background);
+      border: 2px solid var(--foreground);
+      font-size: 12px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: "Bebas Neue", sans-serif;
+    }
+    
+    .timeline-content {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    
+    .timeline-title {
+      font-size: 20px;
+      font-family: "Bebas Neue", sans-serif;
+      font-weight: 400;
+      margin: 0;
+    }
+    
+    .timeline-desc {
+      font-size: 17px;
+      line-height: 1.5;
+      color: var(--muted-foreground);
+      margin: 0;
+      font-family: "Google Sans Flex", sans-serif;
+    }
+    
+    .tech-section {
+      padding: 24px 0 48px;
+    }
+    
+    .tech-marquee {
+      overflow: hidden;
+      width: 100%;
+    }
+    
+    .tech-track {
+      display: flex;
+      width: max-content;
+      animation: marquee 40s linear infinite;
+      will-change: transform;
+    }
+    
+    .tech-marquee {
+      mask-image: linear-gradient(to right,
+          transparent,
+          black 10%,
+          black 90%,
+          transparent);
+    }
+    
+    .tech-group {
+      display: flex;
+      gap: 14px;
+      padding-right: 14px;
+    }
+    
+    .tech-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 14px;
+      border: 1px solid var(--border);
+      background: var(--card);
+      white-space: nowrap;
+    }
+    
+    .tech-item i {
+      font-size: 18px;
+    }
+    
+    .tech-item span {
+      font-size: 14px;
+    }
+    
+    @keyframes marquee {
+      from {
+        transform: translateX(0);
+      }
+      
+      to {
+        transform: translateX(-50%);
+      }
+    }
+    
+    /* cta */
+    .cta-section {
+      padding: 0 0 28px;
+      margin-top: 10px;
+    }
+    
+    .cta-panel {
+      background: #000000;
+      color: #ffffff;
+      padding: 32px 28px;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+    
+    .dark .cta-panel {
+      background: #000000;
+      color: #ffffff;
+    }
+    
+    .cta-panel .cta-eyebrow,
+    .cta-panel .cta-title,
+    .cta-panel .cta-text {
+      color: #ffffff;
+    }
+    
+    .cta-panel .cta-text {
+      color: rgba(255, 255, 255, 0.72);
+    }
+    
+    .cta-copy {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+    
+    .cta-eyebrow {
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      opacity: 0.72;
+      font-family: "Momo Trust Display", sans-serif;
+      font-weight: 300;
+    }
+    
+    .cta-title {
+      margin: 0;
+      font-size: 26px;
+      line-height: 1.05;
+      font-family: "Momo Trust Display", sans-serif;
+      font-weight: 600;
+    }
+    
+    .cta-text {
+      margin: 0;
+      font-size: 16px;
+      line-height: 1.5;
+      font-family: "Momo Trust Display", sans-serif;
+      font-weight: 300;
+    }
+    
+    .btn-inverse {
+      background: #ffffff;
+      color: #000000;
+      border: 1px solid #ffffff;
+      align-self: flex-start;
+      font-family: "Momo Trust Display", sans-serif;
+      font-weight: 400;
+    }
+    
+    .dark .btn-inverse {
+      background: #ffffff;
+      color: #000000;
+      border: 1px solid #ffffff;
+    }
+    
+    /* footer bottom same */
+    .footer-bottom {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      padding-top: 20px;
+      border-top: 3px solid var(--border);
+      align-items: center;
+      text-align: center;
+    }
+    
+    .footer-meta {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--muted-foreground);
+      text-align: center;
+      width: 100%;
+    }
+    
+    body {
+      background-color: var(--background);
+      color: var(--foreground);
+      font-family: var(--font-family-body), sans-serif;
+      line-height: 1.4;
+      transition: background-color 0.2s, color 0.2s;
+    }
+    
+    @media (min-width: 768px) {
+      .container {
+        max-width: 750px;
+        padding: 0 24px;
+      }
+      
+      .nav-link {
+        font-size: 18px;
+      }
+    }
   </style>
-</div>
+</head>
+
+<body>
+  <!-- scroll progress and back to top (same as home) -->
+  <div class="scroll-progress" id="scroll-progress"></div>
+  <button class="back-to-top" id="back-to-top" aria-label="Back to top"><iconify-icon icon="lucide:arrow-up"></iconify-icon></button>
+  
+  <!-- fixed header same as home -->
+  <div class="header-fixed-wrapper">
+    <div class="container">
+      <header class="header">
+        <div class="theme-toggle" id="theme-toggle" role="button" tabindex="0" aria-label="Toggle dark mode">
+          <div style="width: 22px; height: 22px; display: flex; align-items: center; justify-content: center;">
+            <iconify-icon icon="lucide:moon-star" id="theme-icon" style="font-size: 22px;"></iconify-icon>
+          </div>
+        </div>
+        <nav class="header-nav">
+          <a href="index.html" class="nav-link">HOME</a>
+          <a href="works.html" class="nav-link">WORK</a>
+          <a href="#" class="nav-link active">ABOUT</a>
+          <a href="contact.html" class="nav-link">CONTACT</a>
+        </nav>
+      </header>
+    </div>
+  </div>
+  
+  <div class="container" id="page-container">
+    <!-- about hero content (exactly preserved) -->
+    <section class="about-hero">
+      <h1 class="hero-name">I'm Christian.</h1>
+      <h2 class="hero-title">A Front End Developer.</h2>
+      <p class="hero-summary">I build scalable, performant, and accessible front-end architectures. Specializing in minimal interfaces, I focus on writing clean code that bridges the gap between design and robust engineering.</p>
+      <div class="resume-wrapper">
+        <a href="#" class="btn btn-primary" target="_blank">
+          Resume
+          <iconify-icon icon="lucide:file-text"></iconify-icon>
+        </a>
+      </div>
+    </section>
+    
+    <!-- about me section (exact) -->
+    <section class="about-me-section">
+      <h2 class="section-title">About Me</h2>
+      <div class="about-me-copy">
+        <p class="about-me-text">I’m a front-end developer focused on crafting clean digital experiences that feel intentional from the first interaction to the last detail. My work balances structure, speed, and visual restraint.</p>
+        <p class="about-me-text">I enjoy turning complex product ideas into simple interfaces, building scalable component systems, and shipping responsive experiences that stay consistent across devices.</p>
+      </div>
+    </section>
+    
+    <!-- "How I Work" timeline (exact content) -->
+    <section class="methodology-section">
+      <h2 class="section-title">How I Work</h2>
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-num">I</div>
+          <div class="timeline-content">
+            <h3 class="timeline-title">Discovery &amp; Architecture</h3>
+            <p class="timeline-desc">Understanding project constraints, defining data structures, and planning the optimal component hierarchy before writing a single line of code.</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-num">II</div>
+          <div class="timeline-content">
+            <h3 class="timeline-title">Prototyping &amp; Layout</h3>
+            <p class="timeline-desc">Translating designs into pixel-perfect structures using semantic HTML and scalable CSS methodologies, focusing on mobile-first responsiveness.</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-num">III</div>
+          <div class="timeline-content">
+            <h3 class="timeline-title">Logic &amp; State</h3>
+            <p class="timeline-desc">Implementing complex state management, data fetching, and interactivity using modern JavaScript frameworks with strict typing.</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-num">IV</div>
+          <div class="timeline-content">
+            <h3 class="timeline-title">Optimization &amp; Delivery</h3>
+            <p class="timeline-desc">Auditing for accessibility, optimizing performance metrics, and ensuring cross-browser consistency before continuous deployment.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="tech-section">
+      <div class="tech-marquee">
+        
+        <div class="tech-track">
+          
+          <div class="tech-group">
+            <div class="tech-item"><i class="fa-brands fa-react"></i><span>React</span></div>
+            <div class="tech-item"><i class="fa-brands fa-typescript"></i><span>TypeScript</span></div>
+            <div class="tech-item"><i class="fa-brands fa-node"></i><span>Node.js</span></div>
+            <div class="tech-item"><i class="fa-brands fa-tailwind-css"></i><span>Tailwind</span></div>
+            <div class="tech-item"><i class="fa-brands fa-vuejs"></i><span>Vue</span></div>
+            <div class="tech-item"><i class="fa-brands fa-svelte"></i><span>Svelte</span></div>
+            <div class="tech-item"><i class="fa-brands fa-figma"></i><span>Figma</span></div>
+          </div>
+          
+          <div class="tech-group">
+            <div class="tech-item"><i class="fa-brands fa-react"></i><span>React</span></div>
+            <div class="tech-item"><i class="fa-brands fa-typescript"></i><span>TypeScript</span></div>
+            <div class="tech-item"><i class="fa-brands fa-node"></i><span>Node.js</span></div>
+            <div class="tech-item"><i class="fa-solid fa-tailwind"></i><span>Tailwind</span></div>
+            <div class="tech-item"><i class="fa-brands fa-vuejs"></i><span>Vue</span></div>
+            <div class="tech-item"><i class="fa-brands fa-svelte"></i><span>Svelte</span></div>
+            <div class="tech-item"><i class="fa-brands fa-figma"></i><span>Figma</span></div>
+          </div>
+          
+          
+        </div>
+        
+      </div>
+    </section>
+    
+    
+    <!-- cta section (exact same as home) -->
+    <section class="cta-section">
+      <div class="cta-panel">
+        <div class="cta-copy">
+          <div class="cta-eyebrow">Open for selected collaborations</div>
+          <h2 class="cta-title">Let’s build a product people remember.</h2>
+          <p class="cta-text">Available for freelance projects, long-term front-end roles, and design-driven digital products that need clarity, speed, and craft.</p>
+        </div>
+        <a href="#" class="btn btn-inverse">Start a Project <iconify-icon icon="lucide:arrow-right" style="font-size: 16px;"></iconify-icon></a>
+      </div>
+    </section>
+    
+    <!-- footer bottom (same as home) -->
+    <div class="footer-bottom">
+      <div class="footer-meta">© 2026 Christian. All Rights Reserved.</div>
+    </div>
+  </div><!-- container -->
+  
+  <script>
+    (function() {
+      // THEME TOGGLE (identical)
+      const toggle = document.getElementById('theme-toggle');
+      const icon = document.getElementById('theme-icon');
+      const root = document.documentElement;
+      const storedTheme = localStorage.getItem('theme');
+      if (storedTheme === 'dark') { root.classList.add('dark'); if (icon) icon.setAttribute('icon', 'lucide:sun'); }
+      else if (storedTheme === 'light') { root.classList.remove('dark'); if (icon) icon.setAttribute('icon', 'lucide:moon-star'); }
+      else { root.classList.remove('dark'); if (icon) icon.setAttribute('icon', 'lucide:moon-star'); }
+      
+      if (toggle) {
+        toggle.addEventListener('click', (e) => {
+          e.preventDefault();
+          if (root.classList.contains('dark')) {
+            root.classList.remove('dark');
+            localStorage.setItem('theme', 'light');
+            if (icon) icon.setAttribute('icon', 'lucide:moon-star');
+          } else {
+            root.classList.add('dark');
+            localStorage.setItem('theme', 'dark');
+            if (icon) icon.setAttribute('icon', 'lucide:sun');
+          }
+        });
+      }
+      
+      // SCROLL PROGRESS & BACK TO TOP
+      const progressBar = document.getElementById('scroll-progress');
+      const backToTop = document.getElementById('back-to-top');
+      
+      function updateScrollProgress() {
+        const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+        const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        const scrolled = (winScroll / height) * 100;
+        progressBar.style.width = scrolled + '%';
+        const pageHeight = document.documentElement.scrollHeight;
+        if (pageHeight - (winScroll + window.innerHeight) < 1000) backToTop.classList.add('visible');
+        else backToTop.classList.remove('visible');
+      }
+      window.addEventListener('scroll', updateScrollProgress);
+      window.addEventListener('resize', updateScrollProgress);
+      backToTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+      updateScrollProgress();
+      
+    })();
+  </script>
+</body>
+
+</html>
