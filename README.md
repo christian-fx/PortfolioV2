@@ -17,7 +17,6 @@ This portfolio serves as the central hub for showcasing my selected projects, te
 
 ##  Proposed Tech Stack
 
-- **REACT:**
 - **HTML5:** Semantic markup structure.
 - **CSS3:** Custom properties (variables), Flexbox, and CSS Grid (Zero CSS frameworks used).
 - **JavaScript (Vanilla):** DOM manipulation for theme switching and interactive elements.
