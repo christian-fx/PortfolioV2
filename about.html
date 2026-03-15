@@ -4,14 +4,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
-  <title>Christian · About</title>
+  <title>About Me</title>
   
   <!-- Preconnect -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   
   <!-- Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Google+Sans+Flex:opsz,wght@6..144,1..1000&family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Momo+Trust+Display&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Google+Sans+Flex:opsz,wght@6..144,1..1000&family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Momo+Trust+Display&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
   
   <!-- Icons -->
   <script src="https://code.iconify.design/iconify-icon/3.0.0/iconify-icon.min.js"></script>
@@ -28,7 +28,12 @@
       --input: #f7f7f7;
       --success: #22c55e;
       --error: #ef4444;
+      --accent: #3b82f6;
+      --cooking: #f59e0b;
+      --gaming: #8b5cf6;
+      --movies: #ec4899;
       --font-family-body: Inter, system-ui, sans-serif;
+      --font-family-mono: 'JetBrains Mono', monospace;
       --radius: 6px;
       --overlay: rgba(0, 0, 0, 0.5);
     }
@@ -279,7 +284,185 @@
       font-family: "Google Sans Flex", sans-serif;
     }
     
-    /* Methodology Timeline */
+    /* Experience Section */
+    .experience-section {
+      padding: 0 0 48px;
+    }
+    
+    .experience-list {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+    
+    .experience-item {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      padding: 20px;
+      border: 1px solid var(--border);
+      background: var(--card);
+    }
+    
+    .experience-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    
+    .experience-role {
+      font-size: 18px;
+      font-family: "Bebas Neue", sans-serif;
+      font-weight: 400;
+    }
+    
+    .experience-date {
+      font-size: 13px;
+      color: var(--muted-foreground);
+      font-family: "Momo Trust Display", system-ui;
+    }
+    
+    .experience-company {
+      font-size: 15px;
+      color: var(--muted-foreground);
+      font-family: "Google Sans Flex", sans-serif;
+    }
+    
+    .experience-desc {
+      font-size: 15px;
+      line-height: 1.5;
+      color: var(--foreground);
+      font-family: "Google Sans Flex", sans-serif;
+    }
+    
+    /* Before We Start - Questions Checklist */
+    .questions-section {
+      padding: 32px 0;
+    }
+    
+    .questions-header {
+      margin-bottom: 32px;
+    }
+    
+    .questions-subtitle {
+      font-size: 16px;
+      color: var(--muted-foreground);
+      font-family: "Google Sans Flex", sans-serif;
+      margin-top: 8px;
+      line-height: 1.5;
+    }
+    
+    .questions-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+    
+    @media (min-width: 640px) {
+      .questions-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    
+    .question-card {
+      position: relative;
+      height: 200px;
+      perspective: 1000px;
+      cursor: pointer;
+    }
+    
+    .question-card-inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      text-align: left;
+      transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+      transform-style: preserve-3d;
+    }
+    
+    .question-card.flipped .question-card-inner {
+      transform: rotateY(180deg);
+    }
+    
+    .question-card-front,
+    .question-card-back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
+      padding: 24px;
+      border: 1px solid var(--border);
+      background: var(--card);
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .question-card-front {
+      align-items: flex-start;
+      justify-content: space-between;
+    }
+    
+    .question-card-back {
+      transform: rotateY(180deg);
+      background: var(--foreground);
+      color: var(--background);
+      border-color: var(--foreground);
+      justify-content: center;
+    }
+    
+    .question-number {
+      font-family: var(--font-family-mono);
+      font-size: 12px;
+      color: var(--muted-foreground);
+      margin-bottom: 12px;
+    }
+    
+    .question-text {
+      font-family: "Bebas Neue", sans-serif;
+      font-size: 24px;
+      line-height: 1.1;
+      letter-spacing: 0.02em;
+    }
+    
+    .question-icon {
+      margin-top: auto;
+      opacity: 0.5;
+      transition: opacity 0.3s ease;
+    }
+    
+    .question-card:hover .question-icon {
+      opacity: 1;
+    }
+    
+    .question-answer-label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      opacity: 0.7;
+      margin-bottom: 12px;
+      font-family: "Google Sans Flex", sans-serif;
+    }
+    
+    .question-answer {
+      font-size: 15px;
+      line-height: 1.6;
+      font-family: "Google Sans Flex", sans-serif;
+    }
+    
+    .question-hint {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 24px;
+      font-size: 13px;
+      color: var(--muted-foreground);
+      font-family: "Google Sans Flex", sans-serif;
+    }
+    
+    /* Methodology Timeline (How I Work) - No Behind the Code */
     .methodology-section {
       padding: 32px 0;
     }
@@ -336,6 +519,9 @@
       font-size: 20px;
       font-family: "Bebas Neue", sans-serif;
       font-weight: 400;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
     }
     
     .timeline-desc {
@@ -394,59 +580,6 @@
       to {
         transform: translateX(-50%);
       }
-    }
-    
-    /* Experience Section */
-    .experience-section {
-      padding: 0 0 48px;
-    }
-    
-    .experience-list {
-      display: flex;
-      flex-direction: column;
-      gap: 24px;
-    }
-    
-    .experience-item {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-      padding: 20px;
-      border: 1px solid var(--border);
-      background: var(--card);
-    }
-    
-    .experience-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      flex-wrap: wrap;
-      gap: 8px;
-    }
-    
-    .experience-role {
-      font-size: 18px;
-      font-family: "Bebas Neue", sans-serif;
-      font-weight: 400;
-    }
-    
-    .experience-date {
-      font-size: 13px;
-      color: var(--muted-foreground);
-      font-family: "Momo Trust Display", system-ui;
-    }
-    
-    .experience-company {
-      font-size: 15px;
-      color: var(--muted-foreground);
-      font-family: "Google Sans Flex", sans-serif;
-    }
-    
-    .experience-desc {
-      font-size: 15px;
-      line-height: 1.5;
-      color: var(--foreground);
-      font-family: "Google Sans Flex", sans-serif;
     }
     
     /* CTA Section */
@@ -722,9 +855,10 @@
     /* Animations */
     .about-hero,
     .about-me-section,
+    .experience-section,
+    .questions-section,
     .methodology-section,
     .tech-section,
-    .experience-section,
     .cta-section {
       animation: slideUp 0.6s ease forwards;
       opacity: 0;
@@ -738,20 +872,24 @@
       animation-delay: 0.15s;
     }
     
-    .methodology-section {
+    .experience-section {
       animation-delay: 0.2s;
     }
     
-    .tech-section {
+    .questions-section {
       animation-delay: 0.25s;
     }
     
-    .experience-section {
+    .methodology-section {
       animation-delay: 0.3s;
     }
     
-    .cta-section {
+    .tech-section {
       animation-delay: 0.35s;
+    }
+    
+    .cta-section {
+      animation-delay: 0.4s;
     }
     
     @keyframes slideUp {
@@ -812,6 +950,14 @@
       .modal-title {
         font-size: 28px;
       }
+      
+      .question-card {
+        height: 220px;
+      }
+      
+      .question-text {
+        font-size: 28px;
+      }
     }
     
     @media (min-width: 1200px) {
@@ -847,6 +993,15 @@
       
       .modal-title {
         font-size: 32px;
+      }
+      
+      .questions-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 24px;
+      }
+      
+      .question-card {
+        height: 240px;
       }
     }
     
@@ -923,31 +1078,177 @@
       </div>
     </section>
     
+    <!-- Experience Section (moved up) -->
+    <section class="experience-section">
+      <h2 class="section-title">Experience</h2>
+      <div class="experience-list">
+        <div class="experience-item">
+          <div class="experience-header">
+            <h3 class="experience-role">Senior Frontend Developer</h3>
+            <span class="experience-date">2023 — Present</span>
+          </div>
+          <p class="experience-company">TechCorp Industries</p>
+          <p class="experience-desc">Leading frontend architecture decisions and mentoring junior developers. Implemented design system used across 5 product teams.</p>
+        </div>
+        <div class="experience-item">
+          <div class="experience-header">
+            <h3 class="experience-role">Frontend Developer</h3>
+            <span class="experience-date">2021 — 2023</span>
+          </div>
+          <p class="experience-company">Digital Agency Studio</p>
+          <p class="experience-desc">Built performant React applications for clients in fintech and e-commerce sectors. Reduced bundle sizes by 40% on average.</p>
+        </div>
+        <div class="experience-item">
+          <div class="experience-header">
+            <h3 class="experience-role">Junior Web Developer</h3>
+            <span class="experience-date">2019 — 2021</span>
+          </div>
+          <p class="experience-company">StartUp Inc.</p>
+          <p class="experience-desc">Developed responsive websites and landing pages. Collaborated with design team to implement pixel-perfect interfaces.</p>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Before We Start Section -->
+    <section class="questions-section">
+      <div class="questions-header">
+        <h2 class="section-title">Before We Start</h2>
+        <p class="questions-subtitle">Six questions I ask every potential client. Flip each card to understand my process and what to expect when working together.</p>
+      </div>
+      
+      <div class="questions-grid">
+        <div class="question-card" data-question="1">
+          <div class="question-card-inner">
+            <div class="question-card-front">
+              <div class="question-number">01 / 06</div>
+              <div class="question-text">What does success look like for this project?</div>
+              <div class="question-icon">
+                <iconify-icon icon="lucide:flip-horizontal" width="20"></iconify-icon>
+              </div>
+            </div>
+            <div class="question-card-back">
+              <div class="question-answer-label">Why I Ask</div>
+              <div class="question-answer">I need to understand your core objectives—whether that's conversion rates, user engagement, or brand perception. This shapes every technical decision I make, from animation complexity to performance budgets.</div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="question-card" data-question="2">
+          <div class="question-card-inner">
+            <div class="question-card-front">
+              <div class="question-number">02 / 06</div>
+              <div class="question-text">Who is your primary user, and what frustrates them?</div>
+              <div class="question-icon">
+                <iconify-icon icon="lucide:flip-horizontal" width="20"></iconify-icon>
+              </div>
+            </div>
+            <div class="question-card-back">
+              <div class="question-answer-label">Why I Ask</div>
+              <div class="question-answer">Empathy drives interface design. Knowing your users' pain points helps me prioritize features, simplify workflows, and create intuitive navigation patterns that actually solve problems.</div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="question-card" data-question="3">
+          <div class="question-card-inner">
+            <div class="question-card-front">
+              <div class="question-number">03 / 06</div>
+              <div class="question-text">What is your realistic timeline and budget?</div>
+              <div class="question-icon">
+                <iconify-icon icon="lucide:flip-horizontal" width="20"></iconify-icon>
+              </div>
+            </div>
+            <div class="question-card-back">
+              <div class="question-answer-label">Why I Ask</div>
+              <div class="question-answer">Transparency prevents scope creep. I use this to recommend the right approach—whether that's an MVP for quick validation or a polished product for market launch. Constraints breed creativity.</div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="question-card" data-question="4">
+          <div class="question-card-inner">
+            <div class="question-card-front">
+              <div class="question-number">04 / 06</div>
+              <div class="question-text">How will we measure progress and quality?</div>
+              <div class="question-icon">
+                <iconify-icon icon="lucide:flip-horizontal" width="20"></iconify-icon>
+              </div>
+            </div>
+            <div class="question-card-back">
+              <div class="question-answer-label">Why I Ask</div>
+              <div class="question-answer">I establish clear milestones and feedback loops early. This includes code review schedules, demo cadence, and performance benchmarks (Lighthouse scores, accessibility audits) to ensure we stay aligned.</div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="question-card" data-question="5">
+          <div class="question-card-inner">
+            <div class="question-card-front">
+              <div class="question-number">05 / 06</div>
+              <div class="question-text">What existing tech stack or constraints must I respect?</div>
+              <div class="question-icon">
+                <iconify-icon icon="lucide:flip-horizontal" width="20"></iconify-icon>
+              </div>
+            </div>
+            <div class="question-card-back">
+              <div class="question-answer-label">Why I Ask</div>
+              <div class="question-answer">Legacy systems, CMS requirements, or team expertise matter. I architect solutions that integrate smoothly with your infrastructure rather than forcing incompatible technologies that create technical debt.</div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="question-card" data-question="6">
+          <div class="question-card-inner">
+            <div class="question-card-front">
+              <div class="question-number">06 / 06</div>
+              <div class="question-text">What happens after launch?</div>
+              <div class="question-icon">
+                <iconify-icon icon="lucide:flip-horizontal" width="20"></iconify-icon>
+              </div>
+            </div>
+            <div class="question-card-back">
+              <div class="question-answer-label">Why I Ask</div>
+              <div class="question-answer">I build for maintainability. Understanding your long-term plans—whether that's scaling, adding features, or handoff to an internal team—influences documentation, component structure, and deployment strategy.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="question-hint">
+        <iconify-icon icon="lucide:mouse-pointer-2" width="16"></iconify-icon>
+        <span>Click any card to flip and reveal</span>
+      </div>
+    </section>
+    
+    <!-- How I Work Section (with Behind the Code removed) -->
     <section class="methodology-section">
       <h2 class="section-title">How I Work</h2>
       <div class="timeline">
-        <div class="timeline-item">
+        <div class="timeline-item" data-step="discovery">
           <div class="timeline-num">I</div>
           <div class="timeline-content">
             <h3 class="timeline-title">Discovery & Architecture</h3>
             <p class="timeline-desc">Understanding project constraints, defining data structures, and planning the optimal component hierarchy before writing a single line of code.</p>
           </div>
         </div>
-        <div class="timeline-item">
+        
+        <div class="timeline-item" data-step="prototyping">
           <div class="timeline-num">II</div>
           <div class="timeline-content">
             <h3 class="timeline-title">Prototyping & Layout</h3>
             <p class="timeline-desc">Translating designs into pixel-perfect structures using semantic HTML and scalable CSS methodologies, focusing on mobile-first responsiveness.</p>
           </div>
         </div>
-        <div class="timeline-item">
+        
+        <div class="timeline-item" data-step="logic">
           <div class="timeline-num">III</div>
           <div class="timeline-content">
             <h3 class="timeline-title">Logic & State</h3>
             <p class="timeline-desc">Implementing complex state management, data fetching, and interactivity using modern JavaScript frameworks with strict typing.</p>
           </div>
         </div>
-        <div class="timeline-item">
+        
+        <div class="timeline-item" data-step="optimization">
           <div class="timeline-num">IV</div>
           <div class="timeline-content">
             <h3 class="timeline-title">Optimization & Delivery</h3>
@@ -978,36 +1279,6 @@
             <div class="tech-item"><iconify-icon icon="skill-icons:svelte"></iconify-icon><span>Svelte</span></div>
             <div class="tech-item"><iconify-icon icon="skill-icons:figma-dark"></iconify-icon><span>Figma</span></div>
           </div>
-        </div>
-      </div>
-    </section>
-    
-    <section class="experience-section">
-      <h2 class="section-title">Experience</h2>
-      <div class="experience-list">
-        <div class="experience-item">
-          <div class="experience-header">
-            <h3 class="experience-role">Senior Frontend Developer</h3>
-            <span class="experience-date">2023 — Present</span>
-          </div>
-          <p class="experience-company">TechCorp Industries</p>
-          <p class="experience-desc">Leading frontend architecture decisions and mentoring junior developers. Implemented design system used across 5 product teams.</p>
-        </div>
-        <div class="experience-item">
-          <div class="experience-header">
-            <h3 class="experience-role">Frontend Developer</h3>
-            <span class="experience-date">2021 — 2023</span>
-          </div>
-          <p class="experience-company">Digital Agency Studio</p>
-          <p class="experience-desc">Built performant React applications for clients in fintech and e-commerce sectors. Reduced bundle sizes by 40% on average.</p>
-        </div>
-        <div class="experience-item">
-          <div class="experience-header">
-            <h3 class="experience-role">Junior Web Developer</h3>
-            <span class="experience-date">2019 — 2021</span>
-          </div>
-          <p class="experience-company">StartUp Inc.</p>
-          <p class="experience-desc">Developed responsive websites and landing pages. Collaborated with design team to implement pixel-perfect interfaces.</p>
         </div>
       </div>
     </section>
@@ -1125,14 +1396,12 @@
       const openModal = () => {
         modal.classList.add('active');
         document.body.classList.add('modal-open');
-        // Focus first input for accessibility
         setTimeout(() => document.getElementById('modal-first-name').focus(), 100);
       };
       
       const closeModal = () => {
         modal.classList.remove('active');
         document.body.classList.remove('modal-open');
-        // Reset form after delay
         setTimeout(() => {
           helloForm.style.display = 'block';
           formSuccess.style.display = 'none';
@@ -1170,20 +1439,17 @@
         e.preventDefault();
         
         const firstName = document.getElementById('modal-first-name');
-        const lastName = document.getElementById('modal-last-name');
         const email = document.getElementById('modal-email');
         const message = document.getElementById('modal-message');
         
         let isValid = true;
         
-        // Validate fields
         if (!firstName.value.trim()) {
           showFieldError(firstName, true);
           isValid = false;
         } else {
           showFieldError(firstName, false);
         }
-        
         
         if (!email.value.trim() || !validateEmail(email.value)) {
           showFieldError(email, true);
@@ -1201,22 +1467,17 @@
         
         if (!isValid) return;
         
-        // Show loading state
         submitBtn.disabled = true;
         submitBtn.innerHTML = '<span class="spinner"></span>Sending...';
         
-        // Simulate API call
         await new Promise(resolve => setTimeout(resolve, 1500));
         
-        // Show success
         helloForm.style.display = 'none';
         formSuccess.style.display = 'block';
         
-        // Auto close after 3 seconds
         setTimeout(closeModal, 3000);
       });
       
-      // Real-time validation
       helloForm.querySelectorAll('input, textarea').forEach(field => {
         field.addEventListener('blur', () => {
           if (field.hasAttribute('required') && !field.value.trim()) {
@@ -1233,6 +1494,32 @@
             showFieldError(field, false);
           }
         });
+      });
+      
+      // Questions Card Flip Functionality
+      const questionCards = document.querySelectorAll('.question-card');
+      
+      questionCards.forEach(card => {
+        card.addEventListener('click', () => {
+          card.classList.toggle('flipped');
+          
+          questionCards.forEach(otherCard => {
+            if (otherCard !== card && otherCard.classList.contains('flipped')) {
+              otherCard.classList.remove('flipped');
+            }
+          });
+        });
+        
+        card.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            card.classList.toggle('flipped');
+          }
+        });
+        
+        card.setAttribute('tabindex', '0');
+        card.setAttribute('role', 'button');
+        card.setAttribute('aria-label', 'Flip card to reveal answer');
       });
       
       updateScroll();
