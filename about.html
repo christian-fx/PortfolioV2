@@ -337,6 +337,8 @@
       font-family: "Google Sans Flex", sans-serif;
     }
     
+    
+    
     /* Before We Start - Questions Checklist */
     .questions-section {
       padding: 32px 0;
@@ -462,74 +464,6 @@
       font-family: "Google Sans Flex", sans-serif;
     }
     
-    /* Methodology Timeline (How I Work) - No Behind the Code */
-    .methodology-section {
-      padding: 32px 0;
-    }
-    
-    .timeline {
-      display: flex;
-      flex-direction: column;
-      position: relative;
-      padding-left: 32px;
-    }
-    
-    .timeline::before {
-      content: "";
-      position: absolute;
-      left: 11px;
-      top: 0;
-      bottom: 0;
-      width: 2px;
-      background: var(--border);
-    }
-    
-    .timeline-item {
-      position: relative;
-      margin-bottom: 32px;
-    }
-    
-    .timeline-item:last-child {
-      margin-bottom: 0;
-    }
-    
-    .timeline-num {
-      position: absolute;
-      left: -32px;
-      top: 0;
-      width: 24px;
-      height: 24px;
-      background: var(--background);
-      border: 2px solid var(--foreground);
-      font-size: 12px;
-      font-weight: 600;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: "Bebas Neue", sans-serif;
-    }
-    
-    .timeline-content {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-    }
-    
-    .timeline-title {
-      font-size: 20px;
-      font-family: "Bebas Neue", sans-serif;
-      font-weight: 400;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-    }
-    
-    .timeline-desc {
-      font-size: 16px;
-      line-height: 1.5;
-      color: var(--muted-foreground);
-      font-family: "Google Sans Flex", sans-serif;
-    }
     
     /* Tech Marquee */
     .tech-section {
@@ -1078,42 +1012,37 @@
       </div>
     </section>
     
-    <!-- Experience Section (moved up) -->
-    <section class="experience-section">
-      <h2 class="section-title">Experience</h2>
-      <div class="experience-list">
-        <div class="experience-item">
-          <div class="experience-header">
-            <h3 class="experience-role">Senior Frontend Developer</h3>
-            <span class="experience-date">2023 — Present</span>
-          </div>
-          <p class="experience-company">TechCorp Industries</p>
-          <p class="experience-desc">Leading frontend architecture decisions and mentoring junior developers. Implemented design system used across 5 product teams.</p>
-        </div>
-        <div class="experience-item">
-          <div class="experience-header">
-            <h3 class="experience-role">Frontend Developer</h3>
-            <span class="experience-date">2021 — 2023</span>
-          </div>
-          <p class="experience-company">Digital Agency Studio</p>
-          <p class="experience-desc">Built performant React applications for clients in fintech and e-commerce sectors. Reduced bundle sizes by 40% on average.</p>
-        </div>
-        <div class="experience-item">
-          <div class="experience-header">
-            <h3 class="experience-role">Junior Web Developer</h3>
-            <span class="experience-date">2019 — 2021</span>
-          </div>
-          <p class="experience-company">StartUp Inc.</p>
-          <p class="experience-desc">Developed responsive websites and landing pages. Collaborated with design team to implement pixel-perfect interfaces.</p>
-        </div>
+    <!-- Experience Section -->
+<section class="experience-section">
+  <h2 class="section-title">Experience</h2>
+  <div class="experience-list">
+    <div class="experience-item">
+      <div class="experience-header">
+        <h3 class="experience-role">Freelance Frontend Developer</h3>
+        <span class="experience-date">2023 — Present</span>
       </div>
-    </section>
+      <p class="experience-company">Independent Projects</p>
+      <p class="experience-desc">Building clean, scalable front-end solutions for clients across web and product design.</p>
+    </div>
+    <div class="experience-item">
+      <div class="experience-header">
+        <h3 class="experience-role">Learning & Certification</h3>
+      </div>
+      <p class="experience-company">FreeCodeCamp</p>
+      <p class="experience-desc">
+        Completed front-end projects and earned certification.
+        <a href="https://www.freecodecamp.org/certification" target="_blank">View Certificates</a>
+      </p>
+    </div>
+  </div>
+</section>
+    
     
     <!-- Before We Start Section -->
     <section class="questions-section">
       <div class="questions-header">
-        <h2 class="section-title">Before We Start</h2>
-        <p class="questions-subtitle">Six questions I ask every potential client. Flip each card to understand my process and what to expect when working together.</p>
+        <h2 class="section-title">Discovery Questions</h2>
+        <p class="questions-subtitle">Key questions I ask to ensure clarity, alignment, and a smooth collaboration on every project. Flip each card to see my process and know what to expect when working together.</p>
       </div>
       
       <div class="questions-grid">
@@ -1220,43 +1149,6 @@
       </div>
     </section>
     
-    <!-- How I Work Section (with Behind the Code removed) -->
-    <section class="methodology-section">
-      <h2 class="section-title">How I Work</h2>
-      <div class="timeline">
-        <div class="timeline-item" data-step="discovery">
-          <div class="timeline-num">I</div>
-          <div class="timeline-content">
-            <h3 class="timeline-title">Discovery & Architecture</h3>
-            <p class="timeline-desc">Understanding project constraints, defining data structures, and planning the optimal component hierarchy before writing a single line of code.</p>
-          </div>
-        </div>
-        
-        <div class="timeline-item" data-step="prototyping">
-          <div class="timeline-num">II</div>
-          <div class="timeline-content">
-            <h3 class="timeline-title">Prototyping & Layout</h3>
-            <p class="timeline-desc">Translating designs into pixel-perfect structures using semantic HTML and scalable CSS methodologies, focusing on mobile-first responsiveness.</p>
-          </div>
-        </div>
-        
-        <div class="timeline-item" data-step="logic">
-          <div class="timeline-num">III</div>
-          <div class="timeline-content">
-            <h3 class="timeline-title">Logic & State</h3>
-            <p class="timeline-desc">Implementing complex state management, data fetching, and interactivity using modern JavaScript frameworks with strict typing.</p>
-          </div>
-        </div>
-        
-        <div class="timeline-item" data-step="optimization">
-          <div class="timeline-num">IV</div>
-          <div class="timeline-content">
-            <h3 class="timeline-title">Optimization & Delivery</h3>
-            <p class="timeline-desc">Auditing for accessibility, optimizing performance metrics, and ensuring cross-browser consistency before continuous deployment.</p>
-          </div>
-        </div>
-      </div>
-    </section>
     
     <section class="tech-section">
       <div class="tech-marquee">
