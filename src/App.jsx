@@ -8,9 +8,22 @@ import About from './pages/About/About';
 import Contact from './pages/Contact/Contact';
 import CaseStudy from './pages/CaseStudy/CaseStudy';
 import NotFound from './pages/NotFound/NotFound';
+import { useEffect } from 'react';
+import ReactGA from 'react-ga4';
+
+const GA_MEASUREMENT_ID = import.meta.env.VITE_GA_ID;
+if (GA_MEASUREMENT_ID) {
+  ReactGA.initialize(GA_MEASUREMENT_ID);
+}
 
 function AnimatedRoutes() {
   const location = useLocation();
+
+  useEffect(() => {
+    if (GA_MEASUREMENT_ID) {
+      ReactGA.send({ hitType: "pageview", page: location.pathname + location.search });
+    }
+  }, [location]);
 
   return (
     <AnimatePresence mode="wait">
