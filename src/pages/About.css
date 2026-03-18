@@ -1,0 +1,295 @@
+/* About page styles */
+
+.about-hero {
+  padding: 48px 0 40px;
+  animation: slideUp 0.6s ease forwards;
+  animation-delay: 0.1s;
+  opacity: 0;
+}
+
+.hero-name {
+  font-size: 44px;
+  font-family: "Bebas Neue", sans-serif;
+  font-weight: 400;
+  margin: 0 0 8px;
+  line-height: 0.95;
+}
+
+.hero-title-about {
+  font-size: 22px;
+  font-family: "Bebas Neue", sans-serif;
+  font-weight: 400;
+  margin: 0 0 16px;
+  letter-spacing: 0.02em;
+}
+
+.hero-summary {
+  font-size: 18px;
+  line-height: 1.5;
+  color: var(--muted-foreground);
+  margin: 0 0 24px;
+  font-family: "Momo Trust Display", system-ui;
+}
+
+.hero-actions-about {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.about-me-section {
+  padding: 0 0 32px;
+  animation: slideUp 0.6s ease forwards;
+  animation-delay: 0.15s;
+  opacity: 0;
+}
+
+.about-me-copy {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.about-me-text {
+  font-size: 17px;
+  line-height: 1.6;
+  color: var(--foreground);
+  font-family: "Google Sans Flex", sans-serif;
+}
+
+.experience-section {
+  padding: 0 0 48px;
+  animation: slideUp 0.6s ease forwards;
+  animation-delay: 0.2s;
+  opacity: 0;
+}
+
+.experience-list {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.experience-item {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 20px;
+  border: 1px solid var(--border);
+  background: var(--card);
+}
+
+.experience-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.experience-role {
+  font-size: 18px;
+  font-family: "Bebas Neue", sans-serif;
+  font-weight: 400;
+}
+
+.experience-date {
+  font-size: 13px;
+  color: var(--muted-foreground);
+  font-family: "Momo Trust Display", system-ui;
+}
+
+.experience-company {
+  font-size: 15px;
+  color: var(--muted-foreground);
+  font-family: "Google Sans Flex", sans-serif;
+}
+
+.experience-desc a {
+  color: var(--foreground);
+  font-weight: 600;
+}
+
+/* ─── Discovery Questions ─────────────────────────────── */
+.questions-section {
+  padding: 32px 0;
+  animation: slideUp 0.6s ease forwards;
+  animation-delay: 0.25s;
+  opacity: 0;
+}
+
+.questions-header {
+  margin-bottom: 32px;
+}
+
+.questions-subtitle {
+  font-size: 16px;
+  color: var(--muted-foreground);
+  font-family: "Google Sans Flex", sans-serif;
+  margin-top: 8px;
+  line-height: 1.5;
+}
+
+.questions-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+}
+
+@media (min-width: 640px) {
+  .questions-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+.question-card {
+  position: relative;
+  height: 200px;
+  perspective: 1000px;
+  cursor: pointer;
+}
+
+.question-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: left;
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  transform-style: preserve-3d;
+}
+
+.question-card.flipped .question-card-inner {
+  transform: rotateY(180deg);
+}
+
+.question-card-front,
+.question-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  padding: 24px;
+  border: 1px solid var(--border);
+  background: var(--card);
+  display: flex;
+  flex-direction: column;
+}
+
+.question-card-front {
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.question-card-back {
+  transform: rotateY(180deg);
+  background: var(--foreground);
+  color: var(--background);
+  border-color: var(--foreground);
+  justify-content: center;
+}
+
+.question-number {
+  font-family: var(--font-family-mono, 'JetBrains Mono', monospace);
+  font-size: 12px;
+  color: var(--muted-foreground);
+  margin-bottom: 12px;
+}
+
+.question-text {
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 24px;
+  line-height: 1.1;
+  letter-spacing: 0.02em;
+}
+
+.question-icon {
+  margin-top: auto;
+  opacity: 0.5;
+  transition: opacity 0.3s ease;
+}
+
+.question-card:hover .question-icon {
+  opacity: 1;
+}
+
+.question-answer-label {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  opacity: 0.7;
+  margin-bottom: 12px;
+  font-family: "Google Sans Flex", sans-serif;
+}
+
+.question-answer {
+  font-size: 15px;
+  line-height: 1.6;
+  font-family: "Google Sans Flex", sans-serif;
+}
+
+.question-hint {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 24px;
+  font-size: 13px;
+  color: var(--muted-foreground);
+  font-family: "Google Sans Flex", sans-serif;
+}
+
+/* ─── Tech Marquee ────────────────────────────────────── */
+.tech-section {
+  padding: 24px 0 48px;
+  overflow: hidden;
+  animation: slideUp 0.6s ease forwards;
+  animation-delay: 0.35s;
+  opacity: 0;
+}
+
+.tech-marquee {
+  mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+}
+
+.tech-track {
+  display: flex;
+  width: max-content;
+  animation: marquee 30s linear infinite;
+  gap: 12px;
+}
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+.tech-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px;
+  border: 1px solid var(--border);
+  background: var(--card);
+  white-space: nowrap;
+  font-size: 14px;
+  font-family: "Google Sans Flex", sans-serif;
+}
+
+
+@media (min-width: 768px) {
+  .question-card { height: 220px; }
+  .question-text { font-size: 28px; }
+  .hero-name { font-size: 56px; }
+  .hero-title-about { font-size: 26px; }
+}
+
+@media (min-width: 1200px) {
+  .questions-grid { grid-template-columns: repeat(2, 1fr); gap: 24px; }
+  .question-card { height: 240px; }
+  .hero-name { font-size: 72px; }
+  .hero-title-about { font-size: 28px; }
+}
+
+@media (min-width: 1600px) {
+  .hero-name { font-size: 84px; }
+  .hero-title-about { font-size: 32px; }
+}
