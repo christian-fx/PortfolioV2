@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import { Icon } from '@iconify/react';
-import Layout from '../components/Layout';
-import ProjectCard from '../components/ProjectCard';
+import Layout from '../../components/Layout';
+import ProjectCard from '../../components/ProjectCard';
 
 const PROJECTS = [
   {

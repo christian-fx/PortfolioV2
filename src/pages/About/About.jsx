@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Icon } from '@iconify/react';
-import Layout from '../components/Layout';
+import Layout from '../../components/Layout';
 import './About.css';
 
 /* ─────────────────────────────────────────────  DATA */

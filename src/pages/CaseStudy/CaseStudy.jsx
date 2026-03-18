@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { Icon } from '@iconify/react';
-import Layout from '../components/Layout';
+import Layout from '../../components/Layout';
 import './CaseStudy.css';
 
 const TECH_STACK = [
