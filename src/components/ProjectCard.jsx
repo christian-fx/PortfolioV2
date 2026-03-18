@@ -3,7 +3,7 @@ import { Icon } from '@iconify/react';
 import { useRef } from 'react';
 
 /* ─── SkeletonImage helper ─── */
-function SkeletonImage({ src, alt }) {
+function SkeletonImage({ src, alt, link }) {
   const imgRef = useRef(null);
 
   const handleLoad = () => {
@@ -20,17 +20,19 @@ function SkeletonImage({ src, alt }) {
   return (
     <div className="work-image-wrapper">
       <div className="skeleton-image" />
-      <Link to="/case-study">
+      <Link to={link}>
         <img ref={imgRef} src={src} alt={alt} loading="lazy" onLoad={handleLoad} />
       </Link>
     </div>
   );
 }
 
-export default function ProjectCard({ title, description, tags, image, github, live, caseStudyLink = '/case-study' }) {
+export default function ProjectCard({ id, title, description, tags, image, github, live }) {
+  const caseStudyLink = `/case-study/${id}`;
+
   return (
     <article className="work-card">
-      <SkeletonImage src={image} alt={title} />
+      <SkeletonImage src={image} alt={title} link={caseStudyLink} />
       <div className="work-meta">
         <div className="work-header">
           <h3 className="work-title">{title}</h3>
