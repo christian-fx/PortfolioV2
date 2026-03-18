@@ -1,27 +1,35 @@
 import { Link } from 'react-router-dom';
 import { Icon } from '@iconify/react';
-import { useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 
 /* ─── SkeletonImage helper ─── */
 function SkeletonImage({ src, alt, link }) {
+  const [isLoaded, setIsLoaded] = useState(false);
   const imgRef = useRef(null);
 
-  const handleLoad = () => {
-    if (imgRef.current) {
-      imgRef.current.classList.add('loaded');
-      const skeleton = imgRef.current.closest('.work-image-wrapper')?.querySelector('.skeleton-image');
-      if (skeleton) {
-        skeleton.style.opacity = '0';
-        setTimeout(() => skeleton.remove(), 500);
-      }
+  // Fallback for cached images that might have completely loaded instantly
+  useEffect(() => {
+    if (imgRef.current && imgRef.current.complete) {
+      // eslint-disable-next-line
+      setIsLoaded(true);
     }
-  };
+  }, []);
 
   return (
     <div className="work-image-wrapper">
-      <div className="skeleton-image" />
+      <div 
+        className="skeleton-image" 
+        style={{ opacity: isLoaded ? 0 : 1, transition: 'opacity 0.5s ease', pointerEvents: isLoaded ? 'none' : 'auto' }} 
+      />
       <Link to={link}>
-        <img ref={imgRef} src={src} alt={alt} loading="lazy" onLoad={handleLoad} />
+        <img 
+          ref={imgRef} 
+          src={src} 
+          alt={alt} 
+          loading="lazy" 
+          onLoad={() => setIsLoaded(true)}
+          className={isLoaded ? 'loaded' : ''}
+        />
       </Link>
     </div>
   );

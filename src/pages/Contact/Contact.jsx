@@ -1,7 +1,10 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
+import emailjs from '@emailjs/browser';
 import { Link } from 'react-router-dom';
 import { Icon } from '@iconify/react';
+import { motion, AnimatePresence } from 'framer-motion';
 import Layout from '../../components/Layout';
+import SEO from '../../components/SEO';
 import Reveal from '../../components/Reveal';
 import './Contact.css';
 
@@ -15,11 +18,66 @@ const EMAIL = 'akabuezechris432@gmail.com';
 
 export default function Contact() {
   const [form, setForm] = useState({ firstName: '', lastName: '', email: '', subject: '', message: '' });
+  const [errors, setErrors] = useState({});
+  const [status, setStatus] = useState('idle'); // 'idle' | 'sending' | 'success' | 'error'
   const [toast, setToast] = useState(false);
+  const formRef = useRef();
+  
+  const MotionDiv = motion.div;
+  const MotionForm = motion.form;
+
+  const validateForm = () => {
+    const newErrors = {};
+    if (!form.firstName.trim()) newErrors.firstName = 'First name is required';
+    if (!form.lastName.trim()) newErrors.lastName = 'Last name is required';
+    if (!form.email.trim()) {
+      newErrors.email = 'Email is required';
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)) {
+      newErrors.email = 'Please enter a valid email';
+    }
+    if (!form.message.trim()) newErrors.message = 'Please enter a message';
+    
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+
+  const handleChange = (field, value) => {
+    setForm({ ...form, [field]: value });
+    if (errors[field]) setErrors({ ...errors, [field]: null });
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    alert('Thank you for your message! This is a demo form.');
+    if (!validateForm()) return;
+    setStatus('sending');
+
+
+    const SERVICE_ID = 'service_41mpv7c';
+    const TEMPLATE_ID = 'template_bg0dm8q';
+    const PUBLIC_KEY = 'FFx0hZCjdOGGVUE39';
+
+    /* Development fallback so UI works before you configure EmailJS */
+    if (SERVICE_ID === 'YOUR_SERVICE_ID') {
+      setTimeout(() => {
+        setStatus('success');
+        setForm({ firstName: '', lastName: '', email: '', subject: '', message: '' });
+        setTimeout(() => setStatus('idle'), 4000);
+      }, 1500);
+      return;
+    }
+
+    /* Live Submission */
+    emailjs.sendForm(SERVICE_ID, TEMPLATE_ID, formRef.current, PUBLIC_KEY)
+      .then(() => {
+        setStatus('success');
+        setForm({ firstName: '', lastName: '', email: '', subject: '', message: '' });
+        setTimeout(() => setStatus('idle'), 4000);
+      })
+      .catch((error) => {
+        console.error('EmailJS Error:', error);
+        setStatus('error');
+        setTimeout(() => setStatus('idle'), 4000);
+      });
   };
 
   const copyEmail = () => {
@@ -31,6 +89,7 @@ export default function Contact() {
 
   return (
     <Layout>
+      <SEO title="Contact" />
       <section className="contact-hero">
         <Reveal delay={0.1}>
           <h1>Let's connect</h1>
@@ -41,40 +100,75 @@ export default function Contact() {
       </section>
 
       <section className="contact-form-section">
-        <form onSubmit={handleSubmit}>
-          <div className="form-row">
-            <div className="form-group">
-              <label htmlFor="firstName">First name</label>
-              <input type="text" id="firstName" placeholder="Christian" required
-                value={form.firstName} onChange={e => setForm({ ...form, firstName: e.target.value })} />
-            </div>
-            <div className="form-group">
-              <label htmlFor="lastName">Last name</label>
-              <input type="text" id="lastName" placeholder="Santos" required
-                value={form.lastName} onChange={e => setForm({ ...form, lastName: e.target.value })} />
-            </div>
-          </div>
-          <div className="form-group form-mb">
-            <label htmlFor="email">Email</label>
-            <input type="email" id="email" placeholder="hello@gmail.com" required
-              value={form.email} onChange={e => setForm({ ...form, email: e.target.value })} />
-          </div>
-          <div className="form-group form-mb">
-            <label htmlFor="subject">Subject</label>
-            <input type="text" id="subject" placeholder="Portfolio Collaboration"
-              value={form.subject} onChange={e => setForm({ ...form, subject: e.target.value })} />
-          </div>
-          <div className="form-group form-mb">
-            <label htmlFor="message">Message</label>
-            <textarea id="message" placeholder="Tell me about your project or idea..." required
-              value={form.message} onChange={e => setForm({ ...form, message: e.target.value })} />
-          </div>
-          <div className="submit-btn">
-            <button type="submit" className="btn btn-primary">
-              Send message <Icon icon="lucide:send" width={16} />
-            </button>
-          </div>
-        </form>
+        <AnimatePresence mode="wait">
+          {status === 'success' ? (
+            <MotionDiv
+              key="success-overlay"
+              className="form-success-overlay"
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 1.05 }}
+              transition={{ duration: 0.3 }}
+            >
+              <div className="success-icon-wrap">
+                <Icon icon="lucide:check" width={32} />
+              </div>
+              <h3>Message Sent Successfully</h3>
+              <p>Thanks for reaching out! I've received your message and will get back to you shortly.</p>
+            </MotionDiv>
+          ) : (
+            <MotionForm 
+              key="contact-form"
+              ref={formRef} 
+              onSubmit={handleSubmit}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.3 }}
+            >
+              <div className="form-row">
+                <div className={`form-group ${errors.firstName ? 'has-error' : ''}`}>
+                  <label htmlFor="firstName">First name</label>
+                  <input type="text" id="firstName" name="firstName" placeholder="Christian"
+                    value={form.firstName} onChange={e => handleChange('firstName', e.target.value)} />
+                  {errors.firstName && <span className="error-text">{errors.firstName}</span>}
+                </div>
+                <div className={`form-group ${errors.lastName ? 'has-error' : ''}`}>
+                  <label htmlFor="lastName">Last name</label>
+                  <input type="text" id="lastName" name="lastName" placeholder="Santos"
+                    value={form.lastName} onChange={e => handleChange('lastName', e.target.value)} />
+                  {errors.lastName && <span className="error-text">{errors.lastName}</span>}
+                </div>
+              </div>
+              <div className={`form-group form-mb ${errors.email ? 'has-error' : ''}`}>
+                <label htmlFor="email">Email</label>
+                <input type="email" id="email" name="email" placeholder="hello@gmail.com"
+                  value={form.email} onChange={e => handleChange('email', e.target.value)} />
+                {errors.email && <span className="error-text">{errors.email}</span>}
+              </div>
+              <div className="form-group form-mb">
+                <label htmlFor="subject">Subject</label>
+                <input type="text" id="subject" name="subject" placeholder="Portfolio Collaboration"
+                  value={form.subject} onChange={e => handleChange('subject', e.target.value)} />
+              </div>
+              <div className={`form-group form-mb ${errors.message ? 'has-error' : ''}`}>
+                <label htmlFor="message">Message</label>
+                <textarea id="message" name="message" placeholder="Tell me about your project or idea..."
+                  value={form.message} onChange={e => handleChange('message', e.target.value)} />
+                {errors.message && <span className="error-text">{errors.message}</span>}
+              </div>
+              <div className="submit-btn" style={{ marginTop: '24px' }}>
+                <button type="submit" className="btn btn-primary" disabled={status === 'sending'}>
+                  {status === 'sending' ? 'Sending...' : 'Send message'}
+                  {status === 'sending' && <Icon icon="lucide:loader-2" width={16} className="btn-spinner" />}
+                  {status === 'idle' && <Icon icon="lucide:send" width={16} />}
+                  {status === 'error' && <Icon icon="lucide:alert-circle" width={16} />}
+                </button>
+                {status === 'error' && <p style={{ color: '#ef4444', fontSize: '14px', marginTop: '12px' }}>Failed to send. Please try again or email me directly.</p>}
+              </div>
+            </MotionForm>
+          )}
+        </AnimatePresence>
       </section>
 
       <section className="direct-section">

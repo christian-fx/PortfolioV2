@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { Icon } from '@iconify/react';
 import Layout from '../../components/Layout';
+import SEO from '../../components/SEO';
 import ProjectCard from '../../components/ProjectCard';
 import Reveal from '../../components/Reveal';
 import { PROJECTS } from '../../data/projects';
@@ -9,6 +10,7 @@ import { PROJECTS } from '../../data/projects';
 export default function Works() {
   return (
     <Layout>
+      <SEO title="Works" />
       <nav className="breadcrumb">
         <Link to="/"><Icon icon="lucide:arrow-left" width={16} />Back to Home</Link>
         <span className="separator">/</span>

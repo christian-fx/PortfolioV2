@@ -1,11 +1,13 @@
 import { Link } from 'react-router-dom';
 import { Icon } from '@iconify/react';
 import Layout from '../../components/Layout';
+import SEO from '../../components/SEO';
 import './NotFound.css';
 
 export default function NotFound() {
   return (
     <Layout>
+      <SEO title="Page Not Found" />
       <section className="not-found-section">
         <h1 className="not-found-title">404</h1>
         <h2 className="not-found-subtitle">Page Not Found</h2>

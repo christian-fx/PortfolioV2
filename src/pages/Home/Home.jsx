@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { Icon } from '@iconify/react';
 import Layout from '../../components/Layout';
+import SEO from '../../components/SEO';
 import ProjectCard from '../../components/ProjectCard';
 import Reveal from '../../components/Reveal';
 import { PROJECTS } from '../../data/projects';
@@ -27,6 +28,7 @@ const STACK = [
 export default function Home() {
   return (
     <Layout>
+      <SEO />
       {/* Hero */}
       <section className="hero-section">
         <div className="hero-profile-row">

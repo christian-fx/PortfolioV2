@@ -1,6 +1,7 @@
 import { useParams, Link } from 'react-router-dom';
 import { Icon } from '@iconify/react';
 import Layout from '../../components/Layout';
+import SEO from '../../components/SEO';
 import ProjectCard from '../../components/ProjectCard';
 import Reveal from '../../components/Reveal';
 import { PROJECTS } from '../../data/projects';
@@ -14,6 +15,7 @@ export default function CaseStudy() {
   if (!project) {
     return (
       <Layout>
+        <SEO title="Project Not Found" />
         <section 
           className="case-hero" 
           style={{ 
@@ -44,6 +46,7 @@ export default function CaseStudy() {
 
     return (
       <Layout>
+        <SEO title={`${project.title} - Coming Soon`} />
         <nav className="breadcrumb">
           <Link to="/works"><Icon icon="lucide:arrow-left" width={16} />Works</Link>
           <span className="separator">/</span>
@@ -92,6 +95,7 @@ export default function CaseStudy() {
 
   return (
     <Layout>
+      <SEO title={project.title} description={project.description} />
       {/* Breadcrumb */}
       <nav className="breadcrumb">
         <Link to="/works"><Icon icon="lucide:arrow-left" width={16} />Works</Link>

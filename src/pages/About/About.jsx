@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Icon } from '@iconify/react';
 import Layout from '../../components/Layout';
+import SEO from '../../components/SEO';
 import Reveal from '../../components/Reveal';
 import './About.css';
 
@@ -94,6 +95,7 @@ export default function About() {
   const handleFlip = (idx) => setActiveCard(prev => prev === idx ? null : idx);
   return (
     <Layout>
+      <SEO title="About" />
       {/* Hero */}
       <section className="about-hero">
         <Reveal delay={0.1}>
