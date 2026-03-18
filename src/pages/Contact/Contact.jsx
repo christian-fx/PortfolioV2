@@ -52,9 +52,9 @@ export default function Contact() {
     setStatus('sending');
 
 
-    const SERVICE_ID = 'service_41mpv7c';
-    const TEMPLATE_ID = 'template_bg0dm8q';
-    const PUBLIC_KEY = 'FFx0hZCjdOGGVUE39';
+    const SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID || 'YOUR_SERVICE_ID';
+    const TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID || 'YOUR_TEMPLATE_ID';
+    const PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY || 'YOUR_PUBLIC_KEY';
 
     /* Development fallback so UI works before you configure EmailJS */
     if (SERVICE_ID === 'YOUR_SERVICE_ID') {

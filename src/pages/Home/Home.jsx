@@ -32,7 +32,7 @@ export default function Home() {
       {/* Hero */}
       <section className="hero-section">
         <div className="hero-profile-row">
-          <img src="/christian.JPG" alt="Christian" className="profile-image" />
+          <img src="/images/christian.JPG" alt="Christian" className="profile-image" />
           <div className="hero-heading-group">
             <Reveal delay={0.1}>
               <p className="hero-role">I'm</p>
