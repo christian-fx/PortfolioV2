@@ -27,8 +27,15 @@ function SkeletonImage({ src, alt, link }) {
   );
 }
 
-export default function ProjectCard({ id, title, description, tags, image, github, live }) {
+export default function ProjectCard({ id, title, description, tags, image, github, live, status }) {
   const caseStudyLink = `/case-study/${id}`;
+
+  const getStatusColor = () => {
+    if (status === 'Completed') return '#10b981'; // Premium muted green
+    if (status === 'In Development') return '#f59e0b'; // Premium refined amber
+    if (status === 'Planning') return '#8b5cf6'; // Premium soft purple
+    return '#10b981'; // default green
+  };
 
   return (
     <article className="work-card">
@@ -60,7 +67,10 @@ export default function ProjectCard({ id, title, description, tags, image, githu
           ))}
         </div>
         <div className="work-footer">
-          <div className="completed-status"><span className="green-dot" />Completed</div>
+          <div className="project-status">
+            <span className="status-dot-premium" style={{ backgroundColor: getStatusColor() }} />
+            {status || 'Completed'}
+          </div>
           <Link to={caseStudyLink} className="view-details">
             View Details<Icon icon="lucide:arrow-up-right" width={16} />
           </Link>

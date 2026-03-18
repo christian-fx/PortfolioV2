@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import { Icon } from '@iconify/react';
 import Layout from '../../components/Layout';
 import ProjectCard from '../../components/ProjectCard';
+import Reveal from '../../components/Reveal';
 import { PROJECTS } from '../../data/projects';
 import './Home.css';
 
@@ -31,15 +32,23 @@ export default function Home() {
         <div className="hero-profile-row">
           <img src="/christian.JPG" alt="Christian" className="profile-image" />
           <div className="hero-heading-group">
-            <p className="hero-role">I'm</p>
-            <h1 className="hero-title">Christian.</h1>
-            <p className="hero-role">A Frontend Developer.</p>
+            <Reveal delay={0.1}>
+              <p className="hero-role">I'm</p>
+            </Reveal>
+            <Reveal delay={0.2}>
+              <h1 className="hero-title">Christian.</h1>
+            </Reveal>
+            <Reveal delay={0.3}>
+              <p className="hero-role">A Frontend Developer.</p>
+            </Reveal>
           </div>
         </div>
-        <p className="hero-subtitle">
-          I design and build clean front-end experiences with a strong focus on clarity,
-          performance, accessibility, and minimalist visual systems that feel effortless to use.
-        </p>
+        <Reveal delay={0.4}>
+          <p className="hero-subtitle">
+            I design and build clean front-end experiences with a strong focus on clarity,
+            performance, accessibility, and minimalist visual systems that feel effortless to use.
+          </p>
+        </Reveal>
 
         <div className="hero-social-block">
           <p className="hero-social-label">Here are my socials</p>

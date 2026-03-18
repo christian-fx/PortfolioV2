@@ -275,30 +275,27 @@
   border-top: 1px solid var(--border);
 }
 
-.completed-status {
+.project-status {
   display: flex;
   align-items: center;
   gap: 6px;
   font-size: 12px;
   font-family: "Momo Trust Display", system-ui;
-  color: var(--muted-foreground);
+  color: var(--foreground);
+  opacity: 0.85;
 }
 
-.green-dot {
-  position: relative;
-  width: 8px;
-  height: 8px;
-  background: #22c55e;
+.status-dot-premium {
+  width: 6px;
+  height: 6px;
   border-radius: 50%;
+  animation: premiumPulse 2.5s ease-in-out infinite;
 }
 
-.green-dot::before {
-  content: "";
-  position: absolute;
-  inset: -4px;
-  border-radius: 50%;
-  background: rgba(34, 197, 94, 0.4);
-  animation: ping 2s infinite;
+@keyframes premiumPulse {
+  0% { opacity: 1; }
+  50% { opacity: 0.4; }
+  100% { opacity: 1; }
 }
 
 .view-details {

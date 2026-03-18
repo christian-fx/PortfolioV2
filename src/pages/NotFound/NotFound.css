@@ -1,0 +1,50 @@
+.not-found-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 120px 20px;
+  min-height: calc(100vh - 180px); /* Pushes footer neatly to bottom */
+}
+
+.not-found-title {
+  font-size: 120px;
+  line-height: 1;
+  font-family: var(--font-family-mono, 'JetBrains Mono', monospace);
+  font-weight: 700;
+  color: var(--foreground);
+  margin-bottom: 24px;
+}
+
+.not-found-subtitle {
+  font-size: 32px;
+  font-family: "Bebas Neue", sans-serif;
+  font-weight: 400;
+  margin-bottom: 16px;
+}
+
+.not-found-desc {
+  font-size: 16px;
+  line-height: 1.6;
+  max-width: 480px;
+  color: var(--muted-foreground);
+  font-family: "Google Sans Flex", sans-serif;
+  margin-bottom: 40px;
+}
+
+.not-found-actions {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+@media (min-width: 768px) {
+  .not-found-title {
+    font-size: 160px;
+  }
+  .not-found-subtitle {
+    font-size: 40px;
+  }
+}

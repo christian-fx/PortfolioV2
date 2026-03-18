@@ -2,6 +2,7 @@ import { useParams, Link } from 'react-router-dom';
 import { Icon } from '@iconify/react';
 import Layout from '../../components/Layout';
 import ProjectCard from '../../components/ProjectCard';
+import Reveal from '../../components/Reveal';
 import { PROJECTS } from '../../data/projects';
 import './CaseStudy.css';
 
@@ -13,7 +14,18 @@ export default function CaseStudy() {
   if (!project) {
     return (
       <Layout>
-        <section className="case-hero" style={{ textAlign: 'center', padding: '120px 0' }}>
+        <section 
+          className="case-hero" 
+          style={{ 
+            textAlign: 'center', 
+            padding: '120px 20px', 
+            minHeight: 'calc(100vh - 180px)', 
+            display: 'flex', 
+            flexDirection: 'column', 
+            alignItems: 'center', 
+            justifyContent: 'center' 
+          }}
+        >
           <h1 className="case-title">Project Not Found</h1>
           <p className="case-subtitle" style={{ margin: '0 auto 32px' }}>
             The case study you are looking for doesn't exist or has been removed.
@@ -106,8 +118,12 @@ export default function CaseStudy() {
           </div>
         )}
 
-        <h1 className="case-title">{project.title}</h1>
-        <p className="case-subtitle">{project.description}</p>
+        <Reveal delay={0.1}>
+          <h1 className="case-title">{project.title}</h1>
+        </Reveal>
+        <Reveal delay={0.2}>
+          <p className="case-subtitle">{project.description}</p>
+        </Reveal>
 
         <div className="case-links">
           {project.live && project.live !== '#' && (

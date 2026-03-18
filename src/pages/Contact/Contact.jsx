@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Icon } from '@iconify/react';
 import Layout from '../../components/Layout';
+import Reveal from '../../components/Reveal';
 import './Contact.css';
 
 const SOCIALS = [
@@ -31,8 +32,12 @@ export default function Contact() {
   return (
     <Layout>
       <section className="contact-hero">
-        <h1>Let's connect</h1>
-        <p>Feel free to reach out for collaborations, opportunities, or just a chat. I'll get back to you as soon as possible.</p>
+        <Reveal delay={0.1}>
+          <h1>Let's connect</h1>
+        </Reveal>
+        <Reveal delay={0.2}>
+          <p>Feel free to reach out for collaborations, opportunities, or just a chat. I'll get back to you as soon as possible.</p>
+        </Reveal>
       </section>
 
       <section className="contact-form-section">

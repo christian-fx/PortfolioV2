@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import { Icon } from '@iconify/react';
 import Layout from '../../components/Layout';
 import ProjectCard from '../../components/ProjectCard';
+import Reveal from '../../components/Reveal';
 import { PROJECTS } from '../../data/projects';
 
 
@@ -14,7 +15,9 @@ export default function Works() {
         <span style={{ color: 'var(--muted-foreground)' }}>Works</span>
       </nav>
 
-      <h1 className="section-title">Works</h1>
+      <Reveal width="100%">
+        <h1 className="section-title">Works</h1>
+      </Reveal>
 
       <section className="work-section" style={{ animationDelay: '0.1s' }}>
         <div className="work-grid">

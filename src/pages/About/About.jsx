@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Icon } from '@iconify/react';
 import Layout from '../../components/Layout';
+import Reveal from '../../components/Reveal';
 import './About.css';
 
 /* ─────────────────────────────────────────────  DATA */
@@ -95,12 +96,18 @@ export default function About() {
     <Layout>
       {/* Hero */}
       <section className="about-hero">
-        <h1 className="hero-name">I'm Christian.</h1>
-        <h2 className="hero-title-about">A Front End Developer.</h2>
-        <p className="hero-summary">
-          I build scalable, performant, and accessible front-end architectures. Specializing in minimal
-          interfaces, I focus on writing clean code that bridges the gap between design and robust engineering.
-        </p>
+        <Reveal delay={0.1}>
+          <h1 className="hero-name">I'm Christian.</h1>
+        </Reveal>
+        <Reveal delay={0.2}>
+          <h2 className="hero-title-about">A Front End Developer.</h2>
+        </Reveal>
+        <Reveal delay={0.3}>
+          <p className="hero-summary">
+            I build scalable, performant, and accessible front-end architectures. Specializing in minimal
+            interfaces, I focus on writing clean code that bridges the gap between design and robust engineering.
+          </p>
+        </Reveal>
         <div className="hero-actions-about">
           <Link to="/contact" className="btn btn-primary">
             Say Hello <Icon icon="lucide:hand" width={16} />

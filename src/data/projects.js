@@ -11,6 +11,7 @@ export const PROJECTS = [
       { icon: 'skill-icons:tailwindcss-dark', label: 'Tailwind' },
       { icon: 'simple-icons:zustand', label: 'Zustand' }
     ],
+    status: 'Completed',
     github: '#',
     live: '#',
     hasCaseStudy: true,
@@ -80,6 +81,7 @@ export const PROJECTS = [
       { icon: 'logos:shopify', label: 'Shopify' },
       { icon: 'simple-icons:framer', label: 'Framer Motion' }
     ],
+    status: 'In Development',
     github: '#',
     live: '#',
     hasCaseStudy: false // This will route to the "Coming Soon" placeholder
@@ -95,6 +97,7 @@ export const PROJECTS = [
       { icon: 'vscode-icons:file-type-firebase', label: 'Firebase' },
       { icon: 'skill-icons:materialui', label: 'Material UI' }
     ],
+    status: 'Planning',
     github: '#',
     live: '#',
     hasCaseStudy: false
@@ -110,6 +113,7 @@ export const PROJECTS = [
       { icon: 'skill-icons:react-dark', label: 'React' },
       { icon: 'skill-icons:styledcomponents', label: 'Styled Components' }
     ],
+    status: 'Completed',
     github: '#',
     live: '#',
     hasCaseStudy: false
