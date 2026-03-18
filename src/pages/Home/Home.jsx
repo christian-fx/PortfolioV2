@@ -8,9 +8,9 @@ import { PROJECTS } from '../../data/projects';
 import './Home.css';
 
 const SOCIAL_LINKS = [
-  { href: 'https://github.com/', label: 'GitHub', icon: 'lucide:github', name: 'GitHub' },
-  { href: 'https://linkedin.com/', label: 'LinkedIn', icon: 'lucide:linkedin', name: 'LinkedIn' },
-  { href: 'https://twitter.com/', label: 'Twitter', icon: 'fa-brands:x-twitter', name: 'Twitter' },
+  { href: 'https://github.com/christian-fx', label: 'GitHub', icon: 'lucide:github', name: 'GitHub' },
+  { href: 'https://www.linkedin.com/in/tochukwu-akabueze-bb2b46391', label: 'LinkedIn', icon: 'lucide:linkedin', name: 'LinkedIn' },
+  { href: 'https://x.com/too_chi_', label: 'Twitter', icon: 'fa-brands:x-twitter', name: 'Twitter' },
   { href: 'mailto:akabuezechris432@gmail.com', label: 'Email', icon: 'lucide:mail', name: 'Email' },
 ];
 

@@ -9,9 +9,9 @@ import Reveal from '../../components/Reveal';
 import './Contact.css';
 
 const SOCIALS = [
-  { href: 'https://github.com/', label: 'GitHub', icon: 'lucide:github' },
-  { href: 'https://linkedin.com/', label: 'LinkedIn', icon: 'lucide:linkedin' },
-  { href: 'https://twitter.com/', label: 'Twitter', icon: 'mdi:twitter' },
+  { href: 'https://github.com/christian-fx', label: 'GitHub', icon: 'lucide:github' },
+  { href: 'https://www.linkedin.com/in/tochukwu-akabueze-bb2b46391', label: 'LinkedIn', icon: 'lucide:linkedin' },
+  { href: 'https://x.com/too_chi_', label: 'Twitter', icon: 'fa-brands:x-twitter' },
 ];
 
 const EMAIL = 'akabuezechris432@gmail.com';
