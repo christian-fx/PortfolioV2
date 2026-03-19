@@ -26,6 +26,8 @@ export default function ResultsSection({ data, number }) {
               src={data.testimonial.avatar}
               alt={data.testimonial.name}
               className="author-avatar"
+              loading="lazy" 
+              decoding="async"
             />
             <div className="author-info">
               <h5>{data.testimonial.name}</h5>

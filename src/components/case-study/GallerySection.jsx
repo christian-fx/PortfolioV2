@@ -9,7 +9,7 @@ export default function GallerySection({ data, number }) {
       <div className="gallery-grid">
         {data.map(({ src, alt, caption }) => (
           <div key={alt} className="gallery-item">
-            <img src={src} alt={alt} />
+            <img src={src} alt={alt} loading="lazy" decoding="async" />
             <div className="gallery-caption">{caption}</div>
           </div>
         ))}

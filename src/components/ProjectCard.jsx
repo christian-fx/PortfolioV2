@@ -26,7 +26,8 @@ function SkeletonImage({ src, alt, link }) {
           ref={imgRef} 
           src={src} 
           alt={alt} 
-          loading="lazy" 
+          loading="lazy"
+          decoding="async" 
           onLoad={() => setIsLoaded(true)}
           className={isLoaded ? 'loaded' : ''}
         />
@@ -49,19 +50,19 @@ export default function ProjectCard({ id, title, description, tags, image, githu
 
   return (
     <article className="work-card">
-      <SkeletonImage src={image} alt={title} link={caseStudyLink} />
+      <SkeletonImage src={image} alt={`${title} Preview`} link={caseStudyLink} />
       <div className="work-meta">
         <div className="work-header">
           <h3 className="work-title">{title}</h3>
           <div className="work-links">
-            {github && github !== '#' && (
-              <a href={github} className="work-link-icon" aria-label="GitHub" target="_blank" rel="noopener noreferrer">
-                <Icon icon="lucide:github" width={18} />
+            {live && live !== '#' && (
+              <a href={live} target="_blank" rel="noopener noreferrer" className="btn-icon" aria-label={`Visit ${title} Live Site`}>
+                <Icon icon="lucide:external-link" width={20} />
               </a>
             )}
-            {live && live !== '#' && (
-              <a href={live} className="work-link-icon" aria-label="Live site" target="_blank" rel="noopener noreferrer">
-                <Icon icon="lucide:globe" width={18} />
+            {github && github !== '#' && (
+              <a href={github} target="_blank" rel="noopener noreferrer" className="btn-icon" aria-label={`View ${title} Source Code`}>
+                <Icon icon="lucide:github" width={20} />
               </a>
             )}
           </div>

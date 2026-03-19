@@ -54,7 +54,7 @@ export default function CaseStudy() {
 
     return (
       <Layout>
-        <SEO title={`${project.title} - Coming Soon`} />
+        <SEO title={`${project.title} - Coming Soon`} image={project.image} url={window.location.href} />
         <nav className="breadcrumb">
           <Link to="/works"><Icon icon="lucide:arrow-left" width={16} />Works</Link>
           <span className="separator">/</span>
@@ -116,7 +116,7 @@ export default function CaseStudy() {
 
   return (
     <Layout>
-      <SEO title={project.title} description={project.description} />
+      <SEO title={project.title} description={project.description} image={project.image} url={window.location.href} />
       {/* Breadcrumb */}
       <nav className="breadcrumb">
         <Link to="/works"><Icon icon="lucide:arrow-left" width={16} />Works</Link>
@@ -128,8 +128,10 @@ export default function CaseStudy() {
       <section className="case-hero">
         <img
           src={project.image}
-          alt={`${project.title} Hero`}
+          alt={`${project.title} Interface Hero`}
           className="case-hero-image"
+          fetchpriority="high"
+          decoding="async"
         />
 
         {project.meta && (
@@ -154,12 +156,12 @@ export default function CaseStudy() {
 
         <div className="case-links">
           {project.live && project.live !== '#' && (
-            <a href={project.live} target="_blank" rel="noopener noreferrer" className="btn btn-primary">
+            <a href={project.live} target="_blank" rel="noopener noreferrer" className="btn btn-primary" aria-label={`Visit ${project.title} Live Site`}>
               <Icon icon="lucide:external-link" width={16} /> Live Site
             </a>
           )}
           {project.github && project.github !== '#' && (
-            <a href={project.github} target="_blank" rel="noopener noreferrer" className="btn">
+            <a href={project.github} target="_blank" rel="noopener noreferrer" className="btn" aria-label={`View ${project.title} Source Code`}>
               <Icon icon="lucide:github" width={16} /> View Code
             </a>
           )}
