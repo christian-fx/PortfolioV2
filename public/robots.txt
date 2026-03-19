@@ -1,0 +1,7 @@
+# robots.txt for https://devchristian.vercel.app
+
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://devchristian.vercel.app/sitemap.xml

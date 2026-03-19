@@ -54,7 +54,13 @@ export default function CaseStudy() {
 
     return (
       <Layout>
-        <SEO title={`${project.title} - Coming Soon`} image={project.image} url={window.location.href} />
+        <SEO
+        title={`${project.title} - Coming Soon`}
+        image={project.image}
+        url={window.location.href}
+        project={project}
+        keywords={project.tags?.map(t => t.label).join(', ')}
+      />
         <nav className="breadcrumb">
           <Link to="/works"><Icon icon="lucide:arrow-left" width={16} />Works</Link>
           <span className="separator">/</span>
@@ -116,7 +122,14 @@ export default function CaseStudy() {
 
   return (
     <Layout>
-      <SEO title={project.title} description={project.description} image={project.image} url={window.location.href} />
+      <SEO
+        title={project.title}
+        description={project.description}
+        image={project.image}
+        url={window.location.href}
+        project={project}
+        keywords={project.tags?.map(t => t.label).join(', ')}
+      />
       {/* Breadcrumb */}
       <nav className="breadcrumb">
         <Link to="/works"><Icon icon="lucide:arrow-left" width={16} />Works</Link>
