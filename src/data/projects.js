@@ -80,7 +80,7 @@ export const PROJECTS = [
     tags: [
       { icon: 'skill-icons:nodejs', label: 'Node.js' },
       { icon: 'skill-icons:react-dark', label: 'React' },
-      { icon: 'skill-icons:tailwindcss', label: 'Tailwind CSS' },
+      { icon: 'skill-icons:tailwindcss-dark', label: 'Tailwind CSS' },
       { icon: 'skill-icons:vitejs', label: 'Vite' },
       { icon: 'skill-icons:framer-motion', label: 'Framer Motion' }
     ],
@@ -141,7 +141,7 @@ export const PROJECTS = [
       techStack: [
         { icon: 'skill-icons:nodejs', label: 'Node.js' },
         { icon: 'skill-icons:react-dark', label: 'React' },
-        { icon: 'skill-icons:tailwindcss', label: 'Tailwind CSS' },
+        { icon: 'skill-icons:tailwindcss-dark', label: 'Tailwind CSS' },
         { icon: 'skill-icons:vitejs', label: 'Vite' },
         { icon: 'skill-icons:framer-motion', label: 'Framer Motion' },
         { icon: 'simple-icons:github', label: 'GitHub REST API' },
@@ -244,7 +244,7 @@ export const PROJECTS = [
         { icon: 'skill-icons:html', label: 'HTML5' },
         { icon: 'skill-icons:css', label: 'CSS3' },
         { icon: 'skill-icons:javascript', label: 'Vanilla JavaScript (ES Modules)' },
-        { icon: 'skill-icons:tailwindcss', label: 'Tailwind CSS v4' },
+        { icon: 'skill-icons:tailwindcss-dark', label: 'Tailwind CSS v4' },
         { icon: 'skill-icons:vitejs', label: 'Vite' },
         { icon: 'skill-icons:firebase', label: 'Firebase (Auth & Firestore)' },
         { icon: 'simple-icons:cloudinary', label: 'Cloudinary' },
@@ -275,7 +275,7 @@ export const PROJECTS = [
       { icon: 'skill-icons:javascript', label: 'Vanilla JavaScript' },
       { icon: 'skill-icons:html', label: 'HTML5' },
       { icon: 'skill-icons:css', label: 'CSS3' },
-      { icon: 'skill-icons:tailwindcss', label: 'Tailwind CSS' },
+      { icon: 'skill-icons:tailwindcss-dark', label: 'Tailwind CSS' },
       { icon: 'skill-icons:firebase', label: 'Firebase (Auth & Firestore)' }
     ],
     status: 'in-development',
@@ -345,7 +345,7 @@ export const PROJECTS = [
         { icon: 'skill-icons:html', label: 'HTML5' },
         { icon: 'skill-icons:css', label: 'CSS3' },
         { icon: 'skill-icons:javascript', label: 'Vanilla JavaScript (ES6+)' },
-        { icon: 'skill-icons:tailwindcss', label: 'Tailwind CSS' },
+        { icon: 'skill-icons:tailwindcss-dark', label: 'Tailwind CSS' },
         { icon: 'skill-icons:firebase', label: 'Firebase (Auth & Firestore)' },
         { icon: 'skill-icons:vitejs', label: 'Vite' }
       ],
@@ -374,7 +374,7 @@ export const PROJECTS = [
     tags: [
       { icon: 'skill-icons:html-dark', label: 'HTML' },
       { icon: 'logos:css', label: 'CSS' },
-      { icon: 'simple-icons:tailwindcss', label: 'Tailwind CSS' },
+      { icon: 'simple-icons:tailwindcss-dark', label: 'Tailwind CSS' },
       { icon: 'simple-icons:firebase', label: 'Firebase' }
     ],
     status: 'Completed',
@@ -410,7 +410,7 @@ export const PROJECTS = [
         { icon: 'skill-icons:html', label: 'HTML5' },
         { icon: 'skill-icons:css', label: 'CSS3' },
         { icon: 'skill-icons:javascript', label: 'JavaScript' },
-        { icon: 'skill-icons:tailwindcss', label: 'Tailwind CSS' },
+        { icon: 'skill-icons:tailwindcss-dark', label: 'Tailwind CSS' },
         { icon: 'skill-icons:firebase', label: 'Firebase (Auth & Database)' },
         { icon: 'skill-icons:vercel-dark', label: 'Vercel' }
       ],
@@ -438,7 +438,7 @@ export const PROJECTS = [
     description: 'Fitness Hub is an AI-powered fitness web application that helps users achieve their health goals through personalized workout plans, progress tracking, and interactive training experiences.',
     tags: [
       { icon: 'skill-icons:nextjs-dark', label: 'Next.js' },
-      { icon: 'skill-icons:tailwindcss', label: 'Tailwind CSS' },
+      { icon: 'skill-icons:tailwindcss-dark', label: 'Tailwind CSS' },
       { icon: 'skill-icons:firebase', label: 'Firebase' },
       { icon: 'skill-icons:react-dark', label: 'React' }
     ],
@@ -507,7 +507,7 @@ export const PROJECTS = [
       }],
       techStack: [
         { icon: 'skill-icons:nextjs-dark', label: 'Next.js (App Router)' },
-        { icon: 'skill-icons:tailwindcss', label: 'Tailwind CSS' },
+        { icon: 'skill-icons:tailwindcss-dark', label: 'Tailwind CSS' },
         { icon: 'skill-icons:react-dark', label: 'React' },
         { icon: 'skill-icons:firebase', label: 'Firebase (Auth & Firestore)' },
         { icon: 'skill-icons:vercel-dark', label: 'Vercel' },
