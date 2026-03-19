@@ -7,6 +7,14 @@ import Reveal from '../../components/Reveal';
 import { PROJECTS } from '../../data/projects';
 import './CaseStudy.css';
 
+// Section Components
+import OverviewSection from '../../components/case-study/OverviewSection';
+import ChallengesSection from '../../components/case-study/ChallengesSection';
+import SolutionSection from '../../components/case-study/SolutionSection';
+import TechStackSection from '../../components/case-study/TechStackSection';
+import ResultsSection from '../../components/case-study/ResultsSection';
+import GallerySection from '../../components/case-study/GallerySection';
+
 export default function CaseStudy() {
   const { id } = useParams();
   const project = PROJECTS.find((p) => p.id === id);
@@ -46,7 +54,7 @@ export default function CaseStudy() {
 
     return (
       <Layout>
-        <SEO title={`${project.title} - Coming Soon`} />
+        <SEO title={`${project.title} - Coming Soon`} image={project.image} url={window.location.href} />
         <nav className="breadcrumb">
           <Link to="/works"><Icon icon="lucide:arrow-left" width={16} />Works</Link>
           <span className="separator">/</span>
@@ -90,12 +98,25 @@ export default function CaseStudy() {
     );
   }
 
-  // 3. Full Case Study Rendering
+  // 3. Normalize Case Study Data Structure
+  // This adapter function allows seamless transition between the legacy object structure
+  // and the new customizable sections array structure without breaking existing data.
   const cs = project.caseStudy || {};
+  let sections = cs.sections || [];
+  
+  if (sections.length === 0) {
+    // Legacy mapping
+    if (cs.overview) sections.push({ type: 'overview', content: cs.overview });
+    if (cs.challenges) sections.push({ type: 'challenges', content: cs.challenges });
+    if (cs.solution) sections.push({ type: 'solution', content: cs.solution });
+    if (cs.techStack) sections.push({ type: 'tech-stack', content: cs.techStack });
+    if (cs.results) sections.push({ type: 'results', content: cs.results });
+    if (cs.gallery) sections.push({ type: 'gallery', content: cs.gallery });
+  }
 
   return (
     <Layout>
-      <SEO title={project.title} description={project.description} />
+      <SEO title={project.title} description={project.description} image={project.image} url={window.location.href} />
       {/* Breadcrumb */}
       <nav className="breadcrumb">
         <Link to="/works"><Icon icon="lucide:arrow-left" width={16} />Works</Link>
@@ -107,15 +128,19 @@ export default function CaseStudy() {
       <section className="case-hero">
         <img
           src={project.image}
-          alt={`${project.title} Hero`}
+          alt={`${project.title} Interface Hero`}
           className="case-hero-image"
+          fetchpriority="high"
+          decoding="async"
         />
 
         {project.meta && (
           <div className="case-meta">
             {Object.entries(project.meta).map(([key, value]) => (
               <div key={key} className="case-meta-item">
-                <span className="case-meta-label">{key.charAt(0).toUpperCase() + key.slice(1)}</span>
+                <span className="case-meta-label">
+                  {key === 'projectType' ? 'Type' : key.charAt(0).toUpperCase() + key.slice(1).replace('_', ' ')}
+                </span>
                 <span className="case-meta-value">{value}</span>
               </div>
             ))}
@@ -131,148 +156,34 @@ export default function CaseStudy() {
 
         <div className="case-links">
           {project.live && project.live !== '#' && (
-            <a href={project.live} target="_blank" rel="noopener noreferrer" className="btn btn-primary">
+            <a href={project.live} target="_blank" rel="noopener noreferrer" className="btn btn-primary" aria-label={`Visit ${project.title} Live Site`}>
               <Icon icon="lucide:external-link" width={16} /> Live Site
             </a>
           )}
           {project.github && project.github !== '#' && (
-            <a href={project.github} target="_blank" rel="noopener noreferrer" className="btn">
+            <a href={project.github} target="_blank" rel="noopener noreferrer" className="btn" aria-label={`View ${project.title} Source Code`}>
               <Icon icon="lucide:github" width={16} /> View Code
             </a>
           )}
         </div>
       </section>
 
-      {/* 01 — Overview */}
-      {cs.overview && (
-        <section className="case-section">
-          <div className="section-header">
-            <p className="section-number">01 / Overview</p>
-            <h2 className="case-section-title">Project Background</h2>
-          </div>
-          <div className="section-content">
-            {Array.isArray(cs.overview)
-              ? cs.overview.map((para, i) => <p key={i}>{para}</p>)
-              : <p>{cs.overview}</p>}
-          </div>
-        </section>
-      )}
-
-      {/* 02 — Challenges */}
-      {cs.challenges && cs.challenges.length > 0 && (
-        <section className="case-section">
-          <div className="section-header">
-            <p className="section-number">02 / Challenges</p>
-            <h2 className="case-section-title">Key Challenges</h2>
-          </div>
-          <div className="challenge-grid">
-            {cs.challenges.map(({ icon, title, desc }) => (
-              <div key={title} className="challenge-card">
-                <div className="challenge-icon"><Icon icon={icon} width={24} /></div>
-                <h3 className="challenge-title">{title}</h3>
-                <p className="challenge-desc">{desc}</p>
-              </div>
-            ))}
-          </div>
-        </section>
-      )}
-
-      {/* 03 — Solution */}
-      {cs.solution && cs.solution.length > 0 && (
-        <section className="case-section">
-          <div className="section-header">
-            <p className="section-number">03 / Solution</p>
-            <h2 className="case-section-title">Approach &amp; Implementation</h2>
-          </div>
-          <div className="solution-list">
-            {cs.solution.map(({ title, desc }, index) => {
-              const num = (index + 1).toString().padStart(2, '0');
-              return (
-                <div key={title} className="solution-item">
-                  <div className="solution-number">{num}</div>
-                  <div className="solution-content">
-                    <h4>{title}</h4>
-                    <p>{desc}</p>
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-        </section>
-      )}
-
-      {/* 04 — Tech Stack */}
-      {cs.techStack && cs.techStack.length > 0 && (
-        <section className="case-section">
-          <div className="section-header">
-            <p className="section-number">04 / Technology</p>
-            <h2 className="case-section-title">Tech Stack</h2>
-          </div>
-          <div className="tech-grid">
-            {cs.techStack.map(({ icon, label }) => (
-              <span key={label} className="tech-badge">
-                <Icon icon={icon} width={18} />{label}
-              </span>
-            ))}
-          </div>
-        </section>
-      )}
-
-      {/* 05 — Results */}
-      {cs.results && (
-        <section className="case-section">
-          <div className="section-header">
-            <p className="section-number">05 / Results</p>
-            <h2 className="case-section-title">Impact &amp; Metrics</h2>
-          </div>
+      {/* Dynamic Sections Renderer */}
+      <div className="case-study-sections">
+        {sections.map((section, index) => {
+          const num = (index + 1).toString().padStart(2, '0');
           
-          {cs.results.metrics && cs.results.metrics.length > 0 && (
-            <div className="results-grid">
-              {cs.results.metrics.map(({ number, label }) => (
-                <div key={label} className="result-card">
-                  <div className="result-number">{number}</div>
-                  <div className="result-label">{label}</div>
-                </div>
-              ))}
-            </div>
-          )}
-
-          {cs.results.testimonial && (
-            <div className="testimonial">
-              <p className="testimonial-text">{cs.results.testimonial.text}</p>
-              <div className="testimonial-author">
-                <img
-                  src={cs.results.testimonial.avatar}
-                  alt={cs.results.testimonial.name}
-                  className="author-avatar"
-                />
-                <div className="author-info">
-                  <h5>{cs.results.testimonial.name}</h5>
-                  <p>{cs.results.testimonial.role}</p>
-                </div>
-              </div>
-            </div>
-          )}
-        </section>
-      )}
-
-      {/* 06 — Gallery */}
-      {cs.gallery && cs.gallery.length > 0 && (
-        <section className="case-section">
-          <div className="section-header">
-            <p className="section-number">06 / Gallery</p>
-            <h2 className="case-section-title">Screenshots</h2>
-          </div>
-          <div className="gallery-grid">
-            {cs.gallery.map(({ src, alt, caption }) => (
-              <div key={alt} className="gallery-item">
-                <img src={src} alt={alt} />
-                <div className="gallery-caption">{caption}</div>
-              </div>
-            ))}
-          </div>
-        </section>
-      )}
+          switch(section.type) {
+            case 'overview': return <OverviewSection key={index} data={section.content} number={num} />;
+            case 'challenges': return <ChallengesSection key={index} data={section.content} number={num} />;
+            case 'solution': return <SolutionSection key={index} data={section.content} number={num} />;
+            case 'tech-stack': return <TechStackSection key={index} data={section.content} number={num} />;
+            case 'results': return <ResultsSection key={index} data={section.content} number={num} />;
+            case 'gallery': return <GallerySection key={index} data={section.content} number={num} />;
+            default: return null;
+          }
+        })}
+      </div>
 
       {/* Next Project */}
       {(() => {

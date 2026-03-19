@@ -9,8 +9,9 @@ import Contact from './pages/Contact/Contact';
 import CaseStudy from './pages/CaseStudy/CaseStudy';
 import NotFound from './pages/NotFound/NotFound';
 import { useEffect } from 'react';
-import ReactGA from 'react-ga4';
+import ReactGAPackage from 'react-ga4';
 
+const ReactGA = ReactGAPackage.default || ReactGAPackage;
 const GA_MEASUREMENT_ID = import.meta.env.VITE_GA_ID;
 if (GA_MEASUREMENT_ID) {
   ReactGA.initialize(GA_MEASUREMENT_ID);

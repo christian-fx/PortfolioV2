@@ -26,7 +26,8 @@ function SkeletonImage({ src, alt, link }) {
           ref={imgRef} 
           src={src} 
           alt={alt} 
-          loading="lazy" 
+          loading="lazy"
+          decoding="async" 
           onLoad={() => setIsLoaded(true)}
           className={isLoaded ? 'loaded' : ''}
         />
@@ -40,26 +41,28 @@ export default function ProjectCard({ id, title, description, tags, image, githu
 
   const getStatusColor = () => {
     if (status === 'Completed') return '#10b981'; // Premium muted green
-    if (status === 'In Development') return '#f59e0b'; // Premium refined amber
+    if (status === 'In Development' || status === 'in-development') return '#f59e0b'; // Premium refined amber
     if (status === 'Planning') return '#8b5cf6'; // Premium soft purple
     return '#10b981'; // default green
   };
 
+  const formattedStatus = status === 'in-development' ? 'In Development' : (status || 'Completed');
+
   return (
     <article className="work-card">
-      <SkeletonImage src={image} alt={title} link={caseStudyLink} />
+      <SkeletonImage src={image} alt={`${title} Preview`} link={caseStudyLink} />
       <div className="work-meta">
         <div className="work-header">
           <h3 className="work-title">{title}</h3>
           <div className="work-links">
-            {github && (
-              <a href={github} className="work-link-icon" aria-label="GitHub" target="_blank" rel="noopener noreferrer">
-                <Icon icon="lucide:github" width={18} />
+            {live && live !== '#' && (
+              <a href={live} target="_blank" rel="noopener noreferrer" className="btn-icon" aria-label={`Visit ${title} Live Site`}>
+                <Icon icon="lucide:external-link" width={20} />
               </a>
             )}
-            {live && (
-              <a href={live} className="work-link-icon" aria-label="Live site" target="_blank" rel="noopener noreferrer">
-                <Icon icon="lucide:globe" width={18} />
+            {github && github !== '#' && (
+              <a href={github} target="_blank" rel="noopener noreferrer" className="btn-icon" aria-label={`View ${title} Source Code`}>
+                <Icon icon="lucide:github" width={20} />
               </a>
             )}
           </div>
@@ -77,7 +80,7 @@ export default function ProjectCard({ id, title, description, tags, image, githu
         <div className="work-footer">
           <div className="project-status">
             <span className="status-dot-premium" style={{ backgroundColor: getStatusColor() }} />
-            {status || 'Completed'}
+            {formattedStatus}
           </div>
           <Link to={caseStudyLink} className="view-details">
             View Details<Icon icon="lucide:arrow-up-right" width={16} />
