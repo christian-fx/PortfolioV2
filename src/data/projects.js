@@ -174,7 +174,7 @@ export const PROJECTS = [
       { icon: 'skill-icons:javascript', label: 'Vanilla JavaScript' },
       { icon: 'skill-icons:html', label: 'HTML5' },
       { icon: 'skill-icons:css', label: 'CSS3' },
-      { icon: 'skill-icons:tailwindcss', label: 'Tailwind CSS' },
+      { icon: 'skill-icons:tailwindcss-dark', label: 'Tailwind CSS' },
       { icon: 'skill-icons:firebase', label: 'Firebase (Auth & Firestore)' }
     ],
     status: 'in-development',
