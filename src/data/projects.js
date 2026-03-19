@@ -168,7 +168,7 @@ export const PROJECTS = [
     id: 'gadgetstore-admin',
     title: 'Gadget Store Admin Dashboard',
     category: 'E-commerce',
-    image: 'https://storage.googleapis.com/banani-generated-images/generated-images/gadget-store-cover.jpg',
+    image: '/images/devfolioHero.png',
     description: 'A modern, responsive admin dashboard for managing a gadget e-commerce store, featuring real-time analytics, inventory and order management, and product CRUD operations—all powered by Firebase and Vanilla JavaScript.',
     tags: [
       { icon: 'skill-icons:javascript', label: 'Vanilla JavaScript' },
@@ -269,7 +269,7 @@ export const PROJECTS = [
     id: 'go-gadgets-store',
     title: 'Go Gadgets Customer Store',
     category: 'E-commerce',
-    image: '/images/GoGadgetsLanding.jpeg',
+    image: '/images/goGadgetsLanding.jpeg',
     description: 'A modern, fast, and fully functional single-page application (SPA) storefront for Go Gadgets e-commerce platform, featuring seamless navigation, secure checkout, and real-time product updates.',
     tags: [
       { icon: 'skill-icons:javascript', label: 'Vanilla JavaScript' },
