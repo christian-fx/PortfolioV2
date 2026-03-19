@@ -22,55 +22,75 @@ export const PROJECTS = [
       duration: '4 Months',
     },
     caseStudy: {
-      overview: [
-        'FinanceFlow Inc. approached me to rebuild their legacy dashboard that was struggling with performance issues and poor user engagement. The existing platform, built with jQuery and outdated charting libraries, was experiencing 8-second load times and 40% bounce rates.',
-        'The goal was to create a modern, performant dashboard that could handle real-time data streams while maintaining 60fps animations and sub-second initial load times. The platform needed to serve both retail investors managing personal portfolios and financial advisors overseeing multiple client accounts.'
-      ],
-      challenges: [
-        { icon: 'lucide:zap', title: 'Real-time Performance', desc: 'Handling 1000+ WebSocket updates per second without UI jank or memory leaks' },
-        { icon: 'lucide:shield', title: 'Data Security', desc: 'Implementing bank-grade encryption while maintaining instant data access' },
-        { icon: 'lucide:smartphone', title: 'Responsive Complexity', desc: 'Adapting dense financial data layouts for mobile without information loss' }
-      ],
-      solution: [
-        { title: 'Virtualized Data Grids', desc: 'Implemented windowing techniques rendering only visible rows, reducing DOM nodes from 10,000 to 50. Combined with React Query\'s optimistic updates for perceived instant interactions.' },
-        { title: 'WebSocket Architecture', desc: 'Built a custom hook-based WebSocket manager with automatic reconnection, message batching, and priority queuing. Critical price updates render in 16ms, background analytics deferred to idle time.' },
-        { title: 'Adaptive Charting System', desc: 'Created a D3.js wrapper that automatically switches rendering modes—SVG for precision on desktop, Canvas for performance on mobile, WebGL for 10k+ point datasets.' },
-        { title: 'Edge-First Deployment', desc: 'Leveraged Vercel Edge Functions for API aggregation, reducing client-side requests from 12 to 1. Static dashboard shell loads in 200ms, data streams progressively enhance.' }
-      ],
-      techStack: [
-        { icon: 'skill-icons:react-dark', label: 'React 18' },
-        { icon: 'skill-icons:typescript', label: 'TypeScript' },
-        { icon: 'skill-icons:nextjs-dark', label: 'Next.js 14' },
-        { icon: 'skill-icons:tailwindcss-dark', label: 'Tailwind CSS' },
-        { icon: 'skill-icons:react-dark', label: 'TanStack Query' },
-        { icon: 'simple-icons:zustand', label: 'Zustand' },
-        { icon: 'skill-icons:d3-dark', label: 'D3.js' },
-        { icon: 'skill-icons:vercel-dark', label: 'Vercel Edge' },
-        { icon: 'skill-icons:postgresql-dark', label: 'PostgreSQL' }
-      ],
-      results: {
-        metrics: [
-          { number: '0.8s', label: 'Time to Interactive' },
-          { number: '60', label: 'FPS During Updates' },
-          { number: '-65%', label: 'Bounce Rate' },
-          { number: '4.9★', label: 'User Rating' }
-        ],
-        testimonial: {
-          text: 'Christian transformed our struggling platform into something our users genuinely love. The attention to performance details—down to optimizing re-renders for each cell in our data grids—showed engineering excellence we hadn\'t seen before. Our advisors now complete portfolio reviews in half the time.',
-          name: 'Sarah Chen',
-          role: 'VP of Product, FinanceFlow Inc.',
-          avatar: 'https://storage.googleapis.com/banani-generated-images/generated-images/d298266c-443a-4430-a988-7c164818a359.jpg'
+      sections: [
+        {
+          type: 'overview',
+          content: [
+            'FinanceFlow Inc. approached me to rebuild an aging legacy dashboard that suffered from severe rendering bottlenecks and a disconnected user experience. The previous platform, reliant on jQuery and outdated charting libraries, forced users to endure 8-second load times resulting in a 40% bounce rate.',
+            'The primary objective was to architect a modern, highly performant dashboard capable of ingesting high-frequency real-time data streams. It needed to maintain crisp 60fps animations and achieve sub-second initial load times, serving both individual retail investors profiling personal portfolios and institutional advisors managing hundreds of client accounts.'
+          ]
+        },
+        {
+          type: 'challenges',
+          content: [
+            { icon: 'lucide:zap', title: 'Real-time Canvas Rendering', desc: 'Processing and rendering over 1,000 WebSocket pricing updates per second without causing main-thread UI jank or memory leaks.' },
+            { icon: 'lucide:shield', title: 'Data Security & Integrity', desc: 'Enforcing bank-grade client-side encryption while maintaining instant, unhindered data access for authorized sessions.' },
+            { icon: 'lucide:smartphone', title: 'Dense Data on Mobile', desc: 'Translating incredibly dense financial data grids and complex charts into an intuitive, readable mobile interface.' }
+          ]
+        },
+        {
+          type: 'solution',
+          content: [
+            { title: 'Virtualized Data Grids', desc: 'Implemented strict windowing techniques that only render visible rows on the DOM. This reduced the active DOM node count from over 10,000 to just 50, which, when combined with React Query\'s optimistic updates, created a perceived instant interaction state.' },
+            { title: 'Custom WebSocket Architecture', desc: 'Engineered a hook-based WebSocket manager with automatic sophisticated reconnection strategies, message batching, and priority queuing. Critical asset updates render visually in under 16ms, while heavy background analytics are creatively deferred to browser idle time.' },
+            { title: 'Adaptive Charting Engine', desc: 'Authored a dynamic D3.js wrapper that intelligently evaluates the device hardware and dataset size, automatically switching rendering modes between precise SVGs on desktop and high-performance Canvas on mobile devices.' },
+            { title: 'Edge-First API Deployment', desc: 'Migrated heavy data aggregation tasks to Vercel Edge Functions. This strategic move reduced client-side network requests by over 90%, allowing the static dashboard shell to load globally in under 200ms.' }
+          ]
+        },
+        {
+          type: 'tech-stack',
+          content: [
+            { icon: 'skill-icons:react-dark', label: 'React 18' },
+            { icon: 'skill-icons:typescript', label: 'TypeScript' },
+            { icon: 'skill-icons:nextjs-dark', label: 'Next.js 14' },
+            { icon: 'skill-icons:tailwindcss-dark', label: 'Tailwind CSS' },
+            { icon: 'skill-icons:react-dark', label: 'TanStack Query' },
+            { icon: 'simple-icons:zustand', label: 'Zustand' },
+            { icon: 'skill-icons:d3-dark', label: 'D3.js' },
+            { icon: 'skill-icons:vercel-dark', label: 'Vercel Edge' },
+            { icon: 'skill-icons:postgresql-dark', label: 'PostgreSQL' }
+          ]
+        },
+        {
+          type: 'results',
+          content: {
+            metrics: [
+              { number: '0.8s', label: 'Time to Interactive' },
+              { number: '60', label: 'FPS During Updates' },
+              { number: '-65%', label: 'Bounce Rate' },
+              { number: '4.9★', label: 'User Rating' }
+            ],
+            testimonial: {
+              text: 'Christian transformed our struggling platform into something our users genuinely love. The attention to performance details—down to optimizing re-renders for each cell in our data grids—showed engineering excellence we hadn\'t seen before. Our advisors now complete portfolio reviews in half the time.',
+              name: 'Sarah Chen',
+              role: 'VP of Product, FinanceFlow Inc.',
+              avatar: 'https://storage.googleapis.com/banani-generated-images/generated-images/d298266c-443a-4430-a988-7c164818a359.jpg'
+            }
+          }
+        },
+        {
+          type: 'gallery',
+          content: [
+            { src: 'https://storage.googleapis.com/banani-generated-images/generated-images/94f1209d-354a-4bbf-8387-9d17992f8af2.jpg', alt: 'Dashboard Overview', caption: 'Main dashboard with portfolio overview' },
+            { src: 'https://storage.googleapis.com/banani-generated-images/generated-images/dbbf9b07-e2b2-46e4-9fe6-067c9dd31bbd.jpg', alt: 'Analytics View', caption: 'Detailed analytics with custom date ranges' },
+            { src: 'https://storage.googleapis.com/banani-generated-images/generated-images/2931f37a-6689-4bd4-86c9-9276f20d1539.jpg', alt: 'Mobile View', caption: 'Responsive mobile experience' },
+            { src: 'https://storage.googleapis.com/banani-generated-images/generated-images/d298266c-443a-4430-a988-7c164818a359.jpg', alt: 'Dark Mode', caption: 'Dark mode for reduced eye strain' }
+          ]
         }
-      },
-      gallery: [
-        { src: 'https://storage.googleapis.com/banani-generated-images/generated-images/94f1209d-354a-4bbf-8387-9d17992f8af2.jpg', alt: 'Dashboard Overview', caption: 'Main dashboard with portfolio overview' },
-        { src: 'https://storage.googleapis.com/banani-generated-images/generated-images/dbbf9b07-e2b2-46e4-9fe6-067c9dd31bbd.jpg', alt: 'Analytics View', caption: 'Detailed analytics with custom date ranges' },
-        { src: 'https://storage.googleapis.com/banani-generated-images/generated-images/2931f37a-6689-4bd4-86c9-9276f20d1539.jpg', alt: 'Mobile View', caption: 'Responsive mobile experience' },
-        { src: 'https://storage.googleapis.com/banani-generated-images/generated-images/d298266c-443a-4430-a988-7c164818a359.jpg', alt: 'Dark Mode', caption: 'Dark mode for reduced eye strain' }
       ]
     }
   },
-  
+
   {
     id: 'devfolio',
     title: 'Devfolio',
@@ -78,95 +98,75 @@ export const PROJECTS = [
     image: 'https://storage.googleapis.com/banani-generated-images/generated-images/devfolio-cover.jpg',
     description: 'Devfolio is a Node.js CLI tool that scaffolds a fully functional, GitHub-powered developer portfolio in one command, fetching live data from GitHub to keep it always up-to-date.',
     tags: [
-      { icon: 'skill-icons:nodejs', label: 'Node.js' },
+      { icon: 'skill-icons:nodejs-dark', label: 'Node.js' },
       { icon: 'skill-icons:react-dark', label: 'React' },
-      { icon: 'skill-icons:tailwindcss', label: 'Tailwind CSS' },
+      { icon: 'skill-icons:tailwindcss-dark', label: 'Tailwind CSS' },
       { icon: 'skill-icons:vitejs', label: 'Vite' },
       { icon: 'skill-icons:framer-motion', label: 'Framer Motion' }
     ],
-    status: 'in-development',
+    status: 'In Development',
     github: 'https://github.com/christian-fx/Devfolio',
     live: '#',
     hasCaseStudy: true,
     meta: {
-      project_type: 'Open Source',
+      projectType: 'Open Source',
       year: '2025',
       role: 'Creator and Maintainer',
       collaborators: '4 Contributors'
     },
     caseStudy: {
-      overview: [
-        'Devfolio is a Node.js CLI tool that generates production-ready developer portfolio websites in a single command.',
-        'It fetches live GitHub data — including repositories, stars, languages, bio, and profile picture — ensuring your portfolio is always current without manual updates.',
-        'With multiple template options, Tailwind CSS styling, optional Framer Motion animations, and Vite-powered builds, developers get a fast, fully functional portfolio ready for deployment in minutes.'
-      ],
-      challenges: [
-      {
-        icon: 'lucide:zap',
-        title: 'Automating Portfolio Generation',
-        desc: 'Creating a CLI tool that generates a complete React portfolio in one command, with no manual setup, required careful handling of templates, project structure, and dependencies.'
-      },
-      {
-        icon: 'lucide:github',
-        title: 'Live GitHub Data Integration',
-        desc: 'Fetching and displaying live GitHub repositories, languages, stars, and profile information required proper API handling and asynchronous data management.'
-      },
-      {
-        icon: 'lucide:paintbrush',
-        title: 'Multiple Template Support',
-        desc: 'Allowing users to choose between different portfolio templates while ensuring compatibility and minimal configuration was challenging.'
-      },
-      {
-        icon: 'lucide:rocket',
-        title: 'Optimized Build & Deployment',
-        desc: 'Ensuring the generated project works seamlessly with Vite for fast development and is ready to deploy to Vercel, Netlify, or GitHub Pages.'
-      }],
-      solution: [
-      {
-        title: 'One-Command CLI Tool',
-        desc: 'Built the CLI with Node.js and Inquirer.js, allowing users to scaffold a full portfolio project by answering two quick prompts.'
-      },
-      {
-        title: 'Live GitHub Integration',
-        desc: 'Implemented GitHub REST API calls to automatically fetch repositories, stars, languages, and profile data, keeping the portfolio up-to-date.'
-      },
-      {
-        title: 'Template-Based Architecture',
-        desc: 'Created multiple React templates that can be selected during CLI setup, all pre-configured with Tailwind CSS and optional Framer Motion animations.'
-      },
-      {
-        title: 'Production-Ready Build',
-        desc: 'Used Vite for fast dev builds and optimized production output, ensuring the generated portfolio is ready to deploy immediately.'
-      }],
-      techStack: [
-        { icon: 'skill-icons:nodejs', label: 'Node.js' },
-        { icon: 'skill-icons:react-dark', label: 'React' },
-        { icon: 'skill-icons:tailwindcss', label: 'Tailwind CSS' },
-        { icon: 'skill-icons:vitejs', label: 'Vite' },
-        { icon: 'skill-icons:framer-motion', label: 'Framer Motion' },
-        { icon: 'simple-icons:github', label: 'GitHub REST API' },
-        { icon: 'skill-icons:inquirer', label: 'Inquirer.js' }
-      ],
-      results: {
-        metrics: [
-          { number: '1 Command', label: 'Portfolio Generated Instantly' },
-          { number: 'Live', label: 'GitHub Data Updates Automatically' },
-          { number: 'Customizable', label: 'Multiple Templates & Animations' },
-          { number: 'Deployable', label: 'Vercel / Netlify / GitHub Pages' }
-        ]
-      },
-      gallery: [
-        { src: 'https://storage.googleapis.com/banani-generated-images/generated-images/devfolio-dashboard.jpg', alt: 'CLI Usage', caption: 'Running the CLI to generate a portfolio' },
-        { src: 'https://storage.googleapis.com/banani-generated-images/generated-images/devfolio-template.jpg', alt: 'Template Preview', caption: 'Preview of selectable templates' },
-        { src: 'https://storage.googleapis.com/banani-generated-images/generated-images/devfolio-live-data.jpg', alt: 'Live GitHub Data', caption: 'Portfolio fetching live GitHub repositories and stats' },
-        { src: 'https://storage.googleapis.com/banani-generated-images/generated-images/devfolio-deploy.jpg', alt: 'Deployment Ready', caption: 'Generated portfolio ready for deployment' }
+      sections: [
+        {
+          type: 'overview',
+          content: [
+            'Devfolio is a specialized Node.js CLI tool designed to completely eliminate the friction of creating and updating developer portfolios. By executing a single command, developers can scaffold a highly customizable, production-ready React web application.',
+            'What truly sets Devfolio apart is its deep, automated GitHub integration. The generated portfolio automatically hooks into the GitHub REST API to fetch live repositories, language statistics, star counts, and profile metadata. This ensures the developer\'s portfolio is continuously and effortlessly up-to-date without any manual CMS management or code pushes.'
+          ]
+        },
+        {
+          type: 'challenges',
+          content: [
+            { icon: 'lucide:zap', title: 'Automated Code Scaffolding', desc: 'Writing a robust Node CLI that cleanly handles file system operations, dynamic template hydration, and dependency installation without failing on varying OS environments.' },
+            { icon: 'lucide:github', title: 'Live GitHub Data Integration', desc: 'Mapping raw, unpaginated GitHub API data into normalized, accessible props for the UI while avoiding rate limits.' },
+            { icon: 'lucide:paintbrush', title: 'Modular Template Support', desc: 'Engineering a core scaffolding engine that seamlessly swaps between entirely different Tailwind and Framer Motion layouts based on CLI inputs.' }
+          ]
+        },
+        {
+          type: 'solution',
+          content: [
+            { title: 'Interactive CLI Engine', desc: 'Utilized Inquirer.js to build an intuitive, guided terminal experience. The CLI asks users targeted questions about their preferences and instantly boots up the tailored React environment using fs-extra for fast template copying.' },
+            { title: 'Optimized GitHub Data Fetching', desc: 'Built a smart caching layer and specific query parameters into the GitHub REST API fetchers, pulling down live repositories, languages, and profile data instantly upon load, keeping the site perpetually fresh.' },
+            { title: 'Pluggable Architecture', desc: 'Abstracted the portfolio \'theme\' into easily swappable JSON and component files, allowing the community to eventually design and inject their own custom Devfolio themes.' }
+          ]
+        },
+        {
+          type: 'tech-stack',
+          content: [
+            { icon: 'skill-icons:nodejs-dark', label: 'Node.js' },
+            { icon: 'skill-icons:react-dark', label: 'React' },
+            { icon: 'skill-icons:tailwindcss-dark', label: 'Tailwind CSS' },
+            { icon: 'skill-icons:vitejs', label: 'Vite' },
+            { icon: 'skill-icons:framer-motion', label: 'Framer Motion' },
+            { icon: 'simple-icons:github', label: 'GitHub REST API' },
+            { icon: 'skill-icons:npm-dark', label: 'Inquirer.js' }
+          ]
+        },
+        {
+          type: 'gallery',
+          content: [
+            { src: 'https://storage.googleapis.com/banani-generated-images/generated-images/devfolio-dashboard.jpg', alt: 'CLI Usage', caption: 'Running the interactive Devfolio CLI to generate a portfolio' },
+            { src: 'https://storage.googleapis.com/banani-generated-images/generated-images/devfolio-template.jpg', alt: 'Template Preview', caption: 'Browsing through the selectable React templates' },
+            { src: 'https://storage.googleapis.com/banani-generated-images/generated-images/devfolio-live-data.jpg', alt: 'Live GitHub Data', caption: 'Portfolio actively displaying live GitHub repositories and stats' },
+            { src: 'https://storage.googleapis.com/banani-generated-images/generated-images/devfolio-deploy.jpg', alt: 'Deployment Ready', caption: 'The generated Vite portfolio ready for an immediate production deploy' }
+          ]
+        }
       ]
     }
   },
-  
+
   {
     id: 'gadgetstore-admin',
-    title: 'Gadget Store Admin Dashboard',
+    title: 'Admin Dashboard',
     category: 'E-commerce',
     image: 'https://storage.googleapis.com/banani-generated-images/generated-images/gadget-store-cover.jpg',
     description: 'A modern, responsive admin dashboard for managing a gadget e-commerce store, featuring real-time analytics, inventory and order management, and product CRUD operations—all powered by Firebase and Vanilla JavaScript.',
@@ -174,195 +174,137 @@ export const PROJECTS = [
       { icon: 'skill-icons:javascript', label: 'Vanilla JavaScript' },
       { icon: 'skill-icons:html', label: 'HTML5' },
       { icon: 'skill-icons:css', label: 'CSS3' },
-      { icon: 'skill-icons:tailwindcss', label: 'Tailwind CSS' },
-      { icon: 'skill-icons:firebase', label: 'Firebase (Auth & Firestore)' }
+      { icon: 'skill-icons:tailwindcss-dark', label: 'Tailwind CSS' },
+      { icon: 'vscode-icons:file-type-firebase', label: 'Firebase' }
     ],
-    status: 'in-development',
+    status: 'In Development',
     github: 'https://github.com/christian-fx/Go-Gadget-Admin',
     live: 'https://gogadgets-theta.vercel.app/',
     hasCaseStudy: true,
     meta: {
-      type: 'Independent Project - E-commerce Admin Tool',
+      projectType: 'Independent Project - E-commerce Admin Tool',
       year: '2025',
       role: 'FullStack Developer',
       duration: '2 Months'
     },
     caseStudy: {
-      overview: [
-        'Gadget Store Admin Dashboard is a responsive web application built to streamline e-commerce management for a gadget store.',
-        'The dashboard provides real-time analytics, inventory control, product and category management, and order tracking through a user-friendly interface.',
-        'Built with Vanilla JavaScript, Tailwind CSS, Vite, and Firebase, it combines performance, responsiveness, and secure data management to empower store administrators.'
-      ],
-      challenges: [
-      {
-        icon: 'lucide:bar-chart',
-        title: 'Real-Time Analytics',
-        desc: 'Displaying live revenue, top-selling categories, and key business metrics required efficient data fetching and state management from Firebase.'
-      },
-      {
-        icon: 'lucide:package',
-        title: 'Product & Category Management',
-        desc: 'Enabling full CRUD operations with image uploads, automated category slugs, and icon suggestions demanded careful UI design and backend integration.'
-      },
-      {
-        icon: 'lucide:clipboard',
-        title: 'Inventory Control',
-        desc: 'Tracking stock levels, low-stock alerts, and total inventory valuation in real time while keeping the interface intuitive was challenging.'
-      },
-      {
-        icon: 'lucide:shopping-cart',
-        title: 'Order Management',
-        desc: 'Implementing order tracking from "Pending" to "Delivered" with easy status updates required accurate state management and real-time database syncing.'
-      },
-      {
-        icon: 'lucide:smartphone',
-        title: 'Mobile Responsiveness',
-        desc: 'Designing a dashboard that is fully functional on smartphones and tablets with collapsible sidebar navigation for small screens posed layout challenges.'
-      }],
-      solution: [
-      {
-        title: 'Live Dashboard & Analytics',
-        desc: 'Integrated Firebase Firestore to fetch live sales data, stock levels, and key metrics, rendering charts and indicators in real time.'
-      },
-      {
-        title: 'Product & Category CRUD',
-        desc: 'Built seamless create, read, update, and delete operations for products and categories, with image uploads via Cloudinary and automated slug/icon generation.'
-      },
-      {
-        title: 'Inventory Management System',
-        desc: 'Developed an interface for stock adjustments, status tracking, and automatic calculation of total inventory value.'
-      },
-      {
-        title: 'Order Tracking & Updates',
-        desc: 'Implemented order status management and real-time syncing to keep administrators and customers updated.'
-      },
-      {
-        title: 'Responsive & Mobile-Friendly Design',
-        desc: 'Designed a mobile-first layout with collapsible sidebar navigation to ensure smooth usability across all devices.'
-      }],
-      techStack: [
-        { icon: 'skill-icons:html', label: 'HTML5' },
-        { icon: 'skill-icons:css', label: 'CSS3' },
-        { icon: 'skill-icons:javascript', label: 'Vanilla JavaScript (ES Modules)' },
-        { icon: 'skill-icons:tailwindcss', label: 'Tailwind CSS v4' },
-        { icon: 'skill-icons:vitejs', label: 'Vite' },
-        { icon: 'skill-icons:firebase', label: 'Firebase (Auth & Firestore)' },
-        { icon: 'simple-icons:cloudinary', label: 'Cloudinary' },
-        { icon: 'simple-icons:materialdesign', label: 'Material Symbols' }
-      ],
-      results: {
-        metrics: [
-          { number: 'Real-Time', label: 'Analytics & Stock Alerts' },
-          { number: 'Full CRUD', label: 'Product & Category Management' },
-          { number: 'Mobile-First', label: 'Responsive Dashboard' },
-          { number: 'Efficient', label: 'Order Tracking & Inventory Control' }
-        ]
-      },
-      gallery: [
-        { src: 'https://storage.googleapis.com/banani-generated-images/generated-images/gadget-dashboard.jpg', alt: 'Dashboard Overview', caption: 'Main dashboard showing revenue charts and key metrics' },
-        { src: 'https://storage.googleapis.com/banani-generated-images/generated-images/gadget-products.jpg', alt: 'Product Management', caption: 'Full CRUD for products with image uploads' },
-        { src: 'https://storage.googleapis.com/banani-generated-images/generated-images/gadget-inventory.jpg', alt: 'Inventory Control', caption: 'Visual stock status indicators and valuation' },
-        { src: 'https://storage.googleapis.com/banani-generated-images/generated-images/gadget-orders.jpg', alt: 'Order Management', caption: 'Order tracking interface from Pending to Delivered' }
+      sections: [
+        {
+          type: 'overview',
+          content: [
+            'Gadget Store Admin Dashboard is a sophisticated internal tool built to streamline complex e-commerce management. Despite its advanced feature set, it was architected entirely using modern Vanilla JavaScript, CSS, HTML, and Firebase, proving that large-scale SPA-like applications can be built proficiently without a massive framework overhead.',
+            'The dashboard provides business owners with instant real-time analytics, dynamic visual inventory control, comprehensive product and category CRUD management, and a seamless order tracking interface.'
+          ]
+        },
+        {
+          type: 'challenges',
+          content: [
+            { icon: 'lucide:bar-chart', title: 'Real-Time Reactivity in Vanilla JS', desc: 'Syncing live revenue, top-selling categories, and key business metrics globally across the UI without a dedicated state management library like Redux.' },
+            { icon: 'lucide:package', title: 'Complex Media Forms', desc: 'Engineering robust product creation forms that securely handle image uploads to Cloudinary, automated slug generation, and real-time validation.' },
+            { icon: 'lucide:shopping-cart', title: 'Order State Syncing', desc: 'Managing precise order lifecycle states (from Pending to Delivered) using Firestore listeners, ensuring administrators look at the most accurate data instantly.' }
+          ]
+        },
+        {
+          type: 'solution',
+          content: [
+            { title: 'Modular JavaScript Architecture', desc: 'Leveraged ES6 Modules to cleanly decouple the logic, routing, and UI rendering. This made the application highly maintainable and blazing fast.' },
+            { title: 'Firestore Real-Time Data Streams', desc: 'Integrated heavily with Firebase Firestore listeners to push live sales data, stock adjustments, and order updates to the DOM without requiring manual page refreshes.' },
+            { title: 'Media Pipeline Integration', desc: 'Built seamless integration with the Cloudinary upload API, managing image transformations and securely associating image endpoints with product records in Firebase.' },
+            { title: 'Liquid Mobile-First Layout', desc: 'Authored a highly adaptive UI using Tailwind CSS, featuring collapsible asynchronous sidebar navigations and dense data grids that gracefully stack on mobile devices.' }
+          ]
+        },
+        {
+          type: 'tech-stack',
+          content: [
+            { icon: 'skill-icons:html', label: 'HTML5' },
+            { icon: 'skill-icons:css', label: 'CSS3' },
+            { icon: 'skill-icons:javascript', label: 'Vanilla JavaScript (ES Modules)' },
+            { icon: 'skill-icons:tailwindcss-dark', label: 'Tailwind CSS v4' },
+            { icon: 'skill-icons:vitejs', label: 'Vite' },
+            { icon: 'vscode-icons:file-type-firebase', label: 'Firebase (Auth & Firestore)' },
+            { icon: 'simple-icons:cloudinary', label: 'Cloudinary' }
+          ]
+        },
+        {
+          type: 'gallery',
+          content: [
+            { src: 'https://storage.googleapis.com/banani-generated-images/generated-images/gadget-dashboard.jpg', alt: 'Dashboard Overview', caption: 'Main dashboard showing interactive revenue charts and key business metrics' },
+            { src: 'https://storage.googleapis.com/banani-generated-images/generated-images/gadget-products.jpg', alt: 'Product Management', caption: 'Full CRUD interface for product inventory, supporting rich media uploads' },
+            { src: 'https://storage.googleapis.com/banani-generated-images/generated-images/gadget-inventory.jpg', alt: 'Inventory Control', caption: 'Visual stock indicators calculating real-time inventory valuation' },
+            { src: 'https://storage.googleapis.com/banani-generated-images/generated-images/gadget-orders.jpg', alt: 'Order Management', caption: 'Actionable order tracking interface managing states from Pending to Delivered' }
+          ]
+        }
       ]
     }
   },
+
   {
     id: 'go-gadgets-store',
-    title: 'Go Gadgets Customer Store',
+    title: 'Go Gadgets Store',
     category: 'E-commerce',
     image: 'https://storage.googleapis.com/banani-generated-images/generated-images/go-gadgets-cover.jpg',
     description: 'A modern, fast, and fully functional single-page application (SPA) storefront for Go Gadgets e-commerce platform, featuring seamless navigation, secure checkout, and real-time product updates.',
     tags: [
       { icon: 'skill-icons:javascript', label: 'Vanilla JavaScript' },
-      { icon: 'skill-icons:html', label: 'HTML5' },
-      { icon: 'skill-icons:css', label: 'CSS3' },
-      { icon: 'skill-icons:tailwindcss', label: 'Tailwind CSS' },
-      { icon: 'skill-icons:firebase', label: 'Firebase (Auth & Firestore)' }
+      { icon: 'skill-icons:tailwindcss-dark', label: 'Tailwind CSS' },
+      { icon: 'vscode-icons:file-type-firebase', label: 'Firebase' }
     ],
-    status: 'in-development',
+    status: 'In Development',
     github: 'https://github.com/christian-fx/Go-Gadgets',
     live: 'https://gogadgets-alpha.vercel.app/',
     hasCaseStudy: true,
     meta: {
-      client: 'Independent Project - Customer-Facing E-commerce',
+      projectType: 'Independent Project - Customer Store',
       year: '2025',
       role: 'FullStack Developer',
       duration: '2 Months'
     },
     caseStudy: {
-      overview: [
-        'Go Gadgets Customer Store is a fully responsive single-page application built to deliver a seamless shopping experience for users.',
-        'The SPA leverages a custom JavaScript router for reload-free navigation, Firebase Authentication for secure login/signup, and Firestore for real-time product data.',
-        'With features like persistent shopping carts, secure checkout, and full account management, the storefront ensures customers can browse, purchase, and manage their orders efficiently across all devices.'
-      ],
-      challenges: [
-      {
-        icon: 'lucide:router',
-        title: 'Seamless SPA Navigation',
-        desc: 'Creating a lightweight, history-API-based JavaScript router to enable reload-free page transitions while maintaining dynamic content updates was challenging.'
-      },
-      {
-        icon: 'lucide:shield',
-        title: 'Secure Authentication & User Accounts',
-        desc: 'Implementing email/password login, Google OAuth, email verification, password resets, and full CRUD on user profiles required secure handling and proper Firebase integration.'
-      },
-      {
-        icon: 'lucide:database',
-        title: 'Real-Time Product Data',
-        desc: 'Fetching products, trending items, categories, and ensuring real-time updates from Firestore while maintaining app performance was complex.'
-      },
-      {
-        icon: 'lucide:shopping-cart',
-        title: 'Shopping Cart & Checkout',
-        desc: 'Building a persistent shopping cart with localStorage and secure checkout using Firestore transactions to handle stock verification and order creation safely.'
-      },
-      {
-        icon: 'lucide:smartphone',
-        title: 'Responsive Design Across Devices',
-        desc: 'Ensuring the storefront looked and functioned flawlessly on mobile, tablet, and desktop devices required careful layout planning with Tailwind CSS.'
-      }],
-      solution: [
-      {
-        title: 'Custom SPA Router',
-        desc: 'Implemented a lightweight history-API-based router that enables seamless, reload-free navigation while dynamically updating content for different pages.'
-      },
-      {
-        title: 'Firebase Authentication & Profile Management',
-        desc: 'Used Firebase Authentication to provide secure email/password and Google OAuth login, plus full CRUD for user profiles, shipping addresses, payment methods, and real-time order history.'
-      },
-      {
-        title: 'Real-Time Firestore Integration',
-        desc: 'Integrated Firestore to fetch and display products, trending items, and categories dynamically, ensuring live updates and accurate stock information.'
-      },
-      {
-        title: 'Persistent Cart & Secure Checkout',
-        desc: 'Implemented a persistent shopping cart with localStorage and secure checkout using Firestore runTransaction for atomic order creation and stock verification.'
-      },
-      {
-        title: 'Mobile-First Responsive Design',
-        desc: 'Designed a fully responsive layout with Tailwind CSS, optimized for mobile, tablet, and desktop devices with smooth UI interactions.'
-      }],
-      techStack: [
-        { icon: 'skill-icons:html', label: 'HTML5' },
-        { icon: 'skill-icons:css', label: 'CSS3' },
-        { icon: 'skill-icons:javascript', label: 'Vanilla JavaScript (ES6+)' },
-        { icon: 'skill-icons:tailwindcss', label: 'Tailwind CSS' },
-        { icon: 'skill-icons:firebase', label: 'Firebase (Auth & Firestore)' },
-        { icon: 'skill-icons:vitejs', label: 'Vite' }
-      ],
-      results: {
-        metrics: [
-          { number: 'Seamless', label: 'SPA Navigation' },
-          { number: 'Secure', label: 'Authentication & Accounts' },
-          { number: 'Real-Time', label: 'Product Updates & Stock' },
-          { number: 'Mobile-Optimized', label: 'Responsive UI' }
-        ]
-      },
-      gallery: [
-        { src: 'https://storage.googleapis.com/banani-generated-images/generated-images/go-gadgets-home.jpg', alt: 'Home Page', caption: 'Customer-facing homepage with trending products' },
-        { src: 'https://storage.googleapis.com/banani-generated-images/generated-images/go-gadgets-product.jpg', alt: 'Product Listing', caption: 'Dynamic product listing with categories and stock indicators' },
-        { src: 'https://storage.googleapis.com/banani-generated-images/generated-images/go-gadgets-cart.jpg', alt: 'Shopping Cart', caption: 'Persistent shopping cart and checkout interface' },
-        { src: 'https://storage.googleapis.com/banani-generated-images/generated-images/go-gadgets-account.jpg', alt: 'Account Management', caption: 'User profile, shipping addresses, payment methods, and order history' }
+      sections: [
+        {
+          type: 'overview',
+          content: [
+            'Go Gadgets Customer Store is the companion storefront built specifically for gadget enthusiasts. It operates as a fully responsive, natively constructed Single Page Application (SPA), rivaling modern React applications in layout shifting and navigation speed.',
+            'The storefront focuses on delivering an uninterrupted shopping experience. By leveraging a custom-built JavaScript router for page transitions and Firebase for a real-time database backbone, it handles cart synchronizations, user profiles, and secure checkout natively.'
+          ]
+        },
+        {
+          type: 'challenges',
+          content: [
+            { icon: 'lucide:router', title: 'Custom SPA Routing', desc: 'Engineering a lightweight, History-API-based JavaScript router from scratch to enable instantaneous, reload-free page transitions and dynamic DOM manipulation.' },
+            { icon: 'lucide:shield', title: 'Authentication State Flows', desc: 'Securely handling multi-provider authentication, preserving user sessions across reloads, and blocking protected routes (like Checkout) dynamically.' },
+            { icon: 'lucide:database', title: 'Atomic Transactions', desc: 'Ensuring absolute database integrity during the checkout process by accurately updating remote stock availability and user cart states simultaneously.' }
+          ]
+        },
+        {
+          type: 'solution',
+          content: [
+            { title: 'Bespoke Navigation Engine', desc: 'Designed a completely custom JavaScript routing layer that intercepts browser history and hydrates targeted layout containers dynamically, resulting in an app-like friction-less navigation.' },
+            { title: 'Robust Firebase Authentication', desc: 'Implemented an impenetrable Auth layer managing strict session validations for email/password and Google OAuth, bridging securely into full CRUD capabilities for shipping profiles and order histories.' },
+            { title: 'Transactional Payment Processing', desc: 'Developed a bulletproof checkout sequence utilizing Firestore `runTransaction`. This guarantees atomic updates, verifying exact warehouse stock milliseconds before finalizing an order creation.' },
+            { title: 'Persistent State Caching', desc: 'Built a sophisticated Cart abstraction utilizing `localStorage` and periodic background syncs to Firebase, guaranteeing a user never loses their queued items across devices.' }
+          ]
+        },
+        {
+          type: 'tech-stack',
+          content: [
+            { icon: 'skill-icons:html', label: 'HTML5' },
+            { icon: 'skill-icons:css', label: 'CSS3' },
+            { icon: 'skill-icons:javascript', label: 'Vanilla JavaScript (ES6+)' },
+            { icon: 'skill-icons:tailwindcss-dark', label: 'Tailwind CSS' },
+            { icon: 'vscode-icons:file-type-firebase', label: 'Firebase (Auth & Firestore)' },
+            { icon: 'skill-icons:vitejs', label: 'Vite' }
+          ]
+        },
+        {
+          type: 'gallery',
+          content: [
+            { src: 'https://storage.googleapis.com/banani-generated-images/generated-images/go-gadgets-home.jpg', alt: 'Home Page', caption: 'The customer storefront spotlighting live trending products' },
+            { src: 'https://storage.googleapis.com/banani-generated-images/generated-images/go-gadgets-product.jpg', alt: 'Product Listing', caption: 'Dynamic marketplace grids equipped with real-time stock indicators' },
+            { src: 'https://storage.googleapis.com/banani-generated-images/generated-images/go-gadgets-cart.jpg', alt: 'Shopping Cart', caption: 'Intuitive, persistent shopping cart drawer and checkout flow' },
+            { src: 'https://storage.googleapis.com/banani-generated-images/generated-images/go-gadgets-account.jpg', alt: 'Account Management', caption: 'Secure user account dashboard displaying granular order histories' }
+          ]
+        }
       ]
     }
   },
@@ -373,61 +315,66 @@ export const PROJECTS = [
     image: 'https://storage.googleapis.com/banani-generated-images/generated-images/2931f37a-6689-4bd4-86c9-9276f20d1539.jpg',
     description: 'AcademiaTrack is a full-stack academic tracking system that enables students to manage their academic records through GPA/CGPA computation, progress analytics, and report generation.',
     tags: [
-      { icon: 'skill-icons:html-dark', label: 'HTML' },
-      { icon: 'logos:css', label: 'CSS' },
-      { icon: 'simple-icons:tailwindcss', label: 'Tailwind CSS' },
-      { icon: 'simple-icons:firebase', label: 'Firebase' }
+      { icon: 'skill-icons:html', label: 'HTML' },
+      { icon: 'skill-icons:css', label: 'CSS' },
+      { icon: 'skill-icons:tailwindcss-dark', label: 'Tailwind CSS' },
+      { icon: 'vscode-icons:file-type-firebase', label: 'Firebase' }
     ],
     status: 'Completed',
     github: '#',
     live: 'https://academiatrack.vercel.app',
     hasCaseStudy: true,
     meta: {
-      project_type: 'Independent Project - Student-Focused Solution',
+      projectType: 'Independent Project - Student Solution',
       year: '2025',
       role: 'Lead FullStack Developer',
       duration: '3 Months',
     },
     caseStudy: {
-      overview: [
-        'AcademiaTrack is a web-based academic management platform designed to help students monitor and manage their academic performance efficiently. The system provides tools for GPA/CGPA calculation, progress tracking, and academic reporting, all within a centralized dashboard.',
-        ' Built specifically with students in mind, the platform simplifies how users interact with their academic data by combining performance analytics, activity tracking, and intelligent assistance through an AI-powered chatbot. It also includes secure authentication to ensure user data is protected.',
-        'The goal of AcademiaTrack is to reduce the stress of manual GPA calculations and give students a clear, structured view of their academic journey.'
-      ],
-      challenges: [
-        { icon: 'lucide:zap', title: 'Accurate GPA/CGPA Computation', desc: 'Handling GPA and CGPA calculations across multiple semesters required careful logic implementation to ensure accuracy, especially when dealing with varying course units and grades.' },
-        { icon: 'lucide:shield', title: 'User Data Management and Authentication', desc: 'Designing a secure system to manage user data while implementing authentication posed challenges in ensuring both data privacy and smooth user experience' },
-        { icon: 'lucide:smartphone', title: 'Integrating Multiple Features Seamlessly', desc: 'Combining features like GPA tracking, progress reports, AI chatbot, and activity logs into a single cohesive system without overwhelming the user was a key challenge.' }
-      ],
-      solution: [
-        { title: 'Structured GPA Calculation Logic', desc: 'A reliable algorithm was implemented to handle GPA and CGPA calculations based on course units and grade values, ensuring accurate academic results across semesters.' },
-        { title: 'Secure Authentication System', desc: 'A secure and reliable authentication system was implemented using Firebase Authentication. This allowed for efficient user management, including sign-up and login functionality, while ensuring data privacy and security. Leveraging Firebase reduced development complexity and enabled a faster, more scalable implementation without compromising security.' },
+      sections: [
         {
-          title: 'Modular Feature Integration',
-          desc: 'Each feature (GPA checker, progress report, chatbot, activity tracker) was built as a modular component, allowing seamless integration while maintaining performance and usability.'
+          type: 'overview',
+          content: [
+            'AcademiaTrack is a powerful academic management platform exclusively engineered to eliminate the friction students face when tracking their long-term educational trajectory. It acts as a comprehensive vault for academic records, drastically simplifying GPA/CGPA projections across complex multi-semester algorithms.',
+            'Beyond raw calculation, the platform serves as an intelligent academic assistant. It combines historical performance analytics, customizable activity tracking, and an embedded AI-powered chatbot designed to help students optimize their remaining course loads.'
+          ]
         },
-      ],
-      techStack: [
-        { icon: 'skill-icons:html', label: 'HTML5' },
-        { icon: 'skill-icons:css', label: 'CSS3' },
-        { icon: 'skill-icons:javascript', label: 'JavaScript' },
-        { icon: 'skill-icons:tailwindcss', label: 'Tailwind CSS' },
-        { icon: 'skill-icons:firebase', label: 'Firebase (Auth & Database)' },
-        { icon: 'skill-icons:vercel-dark', label: 'Vercel' }
-      ],
-      results: {
-        metrics: [
-          { number: '100%', label: 'Accurate GPA Calculations' },
-          { number: 'Instant', label: 'Report Generation Time' },
-          { number: 'All-in-One', label: 'Academic Tracking System' },
-          { number: 'Secure', label: 'Authentication System (Firebase)' }
-        ],
-      },
-      gallery: [
-        { src: 'https://storage.googleapis.com/banani-generated-images/generated-images/94f1209d-354a-4bbf-8387-9d17992f8af2.jpg', alt: 'Dashboard Overview', caption: 'Main dashboard with portfolio overview' },
-        { src: 'https://storage.googleapis.com/banani-generated-images/generated-images/dbbf9b07-e2b2-46e4-9fe6-067c9dd31bbd.jpg', alt: 'Analytics View', caption: 'Detailed analytics with custom date ranges' },
-        { src: 'https://storage.googleapis.com/banani-generated-images/generated-images/2931f37a-6689-4bd4-86c9-9276f20d1539.jpg', alt: 'Mobile View', caption: 'Responsive mobile experience' },
-        { src: 'https://storage.googleapis.com/banani-generated-images/generated-images/d298266c-443a-4430-a988-7c164818a359.jpg', alt: 'Dark Mode', caption: 'Dark mode for reduced eye strain' }
+        {
+          type: 'challenges',
+          content: [
+            { icon: 'lucide:zap', title: 'Algorithmic Accuracy', desc: 'Building flawlessly accurate, highly-tested GPA and CGPA mathematical calculation models that scale predictably across infinite semesters and custom grading weights.' },
+            { icon: 'lucide:shield', title: 'Data Privacy', desc: 'Ensuring that deeply sensitive student grades and academic data remain absolutely private and untamperable through strict Firestore security rules.' },
+            { icon: 'lucide:smartphone', title: 'UI Density Navigation', desc: 'Crafting a dashboard that conveys overwhelming amounts of academic analytics and interactive charts without feeling visually cluttered.' }
+          ]
+        },
+        {
+          type: 'solution',
+          content: [
+            { title: 'Predictive Grading Logic', desc: 'Engineered a highly reliable core calculator module strictly segregated from the UI, executing isolated computations of course units against grade denominators to instantly calculate and project theoretical CGPAs.' },
+            { title: 'Architected Firebase Security', desc: 'Leveraged Firebase Auth combined with tailored Firestore Security Rules to guarantee isolation, ensuring users can only read or mutate documents containing their specific unique user identifiers.' },
+            { title: 'Conversational Academic AI', desc: 'Integrated an embedded, context-aware chatbot interface to answer student queries, provide layout guidance, and generate motivational insights entirely in-browser.' }
+          ]
+        },
+        {
+          type: 'tech-stack',
+          content: [
+            { icon: 'skill-icons:html', label: 'HTML5' },
+            { icon: 'skill-icons:css', label: 'CSS3' },
+            { icon: 'skill-icons:javascript', label: 'JavaScript' },
+            { icon: 'skill-icons:tailwindcss-dark', label: 'Tailwind CSS' },
+            { icon: 'vscode-icons:file-type-firebase', label: 'Firebase Data layer' },
+            { icon: 'skill-icons:vercel-dark', label: 'Vercel Edge' }
+          ]
+        },
+        {
+          type: 'gallery',
+          content: [
+            { src: 'https://storage.googleapis.com/banani-generated-images/generated-images/94f1209d-354a-4bbf-8387-9d17992f8af2.jpg', alt: 'Dashboard Overview', caption: 'The main dashboard cleanly presenting active course loads' },
+            { src: 'https://storage.googleapis.com/banani-generated-images/generated-images/dbbf9b07-e2b2-46e4-9fe6-067c9dd31bbd.jpg', alt: 'Analytics View', caption: 'Deep-dive analytical charts monitoring semester trends' },
+            { src: 'https://storage.googleapis.com/banani-generated-images/generated-images/2931f37a-6689-4bd4-86c9-9276f20d1539.jpg', alt: 'Mobile View', caption: 'The responsive GPA calculator optimized for smartphones' },
+            { src: 'https://storage.googleapis.com/banani-generated-images/generated-images/d298266c-443a-4430-a988-7c164818a359.jpg', alt: 'Dark Mode', caption: 'The platform\'s elegant programmatic dark mode' }
+          ]
+        }
       ]
     }
   },
@@ -439,96 +386,66 @@ export const PROJECTS = [
     description: 'Fitness Hub is an AI-powered fitness web application that helps users achieve their health goals through personalized workout plans, progress tracking, and interactive training experiences.',
     tags: [
       { icon: 'skill-icons:nextjs-dark', label: 'Next.js' },
-      { icon: 'skill-icons:tailwindcss', label: 'Tailwind CSS' },
-      { icon: 'skill-icons:firebase', label: 'Firebase' },
+      { icon: 'skill-icons:tailwindcss-dark', label: 'Tailwind CSS' },
+      { icon: 'vscode-icons:file-type-firebase', label: 'Firebase' },
       { icon: 'skill-icons:react-dark', label: 'React' }
     ],
     status: 'Completed',
     github: 'https://github.com/christian-fx/FitnessHub',
-    live: 'https://fitnesshub-beta.vercel.ap',
+    live: 'https://fitnesshub-beta.vercel.app',
     hasCaseStudy: true,
     meta: {
-      client: 'Independent Project - Fitness Solution',
+      projectType: 'Independent Project - Fitness Tech',
       year: '2025',
       role: 'FullStack Developer',
-      duration: '2-3 Months'
+      duration: '3 Months'
     },
     caseStudy: {
-      overview: [
-        'Fitness Hub is a modern AI-powered web application designed to help users achieve their fitness goals through personalized workout planning and progress tracking.',
-        'The platform combines intelligent workout recommendations, interactive training sessions, and detailed analytics into a single, user-friendly dashboard.',
-        'By integrating AI with fitness tracking, Fitness Hub provides users with tailored workout routines, motivation through social challenges, and a structured way to monitor their health journey.'
-      ],
-      challenges: [
-      {
-        icon: 'lucide:brain',
-        title: 'Personalized Workout Generation',
-        desc: 'Generating workout routines that adapt to a user’s goals, fitness level, and available equipment was complex. The system had to ensure every plan was relevant and safe.'
-      },
-      {
-        icon: 'lucide:activity',
-        title: 'Real-Time Workout Interaction',
-        desc: 'Ensuring a smooth, interactive workout experience with timers, exercise guidance, and progression tracking without lag was challenging.'
-      },
-      {
-        icon: 'lucide:bar-chart',
-        title: 'Data Visualization of Progress',
-        desc: 'Users needed clear visual feedback on performance metrics like calories burned, volume lifted, streaks, and trends over time.'
-      },
-      {
-        icon: 'lucide:users',
-        title: 'User Engagement & Motivation',
-        desc: 'Maintaining user motivation over time is difficult, especially for solo users; social interaction and challenges were essential.'
-      },
-      {
-        icon: 'lucide:shield',
-        title: 'Secure User Data Management',
-        desc: 'Protecting personal and fitness data while ensuring fast access and reliable storage required careful planning.'
-      }],
-      solution: [
-      {
-        title: 'AI-Powered Workout Recommendations',
-        desc: 'Integrated generative AI using Google AI and Genkit to create personalized workout routines tailored to user goals, fitness level, and available equipment.'
-      },
-      {
-        title: 'Interactive Workout System',
-        desc: 'Developed guided workout sessions with timers and structured exercise flows for responsive, real-time training experiences.'
-      },
-      {
-        title: 'Comprehensive Analytics Dashboard',
-        desc: 'Implemented a dashboard using Recharts to visualize workout history, calories burned, volume lifted, streaks, and other key metrics.'
-      },
-      {
-        title: 'Social Fitness Challenges',
-        desc: 'Built community challenges and leaderboards to keep users motivated, engaged, and accountable for their progress.'
-      },
-      {
-        title: 'Secure Backend with Firebase',
-        desc: 'Leveraged Firebase Authentication and Firestore to manage user accounts and workout data securely, providing real-time sync and privacy.'
-      }],
-      techStack: [
-        { icon: 'skill-icons:nextjs-dark', label: 'Next.js (App Router)' },
-        { icon: 'skill-icons:tailwindcss', label: 'Tailwind CSS' },
-        { icon: 'skill-icons:react-dark', label: 'React' },
-        { icon: 'skill-icons:firebase', label: 'Firebase (Auth & Firestore)' },
-        { icon: 'skill-icons:vercel-dark', label: 'Vercel' },
-        { icon: 'logos:react-hook-form', label: 'React Hook Form' },
-        { icon: 'logos:zod', label: 'Zod' },
-        { icon: 'simple-icons:recharts', label: 'Recharts' }
-      ],
-      results: {
-        metrics: [
-          { number: 'Personalized', label: 'AI Workout Plans' },
-          { number: 'Real-Time', label: 'Workout Tracking Experience' },
-          { number: 'Interactive', label: 'Guided Training Sessions' },
-          { number: 'Engaging', label: 'Social Fitness Challenges' }
-        ]
-      },
-      gallery: [
-        { src: 'https://storage.googleapis.com/banani-generated-images/generated-images/fitness-dashboard.jpg', alt: 'Dashboard', caption: 'Fitness dashboard with key metrics and activity overview' },
-        { src: 'https://storage.googleapis.com/banani-generated-images/generated-images/workout-session.jpg', alt: 'Workout Session', caption: 'Interactive workout session with timers' },
-        { src: 'https://storage.googleapis.com/banani-generated-images/generated-images/progress-charts.jpg', alt: 'Progress Charts', caption: 'Data visualization of workout progress and performance' },
-        { src: 'https://storage.googleapis.com/banani-generated-images/generated-images/social-challenges.jpg', alt: 'Challenges', caption: 'Community fitness challenges and engagement features' }
+      sections: [
+        {
+          type: 'overview',
+          content: [
+            'Fitness Hub fundamentally reimagines personal health tracking by integrating powerful GenAI technologies directly into the user\'s routine. It is a highly optimized Next.js Web Application designed to act as an unyielding personal trainer.',
+            'Rather than offering static, mundane spreadsheets of workout reps, the platform dynamically generates intelligent, responsive routines tailored specifically to the user\'s real-life goals, varying physical capabilities, and immediate equipment availability.'
+          ]
+        },
+        {
+          type: 'challenges',
+          content: [
+            { icon: 'lucide:brain', title: 'Stable LLM Generation', desc: 'Crafting extremely rigid AI generation prompts so the LLMs invariably return safely structured, parseable JSON workout sets rather than erratic chat text.' },
+            { icon: 'lucide:activity', title: 'Live Workout Syncing', desc: 'Maintaining flawless reactivity when tracking intensive mid-workout timers and form milestones without causing application stutter.' },
+            { icon: 'lucide:bar-chart', title: 'Data Visualization', desc: 'Converting raw, heavily unformatted fitness data spanning hundreds of sessions into actionable, beautiful macro-level charts.' }
+          ]
+        },
+        {
+          type: 'solution',
+          content: [
+            { title: 'Generative AI Pipelines', desc: 'Integrated advanced Google Generative AI frameworks to dynamically produce context-aware fitness programs. By standardizing output schemas, the AI injects personalized workouts directly into the database.' },
+            { title: 'Real-Time Interface Execution', desc: 'Engineered a highly responsive React workout-execution layout featuring zero-delay interval timers, immediate set logging, and progression flows optimized specifically for sweaty hands on mobile screens.' },
+            { title: 'Recharts Dashboard', desc: 'Built a visually stunning progress analytics suite utilizing Recharts to map long-term user consistency, extrapolating weekly calorie expenditure and cumulative hypertrophic volume.' },
+            { title: 'Firebase Cloud Architecture', desc: 'Relying heavily on Firebase Firestore for high-velocity write throughput, ensuring every single bicep curl or treadmill mile is securely mirrored to the cloud instantaneously.' }
+          ]
+        },
+        {
+          type: 'tech-stack',
+          content: [
+            { icon: 'skill-icons:nextjs-dark', label: 'Next.js (App Router)' },
+            { icon: 'skill-icons:tailwindcss-dark', label: 'Tailwind CSS' },
+            { icon: 'skill-icons:react-dark', label: 'React' },
+            { icon: 'vscode-icons:file-type-firebase', label: 'Firebase (Auth & Firestore)' },
+            { icon: 'skill-icons:vercel-dark', label: 'Vercel' },
+            { icon: 'simple-icons:recharts', label: 'Recharts' }
+          ]
+        },
+        {
+          type: 'gallery',
+          content: [
+            { src: 'https://storage.googleapis.com/banani-generated-images/generated-images/fitness-dashboard.jpg', alt: 'Dashboard', caption: 'The central hub mapping daily macros and streaks' },
+            { src: 'https://storage.googleapis.com/banani-generated-images/generated-images/workout-session.jpg', alt: 'Workout Session', caption: 'In-progress training session interface with active timers' },
+            { src: 'https://storage.googleapis.com/banani-generated-images/generated-images/progress-charts.jpg', alt: 'Progress Charts', caption: 'Granular progression graphs visualizing long-term volume increases' },
+            { src: 'https://storage.googleapis.com/banani-generated-images/generated-images/social-challenges.jpg', alt: 'Challenges', caption: 'Community-driven competitive leaderboards' }
+          ]
+        }
       ]
     }
   },

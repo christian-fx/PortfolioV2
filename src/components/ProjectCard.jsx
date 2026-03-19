@@ -40,10 +40,12 @@ export default function ProjectCard({ id, title, description, tags, image, githu
 
   const getStatusColor = () => {
     if (status === 'Completed') return '#10b981'; // Premium muted green
-    if (status === 'In Development') return '#f59e0b'; // Premium refined amber
+    if (status === 'In Development' || status === 'in-development') return '#f59e0b'; // Premium refined amber
     if (status === 'Planning') return '#8b5cf6'; // Premium soft purple
     return '#10b981'; // default green
   };
+
+  const formattedStatus = status === 'in-development' ? 'In Development' : (status || 'Completed');
 
   return (
     <article className="work-card">
@@ -52,12 +54,12 @@ export default function ProjectCard({ id, title, description, tags, image, githu
         <div className="work-header">
           <h3 className="work-title">{title}</h3>
           <div className="work-links">
-            {github && (
+            {github && github !== '#' && (
               <a href={github} className="work-link-icon" aria-label="GitHub" target="_blank" rel="noopener noreferrer">
                 <Icon icon="lucide:github" width={18} />
               </a>
             )}
-            {live && (
+            {live && live !== '#' && (
               <a href={live} className="work-link-icon" aria-label="Live site" target="_blank" rel="noopener noreferrer">
                 <Icon icon="lucide:globe" width={18} />
               </a>
@@ -77,7 +79,7 @@ export default function ProjectCard({ id, title, description, tags, image, githu
         <div className="work-footer">
           <div className="project-status">
             <span className="status-dot-premium" style={{ backgroundColor: getStatusColor() }} />
-            {status || 'Completed'}
+            {formattedStatus}
           </div>
           <Link to={caseStudyLink} className="view-details">
             View Details<Icon icon="lucide:arrow-up-right" width={16} />
