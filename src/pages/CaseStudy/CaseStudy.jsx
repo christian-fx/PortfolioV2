@@ -14,6 +14,10 @@ import SolutionSection from '../../components/case-study/SolutionSection';
 import TechStackSection from '../../components/case-study/TechStackSection';
 import ResultsSection from '../../components/case-study/ResultsSection';
 import GallerySection from '../../components/case-study/GallerySection';
+import SkeletonImage from '../../components/SkeletonImage';
+import { motion } from 'framer-motion';
+
+const MotionDiv = motion.div;
 
 export default function CaseStudy() {
   const { id } = useParams();
@@ -139,26 +143,33 @@ export default function CaseStudy() {
 
       {/* Hero */}
       <section className="case-hero">
-        <img
-          src={project.image}
+        <SkeletonImage 
+          src={project.image} 
           alt={`${project.title} Interface Hero`}
-          className="case-hero-image"
-          fetchpriority="high"
-          decoding="async"
+          className="case-hero-image-wrapper"
+          imgClassName="case-hero-image"
+          aspectRatio="21/9"
+          fetchPriority="high"
         />
 
-        {project.meta && (
-          <div className="case-meta">
-            {Object.entries(project.meta).map(([key, value]) => (
-              <div key={key} className="case-meta-item">
-                <span className="case-meta-label">
-                  {key === 'projectType' ? 'Type' : key.charAt(0).toUpperCase() + key.slice(1).replace('_', ' ')}
-                </span>
-                <span className="case-meta-value">{value}</span>
-              </div>
-            ))}
-          </div>
-        )}
+        <MotionDiv 
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.3, duration: 0.6 }}
+        >
+          {project.meta && (
+            <div className="case-meta">
+              {Object.entries(project.meta).map(([key, value]) => (
+                <div key={key} className="case-meta-item">
+                  <span className="case-meta-label">
+                    {key === 'projectType' ? 'Type' : key.charAt(0).toUpperCase() + key.slice(1).replace('_', ' ')}
+                  </span>
+                  <span className="case-meta-value">{value}</span>
+                </div>
+              ))}
+            </div>
+          )}
+        </MotionDiv>
 
         <Reveal delay={0.1}>
           <h1 className="case-title">{project.title}</h1>
@@ -167,7 +178,12 @@ export default function CaseStudy() {
           <p className="case-subtitle">{project.description}</p>
         </Reveal>
 
-        <div className="case-links">
+        <MotionDiv 
+          className="case-links"
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.4, duration: 0.6 }}
+        >
           {project.live && project.live !== '#' && (
             <a href={project.live} target="_blank" rel="noopener noreferrer" className="btn btn-primary" aria-label={`Visit ${project.title} Live Site`}>
               <Icon icon="lucide:external-link" width={16} /> Live Site
@@ -178,11 +194,25 @@ export default function CaseStudy() {
               <Icon icon="lucide:github" width={16} /> View Code
             </a>
           )}
-        </div>
+        </MotionDiv>
       </section>
 
       {/* Dynamic Sections Renderer */}
-      <div className="case-study-sections">
+      <MotionDiv 
+        className="case-study-sections"
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true, margin: "-100px" }}
+        variants={{
+          hidden: { opacity: 0 },
+          show: {
+            opacity: 1,
+            transition: {
+              staggerChildren: 0.15
+            }
+          }
+        }}
+      >
         {sections.map((section, index) => {
           const num = (index + 1).toString().padStart(2, '0');
           
@@ -196,7 +226,7 @@ export default function CaseStudy() {
             default: return null;
           }
         })}
-      </div>
+      </MotionDiv>
 
       {/* Next Project */}
       {(() => {

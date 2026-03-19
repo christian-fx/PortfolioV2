@@ -1,7 +1,17 @@
+import { motion } from 'framer-motion';
+import SkeletonImage from '../SkeletonImage';
+
+const MotionSection = motion.section;
+
+const variants = {
+  hidden: { opacity: 0, y: 20 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] } }
+};
+
 export default function GallerySection({ data, number }) {
   if (!data || data.length === 0) return null;
   return (
-    <section className="case-section">
+    <MotionSection className="case-section" variants={variants}>
       <div className="section-header">
         <p className="section-number">{number} / Gallery</p>
         <h2 className="case-section-title">Screenshots</h2>
@@ -9,11 +19,17 @@ export default function GallerySection({ data, number }) {
       <div className="gallery-grid">
         {data.map(({ src, alt, caption }) => (
           <div key={alt} className="gallery-item">
-            <img src={src} alt={alt} loading="lazy" decoding="async" />
+            <SkeletonImage 
+              src={src} 
+              alt={alt} 
+              aspectRatio="auto" 
+              className="gallery-image-wrapper"
+              imgClassName="gallery-image"
+            />
             <div className="gallery-caption">{caption}</div>
           </div>
         ))}
       </div>
-    </section>
+    </MotionSection>
   );
 }

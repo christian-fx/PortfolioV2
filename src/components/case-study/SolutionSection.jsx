@@ -1,7 +1,16 @@
+import { motion } from 'framer-motion';
+
+const MotionSection = motion.section;
+
+const variants = {
+  hidden: { opacity: 0, y: 20 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] } }
+};
+
 export default function SolutionSection({ data, number }) {
   if (!data || data.length === 0) return null;
   return (
-    <section className="case-section">
+    <MotionSection className="case-section" variants={variants}>
       <div className="section-header">
         <p className="section-number">{number} / Solution</p>
         <h2 className="case-section-title">Approach &amp; Implementation</h2>
@@ -20,6 +29,6 @@ export default function SolutionSection({ data, number }) {
           );
         })}
       </div>
-    </section>
+    </MotionSection>
   );
 }

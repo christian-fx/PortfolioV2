@@ -1,40 +1,6 @@
 import { Link } from 'react-router-dom';
 import { Icon } from '@iconify/react';
-import { useState, useRef, useEffect } from 'react';
-
-/* ─── SkeletonImage helper ─── */
-function SkeletonImage({ src, alt, link }) {
-  const [isLoaded, setIsLoaded] = useState(false);
-  const imgRef = useRef(null);
-
-  // Fallback for cached images that might have completely loaded instantly
-  useEffect(() => {
-    if (imgRef.current && imgRef.current.complete) {
-      // eslint-disable-next-line
-      setIsLoaded(true);
-    }
-  }, []);
-
-  return (
-    <div className="work-image-wrapper">
-      <div 
-        className="skeleton-image" 
-        style={{ opacity: isLoaded ? 0 : 1, transition: 'opacity 0.5s ease', pointerEvents: isLoaded ? 'none' : 'auto' }} 
-      />
-      <Link to={link}>
-        <img 
-          ref={imgRef} 
-          src={src} 
-          alt={alt} 
-          loading="lazy"
-          decoding="async" 
-          onLoad={() => setIsLoaded(true)}
-          className={isLoaded ? 'loaded' : ''}
-        />
-      </Link>
-    </div>
-  );
-}
+import SkeletonImage from './SkeletonImage';
 
 export default function ProjectCard({ id, title, description, tags, image, github, live, status }) {
   const caseStudyLink = `/case-study/${id}`;

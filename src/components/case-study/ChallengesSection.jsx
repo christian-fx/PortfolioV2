@@ -1,9 +1,17 @@
 import { Icon } from '@iconify/react';
+import { motion } from 'framer-motion';
+
+const MotionSection = motion.section;
+
+const variants = {
+  hidden: { opacity: 0, y: 20 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] } }
+};
 
 export default function ChallengesSection({ data, number }) {
   if (!data || data.length === 0) return null;
   return (
-    <section className="case-section">
+    <MotionSection className="case-section" variants={variants}>
       <div className="section-header">
         <p className="section-number">{number} / Challenges</p>
         <h2 className="case-section-title">Key Challenges</h2>
@@ -17,6 +25,6 @@ export default function ChallengesSection({ data, number }) {
           </div>
         ))}
       </div>
-    </section>
+    </MotionSection>
   );
 }
