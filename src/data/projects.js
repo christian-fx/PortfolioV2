@@ -75,7 +75,7 @@ export const PROJECTS = [
     id: 'devfolio',
     title: 'Devfolio',
     category: 'Developer Tools',
-    image: '/public/images/devfolioHero.png',
+    image: '/images/devfolioHero.png',
     description: 'Devfolio is a Node.js CLI tool that scaffolds a fully functional, GitHub-powered developer portfolio in one command, fetching live data from GitHub to keep it always up-to-date.',
     tags: [
       { icon: 'skill-icons:nodejs', label: 'Node.js' },
@@ -259,9 +259,9 @@ export const PROJECTS = [
         ]
       },
       gallery: [
-        { src: '/public/images/productsdetails.png', alt: 'Dashboard Overview', caption: 'Main dashboard showing revenue charts and key metrics' },
-        { src: '/public/images/products.png', alt: 'Product Management', caption: 'Full CRUD for products with image uploads' },
-        { src: '/public/images/inventory.png', alt: 'Inventory Control', caption: 'Visual stock status indicators and valuation' },
+        { src: '/images/productsdetails.png', alt: 'Dashboard Overview', caption: 'Main dashboard showing revenue charts and key metrics' },
+        { src: '/images/products.png', alt: 'Product Management', caption: 'Full CRUD for products with image uploads' },
+        { src: '/images/inventory.png', alt: 'Inventory Control', caption: 'Visual stock status indicators and valuation' },
       ]
     }
   },
@@ -269,7 +269,7 @@ export const PROJECTS = [
     id: 'go-gadgets-store',
     title: 'Go Gadgets Customer Store',
     category: 'E-commerce',
-    image: '/public/images/GoGadgetsLanding.jpeg',
+    image: '/images/GoGadgetsLanding.jpeg',
     description: 'A modern, fast, and fully functional single-page application (SPA) storefront for Go Gadgets e-commerce platform, featuring seamless navigation, secure checkout, and real-time product updates.',
     tags: [
       { icon: 'skill-icons:javascript', label: 'Vanilla JavaScript' },
@@ -358,10 +358,10 @@ export const PROJECTS = [
         ]
       },
       gallery: [
-        { src: '/public/images/AuthPage.jpeg', alt: 'Home Page', caption: 'Customer-facing homepage with trending products' },
+        { src: '/images/AuthPage.jpeg', alt: 'Home Page', caption: 'Customer-facing homepage with trending products' },
         { src: 'https://storage.googleapis.com/banani-generated-images/generated-images/go-gadgets-product.jpg', alt: 'Product Listing', caption: 'Dynamic product listing with categories and stock indicators' },
-        { src: '/public/images/CartPage.jpeg', alt: 'Shopping Cart', caption: 'Persistent shopping cart and checkout interface' },
-        { src: '/public/images/AccountPage.jpeg', alt: 'Account Management', caption: 'User profile, shipping addresses, payment methods, and order history' }
+        { src: '/images/CartPage.jpeg', alt: 'Shopping Cart', caption: 'Persistent shopping cart and checkout interface' },
+        { src: '/images/AccountPage.jpeg', alt: 'Account Management', caption: 'User profile, shipping addresses, payment methods, and order history' }
       ]
     }
   },
@@ -369,7 +369,7 @@ export const PROJECTS = [
     id: 'academiatrack',
     title: 'AcademiaTrack',
     category: 'Educational',
-    image: '/public/images/AcademiaTrack.png',
+    image: '/images/AcademiaTrack.png',
     description: 'AcademiaTrack is a full-stack academic tracking system that enables students to manage their academic records through GPA/CGPA computation, progress analytics, and report generation.',
     tags: [
       { icon: 'skill-icons:html-dark', label: 'HTML' },
@@ -434,7 +434,7 @@ export const PROJECTS = [
     id: 'fitnesshub',
     title: 'Fitness Hub',
     category: 'Health & Fitness',
-    image: '/public/images/fitnesshubDashboard.jpeg',
+    image: '/images/fitnesshubDashboard.jpeg',
     description: 'Fitness Hub is an AI-powered fitness web application that helps users achieve their health goals through personalized workout plans, progress tracking, and interactive training experiences.',
     tags: [
       { icon: 'skill-icons:nextjs-dark', label: 'Next.js' },
@@ -524,10 +524,10 @@ export const PROJECTS = [
         ]
       },
       gallery: [
-        { src: '/public/images/fitnesshubDashboard.jpeg', alt: 'Dashboard', caption: 'Fitness dashboard with key metrics and activity overview' },
-        { src: '/public/images/timer.png', alt: 'Workout Session', caption: 'Interactive workout session with timers' },
-        { src: '/public/images/workoutChart.jpeg', alt: 'Progress Charts', caption: 'Data visualization of workout progress and performance' },
-        { src: '/public/images/community.jpeg', alt: 'Challenges', caption: 'Community fitness challenges and engagement features' }
+        { src: '/images/fitnesshubDashboard.jpeg', alt: 'Dashboard', caption: 'Fitness dashboard with key metrics and activity overview' },
+        { src: '/images/timer.png', alt: 'Workout Session', caption: 'Interactive workout session with timers' },
+        { src: '/images/workoutChart.jpeg', alt: 'Progress Charts', caption: 'Data visualization of workout progress and performance' },
+        { src: '/images/community.jpeg', alt: 'Challenges', caption: 'Community fitness challenges and engagement features' }
       ]
     }
   },
