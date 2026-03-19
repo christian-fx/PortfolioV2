@@ -75,7 +75,7 @@ export const PROJECTS = [
     id: 'devfolio',
     title: 'Devfolio',
     category: 'Developer Tools',
-    image: 'https://storage.googleapis.com/banani-generated-images/generated-images/devfolio-cover.jpg',
+    image: '/public/images/devfolioHero.png',
     description: 'Devfolio is a Node.js CLI tool that scaffolds a fully functional, GitHub-powered developer portfolio in one command, fetching live data from GitHub to keep it always up-to-date.',
     tags: [
       { icon: 'skill-icons:nodejs', label: 'Node.js' },
@@ -259,10 +259,9 @@ export const PROJECTS = [
         ]
       },
       gallery: [
-        { src: 'https://storage.googleapis.com/banani-generated-images/generated-images/gadget-dashboard.jpg', alt: 'Dashboard Overview', caption: 'Main dashboard showing revenue charts and key metrics' },
-        { src: 'https://storage.googleapis.com/banani-generated-images/generated-images/gadget-products.jpg', alt: 'Product Management', caption: 'Full CRUD for products with image uploads' },
-        { src: 'https://storage.googleapis.com/banani-generated-images/generated-images/gadget-inventory.jpg', alt: 'Inventory Control', caption: 'Visual stock status indicators and valuation' },
-        { src: 'https://storage.googleapis.com/banani-generated-images/generated-images/gadget-orders.jpg', alt: 'Order Management', caption: 'Order tracking interface from Pending to Delivered' }
+        { src: '/public/images/productsdetails.png', alt: 'Dashboard Overview', caption: 'Main dashboard showing revenue charts and key metrics' },
+        { src: '/public/images/products.png', alt: 'Product Management', caption: 'Full CRUD for products with image uploads' },
+        { src: '/public/images/inventory.png', alt: 'Inventory Control', caption: 'Visual stock status indicators and valuation' },
       ]
     }
   },
@@ -270,7 +269,7 @@ export const PROJECTS = [
     id: 'go-gadgets-store',
     title: 'Go Gadgets Customer Store',
     category: 'E-commerce',
-    image: 'https://storage.googleapis.com/banani-generated-images/generated-images/go-gadgets-cover.jpg',
+    image: '/public/images/GoGadgetsLanding.jpeg',
     description: 'A modern, fast, and fully functional single-page application (SPA) storefront for Go Gadgets e-commerce platform, featuring seamless navigation, secure checkout, and real-time product updates.',
     tags: [
       { icon: 'skill-icons:javascript', label: 'Vanilla JavaScript' },
@@ -359,10 +358,10 @@ export const PROJECTS = [
         ]
       },
       gallery: [
-        { src: 'https://storage.googleapis.com/banani-generated-images/generated-images/go-gadgets-home.jpg', alt: 'Home Page', caption: 'Customer-facing homepage with trending products' },
+        { src: '/public/images/AuthPage.jpeg', alt: 'Home Page', caption: 'Customer-facing homepage with trending products' },
         { src: 'https://storage.googleapis.com/banani-generated-images/generated-images/go-gadgets-product.jpg', alt: 'Product Listing', caption: 'Dynamic product listing with categories and stock indicators' },
-        { src: 'https://storage.googleapis.com/banani-generated-images/generated-images/go-gadgets-cart.jpg', alt: 'Shopping Cart', caption: 'Persistent shopping cart and checkout interface' },
-        { src: 'https://storage.googleapis.com/banani-generated-images/generated-images/go-gadgets-account.jpg', alt: 'Account Management', caption: 'User profile, shipping addresses, payment methods, and order history' }
+        { src: '/public/images/CartPage.jpeg', alt: 'Shopping Cart', caption: 'Persistent shopping cart and checkout interface' },
+        { src: '/public/images/AccountPage.jpeg', alt: 'Account Management', caption: 'User profile, shipping addresses, payment methods, and order history' }
       ]
     }
   },
@@ -370,7 +369,7 @@ export const PROJECTS = [
     id: 'academiatrack',
     title: 'AcademiaTrack',
     category: 'Educational',
-    image: 'https://storage.googleapis.com/banani-generated-images/generated-images/2931f37a-6689-4bd4-86c9-9276f20d1539.jpg',
+    image: '/public/images/AcademiaTrack.png',
     description: 'AcademiaTrack is a full-stack academic tracking system that enables students to manage their academic records through GPA/CGPA computation, progress analytics, and report generation.',
     tags: [
       { icon: 'skill-icons:html-dark', label: 'HTML' },
@@ -435,7 +434,7 @@ export const PROJECTS = [
     id: 'fitnesshub',
     title: 'Fitness Hub',
     category: 'Health & Fitness',
-    image: 'https://storage.googleapis.com/banani-generated-images/generated-images/fitness-hub-cover.jpg',
+    image: '/public/images/fitnesshubDashboard.jpeg',
     description: 'Fitness Hub is an AI-powered fitness web application that helps users achieve their health goals through personalized workout plans, progress tracking, and interactive training experiences.',
     tags: [
       { icon: 'skill-icons:nextjs-dark', label: 'Next.js' },
@@ -445,7 +444,7 @@ export const PROJECTS = [
     ],
     status: 'Completed',
     github: 'https://github.com/christian-fx/FitnessHub',
-    live: 'https://fitnesshub-beta.vercel.ap',
+    live: 'https://fitnesshub-beta.vercel.app',
     hasCaseStudy: true,
     meta: {
       client: 'Independent Project - Fitness Solution',
@@ -525,10 +524,10 @@ export const PROJECTS = [
         ]
       },
       gallery: [
-        { src: 'https://storage.googleapis.com/banani-generated-images/generated-images/fitness-dashboard.jpg', alt: 'Dashboard', caption: 'Fitness dashboard with key metrics and activity overview' },
-        { src: 'https://storage.googleapis.com/banani-generated-images/generated-images/workout-session.jpg', alt: 'Workout Session', caption: 'Interactive workout session with timers' },
-        { src: 'https://storage.googleapis.com/banani-generated-images/generated-images/progress-charts.jpg', alt: 'Progress Charts', caption: 'Data visualization of workout progress and performance' },
-        { src: 'https://storage.googleapis.com/banani-generated-images/generated-images/social-challenges.jpg', alt: 'Challenges', caption: 'Community fitness challenges and engagement features' }
+        { src: '/public/images/fitnesshubDashboard.jpeg', alt: 'Dashboard', caption: 'Fitness dashboard with key metrics and activity overview' },
+        { src: '/public/images/timer.png', alt: 'Workout Session', caption: 'Interactive workout session with timers' },
+        { src: '/public/images/workoutChart.jpeg', alt: 'Progress Charts', caption: 'Data visualization of workout progress and performance' },
+        { src: '/public/images/community.jpeg', alt: 'Challenges', caption: 'Community fitness challenges and engagement features' }
       ]
     }
   },
