@@ -1,16 +1,68 @@
-# React + Vite
+# Christian Akabueze | Portfolio V2
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This repository contains the second generation of my personal portfolio, a comprehensive re-imagination of my digital presence. Built with React and Vite, this version transitions from static templates to a scalable, component-based architecture designed for high-performance and premium user experiences.
 
-Currently, two official plugins are available:
+## Project Vision
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+The objective for Version 2 was to create a portfolio that feels less like a website and more like a fluid, professional application. This was achieved by prioritizing:
+- Minimal interfaces with visual restraint.
+- Intentional micro-interactions and quintic easing.
+- Robust front-end engineering that bridges the gap between design and scalable code.
 
-## React Compiler
+## Key Technical Features
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+### Orchestrated Motion Design
+The application utilizes Framer Motion to manage all layout transitions. 
+- Integrated a custom quintic easing function (0.22, 1, 0.36, 1) to provide animations with a feeling of physical weight and natural deceleration.
+- Implemented staggered entrance variants for all case study sections, ensuring a rhythmic and coordinated content reveal as the user navigates.
 
-## Expanding the ESLint configuration
+### Layout Stability and Performance
+To eliminate Cumulative Layout Shift (CLS) and provide a polished loading experience:
+- Developed a global SkeletonImage system that renders shimmer loaders matching the exact aspect ratio of incoming assets.
+- Utilized native lazy loading and asynchronous decoding for all non-critical images.
+- Implemented high-priority fetch hints for hero assets to optimize the Largest Contentful Paint (LCP).
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### Advanced SEO Strategy
+The portfolio is architected for maximum search engine visibility:
+- Dynamic metadata management using React Helmet Async.
+- Automatic injection of Person, CreativeWork, and BreadcrumbList JSON-LD structured data for detailed search result snippets.
+- Context-aware OpenGraph and Twitter card configurations, including precise image dimensions and optimized social previews.
+
+## Technical Stack
+
+- Core: React 18, Vite
+- Logic: JavaScript (ES6+), React Hooks
+- Styling: Vanilla CSS with modular design tokens
+- Animation: Framer Motion
+- Icons: Iconify Framework
+- Search Optimization: React Helmet Async
+
+## Project Architecture
+
+- /src/components: Reusable UI primitives and modular case study building blocks.
+- /src/data: Centralized project definitions and configuration.
+- /src/pages: Route-level components including the dynamic Case Study renderer.
+- /src/styles: Global typography and color system definitions.
+
+## Getting Started
+
+### Installation
+Clone the repository and install dependencies:
+```bash
+npm install
+```
+
+### Development
+Launch the Vite development server with Hot Module Replacement:
+```bash
+npm run dev
+```
+
+### Production
+Generate an optimized production build:
+```bash
+npm run build
+```
+
+## Deployment
+The portfolio is designed for seamless deployment on Vercel. Ensure all environment variables, including the Google Analytics ID, are correctly configured in the deployment dashboard for full functionality.
