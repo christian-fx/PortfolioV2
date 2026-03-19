@@ -75,7 +75,7 @@ export const PROJECTS = [
     id: 'devfolio',
     title: 'Devfolio',
     category: 'Developer Tools',
-    image: '/images/devfolioHero.png',
+    image: '/images/case-studies/devfolioHero.png',
     description: 'Devfolio is a Node.js CLI tool that scaffolds a fully functional, GitHub-powered developer portfolio in one command, fetching live data from GitHub to keep it always up-to-date.',
     tags: [
       { icon: 'skill-icons:nodejs', label: 'Node.js' },
@@ -168,14 +168,14 @@ export const PROJECTS = [
     id: 'gadgetstore-admin',
     title: 'Gadget Store Admin Dashboard',
     category: 'E-commerce',
-    image: '/images/devfolioHero.png',
+    image: '/images/case-studies/productsdetails.png',
     description: 'A modern, responsive admin dashboard for managing a gadget e-commerce store, featuring real-time analytics, inventory and order management, and product CRUD operations—all powered by Firebase and Vanilla JavaScript.',
     tags: [
       { icon: 'skill-icons:javascript', label: 'Vanilla JavaScript' },
       { icon: 'skill-icons:html', label: 'HTML5' },
       { icon: 'skill-icons:css', label: 'CSS3' },
       { icon: 'skill-icons:tailwindcss-dark', label: 'Tailwind CSS' },
-      { icon: 'skill-icons:firebase', label: 'Firebase (Auth & Firestore)' }
+      { icon: 'vscode-icons:file-type-firebase', label: 'Firebase (Auth & Firestore)' }
     ],
     status: 'in-development',
     github: 'https://github.com/christian-fx/Go-Gadget-Admin',
@@ -246,7 +246,7 @@ export const PROJECTS = [
         { icon: 'skill-icons:javascript', label: 'Vanilla JavaScript (ES Modules)' },
         { icon: 'skill-icons:tailwindcss-dark', label: 'Tailwind CSS v4' },
         { icon: 'skill-icons:vitejs', label: 'Vite' },
-        { icon: 'skill-icons:firebase', label: 'Firebase (Auth & Firestore)' },
+        { icon: 'vscode-icons:file-type-firebase', label: 'Firebase (Auth & Firestore)' },
         { icon: 'simple-icons:cloudinary', label: 'Cloudinary' },
         { icon: 'simple-icons:materialdesign', label: 'Material Symbols' }
       ],
@@ -259,9 +259,9 @@ export const PROJECTS = [
         ]
       },
       gallery: [
-        { src: '/images/productsdetails.png', alt: 'Dashboard Overview', caption: 'Main dashboard showing revenue charts and key metrics' },
-        { src: '/images/products.png', alt: 'Product Management', caption: 'Full CRUD for products with image uploads' },
-        { src: '/images/inventory.png', alt: 'Inventory Control', caption: 'Visual stock status indicators and valuation' },
+        { src: '/images/case-studies/productsdetails.png', alt: 'Dashboard Overview', caption: 'Main dashboard showing revenue charts and key metrics' },
+        { src: '/images/case-studies/products.png', alt: 'Product Management', caption: 'Full CRUD for products with image uploads' },
+        { src: '/images/case-studies/inventory.png', alt: 'Inventory Control', caption: 'Visual stock status indicators and valuation' },
       ]
     }
   },
@@ -269,14 +269,14 @@ export const PROJECTS = [
     id: 'go-gadgets-store',
     title: 'Go Gadgets Customer Store',
     category: 'E-commerce',
-    image: '/images/goGadgetsLanding.jpeg',
+    image: '/images/case-studies/goGadgetsLanding.jpeg',
     description: 'A modern, fast, and fully functional single-page application (SPA) storefront for Go Gadgets e-commerce platform, featuring seamless navigation, secure checkout, and real-time product updates.',
     tags: [
       { icon: 'skill-icons:javascript', label: 'Vanilla JavaScript' },
       { icon: 'skill-icons:html', label: 'HTML5' },
       { icon: 'skill-icons:css', label: 'CSS3' },
       { icon: 'skill-icons:tailwindcss-dark', label: 'Tailwind CSS' },
-      { icon: 'skill-icons:firebase', label: 'Firebase (Auth & Firestore)' }
+      { icon: 'vscode-icons:file-type-firebase', label: 'Firebase (Auth & Firestore)' }
     ],
     status: 'in-development',
     github: 'https://github.com/christian-fx/Go-Gadgets',
@@ -346,7 +346,7 @@ export const PROJECTS = [
         { icon: 'skill-icons:css', label: 'CSS3' },
         { icon: 'skill-icons:javascript', label: 'Vanilla JavaScript (ES6+)' },
         { icon: 'skill-icons:tailwindcss-dark', label: 'Tailwind CSS' },
-        { icon: 'skill-icons:firebase', label: 'Firebase (Auth & Firestore)' },
+        { icon: 'vscode-icons:file-type-firebase', label: 'Firebase (Auth & Firestore)' },
         { icon: 'skill-icons:vitejs', label: 'Vite' }
       ],
       results: {
@@ -358,10 +358,10 @@ export const PROJECTS = [
         ]
       },
       gallery: [
-        { src: '/images/AuthPage.jpeg', alt: 'Home Page', caption: 'Customer-facing homepage with trending products' },
+        { src: '/images/case-studies/AuthPage.jpeg', alt: 'Home Page', caption: 'Customer-facing homepage with trending products' },
         { src: 'https://storage.googleapis.com/banani-generated-images/generated-images/go-gadgets-product.jpg', alt: 'Product Listing', caption: 'Dynamic product listing with categories and stock indicators' },
-        { src: '/images/CartPage.jpeg', alt: 'Shopping Cart', caption: 'Persistent shopping cart and checkout interface' },
-        { src: '/images/AccountPage.jpeg', alt: 'Account Management', caption: 'User profile, shipping addresses, payment methods, and order history' }
+        { src: '/images/case-studies/CartPage.jpeg', alt: 'Shopping Cart', caption: 'Persistent shopping cart and checkout interface' },
+        { src: '/images/case-studies/AccountPage.jpeg', alt: 'Account Management', caption: 'User profile, shipping addresses, payment methods, and order history' }
       ]
     }
   },
@@ -369,13 +369,13 @@ export const PROJECTS = [
     id: 'academiatrack',
     title: 'AcademiaTrack',
     category: 'Educational',
-    image: '/images/AcademiaTrack.png',
+    image: '/images/case-studies/AcademiaTrack.png',
     description: 'AcademiaTrack is a full-stack academic tracking system that enables students to manage their academic records through GPA/CGPA computation, progress analytics, and report generation.',
     tags: [
-      { icon: 'skill-icons:html-dark', label: 'HTML' },
+      { icon: 'skill-icons:html', label: 'HTML' },
       { icon: 'logos:css', label: 'CSS' },
-      { icon: 'simple-icons:tailwindcss-dark', label: 'Tailwind CSS' },
-      { icon: 'simple-icons:firebase', label: 'Firebase' }
+      { icon: 'skill-icons:tailwindcss-dark', label: 'Tailwind CSS' },
+      { icon: 'vscode-icons:file-type-firebase', label: 'Firebase' }
     ],
     status: 'Completed',
     github: '#',
@@ -411,7 +411,7 @@ export const PROJECTS = [
         { icon: 'skill-icons:css', label: 'CSS3' },
         { icon: 'skill-icons:javascript', label: 'JavaScript' },
         { icon: 'skill-icons:tailwindcss-dark', label: 'Tailwind CSS' },
-        { icon: 'skill-icons:firebase', label: 'Firebase (Auth & Database)' },
+        { icon: 'vscode-icons:file-type-firebase', label: 'Firebase (Auth & Database)' },
         { icon: 'skill-icons:vercel-dark', label: 'Vercel' }
       ],
       results: {
@@ -434,12 +434,12 @@ export const PROJECTS = [
     id: 'fitnesshub',
     title: 'Fitness Hub',
     category: 'Health & Fitness',
-    image: '/images/fitnesshubDashboard.jpeg',
+    image: '/images/case-studies/fitnesshubDashboard.jpeg',
     description: 'Fitness Hub is an AI-powered fitness web application that helps users achieve their health goals through personalized workout plans, progress tracking, and interactive training experiences.',
     tags: [
       { icon: 'skill-icons:nextjs-dark', label: 'Next.js' },
       { icon: 'skill-icons:tailwindcss-dark', label: 'Tailwind CSS' },
-      { icon: 'skill-icons:firebase', label: 'Firebase' },
+      { icon: 'vscode-icons:file-type-firebase', label: 'Firebase' },
       { icon: 'skill-icons:react-dark', label: 'React' }
     ],
     status: 'Completed',
@@ -509,7 +509,7 @@ export const PROJECTS = [
         { icon: 'skill-icons:nextjs-dark', label: 'Next.js (App Router)' },
         { icon: 'skill-icons:tailwindcss-dark', label: 'Tailwind CSS' },
         { icon: 'skill-icons:react-dark', label: 'React' },
-        { icon: 'skill-icons:firebase', label: 'Firebase (Auth & Firestore)' },
+        { icon: 'vscode-icons:file-type-firebase', label: 'Firebase (Auth & Firestore)' },
         { icon: 'skill-icons:vercel-dark', label: 'Vercel' },
         { icon: 'logos:react-hook-form', label: 'React Hook Form' },
         { icon: 'logos:zod', label: 'Zod' },
@@ -524,10 +524,10 @@ export const PROJECTS = [
         ]
       },
       gallery: [
-        { src: '/images/fitnesshubDashboard.jpeg', alt: 'Dashboard', caption: 'Fitness dashboard with key metrics and activity overview' },
-        { src: '/images/timer.png', alt: 'Workout Session', caption: 'Interactive workout session with timers' },
-        { src: '/images/workoutChart.jpeg', alt: 'Progress Charts', caption: 'Data visualization of workout progress and performance' },
-        { src: '/images/community.jpeg', alt: 'Challenges', caption: 'Community fitness challenges and engagement features' }
+        { src: '/images/case-studies/fitnesshubDashboard.jpeg', alt: 'Dashboard', caption: 'Fitness dashboard with key metrics and activity overview' },
+        { src: '/images/case-studies/timer.png', alt: 'Workout Session', caption: 'Interactive workout session with timers' },
+        { src: '/images/case-studies/workoutChart.jpeg', alt: 'Progress Charts', caption: 'Data visualization of workout progress and performance' },
+        { src: '/images/case-studies/community.jpeg', alt: 'Challenges', caption: 'Community fitness challenges and engagement features' }
       ]
     }
   },

@@ -245,6 +245,12 @@
   margin-bottom: 8px;
 }
 
+.result-number.text-metric {
+  font-size: 26px;
+  line-height: 1.1;
+  word-wrap: break-word;
+}
+
 .result-label {
   font-size: 14px;
   color: var(--muted-foreground);
@@ -391,6 +397,7 @@
   .case-title { font-size: 56px; }
   .case-section-title { font-size: 36px; }
   .result-number { font-size: 56px; }
+  .result-number.text-metric { font-size: 32px; }
 }
 
 @media (min-width: 1600px) {

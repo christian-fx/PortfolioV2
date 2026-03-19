@@ -147,10 +147,10 @@
 .work-image-wrapper {
   position: relative;
   width: 100%;
+  aspect-ratio: 16/10;
   background: var(--muted);
   border-bottom: 1px solid var(--border);
   overflow: hidden;
-  min-height: 200px;
 }
 
 .skeleton-image {
@@ -165,7 +165,7 @@
 
 .work-image-wrapper img {
   width: 100%;
-  height: auto;
+  height: 100%;
   display: block;
   object-fit: cover;
   filter: grayscale(100%);

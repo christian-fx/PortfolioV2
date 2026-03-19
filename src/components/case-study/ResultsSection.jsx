@@ -9,12 +9,15 @@ export default function ResultsSection({ data, number }) {
       
       {data.metrics && data.metrics.length > 0 && (
         <div className="results-grid">
-          {data.metrics.map(({ number: stat, label }) => (
-            <div key={label} className="result-card">
-              <div className="result-number">{stat}</div>
-              <div className="result-label">{label}</div>
-            </div>
-          ))}
+          {data.metrics.map(({ number: stat, label }) => {
+            const isText = /[a-zA-Z]{3,}/.test(stat) || stat.length > 4;
+            return (
+              <div key={label} className="result-card">
+                <div className={`result-number ${isText ? 'text-metric' : ''}`}>{stat}</div>
+                <div className="result-label">{label}</div>
+              </div>
+            );
+          })}
         </div>
       )}
 
