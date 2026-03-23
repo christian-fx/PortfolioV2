@@ -20,12 +20,7 @@ export default function SEO({
     ? `${keywords}, Christian Akabueze, Frontend Developer`
     : defaultKeywords;
 
-  // ── JSON-LD ──────────────────────────────────────────────────────────────
-  // If a project is passed we emit a CreativeWork + BreadcrumbList schema.
-  // Otherwise fall back to the Person schema.
   const jsonLdPerson = {
-    "@context": "https://schema.org",
-    "@type": "Person",
     "name": "Christian Akabueze",
     "alternateName": "Akabueze Christian",
     "url": `${BASE_URL}/`,
@@ -42,34 +37,48 @@ export default function SEO({
     "mainEntityOfPage": { "@type": "WebPage", "@id": `${BASE_URL}/` }
   };
 
-  const jsonLdProject = project ? [
+  // ── JSON-LD ──────────────────────────────────────────────────────────────
+  const breadcrumbs = [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": `${BASE_URL}/` }
+  ];
+
+  if (title === "Works") {
+    breadcrumbs.push({ "@type": "ListItem", "position": 2, "name": "Works", "item": `${BASE_URL}/works` });
+  } else if (title === "About") {
+    breadcrumbs.push({ "@type": "ListItem", "position": 2, "name": "About", "item": `${BASE_URL}/about` });
+  } else if (title === "Contact") {
+    breadcrumbs.push({ "@type": "ListItem", "position": 2, "name": "Contact", "item": `${BASE_URL}/contact` });
+  } else if (project) {
+    breadcrumbs.push({ "@type": "ListItem", "position": 2, "name": "Works", "item": `${BASE_URL}/works` });
+    breadcrumbs.push({ "@type": "ListItem", "position": 3, "name": project.title, "item": url });
+  }
+
+  const jsonLd = [
     {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      ...jsonLdPerson
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": breadcrumbs
+    }
+  ];
+
+  if (project) {
+    jsonLd.push({
       "@context": "https://schema.org",
       "@type": "CreativeWork",
       "name": project.title,
       "description": project.description,
       "url": url,
       "image": image || project.image,
-      "creator": {
-        "@type": "Person",
-        "name": "Christian Akabueze",
-        "url": `${BASE_URL}/`
-      },
+      "creator": { "@type": "Person", "name": "Christian Akabueze", "url": `${BASE_URL}/` },
       "dateCreated": project.meta?.year ? `${project.meta.year}-01-01` : undefined,
       "keywords": keywords || project.category,
-    },
-    {
-      "@context": "https://schema.org",
-      "@type": "BreadcrumbList",
-      "itemListElement": [
-        { "@type": "ListItem", "position": 1, "name": "Home", "item": `${BASE_URL}/` },
-        { "@type": "ListItem", "position": 2, "name": "Works", "item": `${BASE_URL}/works` },
-        { "@type": "ListItem", "position": 3, "name": project.title, "item": url }
-      ]
-    }
-  ] : null;
-
-  const jsonLd = jsonLdProject || jsonLdPerson;
+    });
+  }
 
   return (
     <Helmet>

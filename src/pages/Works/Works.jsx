@@ -10,7 +10,10 @@ import { PROJECTS } from '../../data/projects';
 export default function Works() {
   return (
     <Layout>
-      <SEO title="Works" />
+      <SEO 
+        title="Works" 
+        description="Explore the project portfolio of Christian Akabueze, featuring modern web applications, e-commerce platforms, and high-performance digital products."
+      />
       <nav className="breadcrumb">
         <Link to="/"><Icon icon="lucide:arrow-left" width={16} />Back to Home</Link>
         <span className="separator">/</span>

@@ -89,7 +89,10 @@ export default function Contact() {
 
   return (
     <Layout>
-      <SEO title="Contact" />
+      <SEO 
+        title="Contact" 
+        description="Get in touch with Christian Akabueze for frontend engineering roles, freelance collaborations, or product design inquiries."
+      />
       <section className="contact-hero">
         <Reveal delay={0.1}>
           <h1>Let's connect</h1>

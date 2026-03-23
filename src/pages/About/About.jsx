@@ -95,7 +95,10 @@ export default function About() {
   const handleFlip = (idx) => setActiveCard(prev => prev === idx ? null : idx);
   return (
     <Layout>
-      <SEO title="About" />
+      <SEO 
+        title="About" 
+        description="Learn about Christian Akabueze, a Frontend Engineer & Software Engineering Student specializing in high-performance React architectures and immersive interfaces." 
+      />
       {/* Hero */}
       <section className="about-hero">
         <Reveal delay={0.1}>

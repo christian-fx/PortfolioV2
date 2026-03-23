@@ -7,6 +7,8 @@ import { Link } from 'react-router-dom';
 export default function SkeletonImage({ 
   src, 
   alt, 
+  srcSet,
+  sizes,
   link, 
   className = '', 
   imgClassName = '',
@@ -28,6 +30,8 @@ export default function SkeletonImage({
     <img 
       ref={imgRef} 
       src={src} 
+      srcSet={srcSet}
+      sizes={sizes}
       alt={alt} 
       loading={fetchPriority === 'high' ? 'eager' : 'lazy'}
       fetchpriority={fetchPriority}
