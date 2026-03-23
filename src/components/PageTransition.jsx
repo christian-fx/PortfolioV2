@@ -2,8 +2,6 @@ import { motion } from 'framer-motion';
 
 /**
  * Premium Page Transition
- * Uses a subtle scale + fade + slide effect with a high-end expo easing
- * for that 'app-like' feel between routes.
  */
 export default function PageTransition({ children }) {
   const MotionDiv = motion.div;

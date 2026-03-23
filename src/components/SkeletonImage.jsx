@@ -3,8 +3,6 @@ import { Link } from 'react-router-dom';
 
 /**
  * SkeletonImage Component
- * Handles image loading states with a shimmer skeleton effect.
- * Can be used as a standalone image or wrapped in a Link.
  */
 export default function SkeletonImage({ 
   src, 

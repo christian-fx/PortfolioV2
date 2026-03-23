@@ -135,7 +135,7 @@ export default function Contact() {
                 </div>
                 <div className={`form-group ${errors.lastName ? 'has-error' : ''}`}>
                   <label htmlFor="lastName">Last name</label>
-                  <input type="text" id="lastName" name="lastName" placeholder="Santos"
+                  <input type="text" id="lastName" name="lastName" placeholder="Akabueze"
                     value={form.lastName} onChange={e => handleChange('lastName', e.target.value)} />
                   {errors.lastName && <span className="error-text">{errors.lastName}</span>}
                 </div>

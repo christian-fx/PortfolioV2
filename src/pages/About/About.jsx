@@ -20,7 +20,7 @@ const EXPERIENCES = [
     company: 'FreeCodeCamp',
     date: '',
     desc: 'Completed front-end projects and earned certification.',
-    link: { href: 'https://www.freecodecamp.org/certification', label: 'View Certificates' },
+    link: { href: 'https://www.freecodecamp.org/certification/christian-fx/javascript-v9', label: 'View Certificates' },
   },
 ];
 
