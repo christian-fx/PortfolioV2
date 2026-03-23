@@ -1,8 +1,9 @@
+import { memo } from 'react';
 import { Helmet } from 'react-helmet-async';
 
 const BASE_URL = 'https://devchristian.vercel.app';
 
-export default function SEO({
+function SEOComponent({
   title,
   description,
   url = BASE_URL,
@@ -120,3 +121,5 @@ export default function SEO({
     </Helmet>
   );
 }
+
+export default memo(SEOComponent);

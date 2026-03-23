@@ -9,7 +9,14 @@ export default function Layout({ children }) {
 
   return (
     <>
-      <div className="scroll-progress" style={{ width: `${progress}%` }} />
+      <div 
+        className="scroll-progress" 
+        style={{ 
+          transform: `scaleX(${progress / 100})`,
+          transformOrigin: 'left',
+          width: '100%'
+        }} 
+      />
       <button
         className={`back-to-top${showBackToTop ? ' visible' : ''}`}
         onClick={scrollToTop}
