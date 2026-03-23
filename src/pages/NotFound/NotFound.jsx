@@ -2,14 +2,29 @@ import { Link } from 'react-router-dom';
 import { Icon } from '@iconify/react';
 import Layout from '../../components/Layout';
 import SEO from '../../components/SEO';
+import { motion } from 'framer-motion';
 import './NotFound.css';
+
+const MotionSection = motion.section;
 
 export default function NotFound() {
   return (
     <Layout>
       <SEO title="Page Not Found" />
-      <section className="not-found-section">
-        <h1 className="not-found-title">404</h1>
+      <MotionSection 
+        className="not-found-section"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, ease: "easeOut" }}
+      >
+        <motion.h1 
+          className="not-found-title"
+          initial={{ scale: 0.8 }}
+          animate={{ scale: 1 }}
+          transition={{ delay: 0.2, type: "spring", stiffness: 100 }}
+        >
+          404
+        </motion.h1>
         <h2 className="not-found-subtitle">Page Not Found</h2>
         <p className="not-found-desc">
           The page you're looking for doesn't exist or has been moved.
@@ -23,7 +38,7 @@ export default function NotFound() {
             View Projects <Icon icon="lucide:folder-open" width={16} />
           </Link>
         </div>
-      </section>
+      </MotionSection>
     </Layout>
   );
 }

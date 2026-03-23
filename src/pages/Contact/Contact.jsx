@@ -175,22 +175,52 @@ export default function Contact() {
       </section>
 
       <section className="direct-section">
-        <h2>Prefer Social?</h2>
-        <div className="social-row">
+        <Reveal delay={0.1}>
+          <h2>Prefer Social?</h2>
+        </Reveal>
+        <motion.div 
+          className="social-row"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={{
+            hidden: { opacity: 0 },
+            visible: {
+              opacity: 1,
+              transition: { staggerChildren: 0.1 }
+            }
+          }}
+        >
           {SOCIALS.map(({ href, label, icon }) => (
-            <a key={label} href={href} className="social-item-contact" aria-label={label}
-              target="_blank" rel="noopener noreferrer">
+            <motion.a 
+              key={label} 
+              href={href} 
+              className="social-item-contact" 
+              aria-label={label}
+              target="_blank" 
+              rel="noopener noreferrer"
+              variants={{
+                hidden: { opacity: 0, y: 10 },
+                visible: { opacity: 1, y: 0 }
+              }}
+            >
               <Icon icon={icon} width={18} />{label}
-            </a>
+            </motion.a>
           ))}
-          <div className="email-card">
+          <motion.div 
+            className="email-card"
+            variants={{
+              hidden: { opacity: 0, x: -10 },
+              visible: { opacity: 1, x: 0 }
+            }}
+          >
             <Icon icon="lucide:mail" width={18} />
             <span className="email-text">{EMAIL}</span>
             <button className="copy-email" onClick={copyEmail} aria-label="Copy email">
-              <Icon icon="lucide:copy" width={16} />
+              <Icon icon={toast ? "lucide:check" : "lucide:copy"} width={16} color={toast ? "var(--success)" : "currentColor"} />
             </button>
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
       </section>
 
       <div className={`copy-toast${toast ? ' show' : ''}`}>Copied to clipboard!</div>

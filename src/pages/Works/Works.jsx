@@ -12,6 +12,8 @@ import { motion, AnimatePresence } from 'framer-motion';
 
 const CATEGORIES = ['All', ...new Set(PROJECTS.map(p => p.category))];
 
+const MotionDiv = motion.div;
+
 export default function Works() {
   const [filter, setFilter] = useState('All');
 
@@ -58,10 +60,10 @@ export default function Works() {
       </section>
 
       <section className="work-section">
-        <motion.div layout className="work-grid">
+        <MotionDiv layout className="work-grid">
           <AnimatePresence mode="popLayout">
             {filteredProjects.map((p) => (
-              <motion.div
+              <MotionDiv
                 layout
                 key={p.id}
                 initial={{ opacity: 0, scale: 0.9 }}
@@ -70,10 +72,10 @@ export default function Works() {
                 transition={{ duration: 0.3 }}
               >
                 <ProjectCard {...p} />
-              </motion.div>
+              </MotionDiv>
             ))}
           </AnimatePresence>
-        </motion.div>
+        </MotionDiv>
       </section>
 
       <section className="cta-section" style={{ animationDelay: '0.2s' }}>
