@@ -445,6 +445,72 @@ body.modal-open {
   background: var(--card);
   border: 1px solid var(--border);
   overflow: hidden;
+  position: relative; /* Added for ribbon positioning */
+}
+
+/* ─── Development Ribbon ─────────────────────────────── */
+.dev-ribbon-wrapper {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 150px;
+  height: 150px;
+  overflow: hidden;
+  z-index: 10;
+  pointer-events: none;
+}
+
+.dev-ribbon-content {
+  position: absolute;
+  top: 30px;
+  right: -35px;
+  width: 200px;
+  transform: rotate(45deg);
+  background: repeating-linear-gradient(
+    -45deg,
+    #111111, 
+    #111111 10px,
+    #222222 10px,
+    #222222 20px
+  );
+  background-size: 40px 40px;
+  animation: stripe-move 2s linear infinite;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+  display: flex;
+  align-items: center;
+  overflow: hidden; /* For marquee */
+  padding: 6px 0;
+  border-top: 1px solid rgba(255,255,255,0.05);
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+
+.dev-ribbon-content span {
+  display: inline-block;
+  white-space: nowrap;
+  color: #ffffff;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  padding: 0 20px;
+  animation: text-slide 10s linear infinite;
+}
+
+@keyframes text-slide {
+  from { transform: translateX(-50%); }
+  to { transform: translateX(0); }
+}
+
+@keyframes text-pulse {
+  0% { opacity: 0.6; }
+  50% { opacity: 1; }
+  100% { opacity: 0.6; }
+}
+
+@keyframes stripe-move {
+  from { background-position: 0 0; }
+  to { background-position: 40px 0; }
 }
 
 .work-image-wrapper {

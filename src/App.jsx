@@ -55,19 +55,23 @@ export default function App() {
       <ScrollToTop />
       
       <AnimatePresence>
-        {isInitialLoading ? (
+        {isInitialLoading && (
           <PageLoader key="initial-loader" onComplete={() => setIsInitialLoading(false)} />
-        ) : (
-          <div
-            key="app-content"
-            style={{ animation: 'fadeIn 0.5s ease-out forwards' }}
-          >
-            <Suspense fallback={null}>
-              <AnimatedRoutes />
-            </Suspense>
-          </div>
         )}
       </AnimatePresence>
+
+      <div
+        key="app-content"
+        style={{ 
+          opacity: isInitialLoading ? 0 : 1,
+          visibility: isInitialLoading ? 'hidden' : 'visible',
+          transition: 'opacity 0.8s ease-in-out'
+        }}
+      >
+        <Suspense fallback={null}>
+          <AnimatedRoutes />
+        </Suspense>
+      </div>
     </BrowserRouter>
   );
 }

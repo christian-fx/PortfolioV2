@@ -16,6 +16,14 @@ export default function ProjectCard({ id, title, description, tags, image, githu
 
   return (
     <article className="work-card">
+      {(status === 'in-development' || status === 'In Development') && (
+        <div className="dev-ribbon-wrapper">
+          <div className="dev-ribbon-content">
+            <span>In Development • In Development • In Development •</span>
+            <span>In Development • In Development • In Development •</span>
+          </div>
+        </div>
+      )}
       <SkeletonImage src={image} alt={`${title} Preview`} link={caseStudyLink} />
       <div className="work-meta">
         <div className="work-header">
