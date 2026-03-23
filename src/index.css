@@ -1,4 +1,7 @@
-/* ─── Self-Hosted Fonts ────────────────────────────── */
+/* ─── External Fonts (Restored for missing families) ── */
+@import url('https://fonts.googleapis.com/css2?family=Google+Sans+Flex:opsz,wght@6..144,1..1000&family=Momo+Trust+Display&display=swap');
+
+/* ─── Self-Hosted Fonts (Optimized) ────────────────── */
 @font-face {
   font-family: 'Inter';
   src: url('./assets/fonts/Inter-VariableFont_slnt,wght.woff2') format('woff2');
@@ -57,7 +60,11 @@
   --overlay: rgba(0, 0, 0, 0.8);
 }
 
-/* ─── Reset ──────────────────────────────────────────── */
+/* ─── Reset & Global ────────────────────────────────── */
+html {
+  scroll-behavior: smooth;
+}
+
 *, *::before, *::after {
   box-sizing: border-box;
   margin: 0;
@@ -70,6 +77,25 @@ body {
   font-family: var(--font-family-body);
   line-height: 1.4;
   transition: background-color 0.2s, color 0.2s;
+  position: relative;
+}
+
+/* ─── Custom Scrollbar ───────────────────────────────── */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--background);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--muted-foreground);
 }
 
 body.modal-open {
