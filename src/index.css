@@ -1,32 +1,4 @@
-/* ─── External Fonts (Restored for missing families) ── */
-@import url('https://fonts.googleapis.com/css2?family=Google+Sans+Flex:opsz,wght@6..144,1..1000&family=Momo+Trust+Display&display=swap');
-
-/* ─── Self-Hosted Fonts (Optimized) ────────────────── */
-@font-face {
-  font-family: 'Inter';
-  src: url('./assets/fonts/Inter-VariableFont_slnt,wght.woff2') format('woff2');
-  font-weight: 100 900;
-  font-display: swap;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'Bebas Neue';
-  src: url('./assets/fonts/BebasNeue-Regular.woff2') format('woff2');
-  font-weight: 400;
-  font-display: swap;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'JetBrains Mono';
-  src: url('./assets/fonts/JetBrainsMono-VariableFont_wght.woff2') format('woff2');
-  font-weight: 100 800;
-  font-display: swap;
-  font-style: normal;
-}
-
-/* ─────────────────────────────────────────────────── */
+/* ─── External Fonts integrated in index.html for performance ── */
 
 /* ─── CSS Variables ─────────────────────────────────── */
 :root {
@@ -357,14 +329,33 @@ body.modal-open {
 /* ─── Project Filtering ──────────────────────────────── */
 .filter-section {
   margin-bottom: 32px;
+  position: sticky;
+  top: 60px; /* Aligned below the header */
+  z-index: 40;
+  background-color: var(--background);
+  padding: 12px 0;
+  margin-top: -12px;
+}
+
+.filter-container {
+  position: relative;
+  display: flex;
+  align-items: center;
 }
 
 .filter-tabs {
   display: flex;
   gap: 12px;
-  flex-wrap: wrap;
+  overflow-x: auto;
+  scrollbar-width: none; /* Hide scrollbar Firefox */
+  -ms-overflow-style: none; /* Hide scrollbar IE/Edge */
+  padding-bottom: 4px;
   border-bottom: 1px solid var(--border);
-  padding-bottom: 12px;
+  width: 100%;
+}
+
+.filter-tabs::-webkit-scrollbar {
+  display: none; /* Hide scrollbar Chrome/Safari */
 }
 
 .filter-btn {
@@ -378,6 +369,7 @@ body.modal-open {
   padding: 8px 12px;
   transition: color 0.3s ease;
   white-space: nowrap;
+  flex-shrink: 0;
 }
 
 .filter-btn:hover {
@@ -390,12 +382,23 @@ body.modal-open {
 
 .active-pill {
   position: absolute;
-  bottom: -13px;
+  bottom: -5px;
   left: 0;
   right: 0;
   height: 2px;
   background: var(--foreground);
   z-index: 10;
+}
+
+.filter-fade-right {
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 40px;
+  background: linear-gradient(to right, transparent, var(--background));
+  pointer-events: none;
+  z-index: 15;
 }
 
 /* ─── Breadcrumb ─────────────────────────────────────── */
@@ -608,6 +611,30 @@ body.modal-open {
   justify-content: flex-end;
   margin-top: 32px;
 }
+.social-item {
+  width: 40px;
+  height: 40px;
+  border: 2px solid var(--border);
+  border-radius: 6px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  padding: 0;
+  text-decoration: none;
+  color: var(--foreground);
+  transition: all 0.15s ease;
+}
+
+.social-item:hover {
+  transform: translateY(-1px);
+}
+
+.social-name {
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 13px;
+  display: none;
+}
 
 /* ─── Responsive ─────────────────────────────────────── */
 @media (min-width: 768px) {
@@ -618,6 +645,7 @@ body.modal-open {
   .social-name { display: inline; margin-bottom: -5px; }
   .social-item { padding: 8px 16px; width: auto; height: auto; gap: 8px; }
   .work-grid { grid-template-columns: repeat(2, 1fr); gap: 24px; }
+  .stack-grid { grid-template-columns: repeat(4, 1fr); }
 }
 
 @media (min-width: 1200px) {
@@ -633,4 +661,8 @@ body.modal-open {
   .nav-link { font-size: 22px; }
   .section-title { font-size: 36px; }
   .cta-title { font-size: 42px; }
+}
+@keyframes fadeIn {
+  from { opacity: 0; filter: blur(10px); }
+  to { opacity: 1; filter: blur(0); }
 }

@@ -1,4 +1,4 @@
-import { lazy, Suspense, useEffect } from 'react';
+import { lazy, Suspense, useEffect, useState } from 'react';
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 import { AnimatePresence } from 'framer-motion';
 import ScrollToTop from './components/ScrollToTop';
@@ -16,9 +16,6 @@ const NotFound = lazy(() => import('./pages/NotFound/NotFound'));
 
 const ReactGA = ReactGAPackage.default || ReactGAPackage;
 const GA_MEASUREMENT_ID = import.meta.env.VITE_GA_ID;
-if (GA_MEASUREMENT_ID) {
-  ReactGA.initialize(GA_MEASUREMENT_ID);
-}
 
 function AnimatedRoutes() {
   const location = useLocation();
@@ -44,12 +41,33 @@ function AnimatedRoutes() {
 }
 
 export default function App() {
+  const [isInitialLoading, setIsInitialLoading] = useState(true);
+
+  useEffect(() => {
+    if (!isInitialLoading && GA_MEASUREMENT_ID) {
+      // Initialize GA4 only after the initial splash is gone
+      ReactGA.initialize(GA_MEASUREMENT_ID);
+    }
+  }, [isInitialLoading]);
+
   return (
     <BrowserRouter>
       <ScrollToTop />
-      <Suspense fallback={<PageLoader />}>
-        <AnimatedRoutes />
-      </Suspense>
+      
+      <AnimatePresence>
+        {isInitialLoading ? (
+          <PageLoader key="initial-loader" onComplete={() => setIsInitialLoading(false)} />
+        ) : (
+          <div
+            key="app-content"
+            style={{ animation: 'fadeIn 0.5s ease-out forwards' }}
+          >
+            <Suspense fallback={null}>
+              <AnimatedRoutes />
+            </Suspense>
+          </div>
+        )}
+      </AnimatePresence>
     </BrowserRouter>
   );
 }

@@ -39,23 +39,26 @@ export default function Works() {
 
       {/* Filter Tabs */}
       <section className="filter-section">
-        <div className="filter-tabs">
-          {CATEGORIES.map((cat) => (
-            <button
-              key={cat}
-              className={`filter-btn ${filter === cat ? 'active' : ''}`}
-              onClick={() => setFilter(cat)}
-            >
-              {cat}
-              {filter === cat && (
-                <motion.div 
-                  layoutId="active-pill" 
-                  className="active-pill"
-                  transition={{ type: 'spring', bounce: 0.2, duration: 0.6 }}
-                />
-              )}
-            </button>
-          ))}
+        <div className="filter-container">
+          <div className="filter-tabs">
+            {CATEGORIES.map((cat) => (
+              <button
+                key={cat}
+                className={`filter-btn ${filter === cat ? 'active' : ''}`}
+                onClick={() => setFilter(cat)}
+              >
+                {cat}
+                {filter === cat && (
+                  <motion.div 
+                    layoutId="active-pill" 
+                    className="active-pill"
+                    transition={{ type: 'spring', bounce: 0.2, duration: 0.6 }}
+                  />
+                )}
+              </button>
+            ))}
+          </div>
+          <div className="filter-fade-right" />
         </div>
       </section>
 
@@ -66,10 +69,10 @@ export default function Works() {
               <MotionDiv
                 layout
                 key={p.id}
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.9 }}
-                transition={{ duration: 0.3 }}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.2 }}
               >
                 <ProjectCard {...p} />
               </MotionDiv>

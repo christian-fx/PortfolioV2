@@ -34,7 +34,7 @@ export default function SkeletonImage({
       sizes={sizes}
       alt={alt} 
       loading={fetchPriority === 'high' ? 'eager' : 'lazy'}
-      fetchpriority={fetchPriority}
+      fetchPriority={fetchPriority}
       decoding="async" 
       onLoad={() => setIsLoaded(true)}
       className={`${imgClassName} ${isLoaded ? 'loaded' : ''}`}

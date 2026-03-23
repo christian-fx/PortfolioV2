@@ -81,30 +81,6 @@
   flex-wrap: wrap;
 }
 
-.social-item {
-  width: 40px;
-  height: 40px;
-  border: 2px solid var(--border);
-  border-radius: 6px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-  padding: 0;
-  text-decoration: none;
-  color: var(--foreground);
-  transition: all 0.15s ease;
-}
-
-.social-item:hover {
-  transform: translateY(-1px);
-}
-
-.social-name {
-  font-family: "Bebas Neue", sans-serif;
-  font-size: 13px;
-  display: none;
-}
 
 .hero-actions {
   display: flex;
