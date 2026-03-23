@@ -1,15 +1,18 @@
+import { lazy, Suspense, useEffect } from 'react';
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 import { AnimatePresence } from 'framer-motion';
 import ScrollToTop from './components/ScrollToTop';
 import PageTransition from './components/PageTransition';
-import Home from './pages/Home/Home';
-import Works from './pages/Works/Works';
-import About from './pages/About/About';
-import Contact from './pages/Contact/Contact';
-import CaseStudy from './pages/CaseStudy/CaseStudy';
-import NotFound from './pages/NotFound/NotFound';
-import { useEffect } from 'react';
+import PageLoader from './components/PageLoader';
 import ReactGAPackage from 'react-ga4';
+
+// Lazy load pages for performance
+const Home = lazy(() => import('./pages/Home/Home'));
+const Works = lazy(() => import('./pages/Works/Works'));
+const About = lazy(() => import('./pages/About/About'));
+const Contact = lazy(() => import('./pages/Contact/Contact'));
+const CaseStudy = lazy(() => import('./pages/CaseStudy/CaseStudy'));
+const NotFound = lazy(() => import('./pages/NotFound/NotFound'));
 
 const ReactGA = ReactGAPackage.default || ReactGAPackage;
 const GA_MEASUREMENT_ID = import.meta.env.VITE_GA_ID;
@@ -44,7 +47,9 @@ export default function App() {
   return (
     <BrowserRouter>
       <ScrollToTop />
-      <AnimatedRoutes />
+      <Suspense fallback={<PageLoader />}>
+        <AnimatedRoutes />
+      </Suspense>
     </BrowserRouter>
   );
 }
