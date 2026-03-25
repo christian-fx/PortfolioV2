@@ -64,5 +64,5 @@ Generate an optimized production build:
 npm run build
 ```
 
-## Deployment
-The portfolio is designed for seamless deployment on Vercel. Ensure all environment variables, including the Google Analytics ID, are correctly configured in the deployment dashboard for full functionality.
+The portfolio is designed for seamless deployment on Vercel. Engagement and performance metrics are automatically tracked via **Vercel Analytics** integrated into the core application.
+
