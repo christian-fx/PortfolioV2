@@ -182,7 +182,7 @@ export const PROJECTS = [
     live: 'https://gogadgets-theta.vercel.app/',
     hasCaseStudy: true,
     meta: {
-      type: 'Independent Project - E-commerce Admin Tool',
+      project_type: 'Independent Project - E-commerce Admin Tool',
       year: '2025',
       role: 'FullStack Developer',
       duration: '2 Months'
@@ -283,7 +283,7 @@ export const PROJECTS = [
     live: 'https://gogadgets-alpha.vercel.app/',
     hasCaseStudy: true,
     meta: {
-      client: 'Independent Project - Customer-Facing E-commerce',
+      project_type: 'Independent Project - Customer-Facing E-commerce',
       year: '2025',
       role: 'FullStack Developer',
       duration: '2 Months'
@@ -447,7 +447,7 @@ export const PROJECTS = [
     live: 'https://fitnesshub-beta.vercel.app',
     hasCaseStudy: true,
     meta: {
-      client: 'Independent Project - Fitness Solution',
+      project_type: 'Independent Project - Fitness Solution',
       year: '2025',
       role: 'FullStack Developer',
       duration: '2-3 Months'
