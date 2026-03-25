@@ -249,6 +249,36 @@ body.modal-open {
   transform: translateY(0);
 }
 
+/* Image Tray System */
+.image-tray {
+  background: var(--tray-bg);
+  border: 1px solid var(--border);
+  padding: 2.5px;
+  display: block;
+  width: 100%;
+  height: fit-content;
+  overflow: hidden;
+  position: relative;
+}
+
+.image-tray img,
+.image-tray .skeleton-image-wrapper {
+  display: block;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), filter 0.4s ease;
+  cursor: zoom-in;
+}
+
+.image-tray:hover img,
+.image-tray:hover .skeleton-image-wrapper {
+  transform: scale(1.04);
+}
+
+.image-tray:active img {
+  transform: scale(1.02);
+}
+
 .btn-primary {
   background: var(--foreground);
   color: var(--background);
@@ -290,25 +320,24 @@ body.modal-open {
 }
 
 /* ─── Footer ─────────────────────────────────────────── */
-.footer-bottom {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  padding: 24px 0;
-  border-top: 2px solid var(--border);
-  align-items: center;
+.footer-main {
+  padding: 16px 0;
+  border-top: 1px solid var(--border);
+  margin-top: 16px;
   text-align: center;
 }
 
-.footer-meta {
+.footer-main p {
+  font-family: "Bebas Neue", sans-serif;
   font-size: 13px;
   color: var(--muted-foreground);
-  font-weight: 500;
+  letter-spacing: 0.1em;
+  opacity: 0.8;
 }
 
 /* ─── CTA Section ────────────────────────────────────── */
 .cta-section {
-  padding: 0 0 28px;
+  padding: 0;
 }
 
 .cta-copy {
@@ -495,6 +524,8 @@ body.modal-open {
 }
 
 .work-card {
+  --s-x: 0px;
+  --s-y: 0px;
   display: flex;
   flex-direction: column;
   background: var(--card);
@@ -502,15 +533,33 @@ body.modal-open {
   border-radius: 8px;
   overflow: hidden;
   position: relative;
-  /* Added for ribbon positioning */
   transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1);
   will-change: transform, box-shadow;
   height: 100%;
 }
 
+.work-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at calc(50% + var(--s-x) * 10) calc(50% + var(--s-y) * 10),
+      rgba(255, 255, 255, 0.1),
+      transparent 60%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+  z-index: 5;
+}
+
 .work-card-tray:hover .work-card {
   transform: translateY(-2px);
-  box-shadow: var(--card-shadow);
+  box-shadow:
+    var(--s-x) var(--s-y) 30px rgba(0, 0, 0, 0.15),
+    0 10px 20px rgba(0, 0, 0, 0.05);
+}
+
+.work-card-tray:hover .work-card::after {
+  opacity: 1;
 }
 
 /* ─── Development Ribbon ─────────────────────────────── */
@@ -745,6 +794,7 @@ body.modal-open {
 
 .view-details:hover {
   color: var(--foreground);
+  text-decoration: underline;
 }
 
 .view-more-wrap {

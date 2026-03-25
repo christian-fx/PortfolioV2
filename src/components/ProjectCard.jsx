@@ -1,9 +1,14 @@
 import { Link } from 'react-router-dom';
 import { Icon } from '@iconify/react';
 import SkeletonImage from './SkeletonImage';
+import { useRef } from 'react';
+import useFollowMouse from '../hooks/useFollowMouse';
 
 export default function ProjectCard({ id, title, description, tags, image, github, live, status }) {
   const caseStudyLink = `/case-study/${id}`;
+  const cardRef = useRef(null);
+  const { x, y } = useFollowMouse(cardRef);
+
 
   const getStatusColor = () => {
     if (status === 'Completed') return '#10b981'; // Premium muted green
@@ -16,7 +21,14 @@ export default function ProjectCard({ id, title, description, tags, image, githu
 
   return (
     <div className="work-card-tray">
-      <article className="work-card">
+      <article 
+        ref={cardRef} 
+        className="work-card"
+        style={{
+          '--s-x': `${-x}px`,
+          '--s-y': `${-y}px`
+        }}
+      >
         {(status === 'in-development' || status === 'In Development') && (
           <div className="dev-ribbon-wrapper">
             <div className="dev-ribbon-content">
@@ -25,7 +37,9 @@ export default function ProjectCard({ id, title, description, tags, image, githu
             </div>
           </div>
         )}
-        <SkeletonImage src={image} alt={`${title} Preview`} link={caseStudyLink} />
+        <div className="image-tray">
+          <SkeletonImage src={image} alt={`${title} Preview`} link={caseStudyLink} />
+        </div>
         <div className="work-meta">
           <div className="work-header">
             <h3 className="work-title">{title}</h3>

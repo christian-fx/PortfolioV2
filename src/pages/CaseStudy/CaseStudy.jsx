@@ -14,14 +14,16 @@ import TechStackSection from '../../components/case-study/TechStackSection';
 import ResultsSection from '../../components/case-study/ResultsSection';
 import GallerySection from '../../components/case-study/GallerySection';
 import SkeletonImage from '../../components/SkeletonImage';
+import Lightbox from '../../components/Lightbox';
 import { motion } from 'framer-motion';
+import { useState } from 'react';
 
 const MotionDiv = motion.div;
-const MotionSection = motion.section;
 
 export default function CaseStudy() {
   const { id } = useParams();
   const project = PROJECTS.find((p) => p.id === id);
+  const [selectedImage, setSelectedImage] = useState(null);
 
   // 1. Not Found Fallback
   if (!project) {
@@ -115,8 +117,6 @@ export default function CaseStudy() {
   }
 
   // 3. Normalize Case Study Data Structure
-  // This adapter function allows seamless transition between the legacy object structure
-  // and the new customizable sections array structure without breaking existing data.
   const cs = project.caseStudy || {};
   let sections = cs.sections || [];
   
@@ -140,6 +140,14 @@ export default function CaseStudy() {
         project={project}
         keywords={project.tags?.map(t => t.label).join(', ')}
       />
+
+      <Lightbox 
+        isOpen={!!selectedImage} 
+        onClose={() => setSelectedImage(null)}
+        src={selectedImage?.src}
+        alt={selectedImage?.alt}
+      />
+
       {/* Breadcrumb */}
       <nav className="breadcrumb">
         <Link to="/works"><Icon icon="lucide:arrow-left" width={16} />Works</Link>
@@ -149,14 +157,20 @@ export default function CaseStudy() {
 
       {/* Hero */}
       <section className="case-hero">
-        <SkeletonImage 
-          src={project.image} 
-          alt={`${project.title} Interface Hero`}
-          className="case-hero-image-wrapper"
-          imgClassName="case-hero-image"
-          aspectRatio="21/9"
-          fetchPriority="high"
-        />
+        <div 
+          className="image-tray" 
+          onClick={() => setSelectedImage({ src: project.image, alt: `${project.title} Hero` })}
+          style={{ cursor: 'zoom-in' }}
+        >
+          <SkeletonImage 
+            src={project.image} 
+            alt={`${project.title} Interface Hero`}
+            className="case-hero-image-wrapper"
+            imgClassName="case-hero-image"
+            aspectRatio="21/9"
+            fetchPriority="high"
+          />
+        </div>
 
         <MotionDiv 
           initial={{ opacity: 0, y: 10 }}
@@ -232,7 +246,7 @@ export default function CaseStudy() {
             case 'solution': return <SolutionSection key={index} data={section.content} number={num} />;
             case 'tech-stack': return <TechStackSection key={index} data={section.content} number={num} />;
             case 'results': return <ResultsSection key={index} data={section.content} number={num} />;
-            case 'gallery': return <GallerySection key={index} data={section.content} number={num} />;
+            case 'gallery': return <GallerySection key={index} data={section.content} number={num} onImageClick={setSelectedImage} />;
             default: return null;
           }
         })}

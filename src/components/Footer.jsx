@@ -1,7 +1,7 @@
 export default function Footer() {
   return (
-    <footer className="footer-bottom">
-      <p className="footer-meta">&copy; 2026 Christian. All Rights Reserved.</p>
+    <footer className="footer-main">
+      <p>© CHRISTIAN AKABUEZE • ALL RIGHTS RESERVED • MMXXVI</p>
     </footer>
   );
 }
