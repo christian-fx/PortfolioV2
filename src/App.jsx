@@ -2,6 +2,7 @@ import { lazy, Suspense, useState } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { AnimatePresence } from 'framer-motion';
 import { Analytics } from "@vercel/analytics/react"
+import { SpeedInsights } from "@vercel/speed-insights/react"
 import ScrollToTop from './components/ScrollToTop';
 import PageTransition from './components/PageTransition';
 import PageLoader from './components/PageLoader';
@@ -44,6 +45,7 @@ export default function App() {
     <BrowserRouter>
       <ScrollToTop />
       <Analytics />
+      <SpeedInsights />
       
       <AnimatePresence>
         {isInitialLoading && (

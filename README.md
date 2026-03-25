@@ -64,5 +64,5 @@ Generate an optimized production build:
 npm run build
 ```
 
-The portfolio is designed for seamless deployment on Vercel. Engagement and performance metrics are automatically tracked via **Vercel Analytics** integrated into the core application.
+The portfolio is designed for seamless deployment on Vercel. Engagement and performance metrics are automatically tracked via **Vercel Analytics** and **Speed Insights** integrated into the core application.
 
