@@ -3,7 +3,6 @@ import emailjs from '@emailjs/browser';
 import { Link } from 'react-router-dom';
 import { Icon } from '@iconify/react';
 import { motion, AnimatePresence } from 'framer-motion';
-import Layout from '../../components/Layout';
 import SEO from '../../components/SEO';
 import Reveal from '../../components/Reveal';
 import './Contact.css';
@@ -11,8 +10,10 @@ import './Contact.css';
 const SOCIALS = [
   { href: 'https://github.com/christian-fx', label: 'GitHub', icon: 'lucide:github' },
   { href: 'https://www.linkedin.com/in/tochukwu-akabueze-bb2b46391', label: 'LinkedIn', icon: 'lucide:linkedin' },
-  { href: 'https://x.com/too_chi_', label: 'Twitter', icon: 'fa-brands:x-twitter' },
+  { href: 'https://x.com/too_chi_', label: 'Twitter', icon: 'tabler:brand-x' },
 ];
+
+const MotionSection = motion.section;
 
 const EMAIL = 'akabuezechris432@gmail.com';
 
@@ -88,7 +89,7 @@ export default function Contact() {
   };
 
   return (
-    <Layout>
+    <>
       <SEO 
         title="Contact" 
         description="Get in touch with Christian Akabueze for frontend engineering roles, freelance collaborations, or product design inquiries."
@@ -161,12 +162,14 @@ export default function Contact() {
                 {errors.message && <span className="error-text">{errors.message}</span>}
               </div>
               <div className="submit-btn" style={{ marginTop: '24px' }}>
-                <button type="submit" className="btn btn-primary" disabled={status === 'sending'}>
-                  {status === 'sending' ? 'Sending...' : 'Send message'}
-                  {status === 'sending' && <Icon icon="lucide:loader-2" width={16} className="btn-spinner" />}
-                  {status === 'idle' && <Icon icon="lucide:send" width={16} />}
-                  {status === 'error' && <Icon icon="lucide:alert-circle" width={16} />}
-                </button>
+                <div className="btn-tray">
+                  <button type="submit" className="btn btn-primary" disabled={status === 'sending'}>
+                    {status === 'sending' ? 'Sending...' : 'Send message'}
+                    {status === 'sending' && <Icon icon="lucide:loader-2" width={16} className="btn-spinner" />}
+                    {status === 'idle' && <Icon icon="lucide:send" width={16} />}
+                    {status === 'error' && <Icon icon="lucide:alert-circle" width={16} />}
+                  </button>
+                </div>
                 {status === 'error' && <p style={{ color: '#ef4444', fontSize: '14px', marginTop: '12px' }}>Failed to send. Please try again or email me directly.</p>}
               </div>
             </MotionForm>
@@ -192,20 +195,21 @@ export default function Contact() {
           }}
         >
           {SOCIALS.map(({ href, label, icon }) => (
-            <motion.a 
-              key={label} 
-              href={href} 
-              className="social-item-contact" 
-              aria-label={label}
-              target="_blank" 
-              rel="noopener noreferrer"
-              variants={{
-                hidden: { opacity: 0, y: 10 },
-                visible: { opacity: 1, y: 0 }
-              }}
-            >
-              <Icon icon={icon} width={18} />{label}
-            </motion.a>
+            <div key={label} className="btn-tray">
+              <motion.a 
+                href={href} 
+                className="social-item-contact" 
+                aria-label={label}
+                target="_blank" 
+                rel="noopener noreferrer"
+                variants={{
+                  hidden: { opacity: 0, y: 10 },
+                  visible: { opacity: 1, y: 0 }
+                }}
+              >
+                <Icon icon={icon} width={18} />{label}
+              </motion.a>
+            </div>
           ))}
           <motion.div 
             className="email-card"
@@ -224,6 +228,6 @@ export default function Contact() {
       </section>
 
       <div className={`copy-toast${toast ? ' show' : ''}`}>Copied to clipboard!</div>
-    </Layout>
+    </>
   );
 }

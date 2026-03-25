@@ -2,12 +2,14 @@
 
 /* ─── CSS Variables ─────────────────────────────────── */
 :root {
-  --background: #ffffff;
+  --background: #f7f7f7;
+  --canvas: #ffffff;
   --foreground: #000000;
-  --border: #00000014;
+  --border: #eaeaec;
   --muted: #f5f5f5;
   --muted-foreground: #9b9b9b;
   --card: #ffffff;
+  --card-shadow: 0 16px 40px rgba(0, 0, 0, 0.08);
   --input: #f7f7f7;
   --success: #22c55e;
   --error: #ef4444;
@@ -22,12 +24,14 @@
 }
 
 .dark {
-  --background: #121212;
+  --background: #080808;
+  --canvas: #121212;
   --foreground: #ededed;
-  --border: #ffffff1a;
+  --border: #ffffff14;
   --muted: #1a1a1a;
   --muted-foreground: #a0a0a0;
   --card: #1a1a1a;
+  --card-shadow: 0 16px 40px rgba(0, 0, 0, 0.5);
   --input: #1e1e1e;
   --overlay: rgba(0, 0, 0, 0.8);
 }
@@ -37,7 +41,9 @@ html {
   scroll-behavior: smooth;
 }
 
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -50,7 +56,22 @@ body {
   line-height: 1.4;
   transition: background-color 0.2s, color 0.2s;
   position: relative;
+  min-height: 100vh;
 }
+
+#root {
+  width: 100%;
+  max-width: 700px;
+  margin: 0 auto;
+  background-color: var(--canvas);
+  min-height: 100vh;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  transition: background-color 0.2s;
+}
+
+
 
 /* ─── Custom Scrollbar ───────────────────────────────── */
 ::-webkit-scrollbar {
@@ -122,7 +143,7 @@ body.modal-open {
   top: 0;
   z-index: 50;
   backdrop-filter: blur(8px);
-  background-color: color-mix(in srgb, var(--background) 75%, transparent);
+  background-color: color-mix(in srgb, var(--canvas) 75%, transparent);
   border-bottom: 1px solid var(--border);
 }
 
@@ -130,7 +151,7 @@ body.modal-open {
   width: 100%;
   max-width: 680px;
   margin: 0 auto;
-  padding: 0 20px;
+  padding: 0 15px;
 }
 
 /* ─── Header ─────────────────────────────────────────── */
@@ -172,6 +193,7 @@ body.modal-open {
   letter-spacing: -0.02em;
   padding: 4px 0;
   transition: color 0.15s ease;
+  position: relative;
 }
 
 .nav-link:hover {
@@ -179,11 +201,24 @@ body.modal-open {
 }
 
 .nav-link.active {
-  border-bottom: 2px solid var(--foreground);
   color: var(--muted-foreground);
 }
 
 /* ─── Buttons ────────────────────────────────────────── */
+.btn-tray {
+  display: inline-flex;
+  background: var(--input);
+  padding: 2px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  transition: background-color 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  width: fit-content;
+}
+
+.btn-tray:hover {
+  background: var(--muted);
+}
+
 .btn {
   display: inline-flex;
   align-items: center;
@@ -192,19 +227,22 @@ body.modal-open {
   padding: 10px 16px;
   font-size: 14px;
   font-weight: 500;
-  border: 2px solid var(--foreground);
-  background: transparent;
+  border: 1px solid var(--border);
+  background: var(--card);
   color: var(--foreground);
   text-decoration: none;
   cursor: pointer;
-  transition: all 0.15s ease;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
   font-family: "Bebas Neue", sans-serif;
   letter-spacing: 0.02em;
+  border-radius: 6px;
 }
 
-.btn:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+.btn-tray:hover .btn,
+.btn-tray:hover .social-item,
+.btn-tray:hover .social-item-contact {
+  transform: translateY(-2px);
+  box-shadow: var(--card-shadow);
 }
 
 .btn:active {
@@ -214,6 +252,7 @@ body.modal-open {
 .btn-primary {
   background: var(--foreground);
   color: var(--background);
+  border-color: var(--foreground);
 }
 
 .btn-primary:hover {
@@ -230,14 +269,13 @@ body.modal-open {
 .btn-inverse {
   background: #ffffff;
   color: #000000;
-  border: 1px solid #ffffff;
+  border: 1px solid var(--border);
   align-self: flex-start;
 }
 
 .btn-inverse:hover {
-  background: var(--background);
-  color: var(--foreground);
-  transform: translateY(-1px);
+  background: #ffffff;
+  color: #000000;
 }
 
 /* ─── Section Titles ─────────────────────────────────── */
@@ -330,7 +368,8 @@ body.modal-open {
 .filter-section {
   margin-bottom: 32px;
   position: sticky;
-  top: 60px; /* Aligned below the header */
+  top: 60px;
+  /* Aligned below the header */
   z-index: 40;
   background-color: var(--background);
   padding: 12px 0;
@@ -347,15 +386,18 @@ body.modal-open {
   display: flex;
   gap: 12px;
   overflow-x: auto;
-  scrollbar-width: none; /* Hide scrollbar Firefox */
-  -ms-overflow-style: none; /* Hide scrollbar IE/Edge */
+  scrollbar-width: none;
+  /* Hide scrollbar Firefox */
+  -ms-overflow-style: none;
+  /* Hide scrollbar IE/Edge */
   padding-bottom: 4px;
   border-bottom: 1px solid var(--border);
   width: 100%;
 }
 
 .filter-tabs::-webkit-scrollbar {
-  display: none; /* Hide scrollbar Chrome/Safari */
+  display: none;
+  /* Hide scrollbar Chrome/Safari */
 }
 
 .filter-btn {
@@ -436,7 +478,20 @@ body.modal-open {
 .work-grid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 28px;
+  gap: 20px;
+}
+
+.work-card-tray {
+  background: var(--input);
+  padding: 2px;
+  border: 1px solid var(--border);
+  transition: background-color 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  border-radius: 10px;
+  height: 100%;
+}
+
+.work-card-tray:hover {
+  background: var(--muted);
 }
 
 .work-card {
@@ -444,8 +499,18 @@ body.modal-open {
   flex-direction: column;
   background: var(--card);
   border: 1px solid var(--border);
+  border-radius: 8px;
   overflow: hidden;
-  position: relative; /* Added for ribbon positioning */
+  position: relative;
+  /* Added for ribbon positioning */
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform, box-shadow;
+  height: 100%;
+}
+
+.work-card-tray:hover .work-card {
+  transform: translateY(-2px);
+  box-shadow: var(--card-shadow);
 }
 
 /* ─── Development Ribbon ─────────────────────────────── */
@@ -466,22 +531,21 @@ body.modal-open {
   right: -35px;
   width: 200px;
   transform: rotate(45deg);
-  background: repeating-linear-gradient(
-    -45deg,
-    #111111, 
-    #111111 10px,
-    #222222 10px,
-    #222222 20px
-  );
+  background: repeating-linear-gradient(-45deg,
+      #111111,
+      #111111 10px,
+      #222222 10px,
+      #222222 20px);
   background-size: 40px 40px;
   animation: stripe-move 2s linear infinite;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
   display: flex;
   align-items: center;
-  overflow: hidden; /* For marquee */
+  overflow: hidden;
+  /* For marquee */
   padding: 6px 0;
-  border-top: 1px solid rgba(255,255,255,0.05);
-  border-bottom: 1px solid rgba(255,255,255,0.05);
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .dev-ribbon-content span {
@@ -498,19 +562,37 @@ body.modal-open {
 }
 
 @keyframes text-slide {
-  from { transform: translateX(-50%); }
-  to { transform: translateX(0); }
+  from {
+    transform: translateX(-50%);
+  }
+
+  to {
+    transform: translateX(0);
+  }
 }
 
 @keyframes text-pulse {
-  0% { opacity: 0.6; }
-  50% { opacity: 1; }
-  100% { opacity: 0.6; }
+  0% {
+    opacity: 0.6;
+  }
+
+  50% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0.6;
+  }
 }
 
 @keyframes stripe-move {
-  from { background-position: 0 0; }
-  to { background-position: 40px 0; }
+  from {
+    background-position: 0 0;
+  }
+
+  to {
+    background-position: 40px 0;
+  }
 }
 
 .work-image-wrapper {
@@ -544,10 +626,10 @@ body.modal-open {
 }
 
 .work-meta {
-  padding: 18px;
+  padding: 16px;
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  gap: 12px;
   flex-grow: 1;
 }
 
@@ -555,13 +637,13 @@ body.modal-open {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 12px;
+  gap: 10px;
   flex-wrap: wrap;
   font-family: "Bebas Neue", sans-serif;
 }
 
 .work-title {
-  font-size: 20px;
+  font-size: 18px;
   font-weight: 400;
   line-height: 1.2;
 }
@@ -571,23 +653,8 @@ body.modal-open {
   gap: 4px;
 }
 
-.work-link-icon {
-  width: 32px;
-  height: 32px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--foreground);
-  transition: all 0.2s ease;
-}
-
-.work-link-icon:hover {
-  transform: scale(1.15);
-  color: var(--muted-foreground);
-}
-
 .work-desc {
-  font-size: 16px;
+  font-size: 14px;
   line-height: 1.6;
   color: var(--foreground);
   font-family: "Google Sans Flex", sans-serif;
@@ -602,13 +669,13 @@ body.modal-open {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  column-gap: 8px;
+  column-gap: 6px;
   row-gap: 4px;
   margin-top: auto;
 }
 
 .tech-stacks-label {
-  font-size: 14px;
+  font-size: 12px;
   font-weight: 500;
   color: var(--muted-foreground);
   font-family: "Bebas Neue", sans-serif;
@@ -619,8 +686,8 @@ body.modal-open {
   display: inline-flex;
   align-items: center;
   gap: 4px;
-  padding: 4px 8px;
-  font-size: 12px;
+  padding: 3px 6px;
+  font-size: 11px;
   font-family: "Google Sans Flex", sans-serif;
   background: var(--muted);
   border-radius: 4px;
@@ -652,9 +719,17 @@ body.modal-open {
 }
 
 @keyframes premiumPulse {
-  0% { opacity: 1; }
-  50% { opacity: 0.4; }
-  100% { opacity: 1; }
+  0% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.4;
+  }
+
+  100% {
+    opacity: 1;
+  }
 }
 
 .view-details {
@@ -677,10 +752,11 @@ body.modal-open {
   justify-content: flex-end;
   margin-top: 32px;
 }
+
 .social-item {
   width: 40px;
   height: 40px;
-  border: 2px solid var(--border);
+  border: 1px solid var(--border);
   border-radius: 6px;
   display: inline-flex;
   align-items: center;
@@ -689,12 +765,10 @@ body.modal-open {
   padding: 0;
   text-decoration: none;
   color: var(--foreground);
-  transition: all 0.15s ease;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.social-item:hover {
-  transform: translateY(-1px);
-}
+
 
 .social-name {
   font-family: "Bebas Neue", sans-serif;
@@ -704,31 +778,109 @@ body.modal-open {
 
 /* ─── Responsive ─────────────────────────────────────── */
 @media (min-width: 768px) {
-  .container { max-width: 750px; padding: 0 24px; }
-  .nav-link { font-size: 18px; }
-  .section-title { font-size: 28px; }
-  .cta-title { font-size: 30px; }
-  .social-name { display: inline; margin-bottom: -5px; }
-  .social-item { padding: 8px 16px; width: auto; height: auto; gap: 8px; }
-  .work-grid { grid-template-columns: repeat(2, 1fr); gap: 24px; }
-  .stack-grid { grid-template-columns: repeat(4, 1fr); }
+  .container {
+    max-width: 750px;
+    padding: 0 24px;
+  }
+
+  .nav-link {
+    font-size: 16px;
+  }
+
+  .section-title {
+    font-size: 24px;
+  }
+
+  .cta-title {
+    font-size: 26px;
+  }
+
+  .social-name {
+    display: inline;
+    margin-bottom: -5px;
+  }
+
+  .social-item {
+    padding: 8px 16px;
+    width: auto;
+    height: auto;
+    gap: 8px;
+  }
+
+  .work-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+
+  .stack-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
 }
 
 @media (min-width: 1200px) {
-  .container { max-width: 900px; padding: 0 40px; }
-  .nav-link { font-size: 20px; letter-spacing: -0.02em; }
-  .section-title { font-size: 32px; margin-bottom: 36px; }
-  .cta-title { font-size: 36px; }
-  .cta-panel { padding: 40px 36px; }
+  .container {
+    max-width: 900px;
+    padding: 0 40px;
+  }
+
+  .nav-link {
+    font-size: 17px;
+    letter-spacing: -0.02em;
+  }
+
+  .section-title {
+    font-size: 28px;
+    margin-bottom: 36px;
+  }
+
+  .cta-title {
+    font-size: 32px;
+  }
+
+  .cta-panel {
+    padding: 40px 36px;
+  }
 }
 
 @media (min-width: 1600px) {
-  .container { max-width: 1100px; }
-  .nav-link { font-size: 22px; }
-  .section-title { font-size: 36px; }
-  .cta-title { font-size: 42px; }
+  .container {
+    max-width: 1100px;
+  }
+
+  .nav-link {
+    font-size: 18px;
+  }
+
+  .section-title {
+    font-size: 30px;
+  }
+
+  .cta-title {
+    font-size: 42px;
+  }
+
+  .hero-role {
+    font-size: 32px;
+  }
 }
+
+/* ─── Iconify Layout Shift Fix ───────────────────────── */
+/* Prevents buttons and layouts from collapsing and expanding 
+   while SVG paths are fetched from the Iconify API */
+span.iconify {
+  display: inline-block;
+  vertical-align: -0.125em;
+  background-color: transparent !important;
+}
+
 @keyframes fadeIn {
-  from { opacity: 0; filter: blur(10px); }
-  to { opacity: 1; filter: blur(0); }
+  from {
+    opacity: 0;
+    filter: blur(10px);
+  }
+
+  to {
+    opacity: 1;
+    filter: blur(0);
+  }
 }

@@ -8,15 +8,6 @@ const PageLoader = ({ onComplete, minimal = false }) => {
   const [progress, setProgress] = useState(0);
 
   useEffect(() => {
-    // Immediate Theme Correction
-    const stored = localStorage.getItem('theme');
-    const isDark = stored ? stored === 'dark' : window.matchMedia('(prefers-color-scheme: dark)').matches;
-    if (isDark) {
-      document.documentElement.classList.add('dark');
-    } else {
-      document.documentElement.classList.remove('dark');
-    }
-
     if (minimal) return;
 
     const duration = 500; // 0.5 seconds
@@ -56,7 +47,9 @@ const PageLoader = ({ onComplete, minimal = false }) => {
         flexDirection: 'column',
         alignItems: 'center',
         justifyContent: 'center',
-        backgroundColor: 'var(--background)',
+        backgroundColor: 'transparent',
+        backdropFilter: 'blur(3px)',
+        pointerEvents: 'none',
         position: 'fixed',
         top: 0,
         left: 0,

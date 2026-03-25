@@ -31,7 +31,9 @@
 }
 
 @media (min-width: 640px) {
-  .form-row { grid-template-columns: 1fr 1fr; }
+  .form-row {
+    grid-template-columns: 1fr 1fr;
+  }
 }
 
 .form-group {
@@ -121,17 +123,14 @@
   align-items: center;
   gap: 8px;
   padding: 10px 16px;
-  border: 2px solid var(--border);
+  border: 1px solid var(--border);
   background: var(--card);
   text-decoration: none;
   color: var(--foreground);
-  transition: all 0.15s ease;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
   font-family: "Bebas Neue", sans-serif;
   font-size: 14px;
-}
-
-.social-item-contact:hover {
-  border-color: var(--foreground);
+  border-radius: 6px;
 }
 
 .email-card {
@@ -166,7 +165,9 @@
   transition: transform 0.15s ease;
 }
 
-.copy-email:hover { transform: scale(1.1); }
+.copy-email:hover {
+  transform: scale(1.1);
+}
 
 .copy-toast {
   position: fixed;
@@ -191,16 +192,25 @@
 }
 
 @media (min-width: 768px) {
-  .contact-hero h1 { font-size: 56px; }
-  .direct-section h2 { font-size: 28px; }
+  .contact-hero h1 {
+    font-size: 48px;
+  }
+
+  .direct-section h2 {
+    font-size: 24px;
+  }
 }
 
 @media (min-width: 1200px) {
-  .contact-hero h1 { font-size: 72px; }
+  .contact-hero h1 {
+    font-size: 56px;
+  }
 }
 
 @media (min-width: 1600px) {
-  .contact-hero h1 { font-size: 84px; }
+  .contact-hero h1 {
+    font-size: 64px;
+  }
 }
 
 /* Contact Success Overlay */
@@ -214,7 +224,8 @@
   background: var(--card);
   border-radius: var(--radius-lg);
   border: 1px solid var(--border);
-  min-height: 400px; /* roughly the height of the original form */
+  min-height: 400px;
+  /* roughly the height of the original form */
 }
 
 .success-icon-wrap {
@@ -263,8 +274,15 @@
 }
 
 @keyframes slideInDown {
-  from { opacity: 0; transform: translateY(-4px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* Spinner Animation */
@@ -273,5 +291,7 @@
 }
 
 @keyframes smoothSpin {
-  to { transform: rotate(360deg); }
+  to {
+    transform: rotate(360deg);
+  }
 }

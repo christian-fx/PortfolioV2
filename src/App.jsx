@@ -4,6 +4,7 @@ import { AnimatePresence } from 'framer-motion';
 import ScrollToTop from './components/ScrollToTop';
 import PageTransition from './components/PageTransition';
 import PageLoader from './components/PageLoader';
+import Layout from './components/Layout';
 import ReactGAPackage from 'react-ga4';
 
 // Lazy load pages for performance
@@ -41,7 +42,9 @@ function AnimatedRoutes() {
 }
 
 export default function App() {
-  const [isInitialLoading, setIsInitialLoading] = useState(true);
+  const [isInitialLoading, setIsInitialLoading] = useState(() => {
+    return !sessionStorage.getItem('hasVisited');
+  });
 
   useEffect(() => {
     if (!isInitialLoading && GA_MEASUREMENT_ID) {
@@ -50,13 +53,18 @@ export default function App() {
     }
   }, [isInitialLoading]);
 
+  const handleLoaderComplete = () => {
+    sessionStorage.setItem('hasVisited', 'true');
+    setIsInitialLoading(false);
+  };
+
   return (
     <BrowserRouter>
       <ScrollToTop />
       
       <AnimatePresence>
         {isInitialLoading && (
-          <PageLoader key="initial-loader" onComplete={() => setIsInitialLoading(false)} />
+          <PageLoader key="initial-loader" onComplete={handleLoaderComplete} />
         )}
       </AnimatePresence>
 
@@ -68,9 +76,11 @@ export default function App() {
           transition: 'opacity 0.8s ease-in-out'
         }}
       >
-        <Suspense fallback={null}>
-          <AnimatedRoutes />
-        </Suspense>
+        <Layout>
+          <Suspense fallback={null}>
+            <AnimatedRoutes />
+          </Suspense>
+        </Layout>
       </div>
     </BrowserRouter>
   );

@@ -15,52 +15,54 @@ export default function ProjectCard({ id, title, description, tags, image, githu
   const formattedStatus = status === 'in-development' ? 'In Development' : (status || 'Completed');
 
   return (
-    <article className="work-card">
-      {(status === 'in-development' || status === 'In Development') && (
-        <div className="dev-ribbon-wrapper">
-          <div className="dev-ribbon-content">
-            <span>In Development • In Development • In Development •</span>
-            <span>In Development • In Development • In Development •</span>
+    <div className="work-card-tray">
+      <article className="work-card">
+        {(status === 'in-development' || status === 'In Development') && (
+          <div className="dev-ribbon-wrapper">
+            <div className="dev-ribbon-content">
+              <span>In Development • In Development • In Development •</span>
+              <span>In Development • In Development • In Development •</span>
+            </div>
+          </div>
+        )}
+        <SkeletonImage src={image} alt={`${title} Preview`} link={caseStudyLink} />
+        <div className="work-meta">
+          <div className="work-header">
+            <h3 className="work-title">{title}</h3>
+            <div className="work-links">
+              {live && live !== '#' && (
+                <a href={live} target="_blank" rel="noopener noreferrer" className="btn-icon" aria-label={`Visit ${title} Live Site`}>
+                  <Icon icon="lucide:external-link" width={16} />
+                </a>
+              )}
+              {github && github !== '#' && (
+                <a href={github} target="_blank" rel="noopener noreferrer" className="btn-icon" aria-label={`View ${title} Source Code`}>
+                  <Icon icon="lucide:github" width={16} />
+                </a>
+              )}
+            </div>
+          </div>
+          <p className="work-desc">{description}</p>
+          <div className="work-tags">
+            <span className="tech-stacks-label">Tech Stacks</span>
+            {tags.map((tag) => (
+              <span key={tag.label} className="work-tag">
+                <Icon icon={tag.icon} width={12} />
+                {tag.label}
+              </span>
+            ))}
+          </div>
+          <div className="work-footer">
+            <div className="project-status">
+              <span className="status-dot-premium" style={{ backgroundColor: getStatusColor() }} />
+              {formattedStatus}
+            </div>
+            <Link to={caseStudyLink} className="view-details">
+              View Details<Icon icon="lucide:arrow-up-right" width={16} />
+            </Link>
           </div>
         </div>
-      )}
-      <SkeletonImage src={image} alt={`${title} Preview`} link={caseStudyLink} />
-      <div className="work-meta">
-        <div className="work-header">
-          <h3 className="work-title">{title}</h3>
-          <div className="work-links">
-            {live && live !== '#' && (
-              <a href={live} target="_blank" rel="noopener noreferrer" className="btn-icon" aria-label={`Visit ${title} Live Site`}>
-                <Icon icon="lucide:external-link" width={20} />
-              </a>
-            )}
-            {github && github !== '#' && (
-              <a href={github} target="_blank" rel="noopener noreferrer" className="btn-icon" aria-label={`View ${title} Source Code`}>
-                <Icon icon="lucide:github" width={20} />
-              </a>
-            )}
-          </div>
-        </div>
-        <p className="work-desc">{description}</p>
-        <div className="work-tags">
-          <span className="tech-stacks-label">Tech Stacks</span>
-          {tags.map((tag) => (
-            <span key={tag.label} className="work-tag">
-              <Icon icon={tag.icon} width={14} />
-              {tag.label}
-            </span>
-          ))}
-        </div>
-        <div className="work-footer">
-          <div className="project-status">
-            <span className="status-dot-premium" style={{ backgroundColor: getStatusColor() }} />
-            {formattedStatus}
-          </div>
-          <Link to={caseStudyLink} className="view-details">
-            View Details<Icon icon="lucide:arrow-up-right" width={16} />
-          </Link>
-        </div>
-      </div>
-    </article>
+      </article>
+    </div>
   );
 }

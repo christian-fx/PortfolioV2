@@ -2,7 +2,6 @@ import { Link } from 'react-router-dom';
 import { Icon } from '@iconify/react';
 import { useScrollProgress } from '../hooks/useScrollProgress';
 import Navbar from '../components/Navbar';
-import Footer from '../components/Footer';
 
 export default function Layout({ children }) {
   const { progress, showBackToTop, scrollToTop } = useScrollProgress();
@@ -27,7 +26,6 @@ export default function Layout({ children }) {
       <Navbar />
       <div className="container">
         {children}
-        <Footer />
       </div>
     </>
   );

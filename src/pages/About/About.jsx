@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Icon } from '@iconify/react';
-import Layout from '../../components/Layout';
 import SEO from '../../components/SEO';
 import Reveal from '../../components/Reveal';
+import { motion } from 'framer-motion';
 import './About.css';
 
 /* ─────────────────────────────────────────────  DATA */
@@ -91,41 +91,46 @@ function FlipCard({ num, question, answer, flipped, onFlip }) {
 
 export default function About() {
   const [activeCard, setActiveCard] = useState(null);
+  const MotionSection = motion.section;
 
   const handleFlip = (idx) => setActiveCard(prev => prev === idx ? null : idx);
   return (
-    <Layout>
+    <>
       <SEO 
         title="About" 
         description="Learn about Christian Akabueze, a Frontend Engineer & Software Engineering Student specializing in high-performance React architectures and immersive interfaces." 
       />
       {/* Hero */}
       <section className="about-hero">
-        <Reveal delay={0.1}>
+        <Reveal delay={0.2}>
           <h1 className="hero-name">I'm Christian.</h1>
         </Reveal>
-        <Reveal delay={0.2}>
+        <Reveal delay={0.4}>
           <h2 className="hero-title-about">A Front End Developer.</h2>
         </Reveal>
-        <Reveal delay={0.3}>
-          <p className="hero-summary">
-            I build scalable, performant, and accessible front-end architectures. Specializing in minimal
-            interfaces, I focus on writing clean code that bridges the gap between design and robust engineering.
-          </p>
-        </Reveal>
+        <p className="hero-summary">
+          I build scalable, performant, and accessible front-end architectures. Specializing in minimal
+          interfaces, I focus on writing clean code that bridges the gap between design and robust engineering.
+        </p>
         <div className="hero-actions-about">
-          <Link to="/contact" className="btn btn-primary">
-            Say Hello <Icon icon="lucide:hand" width={16} />
-          </Link>
-          <a href="#" className="btn">
-            Resume <Icon icon="lucide:file-text" width={16} />
-          </a>
+          <div className="btn-tray">
+            <Link to="/contact" className="btn btn-primary">
+              Say Hello <Icon icon="lucide:hand" width={16} />
+            </Link>
+          </div>
+          <div className="btn-tray">
+            <a href="#" className="btn">
+              Resume <Icon icon="lucide:file-text" width={16} />
+            </a>
+          </div>
         </div>
       </section>
 
       {/* About Me */}
       <section className="about-me-section">
-        <h2 className="section-title">About Me</h2>
+        <Reveal width="100%">
+          <h2 className="section-title">About Me</h2>
+        </Reveal>
         <div className="about-me-copy">
           <p className="about-me-text">
             I'm a front-end developer focused on crafting clean digital experiences that feel intentional
@@ -140,7 +145,9 @@ export default function About() {
 
       {/* Experience */}
       <section className="experience-section">
-        <h2 className="section-title">Experience</h2>
+        <Reveal width="100%">
+          <h2 className="section-title">Experience</h2>
+        </Reveal>
         <div className="experience-list">
           {EXPERIENCES.map((exp) => (
             <div key={exp.role} className="experience-item">
@@ -162,13 +169,15 @@ export default function About() {
 
       {/* Discovery Questions — Flip Cards */}
       <section className="questions-section">
-        <div className="questions-header">
-          <h2 className="section-title">Discovery Questions</h2>
-          <p className="questions-subtitle">
-            Key questions I ask to ensure clarity, alignment, and a smooth collaboration on every project.
-            Flip each card to see my process and know what to expect when working together.
-          </p>
-        </div>
+        <Reveal width="100%">
+          <div className="questions-header">
+            <h2 className="section-title">Discovery Questions</h2>
+            <p className="questions-subtitle">
+              Key questions I ask to ensure clarity, alignment, and a smooth collaboration on every project.
+              Flip each card to see my process and know what to expect when working together.
+            </p>
+          </div>
+        </Reveal>
         <div className="questions-grid">
           {QUESTIONS.map((q, i) => (
             <FlipCard
@@ -213,11 +222,13 @@ export default function About() {
               products that need clarity, speed, and craft.
             </p>
           </div>
+        <div className="btn-tray">
           <Link to="/contact" className="btn btn-inverse">
             Start a Project <Icon icon="lucide:arrow-right" width={18} />
           </Link>
         </div>
+        </div>
       </section>
-    </Layout>
+    </>
   );
 }

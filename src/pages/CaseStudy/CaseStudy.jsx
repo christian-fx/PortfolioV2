@@ -1,6 +1,5 @@
 import { useParams, Link } from 'react-router-dom';
 import { Icon } from '@iconify/react';
-import Layout from '../../components/Layout';
 import SEO from '../../components/SEO';
 import ProjectCard from '../../components/ProjectCard';
 import Reveal from '../../components/Reveal';
@@ -18,6 +17,7 @@ import SkeletonImage from '../../components/SkeletonImage';
 import { motion } from 'framer-motion';
 
 const MotionDiv = motion.div;
+const MotionSection = motion.section;
 
 export default function CaseStudy() {
   const { id } = useParams();
@@ -26,7 +26,7 @@ export default function CaseStudy() {
   // 1. Not Found Fallback
   if (!project) {
     return (
-      <Layout>
+      <>
         <SEO title="Project Not Found" />
         <section 
           className="case-hero" 
@@ -44,11 +44,13 @@ export default function CaseStudy() {
           <p className="case-subtitle" style={{ margin: '0 auto 32px' }}>
             The case study you are looking for doesn't exist or has been removed.
           </p>
-          <Link to="/works" className="btn btn-primary">
-            <Icon icon="lucide:arrow-left" width={16} /> Back to Works
-          </Link>
+          <div className="btn-tray">
+            <Link to="/works" className="btn btn-primary">
+              <Icon icon="lucide:arrow-left" width={16} /> Back to Works
+            </Link>
+          </div>
         </section>
-      </Layout>
+      </>
     );
   }
 
@@ -57,7 +59,7 @@ export default function CaseStudy() {
     const otherProjects = PROJECTS.filter((p) => p.id !== id).slice(0, 2);
 
     return (
-      <Layout>
+      <>
         <SEO
         title={`${project.title} - Coming Soon`}
         image={project.image}
@@ -82,14 +84,18 @@ export default function CaseStudy() {
           </p>
           <div className="case-links" style={{ justifyContent: 'center' }}>
             {project.live && project.live !== '#' && (
-              <a href={project.live} target="_blank" rel="noopener noreferrer" className="btn btn-primary">
-                <Icon icon="lucide:external-link" width={16} /> Live Site
-              </a>
+              <div className="btn-tray">
+                <a href={project.live} target="_blank" rel="noopener noreferrer" className="btn btn-primary">
+                  <Icon icon="lucide:external-link" width={16} /> Live Site
+                </a>
+              </div>
             )}
             {project.github && project.github !== '#' && (
-              <a href={project.github} target="_blank" rel="noopener noreferrer" className="btn">
-                <Icon icon="lucide:github" width={16} /> View Code
-              </a>
+              <div className="btn-tray">
+                <a href={project.github} target="_blank" rel="noopener noreferrer" className="btn">
+                  <Icon icon="lucide:github" width={16} /> View Code
+                </a>
+              </div>
             )}
           </div>
         </section>
@@ -104,7 +110,7 @@ export default function CaseStudy() {
             ))}
           </div>
         </section>
-      </Layout>
+      </>
     );
   }
 
@@ -125,7 +131,7 @@ export default function CaseStudy() {
   }
 
   return (
-    <Layout>
+    <>
       <SEO
         title={project.title}
         description={project.description}
@@ -185,14 +191,18 @@ export default function CaseStudy() {
           transition={{ delay: 0.4, duration: 0.6 }}
         >
           {project.live && project.live !== '#' && (
-            <a href={project.live} target="_blank" rel="noopener noreferrer" className="btn btn-primary" aria-label={`Visit ${project.title} Live Site`}>
-              <Icon icon="lucide:external-link" width={16} /> Live Site
-            </a>
+            <div className="btn-tray">
+              <a href={project.live} target="_blank" rel="noopener noreferrer" className="btn btn-primary" aria-label={`Visit ${project.title} Live Site`}>
+                <Icon icon="lucide:external-link" width={16} /> Live Site
+              </a>
+            </div>
           )}
           {project.github && project.github !== '#' && (
-            <a href={project.github} target="_blank" rel="noopener noreferrer" className="btn" aria-label={`View ${project.title} Source Code`}>
-              <Icon icon="lucide:github" width={16} /> View Code
-            </a>
+            <div className="btn-tray">
+              <a href={project.github} target="_blank" rel="noopener noreferrer" className="btn" aria-label={`View ${project.title} Source Code`}>
+                <Icon icon="lucide:github" width={16} /> View Code
+              </a>
+            </div>
           )}
         </MotionDiv>
       </section>
@@ -234,14 +244,18 @@ export default function CaseStudy() {
         const nextProject = PROJECTS[(currentIndex + 1) % PROJECTS.length];
         return (
           <section className="next-project">
-            <p className="next-label">Next Project</p>
-            <h2 className="next-title">{nextProject.title}</h2>
-            <Link to={`/case-study/${nextProject.id}`} className="btn btn-primary">
-              View Project <Icon icon="lucide:arrow-right" width={16} />
-            </Link>
+            <Reveal width="100%">
+              <p className="next-label">Next Project</p>
+              <h2 className="next-title">{nextProject.title}</h2>
+              <div className="btn-tray">
+                <Link to={`/case-study/${nextProject.id}`} className="btn btn-primary">
+                  View Project <Icon icon="lucide:arrow-right" width={16} />
+                </Link>
+              </div>
+            </Reveal>
           </section>
         );
       })()}
-    </Layout>
+    </>
   );
 }

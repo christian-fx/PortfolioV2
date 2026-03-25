@@ -1,6 +1,5 @@
 import { Link } from 'react-router-dom';
 import { Icon } from '@iconify/react';
-import Layout from '../../components/Layout';
 import SEO from '../../components/SEO';
 import ProjectCard from '../../components/ProjectCard';
 import Reveal from '../../components/Reveal';
@@ -10,7 +9,7 @@ import './Home.css';
 const SOCIAL_LINKS = [
   { href: 'https://github.com/christian-fx', label: 'GitHub', icon: 'lucide:github', name: 'GitHub' },
   { href: 'https://www.linkedin.com/in/tochukwu-akabueze-bb2b46391', label: 'LinkedIn', icon: 'lucide:linkedin', name: 'LinkedIn' },
-  { href: 'https://x.com/too_chi_', label: 'Twitter', icon: 'fa-brands:x-twitter', name: 'Twitter' },
+  { href: 'https://x.com/too_chi_', label: 'Twitter', icon: 'tabler:brand-x', name: 'Twitter' },
   { href: 'mailto:akabuezechris432@gmail.com', label: 'Email', icon: 'lucide:mail', name: 'Email' },
 ];
 
@@ -27,49 +26,53 @@ const STACK = [
 
 export default function Home() {
   return (
-    <Layout>
+    <>
       <SEO />
       {/* Hero */}
       <section className="hero-section">
         <div className="hero-profile-row">
           <img src="/images/christian.JPG" alt="Christian" className="profile-image" />
           <div className="hero-heading-group">
-            <Reveal delay={0.1}>
+            <Reveal delay={0.2}>
               <p className="hero-role">I'm</p>
             </Reveal>
-            <Reveal delay={0.2}>
+            <Reveal delay={0.4}>
               <h1 className="hero-title">Christian.</h1>
             </Reveal>
-            <Reveal delay={0.3}>
+            <Reveal delay={0.6}>
               <p className="hero-role">A Frontend Developer.</p>
             </Reveal>
           </div>
         </div>
-        <Reveal delay={0.4}>
-          <p className="hero-subtitle">
-            I design and build clean front-end experiences with a strong focus on clarity,
-            performance, accessibility, and minimalist visual systems that feel effortless to use.
-          </p>
-        </Reveal>
+        <p className="hero-subtitle">
+          I design and build clean front-end experiences with a strong focus on clarity,
+          performance, accessibility, and minimalist visual systems that feel effortless to use.
+        </p>
 
         <div className="hero-social-block">
           <p className="hero-social-label">Here are my socials</p>
           <div className="hero-social-row">
             <div className="hero-socials">
               {SOCIAL_LINKS.map(({ href, label, icon, name }) => (
-                <a key={label} href={href} className="social-item" aria-label={label}>
-                  <Icon icon={icon} width={18} />
-                  <span className="social-name">{name}</span>
-                </a>
+                <div key={label} className="btn-tray">
+                  <a href={href} className="social-item" aria-label={label}>
+                    <Icon icon={icon} width={16} />
+                    <span className="social-name">{name}</span>
+                  </a>
+                </div>
               ))}
             </div>
             <div className="hero-actions">
-              <Link to="/contact" className="btn btn-primary">
-                <Icon icon="lucide:hand" width={16} /> Say Hello
-              </Link>
-              <a href="#" className="btn">
-                Resume <Icon icon="lucide:file-text" width={16} />
-              </a>
+              <div className="btn-tray">
+                <Link to="/contact" className="btn btn-primary">
+                  <Icon icon="lucide:hand" width={16} /> Say Hello
+                </Link>
+              </div>
+              <div className="btn-tray">
+                <a href="#" className="btn">
+                  Resume <Icon icon="lucide:file-text" width={16} />
+                </a>
+              </div>
             </div>
           </div>
         </div>
@@ -82,7 +85,9 @@ export default function Home() {
           {PROJECTS.slice(0, 4).map((p) => <ProjectCard key={p.id} {...p} />)}
         </div>
         <div className="view-more-wrap">
-          <Link to="/works" className="btn">View More <Icon icon="lucide:arrow-right" width={16} /></Link>
+          <div className="btn-tray">
+            <Link to="/works" className="btn">View More <Icon icon="lucide:arrow-right" width={16} /></Link>
+          </div>
         </div>
       </section>
 
@@ -110,11 +115,13 @@ export default function Home() {
               products that need clarity, speed, and craft.
             </p>
           </div>
-          <Link to="/contact" className="btn btn-inverse">
-            Start a Project <Icon icon="lucide:arrow-right" width={18} />
-          </Link>
+          <div className="btn-tray">
+            <Link to="/contact" className="btn btn-inverse">
+              Start a Project <Icon icon="lucide:arrow-right" width={18} />
+            </Link>
+          </div>
         </div>
       </section>
-    </Layout>
+    </>
   );
 }

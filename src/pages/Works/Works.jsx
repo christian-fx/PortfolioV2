@@ -1,6 +1,5 @@
 import { Link } from 'react-router-dom';
 import { Icon } from '@iconify/react';
-import Layout from '../../components/Layout';
 import SEO from '../../components/SEO';
 import ProjectCard from '../../components/ProjectCard';
 import Reveal from '../../components/Reveal';
@@ -13,6 +12,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 const CATEGORIES = ['All', ...new Set(PROJECTS.map(p => p.category))];
 
 const MotionDiv = motion.div;
+const MotionSection = motion.section;
 
 export default function Works() {
   const [filter, setFilter] = useState('All');
@@ -22,7 +22,7 @@ export default function Works() {
     : PROJECTS.filter(p => p.category === filter);
 
   return (
-    <Layout>
+    <>
       <SEO 
         title="Works" 
         description="Explore the project portfolio of Christian Akabueze, featuring modern web applications, e-commerce platforms, and high-performance digital products."
@@ -82,7 +82,8 @@ export default function Works() {
       </section>
 
       <section className="cta-section" style={{ animationDelay: '0.2s' }}>
-        <div className="cta-panel">
+        <Reveal width="100%">
+          <div className="cta-panel">
           <div className="cta-copy">
             <p className="cta-eyebrow">Open for selected collaborations</p>
             <h2 className="cta-title">Let's build a product people remember.</h2>
@@ -91,11 +92,14 @@ export default function Works() {
               products that need clarity, speed, and craft.
             </p>
           </div>
-          <Link to="/contact" className="btn btn-inverse">
-            Start a Project <Icon icon="lucide:arrow-right" width={18} />
-          </Link>
+          <div className="btn-tray">
+            <Link to="/contact" className="btn btn-inverse">
+              Start a Project <Icon icon="lucide:arrow-right" width={18} />
+            </Link>
+          </div>
         </div>
+        </Reveal>
       </section>
-    </Layout>
+    </>
   );
 }

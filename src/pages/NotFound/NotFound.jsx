@@ -1,6 +1,5 @@
 import { Link } from 'react-router-dom';
 import { Icon } from '@iconify/react';
-import Layout from '../../components/Layout';
 import SEO from '../../components/SEO';
 import { motion } from 'framer-motion';
 import './NotFound.css';
@@ -9,7 +8,7 @@ const MotionSection = motion.section;
 
 export default function NotFound() {
   return (
-    <Layout>
+    <>
       <SEO title="Page Not Found" />
       <MotionSection 
         className="not-found-section"
@@ -39,6 +38,6 @@ export default function NotFound() {
           </Link>
         </div>
       </MotionSection>
-    </Layout>
+    </>
   );
 }

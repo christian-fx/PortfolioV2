@@ -70,7 +70,7 @@ export const PROJECTS = [
       ]
     }
   },
-  
+
   {
     id: 'devfolio',
     title: 'Devfolio',
@@ -101,43 +101,43 @@ export const PROJECTS = [
         'With multiple template options, Tailwind CSS styling, optional Framer Motion animations, and Vite-powered builds, developers get a fast, fully functional portfolio ready for deployment in minutes.'
       ],
       challenges: [
-      {
-        icon: 'lucide:zap',
-        title: 'Automating Portfolio Generation',
-        desc: 'Creating a CLI tool that generates a complete React portfolio in one command, with no manual setup, required careful handling of templates, project structure, and dependencies.'
-      },
-      {
-        icon: 'lucide:github',
-        title: 'Live GitHub Data Integration',
-        desc: 'Fetching and displaying live GitHub repositories, languages, stars, and profile information required proper API handling and asynchronous data management.'
-      },
-      {
-        icon: 'lucide:paintbrush',
-        title: 'Multiple Template Support',
-        desc: 'Allowing users to choose between different portfolio templates while ensuring compatibility and minimal configuration was challenging.'
-      },
-      {
-        icon: 'lucide:rocket',
-        title: 'Optimized Build & Deployment',
-        desc: 'Ensuring the generated project works seamlessly with Vite for fast development and is ready to deploy to Vercel, Netlify, or GitHub Pages.'
-      }],
+        {
+          icon: 'lucide:zap',
+          title: 'Automating Portfolio Generation',
+          desc: 'Creating a CLI tool that generates a complete React portfolio in one command, with no manual setup, required careful handling of templates, project structure, and dependencies.'
+        },
+        {
+          icon: 'lucide:github',
+          title: 'Live GitHub Data Integration',
+          desc: 'Fetching and displaying live GitHub repositories, languages, stars, and profile information required proper API handling and asynchronous data management.'
+        },
+        {
+          icon: 'lucide:paintbrush',
+          title: 'Multiple Template Support',
+          desc: 'Allowing users to choose between different portfolio templates while ensuring compatibility and minimal configuration was challenging.'
+        },
+        {
+          icon: 'lucide:rocket',
+          title: 'Optimized Build & Deployment',
+          desc: 'Ensuring the generated project works seamlessly with Vite for fast development and is ready to deploy to Vercel, Netlify, or GitHub Pages.'
+        }],
       solution: [
-      {
-        title: 'One-Command CLI Tool',
-        desc: 'Built the CLI with Node.js and Inquirer.js, allowing users to scaffold a full portfolio project by answering two quick prompts.'
-      },
-      {
-        title: 'Live GitHub Integration',
-        desc: 'Implemented GitHub REST API calls to automatically fetch repositories, stars, languages, and profile data, keeping the portfolio up-to-date.'
-      },
-      {
-        title: 'Template-Based Architecture',
-        desc: 'Created multiple React templates that can be selected during CLI setup, all pre-configured with Tailwind CSS and optional Framer Motion animations.'
-      },
-      {
-        title: 'Production-Ready Build',
-        desc: 'Used Vite for fast dev builds and optimized production output, ensuring the generated portfolio is ready to deploy immediately.'
-      }],
+        {
+          title: 'One-Command CLI Tool',
+          desc: 'Built the CLI with Node.js and Inquirer.js, allowing users to scaffold a full portfolio project by answering two quick prompts.'
+        },
+        {
+          title: 'Live GitHub Integration',
+          desc: 'Implemented GitHub REST API calls to automatically fetch repositories, stars, languages, and profile data, keeping the portfolio up-to-date.'
+        },
+        {
+          title: 'Template-Based Architecture',
+          desc: 'Created multiple React templates that can be selected during CLI setup, all pre-configured with Tailwind CSS and optional Framer Motion animations.'
+        },
+        {
+          title: 'Production-Ready Build',
+          desc: 'Used Vite for fast dev builds and optimized production output, ensuring the generated portfolio is ready to deploy immediately.'
+        }],
       techStack: [
         { icon: 'skill-icons:nodejs', label: 'Node.js' },
         { icon: 'skill-icons:react-dark', label: 'React' },
@@ -163,10 +163,10 @@ export const PROJECTS = [
       ]
     }
   },
-  
+
   {
     id: 'gadgetstore-admin',
-    title: 'Gadget Store Admin Dashboard',
+    title: 'Go Gadget Admin Dashboard',
     category: 'E-commerce',
     image: '/images/case-studies/productsdetails.png',
     description: 'A modern, responsive admin dashboard for managing a gadget e-commerce store, featuring real-time analytics, inventory and order management, and product CRUD operations—all powered by Firebase and Vanilla JavaScript.',
@@ -194,52 +194,52 @@ export const PROJECTS = [
         'Built with Vanilla JavaScript, Tailwind CSS, Vite, and Firebase, it combines performance, responsiveness, and secure data management to empower store administrators.'
       ],
       challenges: [
-      {
-        icon: 'lucide:bar-chart',
-        title: 'Real-Time Analytics',
-        desc: 'Displaying live revenue, top-selling categories, and key business metrics required efficient data fetching and state management from Firebase.'
-      },
-      {
-        icon: 'lucide:package',
-        title: 'Product & Category Management',
-        desc: 'Enabling full CRUD operations with image uploads, automated category slugs, and icon suggestions demanded careful UI design and backend integration.'
-      },
-      {
-        icon: 'lucide:clipboard',
-        title: 'Inventory Control',
-        desc: 'Tracking stock levels, low-stock alerts, and total inventory valuation in real time while keeping the interface intuitive was challenging.'
-      },
-      {
-        icon: 'lucide:shopping-cart',
-        title: 'Order Management',
-        desc: 'Implementing order tracking from "Pending" to "Delivered" with easy status updates required accurate state management and real-time database syncing.'
-      },
-      {
-        icon: 'lucide:smartphone',
-        title: 'Mobile Responsiveness',
-        desc: 'Designing a dashboard that is fully functional on smartphones and tablets with collapsible sidebar navigation for small screens posed layout challenges.'
-      }],
+        {
+          icon: 'lucide:bar-chart',
+          title: 'Real-Time Analytics',
+          desc: 'Displaying live revenue, top-selling categories, and key business metrics required efficient data fetching and state management from Firebase.'
+        },
+        {
+          icon: 'lucide:package',
+          title: 'Product & Category Management',
+          desc: 'Enabling full CRUD operations with image uploads, automated category slugs, and icon suggestions demanded careful UI design and backend integration.'
+        },
+        {
+          icon: 'lucide:clipboard',
+          title: 'Inventory Control',
+          desc: 'Tracking stock levels, low-stock alerts, and total inventory valuation in real time while keeping the interface intuitive was challenging.'
+        },
+        {
+          icon: 'lucide:shopping-cart',
+          title: 'Order Management',
+          desc: 'Implementing order tracking from "Pending" to "Delivered" with easy status updates required accurate state management and real-time database syncing.'
+        },
+        {
+          icon: 'lucide:smartphone',
+          title: 'Mobile Responsiveness',
+          desc: 'Designing a dashboard that is fully functional on smartphones and tablets with collapsible sidebar navigation for small screens posed layout challenges.'
+        }],
       solution: [
-      {
-        title: 'Live Dashboard & Analytics',
-        desc: 'Integrated Firebase Firestore to fetch live sales data, stock levels, and key metrics, rendering charts and indicators in real time.'
-      },
-      {
-        title: 'Product & Category CRUD',
-        desc: 'Built seamless create, read, update, and delete operations for products and categories, with image uploads via Cloudinary and automated slug/icon generation.'
-      },
-      {
-        title: 'Inventory Management System',
-        desc: 'Developed an interface for stock adjustments, status tracking, and automatic calculation of total inventory value.'
-      },
-      {
-        title: 'Order Tracking & Updates',
-        desc: 'Implemented order status management and real-time syncing to keep administrators and customers updated.'
-      },
-      {
-        title: 'Responsive & Mobile-Friendly Design',
-        desc: 'Designed a mobile-first layout with collapsible sidebar navigation to ensure smooth usability across all devices.'
-      }],
+        {
+          title: 'Live Dashboard & Analytics',
+          desc: 'Integrated Firebase Firestore to fetch live sales data, stock levels, and key metrics, rendering charts and indicators in real time.'
+        },
+        {
+          title: 'Product & Category CRUD',
+          desc: 'Built seamless create, read, update, and delete operations for products and categories, with image uploads via Cloudinary and automated slug/icon generation.'
+        },
+        {
+          title: 'Inventory Management System',
+          desc: 'Developed an interface for stock adjustments, status tracking, and automatic calculation of total inventory value.'
+        },
+        {
+          title: 'Order Tracking & Updates',
+          desc: 'Implemented order status management and real-time syncing to keep administrators and customers updated.'
+        },
+        {
+          title: 'Responsive & Mobile-Friendly Design',
+          desc: 'Designed a mobile-first layout with collapsible sidebar navigation to ensure smooth usability across all devices.'
+        }],
       techStack: [
         { icon: 'skill-icons:html', label: 'HTML5' },
         { icon: 'skill-icons:css', label: 'CSS3' },
@@ -295,52 +295,52 @@ export const PROJECTS = [
         'With features like persistent shopping carts, secure checkout, and full account management, the storefront ensures customers can browse, purchase, and manage their orders efficiently across all devices.'
       ],
       challenges: [
-      {
-        icon: 'lucide:router',
-        title: 'Seamless SPA Navigation',
-        desc: 'Creating a lightweight, history-API-based JavaScript router to enable reload-free page transitions while maintaining dynamic content updates was challenging.'
-      },
-      {
-        icon: 'lucide:shield',
-        title: 'Secure Authentication & User Accounts',
-        desc: 'Implementing email/password login, Google OAuth, email verification, password resets, and full CRUD on user profiles required secure handling and proper Firebase integration.'
-      },
-      {
-        icon: 'lucide:database',
-        title: 'Real-Time Product Data',
-        desc: 'Fetching products, trending items, categories, and ensuring real-time updates from Firestore while maintaining app performance was complex.'
-      },
-      {
-        icon: 'lucide:shopping-cart',
-        title: 'Shopping Cart & Checkout',
-        desc: 'Building a persistent shopping cart with localStorage and secure checkout using Firestore transactions to handle stock verification and order creation safely.'
-      },
-      {
-        icon: 'lucide:smartphone',
-        title: 'Responsive Design Across Devices',
-        desc: 'Ensuring the storefront looked and functioned flawlessly on mobile, tablet, and desktop devices required careful layout planning with Tailwind CSS.'
-      }],
+        {
+          icon: 'lucide:router',
+          title: 'Seamless SPA Navigation',
+          desc: 'Creating a lightweight, history-API-based JavaScript router to enable reload-free page transitions while maintaining dynamic content updates was challenging.'
+        },
+        {
+          icon: 'lucide:shield',
+          title: 'Secure Authentication & User Accounts',
+          desc: 'Implementing email/password login, Google OAuth, email verification, password resets, and full CRUD on user profiles required secure handling and proper Firebase integration.'
+        },
+        {
+          icon: 'lucide:database',
+          title: 'Real-Time Product Data',
+          desc: 'Fetching products, trending items, categories, and ensuring real-time updates from Firestore while maintaining app performance was complex.'
+        },
+        {
+          icon: 'lucide:shopping-cart',
+          title: 'Shopping Cart & Checkout',
+          desc: 'Building a persistent shopping cart with localStorage and secure checkout using Firestore transactions to handle stock verification and order creation safely.'
+        },
+        {
+          icon: 'lucide:smartphone',
+          title: 'Responsive Design Across Devices',
+          desc: 'Ensuring the storefront looked and functioned flawlessly on mobile, tablet, and desktop devices required careful layout planning with Tailwind CSS.'
+        }],
       solution: [
-      {
-        title: 'Custom SPA Router',
-        desc: 'Implemented a lightweight history-API-based router that enables seamless, reload-free navigation while dynamically updating content for different pages.'
-      },
-      {
-        title: 'Firebase Authentication & Profile Management',
-        desc: 'Used Firebase Authentication to provide secure email/password and Google OAuth login, plus full CRUD for user profiles, shipping addresses, payment methods, and real-time order history.'
-      },
-      {
-        title: 'Real-Time Firestore Integration',
-        desc: 'Integrated Firestore to fetch and display products, trending items, and categories dynamically, ensuring live updates and accurate stock information.'
-      },
-      {
-        title: 'Persistent Cart & Secure Checkout',
-        desc: 'Implemented a persistent shopping cart with localStorage and secure checkout using Firestore runTransaction for atomic order creation and stock verification.'
-      },
-      {
-        title: 'Mobile-First Responsive Design',
-        desc: 'Designed a fully responsive layout with Tailwind CSS, optimized for mobile, tablet, and desktop devices with smooth UI interactions.'
-      }],
+        {
+          title: 'Custom SPA Router',
+          desc: 'Implemented a lightweight history-API-based router that enables seamless, reload-free navigation while dynamically updating content for different pages.'
+        },
+        {
+          title: 'Firebase Authentication & Profile Management',
+          desc: 'Used Firebase Authentication to provide secure email/password and Google OAuth login, plus full CRUD for user profiles, shipping addresses, payment methods, and real-time order history.'
+        },
+        {
+          title: 'Real-Time Firestore Integration',
+          desc: 'Integrated Firestore to fetch and display products, trending items, and categories dynamically, ensuring live updates and accurate stock information.'
+        },
+        {
+          title: 'Persistent Cart & Secure Checkout',
+          desc: 'Implemented a persistent shopping cart with localStorage and secure checkout using Firestore runTransaction for atomic order creation and stock verification.'
+        },
+        {
+          title: 'Mobile-First Responsive Design',
+          desc: 'Designed a fully responsive layout with Tailwind CSS, optimized for mobile, tablet, and desktop devices with smooth UI interactions.'
+        }],
       techStack: [
         { icon: 'skill-icons:html', label: 'HTML5' },
         { icon: 'skill-icons:css', label: 'CSS3' },
@@ -459,52 +459,52 @@ export const PROJECTS = [
         'By integrating AI with fitness tracking, Fitness Hub provides users with tailored workout routines, motivation through social challenges, and a structured way to monitor their health journey.'
       ],
       challenges: [
-      {
-        icon: 'lucide:brain',
-        title: 'Personalized Workout Generation',
-        desc: 'Generating workout routines that adapt to a user’s goals, fitness level, and available equipment was complex. The system had to ensure every plan was relevant and safe.'
-      },
-      {
-        icon: 'lucide:activity',
-        title: 'Real-Time Workout Interaction',
-        desc: 'Ensuring a smooth, interactive workout experience with timers, exercise guidance, and progression tracking without lag was challenging.'
-      },
-      {
-        icon: 'lucide:bar-chart',
-        title: 'Data Visualization of Progress',
-        desc: 'Users needed clear visual feedback on performance metrics like calories burned, volume lifted, streaks, and trends over time.'
-      },
-      {
-        icon: 'lucide:users',
-        title: 'User Engagement & Motivation',
-        desc: 'Maintaining user motivation over time is difficult, especially for solo users; social interaction and challenges were essential.'
-      },
-      {
-        icon: 'lucide:shield',
-        title: 'Secure User Data Management',
-        desc: 'Protecting personal and fitness data while ensuring fast access and reliable storage required careful planning.'
-      }],
+        {
+          icon: 'lucide:brain',
+          title: 'Personalized Workout Generation',
+          desc: 'Generating workout routines that adapt to a user’s goals, fitness level, and available equipment was complex. The system had to ensure every plan was relevant and safe.'
+        },
+        {
+          icon: 'lucide:activity',
+          title: 'Real-Time Workout Interaction',
+          desc: 'Ensuring a smooth, interactive workout experience with timers, exercise guidance, and progression tracking without lag was challenging.'
+        },
+        {
+          icon: 'lucide:bar-chart',
+          title: 'Data Visualization of Progress',
+          desc: 'Users needed clear visual feedback on performance metrics like calories burned, volume lifted, streaks, and trends over time.'
+        },
+        {
+          icon: 'lucide:users',
+          title: 'User Engagement & Motivation',
+          desc: 'Maintaining user motivation over time is difficult, especially for solo users; social interaction and challenges were essential.'
+        },
+        {
+          icon: 'lucide:shield',
+          title: 'Secure User Data Management',
+          desc: 'Protecting personal and fitness data while ensuring fast access and reliable storage required careful planning.'
+        }],
       solution: [
-      {
-        title: 'AI-Powered Workout Recommendations',
-        desc: 'Integrated generative AI using Google AI and Genkit to create personalized workout routines tailored to user goals, fitness level, and available equipment.'
-      },
-      {
-        title: 'Interactive Workout System',
-        desc: 'Developed guided workout sessions with timers and structured exercise flows for responsive, real-time training experiences.'
-      },
-      {
-        title: 'Comprehensive Analytics Dashboard',
-        desc: 'Implemented a dashboard using Recharts to visualize workout history, calories burned, volume lifted, streaks, and other key metrics.'
-      },
-      {
-        title: 'Social Fitness Challenges',
-        desc: 'Built community challenges and leaderboards to keep users motivated, engaged, and accountable for their progress.'
-      },
-      {
-        title: 'Secure Backend with Firebase',
-        desc: 'Leveraged Firebase Authentication and Firestore to manage user accounts and workout data securely, providing real-time sync and privacy.'
-      }],
+        {
+          title: 'AI-Powered Workout Recommendations',
+          desc: 'Integrated generative AI using Google AI and Genkit to create personalized workout routines tailored to user goals, fitness level, and available equipment.'
+        },
+        {
+          title: 'Interactive Workout System',
+          desc: 'Developed guided workout sessions with timers and structured exercise flows for responsive, real-time training experiences.'
+        },
+        {
+          title: 'Comprehensive Analytics Dashboard',
+          desc: 'Implemented a dashboard using Recharts to visualize workout history, calories burned, volume lifted, streaks, and other key metrics.'
+        },
+        {
+          title: 'Social Fitness Challenges',
+          desc: 'Built community challenges and leaderboards to keep users motivated, engaged, and accountable for their progress.'
+        },
+        {
+          title: 'Secure Backend with Firebase',
+          desc: 'Leveraged Firebase Authentication and Firestore to manage user accounts and workout data securely, providing real-time sync and privacy.'
+        }],
       techStack: [
         { icon: 'skill-icons:nextjs-dark', label: 'Next.js (App Router)' },
         { icon: 'skill-icons:tailwindcss-dark', label: 'Tailwind CSS' },

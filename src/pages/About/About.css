@@ -261,20 +261,20 @@
 
 
 @media (min-width: 768px) {
-  .question-card { height: 220px; }
-  .question-text { font-size: 28px; }
-  .hero-name { font-size: 56px; }
-  .hero-title-about { font-size: 26px; }
+  .question-card { height: 210px; }
+  .question-text { font-size: 24px; }
+  .hero-name { font-size: 48px; }
+  .hero-title-about { font-size: 22px; }
 }
 
 @media (min-width: 1200px) {
   .questions-grid { grid-template-columns: repeat(2, 1fr); gap: 24px; }
-  .question-card { height: 240px; }
-  .hero-name { font-size: 72px; }
-  .hero-title-about { font-size: 28px; }
+  .question-card { height: 220px; }
+  .hero-name { font-size: 56px; }
+  .hero-title-about { font-size: 24px; }
 }
 
 @media (min-width: 1600px) {
-  .hero-name { font-size: 84px; }
-  .hero-title-about { font-size: 32px; }
+  .hero-name { font-size: 64px; }
+  .hero-title-about { font-size: 26px; }
 }

@@ -28,6 +28,18 @@
     <meta name="google-site-verification" content="0KvZBQ0wJuPFQnapQnmkRhH8ZUzwwofL-Ek_ElUMp4c" />
     <link rel="sitemap" type="application/xml" href="/sitemap.xml" />
     <title>Christian Akabueze | Frontend Developer</title>
+    <!-- Prevent theme flicker by applying theme before DOM loads -->
+    <script>
+      (function() {
+        try {
+          var stored = localStorage.getItem('theme');
+          var isDark = stored ? stored === 'dark' : window.matchMedia('(prefers-color-scheme: dark)').matches;
+          if (isDark) {
+            document.documentElement.classList.add('dark');
+          }
+        } catch (e) {}
+      })();
+    </script>
   </head>
   <body>
     <div id="root"></div>
