@@ -104,77 +104,71 @@ export default function Contact() {
       </section>
 
       <section className="contact-form-section">
-        <AnimatePresence mode="wait">
-          {status === 'success' ? (
-            <MotionDiv
-              key="success-overlay"
-              className="form-success-overlay"
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 1.05 }}
-              transition={{ duration: 0.3 }}
-            >
-              <div className="success-icon-wrap">
-                <Icon icon="lucide:check" width={32} />
-              </div>
-              <h3>Message Sent Successfully</h3>
-              <p>Thanks for reaching out! I've received your message and will get back to you shortly.</p>
-            </MotionDiv>
-          ) : (
-            <MotionForm 
-              key="contact-form"
-              ref={formRef} 
-              onSubmit={handleSubmit}
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.3 }}
-            >
-              <div className="form-row">
-                <div className={`form-group ${errors.firstName ? 'has-error' : ''}`}>
-                  <label htmlFor="firstName">First name</label>
-                  <input type="text" id="firstName" name="firstName" placeholder="Christian"
-                    value={form.firstName} onChange={e => handleChange('firstName', e.target.value)} />
-                  {errors.firstName && <span className="error-text">{errors.firstName}</span>}
-                </div>
-                <div className={`form-group ${errors.lastName ? 'has-error' : ''}`}>
-                  <label htmlFor="lastName">Last name</label>
-                  <input type="text" id="lastName" name="lastName" placeholder="Akabueze"
-                    value={form.lastName} onChange={e => handleChange('lastName', e.target.value)} />
-                  {errors.lastName && <span className="error-text">{errors.lastName}</span>}
-                </div>
-              </div>
-              <div className={`form-group form-mb ${errors.email ? 'has-error' : ''}`}>
-                <label htmlFor="email">Email</label>
-                <input type="email" id="email" name="email" placeholder="hello@gmail.com"
-                  value={form.email} onChange={e => handleChange('email', e.target.value)} />
-                {errors.email && <span className="error-text">{errors.email}</span>}
-              </div>
-              <div className="form-group form-mb">
-                <label htmlFor="subject">Subject</label>
-                <input type="text" id="subject" name="subject" placeholder="Portfolio Collaboration"
-                  value={form.subject} onChange={e => handleChange('subject', e.target.value)} />
-              </div>
-              <div className={`form-group form-mb ${errors.message ? 'has-error' : ''}`}>
-                <label htmlFor="message">Message</label>
-                <textarea id="message" name="message" placeholder="Tell me about your project or idea..."
-                  value={form.message} onChange={e => handleChange('message', e.target.value)} />
-                {errors.message && <span className="error-text">{errors.message}</span>}
-              </div>
+        <MotionForm 
+          key="contact-form"
+          ref={formRef} 
+          onSubmit={handleSubmit}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.3 }}
+        >
+        <div className="form-row">
+          <div className={`form-group ${errors.firstName ? 'has-error' : ''}`}>
+            <label htmlFor="firstName">First name</label>
+            <div className="input-wrap">
+              <input type="text" id="firstName" name="firstName" placeholder="Christian"
+                value={form.firstName} onChange={e => handleChange('firstName', e.target.value)} />
+            </div>
+            {errors.firstName && <span className="error-text">{errors.firstName}</span>}
+          </div>
+          <div className={`form-group ${errors.lastName ? 'has-error' : ''}`}>
+            <label htmlFor="lastName">Last name</label>
+            <div className="input-wrap">
+              <input type="text" id="lastName" name="lastName" placeholder="Akabueze"
+                value={form.lastName} onChange={e => handleChange('lastName', e.target.value)} />
+            </div>
+            {errors.lastName && <span className="error-text">{errors.lastName}</span>}
+          </div>
+        </div>
+        <div className={`form-group form-mb ${errors.email ? 'has-error' : ''}`}>
+          <label htmlFor="email">Email</label>
+          <div className="input-wrap">
+            <input type="email" id="email" name="email" placeholder="hello@gmail.com"
+              value={form.email} onChange={e => handleChange('email', e.target.value)} />
+          </div>
+          {errors.email && <span className="error-text">{errors.email}</span>}
+        </div>
+        <div className="form-group form-mb">
+          <label htmlFor="subject">Subject</label>
+          <div className="input-wrap">
+            <input type="text" id="subject" name="subject" placeholder="Portfolio Collaboration"
+              value={form.subject} onChange={e => handleChange('subject', e.target.value)} />
+          </div>
+        </div>
+        <div className={`form-group form-mb ${errors.message ? 'has-error' : ''}`}>
+          <label htmlFor="message">Message</label>
+          <div className="input-wrap">
+            <textarea id="message" name="message" placeholder="Tell me about your project or idea..."
+              value={form.message} onChange={e => handleChange('message', e.target.value)} />
+          </div>
+          {errors.message && <span className="error-text">{errors.message}</span>}
+        </div>
               <div className="submit-btn" style={{ marginTop: '24px' }}>
                 <div className="btn-tray">
-                  <button type="submit" className="btn btn-primary" disabled={status === 'sending'}>
-                    {status === 'sending' ? 'Sending...' : 'Send message'}
+                  <button type="submit" className={`btn btn-primary ${status === 'success' ? 'btn-success' : ''}`} disabled={status === 'sending' || status === 'success'}>
+                    {status === 'sending' && 'Sending...'}
+                    {status === 'success' && 'Sent Successfully'}
+                    {status === 'idle' && 'Send message'}
+                    {status === 'error' && 'Send message'}
                     {status === 'sending' && <Icon icon="lucide:loader-2" width={16} className="btn-spinner" />}
-                    {status === 'idle' && <Icon icon="lucide:send" width={16} />}
-                    {status === 'error' && <Icon icon="lucide:alert-circle" width={16} />}
+                    {status === 'success' && <Icon icon="lucide:check-circle" width={16} />}
+                    {(status === 'idle' || status === 'error') && <Icon icon="lucide:send" width={16} />}
                   </button>
                 </div>
                 {status === 'error' && <p style={{ color: '#ef4444', fontSize: '14px', marginTop: '12px' }}>Failed to send. Please try again or email me directly.</p>}
               </div>
             </MotionForm>
-          )}
-        </AnimatePresence>
       </section>
 
       <section className="direct-section">

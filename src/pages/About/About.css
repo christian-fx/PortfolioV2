@@ -126,7 +126,9 @@
 }
 
 @media (min-width: 640px) {
-  .questions-grid { grid-template-columns: repeat(2, 1fr); }
+  .questions-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
 .question-card {
@@ -166,6 +168,41 @@
 .question-card-front {
   align-items: flex-start;
   justify-content: space-between;
+}
+
+.card-hint-badge {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: var(--foreground);
+  color: var(--background);
+  font-family: var(--font-family-mono, "JetBrains Mono", monospace);
+  font-size: 8px;
+  padding: 6px 10px;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  animation: pulseHint 2s infinite ease-in-out;
+  pointer-events: none;
+  z-index: 10;
+}
+
+@keyframes pulseHint {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.2);
+  }
+
+  50% {
+    transform: scale(1.02);
+    box-shadow: 0 0 0 6px rgba(16, 185, 129, 0);
+  }
+
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(16, 185, 129, 0);
+  }
 }
 
 .question-card-back {
@@ -243,8 +280,13 @@
 }
 
 @keyframes marquee {
-  from { transform: translateX(0); }
-  to   { transform: translateX(-50%); }
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
 }
 
 .tech-item {
@@ -261,20 +303,48 @@
 
 
 @media (min-width: 768px) {
-  .question-card { height: 210px; }
-  .question-text { font-size: 24px; }
-  .hero-name { font-size: 48px; }
-  .hero-title-about { font-size: 22px; }
+  .question-card {
+    height: 210px;
+  }
+
+  .question-text {
+    font-size: 24px;
+  }
+
+  .hero-name {
+    font-size: 48px;
+  }
+
+  .hero-title-about {
+    font-size: 22px;
+  }
 }
 
 @media (min-width: 1200px) {
-  .questions-grid { grid-template-columns: repeat(2, 1fr); gap: 24px; }
-  .question-card { height: 220px; }
-  .hero-name { font-size: 56px; }
-  .hero-title-about { font-size: 24px; }
+  .questions-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+
+  .question-card {
+    height: 220px;
+  }
+
+  .hero-name {
+    font-size: 56px;
+  }
+
+  .hero-title-about {
+    font-size: 24px;
+  }
 }
 
 @media (min-width: 1600px) {
-  .hero-name { font-size: 64px; }
-  .hero-title-about { font-size: 26px; }
+  .hero-name {
+    font-size: 64px;
+  }
+
+  .hero-title-about {
+    font-size: 26px;
+  }
 }

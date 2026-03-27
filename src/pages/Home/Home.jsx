@@ -4,6 +4,7 @@ import SEO from '../../components/SEO';
 import ProjectCard from '../../components/ProjectCard';
 import Reveal from '../../components/Reveal';
 import { PROJECTS } from '../../data/projects';
+import CallToAction from '../../components/CallToAction';
 import './Home.css';
 
 const SOCIAL_LINKS = [
@@ -105,23 +106,7 @@ export default function Home() {
       </section>
 
       {/* CTA */}
-      <section className="cta-section">
-        <div className="cta-panel">
-          <div className="cta-copy">
-            <p className="cta-eyebrow">Open for selected collaborations</p>
-            <h2 className="cta-title">Let's build a product people remember.</h2>
-            <p className="cta-text">
-              Available for freelance projects, long-term front-end roles, and design-driven digital
-              products that need clarity, speed, and craft.
-            </p>
-          </div>
-          <div className="btn-tray">
-            <Link to="/contact" className="btn btn-inverse">
-              Start a Project <Icon icon="lucide:arrow-right" width={18} />
-            </Link>
-          </div>
-        </div>
-      </section>
+      <CallToAction />
     </>
   );
 }

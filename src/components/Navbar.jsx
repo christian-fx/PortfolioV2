@@ -34,6 +34,7 @@ export default function Navbar() {
                   key={link.path}
                   to={link.path}
                   end={link.end}
+                  aria-current={isActive ? 'page' : undefined}
                   className={`nav-link${isActive ? ' active' : ''}`}
                 >
                   {link.label}

@@ -3,6 +3,7 @@ import { Icon } from '@iconify/react';
 import SEO from '../../components/SEO';
 import ProjectCard from '../../components/ProjectCard';
 import Reveal from '../../components/Reveal';
+import CallToAction from '../../components/CallToAction';
 import { PROJECTS } from '../../data/projects';
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -90,25 +91,7 @@ export default function Works() {
         </MotionDiv>
       </section>
 
-      <section className="cta-section" style={{ animationDelay: '0.2s' }}>
-        <Reveal width="100%">
-          <div className="cta-panel">
-            <div className="cta-copy">
-              <p className="cta-eyebrow">Open for selected collaborations</p>
-              <h2 className="cta-title">Let's build a product people remember.</h2>
-              <p className="cta-text">
-                Available for freelance projects, long-term front-end roles, and design-driven digital
-                products that need clarity, speed, and craft.
-              </p>
-            </div>
-            <div className="btn-tray">
-              <Link to="/contact" className="btn btn-inverse">
-                Start a Project <Icon icon="lucide:arrow-right" width={18} />
-              </Link>
-            </div>
-          </div>
-        </Reveal>
-      </section>
+      <CallToAction withReveal={true} />
     </>
   );
 }

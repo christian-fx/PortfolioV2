@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { Icon } from '@iconify/react';
 import SEO from '../../components/SEO';
 import Reveal from '../../components/Reveal';
+import CallToAction from '../../components/CallToAction';
 import { motion } from 'framer-motion';
 import './About.css';
 
@@ -69,11 +70,16 @@ const TECH_ITEMS = [
 
 /* ─────────────────────────────────────────────  COMPONENTS */
 
-function FlipCard({ num, question, answer, flipped, onFlip }) {
+function FlipCard({ num, question, answer, flipped, showHint, onFlip }) {
   return (
     <div className={`question-card${flipped ? ' flipped' : ''}`} onClick={onFlip}>
       <div className="question-card-inner">
         <div className="question-card-front">
+          {showHint && (
+            <div className="card-hint-badge">
+              <Icon icon="lucide:mouse-pointer-click" width={16} /> Tap to flip
+            </div>
+          )}
           <div className="question-number">{num}</div>
           <div className="question-text">{question}</div>
           <div className="question-icon"><Icon icon="lucide:flip-horizontal" width={20} /></div>
@@ -91,9 +97,13 @@ function FlipCard({ num, question, answer, flipped, onFlip }) {
 
 export default function About() {
   const [activeCard, setActiveCard] = useState(null);
+  const [hasInteracted, setHasInteracted] = useState(false);
   const MotionSection = motion.section;
 
-  const handleFlip = (idx) => setActiveCard(prev => prev === idx ? null : idx);
+  const handleFlip = (idx) => {
+    setHasInteracted(true);
+    setActiveCard(prev => prev === idx ? null : idx);
+  };
   return (
     <>
       <SEO 
@@ -186,6 +196,7 @@ export default function About() {
               question={q.question}
               answer={q.answer}
               flipped={activeCard === i}
+              showHint={!hasInteracted && i === 0}
               onFlip={() => handleFlip(i)}
             />
           ))}
@@ -212,23 +223,7 @@ export default function About() {
       </section>
 
       {/* CTA */}
-      <section className="cta-section">
-        <div className="cta-panel">
-          <div className="cta-copy">
-            <p className="cta-eyebrow">Open for selected collaborations</p>
-            <h2 className="cta-title">Let's build a product people remember.</h2>
-            <p className="cta-text">
-              Available for freelance projects, long-term front-end roles, and design-driven digital
-              products that need clarity, speed, and craft.
-            </p>
-          </div>
-        <div className="btn-tray">
-          <Link to="/contact" className="btn btn-inverse">
-            Start a Project <Icon icon="lucide:arrow-right" width={18} />
-          </Link>
-        </div>
-        </div>
-      </section>
+      <CallToAction />
     </>
   );
 }

@@ -38,6 +38,14 @@ function SEOComponent({
     "mainEntityOfPage": { "@type": "WebPage", "@id": `${BASE_URL}/` }
   };
 
+  const resolveImageUrl = (imgpath) => {
+    if (!imgpath) return undefined;
+    if (imgpath.startsWith('http')) return imgpath;
+    return `${BASE_URL}${imgpath.startsWith('/') ? '' : '/'}${imgpath}`;
+  };
+
+  const finalImage = resolveImageUrl(image || (project ? project.image : undefined));
+
   // ── JSON-LD ──────────────────────────────────────────────────────────────
   const breadcrumbs = [
     { "@type": "ListItem", "position": 1, "name": "Home", "item": `${BASE_URL}/` }
@@ -74,7 +82,7 @@ function SEOComponent({
       "name": project.title,
       "description": project.description,
       "url": url,
-      "image": image || project.image,
+      "image": finalImage,
       "creator": { "@type": "Person", "name": "Christian Akabueze", "url": `${BASE_URL}/` },
       "dateCreated": project.meta?.year ? `${project.meta.year}-01-01` : undefined,
       "keywords": keywords || project.category,
@@ -101,10 +109,10 @@ function SEOComponent({
       <meta property="og:site_name" content="Christian Akabueze Portfolio" />
       <meta property="og:locale" content="en_US" />
       <meta property="article:author" content="https://www.facebook.com/too.chi.5070" />
-      {image && <meta property="og:image" content={image} />}
-      {image && <meta property="og:image:width" content="1200" />}
-      {image && <meta property="og:image:height" content="630" />}
-      {image && <meta property="og:image:alt" content={title ? `${title} – Case Study Preview` : "Christian Akabueze Portfolio"} />}
+      {finalImage && <meta property="og:image" content={finalImage} />}
+      {finalImage && <meta property="og:image:width" content="1200" />}
+      {finalImage && <meta property="og:image:height" content="630" />}
+      {finalImage && <meta property="og:image:alt" content={title ? `${title} – Case Study Preview` : "Christian Akabueze Portfolio"} />}
 
       {/* Twitter */}
       <meta name="twitter:card" content="summary_large_image" />
@@ -112,8 +120,8 @@ function SEOComponent({
       <meta name="twitter:creator" content="@too_chi_" />
       <meta name="twitter:title" content={title ? `${title} – Christian Akabueze` : "Christian Akabueze – Frontend Developer"} />
       <meta name="twitter:description" content={pageDesc} />
-      {image && <meta name="twitter:image" content={image} />}
-      {image && <meta name="twitter:image:alt" content={title ? `${title} – Case Study Preview` : "Christian Akabueze Portfolio"} />}
+      {finalImage && <meta name="twitter:image" content={finalImage} />}
+      {finalImage && <meta name="twitter:image:alt" content={title ? `${title} – Case Study Preview` : "Christian Akabueze Portfolio"} />}
 
       <script type="application/ld+json">
         {JSON.stringify(jsonLd)}
