@@ -14,7 +14,7 @@ export const PROJECTS = [
     status: 'Completed',
     github: '#',
     live: '#',
-    hasCaseStudy: true,
+    hasCaseStudy: false,
     meta: {
       client: 'FinanceFlow Inc.',
       year: '2024',
@@ -87,7 +87,7 @@ export const PROJECTS = [
     status: 'in-development',
     github: 'https://github.com/christian-fx/Devfolio',
     live: '#',
-    hasCaseStudy: true,
+    hasCaseStudy: false,
     meta: {
       project_type: 'Open Source',
       year: '2025',
@@ -146,20 +146,6 @@ export const PROJECTS = [
         { icon: 'skill-icons:framer-motion', label: 'Framer Motion' },
         { icon: 'simple-icons:github', label: 'GitHub REST API' },
         { icon: 'skill-icons:inquirer', label: 'Inquirer.js' }
-      ],
-      results: {
-        metrics: [
-          { number: '1 Command', label: 'Portfolio Generated Instantly' },
-          { number: 'Live', label: 'GitHub Data Updates Automatically' },
-          { number: 'Customizable', label: 'Multiple Templates & Animations' },
-          { number: 'Deployable', label: 'Vercel / Netlify / GitHub Pages' }
-        ]
-      },
-      gallery: [
-        { src: 'https://storage.googleapis.com/banani-generated-images/generated-images/devfolio-dashboard.jpg', alt: 'CLI Usage', caption: 'Running the CLI to generate a portfolio' },
-        { src: 'https://storage.googleapis.com/banani-generated-images/generated-images/devfolio-template.jpg', alt: 'Template Preview', caption: 'Preview of selectable templates' },
-        { src: 'https://storage.googleapis.com/banani-generated-images/generated-images/devfolio-live-data.jpg', alt: 'Live GitHub Data', caption: 'Portfolio fetching live GitHub repositories and stats' },
-        { src: 'https://storage.googleapis.com/banani-generated-images/generated-images/devfolio-deploy.jpg', alt: 'Deployment Ready', caption: 'Generated portfolio ready for deployment' }
       ]
     }
   },
@@ -168,7 +154,7 @@ export const PROJECTS = [
     id: 'gadgetstore-admin',
     title: 'Go Gadget Admin Dashboard',
     category: 'E-commerce',
-    image: '/images/case-studies/productsdetails.png',
+    image: '/images/case-studies/adminDashboard.png',
     description: 'A modern, responsive admin dashboard for managing a gadget e-commerce store, featuring real-time analytics, inventory and order management, and product CRUD operations—all powered by Firebase and Vanilla JavaScript.',
     tags: [
       { icon: 'skill-icons:javascript', label: 'Vanilla JavaScript' },
@@ -259,7 +245,7 @@ export const PROJECTS = [
         ]
       },
       gallery: [
-        { src: '/images/case-studies/productsdetails.png', alt: 'Dashboard Overview', caption: 'Main dashboard showing revenue charts and key metrics' },
+        { src: '/images/case-studies/productsdetails.png', alt: 'Product Details', caption: 'Product Details Page showing all the details of the product' },
         { src: '/images/case-studies/products.png', alt: 'Product Management', caption: 'Full CRUD for products with image uploads' },
         { src: '/images/case-studies/inventory.png', alt: 'Inventory Control', caption: 'Visual stock status indicators and valuation' },
       ]
@@ -269,7 +255,7 @@ export const PROJECTS = [
     id: 'go-gadgets-store',
     title: 'Go Gadgets Customer Store',
     category: 'E-commerce',
-    image: '/images/case-studies/goGadgetsLanding.jpeg',
+    image: '/images/case-studies/goGadgetsLanding.png',
     description: 'A modern, fast, and fully functional single-page application (SPA) storefront for Go Gadgets e-commerce platform, featuring seamless navigation, secure checkout, and real-time product updates.',
     tags: [
       { icon: 'skill-icons:javascript', label: 'Vanilla JavaScript' },
@@ -280,7 +266,7 @@ export const PROJECTS = [
     ],
     status: 'in-development',
     github: 'https://github.com/christian-fx/Go-Gadgets',
-    live: 'https://gogadgets-alpha.vercel.app/',
+    live: 'https://gogadget-alpha.vercel.app/',
     hasCaseStudy: true,
     meta: {
       project_type: 'Independent Project - Customer-Facing E-commerce',
@@ -358,8 +344,7 @@ export const PROJECTS = [
         ]
       },
       gallery: [
-        { src: '/images/case-studies/AuthPage.jpeg', alt: 'Home Page', caption: 'Customer-facing homepage with trending products' },
-        { src: 'https://storage.googleapis.com/banani-generated-images/generated-images/go-gadgets-product.jpg', alt: 'Product Listing', caption: 'Dynamic product listing with categories and stock indicators' },
+        { src: '/images/case-studies/AuthPage.jpeg', alt: 'Authentication Page', caption: 'Authentication Page showing login and signup' },
         { src: '/images/case-studies/CartPage.jpeg', alt: 'Shopping Cart', caption: 'Persistent shopping cart and checkout interface' },
         { src: '/images/case-studies/AccountPage.jpeg', alt: 'Account Management', caption: 'User profile, shipping addresses, payment methods, and order history' }
       ]
@@ -423,10 +408,10 @@ export const PROJECTS = [
         ],
       },
       gallery: [
-        { src: 'https://storage.googleapis.com/banani-generated-images/generated-images/94f1209d-354a-4bbf-8387-9d17992f8af2.jpg', alt: 'Dashboard Overview', caption: 'Main dashboard with portfolio overview' },
-        { src: 'https://storage.googleapis.com/banani-generated-images/generated-images/dbbf9b07-e2b2-46e4-9fe6-067c9dd31bbd.jpg', alt: 'Analytics View', caption: 'Detailed analytics with custom date ranges' },
-        { src: 'https://storage.googleapis.com/banani-generated-images/generated-images/2931f37a-6689-4bd4-86c9-9276f20d1539.jpg', alt: 'Mobile View', caption: 'Responsive mobile experience' },
-        { src: 'https://storage.googleapis.com/banani-generated-images/generated-images/d298266c-443a-4430-a988-7c164818a359.jpg', alt: 'Dark Mode', caption: 'Dark mode for reduced eye strain' }
+        { src: '/images/case-studies/academiatrackUserDashboard.png', alt: 'Dashboard Overview', caption: 'Main dashboard with portfolio overview' },
+        { src: '/images/case-studies/activityPage.png', alt: 'Activity View', caption: 'Activity tracking page' },
+        { src: '/images/case-studies/profilePage.png', alt: 'Profile View', caption: 'Profile management page' },
+        { src: '/images/case-studies/progressPage.png', alt: 'Progress View', caption: 'Progress tracking page' }
       ]
     }
   },
@@ -434,7 +419,7 @@ export const PROJECTS = [
     id: 'fitnesshub',
     title: 'Fitness Hub',
     category: 'Health & Fitness',
-    image: '/images/case-studies/fitnesshubDashboard.jpeg',
+    image: '/images/case-studies/userDashboard.png',
     description: 'Fitness Hub is an AI-powered fitness web application that helps users achieve their health goals through personalized workout plans, progress tracking, and interactive training experiences.',
     tags: [
       { icon: 'skill-icons:nextjs-dark', label: 'Next.js' },
@@ -524,10 +509,10 @@ export const PROJECTS = [
         ]
       },
       gallery: [
-        { src: '/images/case-studies/fitnesshubDashboard.jpeg', alt: 'Dashboard', caption: 'Fitness dashboard with key metrics and activity overview' },
-        { src: '/images/case-studies/timer.png', alt: 'Workout Session', caption: 'Interactive workout session with timers' },
+        { src: '/images/case-studies/userDashboard.png', alt: 'Dashboard', caption: 'Fitness dashboard with key metrics and activity overview' },
+        { src: '/images/case-studies/workoutPlans.png', alt: 'Workout plans', caption: 'Workout plan with difficulty levels' },
         { src: '/images/case-studies/workoutChart.jpeg', alt: 'Progress Charts', caption: 'Data visualization of workout progress and performance' },
-        { src: '/images/case-studies/community.jpeg', alt: 'Challenges', caption: 'Community fitness challenges and engagement features' }
+        { src: '/images/case-studies/community.png', alt: 'Challenges', caption: 'Community fitness challenges and engagement features' }
       ]
     }
   },
