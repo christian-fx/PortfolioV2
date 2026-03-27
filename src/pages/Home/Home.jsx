@@ -73,9 +73,9 @@ export default function Home() {
                 </button>
               </div>
               <div className="btn-tray">
-                <a href="#" className="btn">
+                <Link to="/resume" className="btn">
                   Resume <Icon icon="lucide:file-text" width={16} />
-                </a>
+                </Link>
               </div>
             </div>
           </div>
