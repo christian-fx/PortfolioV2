@@ -5,6 +5,7 @@ import ProjectCard from '../../components/ProjectCard';
 import Reveal from '../../components/Reveal';
 import { PROJECTS } from '../../data/projects';
 import CallToAction from '../../components/CallToAction';
+import { useModal } from '../../context/ModalContext';
 import './Home.css';
 
 const SOCIAL_LINKS = [
@@ -26,6 +27,8 @@ const STACK = [
 ];
 
 export default function Home() {
+  const { openContactModal } = useModal();
+
   return (
     <>
       <SEO />
@@ -65,9 +68,9 @@ export default function Home() {
             </div>
             <div className="hero-actions">
               <div className="btn-tray">
-                <Link to="/contact" className="btn btn-primary">
+                <button className="btn btn-primary" onClick={openContactModal}>
                   <Icon icon="lucide:hand" width={16} /> Say Hello
-                </Link>
+                </button>
               </div>
               <div className="btn-tray">
                 <a href="#" className="btn">

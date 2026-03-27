@@ -16,6 +16,8 @@ const Contact = lazy(() => import('./pages/Contact/Contact'));
 const CaseStudy = lazy(() => import('./pages/CaseStudy/CaseStudy'));
 const NotFound = lazy(() => import('./pages/NotFound/NotFound'));
 
+import { ModalProvider } from './context/ModalContext';
+
 function AnimatedRoutes() {
   return (
     <AnimatePresence mode="wait">
@@ -42,31 +44,33 @@ export default function App() {
   };
 
   return (
-    <BrowserRouter>
-      <ScrollToTop />
-      <Analytics />
-      <SpeedInsights />
-      
-      <AnimatePresence>
-        {isInitialLoading && (
-          <PageLoader key="initial-loader" onComplete={handleLoaderComplete} />
-        )}
-      </AnimatePresence>
+    <ModalProvider>
+      <BrowserRouter>
+        <ScrollToTop />
+        <Analytics />
+        <SpeedInsights />
+        
+        <AnimatePresence>
+          {isInitialLoading && (
+            <PageLoader key="initial-loader" onComplete={handleLoaderComplete} />
+          )}
+        </AnimatePresence>
 
-      <div
-        key="app-content"
-        style={{ 
-          opacity: isInitialLoading ? 0 : 1,
-          visibility: isInitialLoading ? 'hidden' : 'visible',
-          transition: 'opacity 0.8s ease-in-out'
-        }}
-      >
-        <Layout>
-          <Suspense fallback={null}>
-            <AnimatedRoutes />
-          </Suspense>
-        </Layout>
-      </div>
-    </BrowserRouter>
+        <div
+          key="app-content"
+          style={{ 
+            opacity: isInitialLoading ? 0 : 1,
+            visibility: isInitialLoading ? 'hidden' : 'visible',
+            transition: 'opacity 0.8s ease-in-out'
+          }}
+        >
+          <Layout>
+            <Suspense fallback={null}>
+              <AnimatedRoutes />
+            </Suspense>
+          </Layout>
+        </div>
+      </BrowserRouter>
+    </ModalProvider>
   );
 }

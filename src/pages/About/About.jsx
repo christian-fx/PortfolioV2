@@ -5,6 +5,7 @@ import SEO from '../../components/SEO';
 import Reveal from '../../components/Reveal';
 import CallToAction from '../../components/CallToAction';
 import { motion } from 'framer-motion';
+import { useModal } from '../../context/ModalContext';
 import './About.css';
 
 /* ─────────────────────────────────────────────  DATA */
@@ -98,6 +99,7 @@ function FlipCard({ num, question, answer, flipped, showHint, onFlip }) {
 export default function About() {
   const [activeCard, setActiveCard] = useState(null);
   const [hasInteracted, setHasInteracted] = useState(false);
+  const { openContactModal } = useModal();
   const MotionSection = motion.section;
 
   const handleFlip = (idx) => {
@@ -124,9 +126,9 @@ export default function About() {
         </p>
         <div className="hero-actions-about">
           <div className="btn-tray">
-            <Link to="/contact" className="btn btn-primary">
+            <button className="btn btn-primary" onClick={openContactModal}>
               Say Hello <Icon icon="lucide:hand" width={16} />
-            </Link>
+            </button>
           </div>
           <div className="btn-tray">
             <a href="#" className="btn">

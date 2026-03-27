@@ -1,0 +1,157 @@
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.4);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+}
+
+.dark .modal-backdrop {
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+.modal-container {
+  position: relative;
+  width: 100%;
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+}
+
+.contact-modal {
+  width: 100%;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.1);
+  position: relative; /* Make sure modal elements are bounded */
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.dark .contact-modal {
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.close-modal-btn.outside {
+  position: absolute;
+  top: -46px;
+  right: 0px;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+  background: var(--card);
+  color: var(--foreground);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 10;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.dark .close-modal-btn.outside {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+.close-modal-btn.outside:hover {
+  background: var(--input);
+  transform: scale(1.05);
+}
+
+.modal-content-wrapper {
+  padding: 24px 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.modal-view {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  flex: 1;
+}
+
+.modal-title {
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 26px;
+  font-weight: 400;
+  margin-bottom: 4px;
+  color: var(--foreground);
+}
+
+.modal-subtitle {
+  font-family: "Google Sans Flex", sans-serif;
+  font-size: 14px;
+  color: var(--muted-foreground);
+  margin-bottom: 24px;
+  line-height: 1.4;
+}
+
+.modal-options {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.modal-copy-box {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--input);
+  padding: 12px 14px;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+  margin-bottom: 16px;
+}
+
+.modal-copy-text {
+  font-family: var(--font-family-mono, "JetBrains Mono", monospace);
+  font-size: 13px;
+  color: var(--foreground);
+  letter-spacing: 0.05em;
+}
+
+.modal-copy-icon {
+  background: transparent;
+  border: none;
+  color: var(--muted-foreground);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.modal-copy-icon:hover {
+  color: var(--foreground);
+  transform: scale(1.1);
+}
+
+.modal-textarea {
+  width: 100%;
+  min-height: 100px;
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 12px;
+  font-family: "Google Sans Flex", sans-serif;
+  font-size: 14px;
+  color: var(--foreground);
+  resize: none;
+  margin-bottom: 24px;
+  transition: border-color 0.2s ease;
+}
+
+.modal-textarea:focus {
+  outline: none;
+  border-color: var(--muted-foreground);
+}
+
