@@ -1,0 +1,135 @@
+.github-activity-section {
+  padding: 48px 0;
+  color: var(--foreground);
+  overflow: hidden;
+}
+
+.github-activity-container {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.github-stats-header {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  margin-bottom: 10px;
+}
+
+.github-stats-label {
+  font-family: var(--font-family-mono);
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  color: var(--muted-foreground);
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+
+.github-stats-row {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+}
+
+.github-total-number {
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 42px;
+  line-height: 1;
+  color: var(--foreground);
+}
+
+.github-total-text {
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 18px;
+  color: var(--muted-foreground);
+  letter-spacing: -0.01em;
+}
+
+.github-calendar-inner {
+  overflow-x: auto;
+  padding-bottom: 0;
+  scrollbar-width: none;       /* Firefox */
+  -ms-overflow-style: none;   /* IE/Edge */
+}
+
+.github-calendar-inner::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  display: none;               /* Chrome/Safari/Webkit */
+}
+
+/* Calendar month labels on top */
+.react-activity-calendar__labels {
+  margin-bottom: 12px !important;
+  font-family: var(--font-family-mono) !important;
+  font-size: 10px !important;
+  color: var(--muted-foreground) !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.1em !important;
+}
+
+/* Tooltips */
+.react-activity-calendar__tooltip {
+  background: #111 !important;
+  color: #eee !important;
+  border: 1px solid var(--border) !important;
+  padding: 4px 8px !important;
+  font-size: 11px !important;
+  border-radius: 4px !important;
+  font-family: var(--font-family-mono) !important;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.github-activity-footer {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: -4px;
+  width: 100%;
+}
+
+.activity-last-pushed {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-family-mono);
+  font-size: 13px;
+  color: var(--muted-foreground);
+}
+
+.activity-dot {
+  width: 6px;
+  height: 6px;
+  background: white;
+  border-radius: 50%;
+  display: inline-block;
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.4);
+}
+
+.activity-highlight {
+  font-weight: 600;
+  padding: 0 2px;
+  color: var(--foreground);
+}
+
+/* Mobile responsive fixes */
+@media (max-width: 768px) {
+  .github-total-number {
+    font-size: 42px;
+  }
+
+  .github-activity-footer {
+    justify-content: flex-end;
+  }
+}
+
+/* Glow effect on the calendar blocks */
+.react-activity-calendar__block {
+  transition: opacity 0.2s ease, transform 0.2s ease !important;
+  cursor: pointer;
+}
+
+.react-activity-calendar__block:hover {
+  transform: scale(1.1);
+  filter: brightness(1.2);
+}

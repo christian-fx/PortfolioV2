@@ -5,6 +5,7 @@ import ProjectCard from '../../components/ProjectCard';
 import Reveal from '../../components/Reveal';
 import { PROJECTS } from '../../data/projects';
 import CallToAction from '../../components/CallToAction';
+import GitHubActivity from '../../components/GitHubActivity';
 import { useModal } from '../../context/ModalContext';
 import './Home.css';
 
@@ -86,6 +87,9 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* GitHub Activity */}
+      <GitHubActivity />
 
       {/* Projects */}
       <section className="work-section">

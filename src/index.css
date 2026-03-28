@@ -510,6 +510,10 @@ body.modal-open {
 }
 
 /* ─── Shared Work Section Styles ─────────────────────── */
+.github-activity-section {
+  padding: 24px 0 32px;
+}
+
 .work-section {
   padding: 0 0 56px;
 }
