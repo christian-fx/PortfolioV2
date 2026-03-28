@@ -2,6 +2,7 @@
   padding: 48px 0;
   color: var(--foreground);
   overflow: hidden;
+  margin-bottom: 12px;
 }
 
 .github-activity-container {
