@@ -13,7 +13,6 @@ const Home = lazy(() => import('./pages/Home/Home'));
 const Works = lazy(() => import('./pages/Works/Works'));
 const About = lazy(() => import('./pages/About/About'));
 const Contact = lazy(() => import('./pages/Contact/Contact'));
-const Resume = lazy(() => import('./pages/Resume/Resume'));
 const CaseStudy = lazy(() => import('./pages/CaseStudy/CaseStudy'));
 const NotFound = lazy(() => import('./pages/NotFound/NotFound'));
 
@@ -27,7 +26,7 @@ function AnimatedRoutes() {
         <Route path="/works" element={<PageTransition><Works /></PageTransition>} />
         <Route path="/about" element={<PageTransition><About /></PageTransition>} />
         <Route path="/contact" element={<PageTransition><Contact /></PageTransition>} />
-        <Route path="/resume" element={<PageTransition><Resume /></PageTransition>} />
+
         <Route path="/case-study/:id" element={<PageTransition><CaseStudy /></PageTransition>} />
         <Route path="*" element={<PageTransition><NotFound /></PageTransition>} />
       </Routes>

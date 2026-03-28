@@ -131,9 +131,14 @@ export default function About() {
             </button>
           </div>
           <div className="btn-tray">
-            <Link to="/resume" className="btn">
-              Resume <Icon icon="lucide:file-text" width={16} />
-            </Link>
+                <a 
+                  href="/My%20Resume.pdf" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="btn"
+                >
+                  Resume <Icon icon="lucide:file-text" width={16} />
+                </a>
           </div>
         </div>
       </section>
