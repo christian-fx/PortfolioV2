@@ -39,13 +39,6 @@ export default function GitHubActivity() {
     fetchActivity();
   }, [username]);
 
-
-
-  const themeConfig = {
-    light: ['#f0f0f0', '#9be9a8', '#40c463', '#30a14e', '#216e39'],
-    dark: ['#111', '#0e4429', '#006d32', '#26a641', '#39d353'],
-  };
-
   return (
     <section className="github-activity-section">
       <div className="github-activity-container">
@@ -88,11 +81,11 @@ export default function GitHubActivity() {
             labels={{
               totalCount: '{{count}} commits in the last year',
             }}
-            theme={themeConfig}
             fontSize={9}
             blockSize={10}
             blockMargin={3}
             showWeekdayLabels={false}
+            colorScheme="light"
             tooltips={{
               activity: {
                 text: (activity) => {

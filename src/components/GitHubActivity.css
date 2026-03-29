@@ -124,13 +124,16 @@
   }
 }
 
-/* Glow effect on the calendar blocks */
-.react-activity-calendar__block {
-  transition: opacity 0.2s ease, transform 0.2s ease !important;
-  cursor: pointer;
-}
+/* ── Calendar block colors: light mode ─────────────── */
+.react-activity-calendar__block[data-level="0"] { fill: #e8e8e8 !important; }
+.react-activity-calendar__block[data-level="1"] { fill: #c4c4c4 !important; }
+.react-activity-calendar__block[data-level="2"] { fill: #9a9a9a !important; }
+.react-activity-calendar__block[data-level="3"] { fill: #d4a017 !important; }
+.react-activity-calendar__block[data-level="4"] { fill: #e8b839 !important; }
 
-.react-activity-calendar__block:hover {
-  transform: scale(1.1);
-  filter: brightness(1.2);
-}
+/* ── Calendar block colors: dark mode ──────────────── */
+.dark .react-activity-calendar__block[data-level="0"] { fill: #1e1e1e !important; }
+.dark .react-activity-calendar__block[data-level="1"] { fill: #3a3a3a !important; }
+.dark .react-activity-calendar__block[data-level="2"] { fill: #6b6b6b !important; }
+.dark .react-activity-calendar__block[data-level="3"] { fill: #d4a017 !important; }
+.dark .react-activity-calendar__block[data-level="4"] { fill: #e8b839 !important; }
