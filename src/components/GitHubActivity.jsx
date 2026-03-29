@@ -6,6 +6,7 @@ import './GitHubActivity.css';
 export default function GitHubActivity() {
   const [lastPush, setLastPush] = useState(null);
   const [totalCommits, setTotalCommits] = useState(0);
+  const [hasError, setHasError] = useState(false);
   const username = 'christian-fx';
 
   useEffect(() => {
@@ -31,13 +32,15 @@ export default function GitHubActivity() {
             time: timeText
           });
         }
-      } catch (error) {
-        console.error('Error fetching GitHub activity:', error);
+      } catch {
+        setHasError(true);
       }
     }
 
     fetchActivity();
   }, [username]);
+
+  if (hasError) return null;
 
   return (
     <section className="github-activity-section">
