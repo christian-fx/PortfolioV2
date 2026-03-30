@@ -87,7 +87,7 @@ export const PROJECTS = [
     status: 'in-development',
     github: 'https://github.com/christian-fx/Devfolio',
     live: '#',
-    hasCaseStudy: false,
+    hasCaseStudy: true,
     meta: {
       project_type: 'Open Source',
       year: '2025',
