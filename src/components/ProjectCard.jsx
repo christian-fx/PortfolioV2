@@ -1,14 +1,13 @@
 import { Link } from 'react-router-dom';
 import { Icon } from '@iconify/react';
 import SkeletonImage from './SkeletonImage';
-import { useRef } from 'react';
-import useFollowMouse from '../hooks/useFollowMouse';
+
+import { motion } from 'framer-motion';
+
+const MotionArticle = motion.article;
 
 export default function ProjectCard({ id, title, description, tags, image, github, live, status }) {
   const caseStudyLink = `/case-study/${id}`;
-  const cardRef = useRef(null);
-  const { x, y } = useFollowMouse(cardRef);
-
 
   const getStatusColor = () => {
     if (status === 'Completed') return '#10b981'; // Premium muted green
@@ -21,12 +20,19 @@ export default function ProjectCard({ id, title, description, tags, image, githu
 
   return (
     <div className="work-card-tray">
-      <article 
-        ref={cardRef} 
+      <MotionArticle
         className="work-card"
-        style={{
-          '--s-x': `${-x}px`,
-          '--s-y': `${-y}px`
+        whileHover={{
+          y: -1.5, // Increased distance slightly for impact
+          rotateX: -1.2,
+          rotateY: 1.5,
+          zIndex: 10
+        }}
+        transition={{
+          type: 'spring',
+          stiffness: 260,
+          damping: 20,
+          mass: 0.6
         }}
       >
         {(status === 'in-development' || status === 'In Development') && (
@@ -76,7 +82,7 @@ export default function ProjectCard({ id, title, description, tags, image, githu
             </Link>
           </div>
         </div>
-      </article>
+      </MotionArticle>
     </div>
   );
 }

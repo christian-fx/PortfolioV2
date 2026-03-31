@@ -522,14 +522,15 @@ body.modal-open {
   display: grid;
   grid-template-columns: 1fr;
   gap: 20px;
+  perspective: 1200px;
 }
 
 .work-card-tray {
   background: var(--input);
-  padding: 2px;
+  padding: 3px;
   border: 1px solid var(--border);
   transition: background-color 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-  border-radius: 10px;
+  border-radius: 9px 9px 15px 15px;
   height: 100%;
 }
 
@@ -538,8 +539,6 @@ body.modal-open {
 }
 
 .work-card {
-  --s-x: 0px;
-  --s-y: 0px;
   display: flex;
   flex-direction: column;
   background: var(--card);
@@ -550,30 +549,18 @@ body.modal-open {
   transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1);
   will-change: transform, box-shadow;
   height: 100%;
-}
-
-.work-card::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(circle at calc(50% + var(--s-x) * 10) calc(50% + var(--s-y) * 10),
-      rgba(255, 255, 255, 0.1),
-      transparent 60%);
-  opacity: 0;
-  transition: opacity 0.4s ease;
-  pointer-events: none;
-  z-index: 5;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transform: translateZ(0);
+  /* Force clear layer */
+  filter: blur(0);
+  /* Chrome anti-blur hack */
 }
 
 .work-card-tray:hover .work-card {
-  transform: translateY(-2px);
-  box-shadow:
-    var(--s-x) var(--s-y) 20px rgba(0, 0, 0, 0.08),
-    0 8px 16px rgba(0, 0, 0, 0.03);
-}
-
-.work-card-tray:hover .work-card::after {
-  opacity: 1;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
 }
 
 
