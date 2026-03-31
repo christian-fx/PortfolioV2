@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-
+import { motion, useMotionValue, useTransform, animate } from 'framer-motion';
 import { GitHubCalendar } from 'react-github-calendar';
 import { useTheme } from '../hooks/useTheme';
 import './GitHubActivity.css';
@@ -11,6 +11,18 @@ export default function GitHubActivity() {
   const [totalCommits, setTotalCommits] = useState(0);
   const [hasError, setHasError] = useState(false);
   const username = 'christian-fx';
+
+  // Animated counter logic
+  const count = useMotionValue(0);
+  const rounded = useTransform(count, latest => Math.round(latest));
+
+  useEffect(() => {
+    const controls = animate(count, totalCommits, {
+      duration: 1.5,
+      ease: "easeOut"
+    });
+    return controls.stop;
+  }, [totalCommits, count]);
 
   useEffect(() => {
     const CACHE_KEY = 'github_activity_cache';
@@ -72,7 +84,9 @@ export default function GitHubActivity() {
         <div className="github-stats-header">
           <p className="github-stats-label">ACTIVITY</p>
           <div className="github-stats-row">
-            <span className="github-total-number">{totalCommits}</span>
+            <motion.span className="github-total-number">
+              {rounded}
+            </motion.span>
             <span className="github-total-text">commits</span>
           </div>
         </div>
