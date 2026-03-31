@@ -12,30 +12,48 @@ export default function GitHubActivity() {
   const username = 'christian-fx';
 
   useEffect(() => {
+    const CACHE_KEY = 'github_activity_cache';
+    const TIMESTAMP_KEY = 'github_activity_timestamp';
+    const CACHE_DURATION = 15 * 60 * 1000; // 15 minutes
 
-    
     async function fetchActivity() {
       try {
+        const cachedData = localStorage.getItem(CACHE_KEY);
+        const cachedTimestamp = localStorage.getItem(TIMESTAMP_KEY);
+        const now = Date.now();
+
+        if (cachedData && cachedTimestamp && now - parseInt(cachedTimestamp) < CACHE_DURATION) {
+          const data = JSON.parse(cachedData);
+          processActivityData(data);
+          return;
+        }
+
         const response = await fetch(`https://api.github.com/users/${username}/events`);
         const data = await response.json();
         
-        // Latest Push for the footer
-        const latestPush = data.find(event => event.type === 'PushEvent');
-        if (latestPush) {
-          const repoName = latestPush.repo.name.split('/')[1] || latestPush.repo.name;
-          
-          // Rough "time ago" calculation
-          const diffInMs = new Date() - new Date(latestPush.created_at);
-          const diffInDays = Math.floor(diffInMs / (1000 * 60 * 60 * 24));
-          const timeText = diffInDays === 0 ? 'today' : (diffInDays === 1 ? 'yesterday' : `${diffInDays}d ago`);
-          
-          setLastPush({
-            repo: repoName,
-            time: timeText
-          });
+        if (Array.isArray(data)) {
+          localStorage.setItem(CACHE_KEY, JSON.stringify(data));
+          localStorage.setItem(TIMESTAMP_KEY, now.toString());
+          processActivityData(data);
         }
-      } catch {
+      } catch (err) {
+        console.error('GitHub API error:', err);
         setHasError(true);
+      }
+    }
+
+    function processActivityData(data) {
+      const latestPush = data.find(event => event.type === 'PushEvent');
+      if (latestPush) {
+        const repoName = latestPush.repo.name.split('/')[1] || latestPush.repo.name;
+        const diffInMs = new Date() - new Date(latestPush.created_at);
+        const diffInDays = Math.floor(diffInMs / (1000 * 60 * 60 * 24));
+        const timeText = diffInDays === 0 ? 'today' : (diffInDays === 1 ? 'yesterday' : `${diffInDays}d ago`);
+        
+        setLastPush({
+          repo: repoName,
+          time: timeText
+        });
       }
     }
 
