@@ -1,7 +1,7 @@
 import { NavLink, useLocation } from 'react-router-dom';
 import { Icon } from '@iconify/react';
 import { useTheme } from '../hooks/useTheme';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 
 const NAV_LINKS = [
   { path: '/', label: 'Home', end: true },
@@ -24,31 +24,33 @@ export default function Navbar() {
             <Icon icon={isDark ? 'lucide:sun' : 'lucide:moon-star'} width={22} height={22} />
           </button>
           <nav className="header-nav">
-            {NAV_LINKS.map(link => {
-              const isActive = link.end 
-                ? location.pathname === link.path 
-                : location.pathname.startsWith(link.path);
+            <AnimatePresence mode="wait">
+              {NAV_LINKS.map(link => {
+                const isActive = link.end 
+                  ? location.pathname === link.path 
+                  : location.pathname.startsWith(link.path);
 
-              return (
-                <NavLink
-                  key={link.path}
-                  to={link.path}
-                  end={link.end}
-                  aria-current={isActive ? 'page' : undefined}
-                  className={`nav-link${isActive ? ' active' : ''}`}
-                >
-                  {link.label}
-                  {isActive && (
-                    <MotionDiv 
-                      layoutId="nav-active-pill" 
-                      className="active-pill"
-                      transition={{ type: 'spring', bounce: 0.2, duration: 0.6 }}
-                      style={{ bottom: '-4px' }}
-                    />
-                  )}
-                </NavLink>
-              );
-            })}
+                return (
+                  <NavLink
+                    key={link.path}
+                    to={link.path}
+                    end={link.end}
+                    aria-current={isActive ? 'page' : undefined}
+                    className={`nav-link${isActive ? ' active' : ''}`}
+                  >
+                    {link.label}
+                    {isActive && (
+                      <MotionDiv 
+                        layoutId="nav-active-pill" 
+                        className="active-pill"
+                        transition={{ type: 'spring', bounce: 0.2, duration: 0.6 }}
+                        style={{ bottom: '-4px' }}
+                      />
+                    )}
+                  </NavLink>
+                );
+              })}
+            </AnimatePresence>
           </nav>
         </header>
       </div>
