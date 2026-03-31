@@ -4,6 +4,8 @@ import { GitHubCalendar } from 'react-github-calendar';
 import { useTheme } from '../hooks/useTheme';
 import './GitHubActivity.css';
 
+const MotionSpan = motion.span;
+
 export default function GitHubActivity() {
   const { isDark } = useTheme();
   const [lastPush, setLastPush] = useState(null);
@@ -84,9 +86,9 @@ export default function GitHubActivity() {
         <div className="github-stats-header">
           <p className="github-stats-label">ACTIVITY</p>
           <div className="github-stats-row">
-            <motion.span className="github-total-number">
+            <MotionSpan className="github-total-number">
               {rounded}
-            </motion.span>
+            </MotionSpan>
             <span className="github-total-text">commits</span>
           </div>
         </div>
