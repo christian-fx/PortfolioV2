@@ -24,7 +24,7 @@ export default function Navbar() {
             <Icon icon={isDark ? 'lucide:sun' : 'lucide:moon-star'} width={22} height={22} />
           </button>
           <nav className="header-nav">
-            <AnimatePresence mode="wait">
+            <AnimatePresence>
               {NAV_LINKS.map(link => {
                 const isActive = link.end 
                   ? location.pathname === link.path 

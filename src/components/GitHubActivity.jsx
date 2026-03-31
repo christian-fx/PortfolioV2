@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+
 import { GitHubCalendar } from 'react-github-calendar';
 import { useTheme } from '../hooks/useTheme';
 import './GitHubActivity.css';
@@ -13,6 +14,7 @@ export default function GitHubActivity() {
 
   useEffect(() => {
     const CACHE_KEY = 'github_activity_cache';
+
     const TIMESTAMP_KEY = 'github_activity_timestamp';
     const CACHE_DURATION = 15 * 60 * 1000; // 15 minutes
 
@@ -82,7 +84,11 @@ export default function GitHubActivity() {
             transformData={(data) => {
               // Calculate total for the standard 1-year fetched data
               const total = data.reduce((sum, day) => sum + day.count, 0);
-              setTotalCommits(total);
+              
+              // Defer state update to avoid React's "update during render" warning
+              setTimeout(() => setTotalCommits(total), 0);
+
+
 
               // Pad future days until a perfect 52-week (364 day) span
               const targetLength = 52 * 7;
