@@ -1,5 +1,4 @@
 import { motion } from 'framer-motion';
-import Footer from './Footer';
 
 /**
  * Premium Page Transition
@@ -18,7 +17,6 @@ export default function PageTransition({ children }) {
       }}
     >
       {children}
-      <Footer />
     </MotionDiv>
   );
 }

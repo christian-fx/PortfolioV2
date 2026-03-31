@@ -14,7 +14,7 @@ const EXPERIENCES = [
   {
     role: 'Freelance Frontend Developer',
     company: 'Independent Projects',
-    date: '2023 — Present',
+    date: '2025 — Present',
     desc: 'Building clean, scalable front-end solutions for clients across web and product design.',
   },
   {
@@ -108,9 +108,9 @@ export default function About() {
   };
   return (
     <>
-      <SEO 
-        title="About" 
-        description="Learn about Christian Akabueze, a Frontend Engineer & Software Engineering Student specializing in high-performance React architectures and immersive interfaces." 
+      <SEO
+        title="About"
+        description="Learn about Christian Akabueze, a Frontend Engineer & Software Engineering Student specializing in high-performance React architectures and immersive interfaces."
       />
       {/* Hero */}
       <section className="about-hero">
@@ -131,14 +131,14 @@ export default function About() {
             </button>
           </div>
           <div className="btn-tray">
-                <a 
-                  href="/My%20Resume.pdf" 
-                  target="_blank" 
-                  rel="noopener noreferrer" 
-                  className="btn"
-                >
-                  Resume <Icon icon="lucide:file-text" width={16} />
-                </a>
+            <a
+              href="/My%20Resume.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn"
+            >
+              Resume <Icon icon="lucide:file-text" width={16} />
+            </a>
           </div>
         </div>
       </section>
