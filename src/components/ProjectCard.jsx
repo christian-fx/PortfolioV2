@@ -23,9 +23,9 @@ export default function ProjectCard({ id, title, description, tags, image, githu
       <MotionArticle
         className="work-card"
         whileHover={{
-          y: -1.5, // Increased distance slightly for impact
-          rotateX: -1.2,
-          rotateY: 1.5,
+          y: -3, // Increased distance slightly for impact
+          rotateX: -2,
+          rotateY: 3,
           zIndex: 10
         }}
         transition={{
