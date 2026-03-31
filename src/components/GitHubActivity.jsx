@@ -1,10 +1,12 @@
 import { useState, useEffect } from 'react';
 import { GitHubCalendar } from 'react-github-calendar';
-import { Icon } from '@iconify/react';
+import { useTheme } from '../hooks/useTheme';
 import './GitHubActivity.css';
 
 export default function GitHubActivity() {
+  const { isDark } = useTheme();
   const [lastPush, setLastPush] = useState(null);
+
   const [totalCommits, setTotalCommits] = useState(0);
   const [hasError, setHasError] = useState(false);
   const username = 'christian-fx';
@@ -88,8 +90,9 @@ export default function GitHubActivity() {
             blockSize={10}
             blockMargin={3}
             showWeekdayLabels={false}
-            colorScheme="light"
+            colorScheme={isDark ? 'dark' : 'light'}
             tooltips={{
+
               activity: {
                 text: (activity) => {
                   const date = new Date(activity.date);

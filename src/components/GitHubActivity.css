@@ -101,10 +101,10 @@
 .activity-dot {
   width: 6px;
   height: 6px;
-  background: white;
+  background: var(--foreground);
   border-radius: 50%;
   display: inline-block;
-  box-shadow: 0 0 8px rgba(255, 255, 255, 0.4);
+  box-shadow: 0 0 8px var(--border);
 }
 
 .activity-highlight {
@@ -125,11 +125,11 @@
 }
 
 /* ── Calendar block colors: light mode ─────────────── */
-.react-activity-calendar__block[data-level="0"] { fill: #e8e8e8 !important; }
-.react-activity-calendar__block[data-level="1"] { fill: #c4c4c4 !important; }
-.react-activity-calendar__block[data-level="2"] { fill: #9a9a9a !important; }
-.react-activity-calendar__block[data-level="3"] { fill: #d4a017 !important; }
-.react-activity-calendar__block[data-level="4"] { fill: #e8b839 !important; }
+.react-activity-calendar__block[data-level="0"] { fill: #f3f3f3 !important; }
+.react-activity-calendar__block[data-level="1"] { fill: #e5e5e5 !important; }
+.react-activity-calendar__block[data-level="2"] { fill: #cbcbcb !important; }
+.react-activity-calendar__block[data-level="3"] { fill: #f59e0b !important; } /* Refined Amber */
+.react-activity-calendar__block[data-level="4"] { fill: #d97706 !important; } /* Deeper Amber */
 
 /* ── Calendar block colors: dark mode ──────────────── */
 .dark .react-activity-calendar__block[data-level="0"] { fill: #1e1e1e !important; }
