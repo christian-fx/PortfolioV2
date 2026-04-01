@@ -659,6 +659,7 @@ body.modal-open {
   from {
     transform: translateX(0);
   }
+
   to {
     transform: translateX(40px);
   }
@@ -706,8 +707,8 @@ body.modal-open {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 10px;
-  flex-wrap: wrap;
+  gap: 8px;
+  min-height: 28px;
   font-family: "Bebas Neue", sans-serif;
 }
 
@@ -719,7 +720,28 @@ body.modal-open {
 
 .work-links {
   display: flex;
+  align-items: center;
   gap: 4px;
+}
+
+.btn-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 8px;
+  color: #3b82f6;
+  /* Premium brand blue matching the screenshot roughly */
+  background: transparent;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  text-decoration: none;
+}
+
+.btn-icon:hover {
+  background: var(--muted);
+  color: var(--foreground);
+  transform: translateY(-2px);
 }
 
 .work-desc {

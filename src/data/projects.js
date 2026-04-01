@@ -1,4 +1,5 @@
 export const PROJECTS = [
+/*
   {
     id: 'fintech-dashboard',
     title: 'Fintech Dashboard',
@@ -70,6 +71,7 @@ export const PROJECTS = [
       ]
     }
   },
+*/
 
   {
     id: 'devfolio',
@@ -516,6 +518,7 @@ export const PROJECTS = [
       ]
     }
   },
+/*
   {
     id: 'nexus-design-system',
     title: 'Nexus Design System',
@@ -532,4 +535,5 @@ export const PROJECTS = [
     live: '#',
     hasCaseStudy: false
   }
+*/
 ];
