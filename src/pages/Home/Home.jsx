@@ -38,7 +38,9 @@ export default function Home() {
       {/* Hero */}
       <section className="hero-section">
         <div className="hero-profile-row">
-          <img src="/images/christian.JPG" alt="Christian" className="profile-image" />
+          <Reveal delay={0.1}>
+            <img src="/images/christian.JPG" alt="Christian" className="profile-image" style={{ willChange: "transform, opacity" }} />
+          </Reveal>
           <div className="hero-heading-group">
             <Reveal delay={0.2}>
               <p className="hero-role">I'm</p>
@@ -93,11 +95,15 @@ export default function Home() {
       </section>
 
       {/* GitHub Activity */}
-      <GitHubActivity />
+      {/* <Reveal width="100%" delay={0.8}>
+        <GitHubActivity />
+      </Reveal> */}
 
       {/* Projects */}
       <section className="work-section">
-        <h2 className="section-title">Selected Projects</h2>
+        <Reveal width="100%">
+          <h2 className="section-title">Selected Projects</h2>
+        </Reveal>
         <div className="work-grid">
           {PROJECTS.slice(0, 4).map((p) => <ProjectCard key={p.id} {...p} />)}
         </div>
@@ -110,7 +116,9 @@ export default function Home() {
 
       {/* Stack */}
       <section className="stack-section">
-        <h2 className="section-title">Tech Stack</h2>
+        <Reveal width="100%">
+          <h2 className="section-title">Tech Stack</h2>
+        </Reveal>
         <div className="stack-grid">
           {STACK.map(({ icon, name }) => (
             <div key={name} className="stack-card">

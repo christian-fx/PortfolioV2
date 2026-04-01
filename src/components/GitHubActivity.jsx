@@ -19,11 +19,13 @@ export default function GitHubActivity() {
   const rounded = useTransform(count, latest => Math.round(latest));
 
   useEffect(() => {
-    const controls = animate(count, totalCommits, {
-      duration: 1.5,
-      ease: "easeOut"
-    });
-    return controls.stop;
+    if (totalCommits > 0) {
+      const controls = animate(count, totalCommits, {
+        duration: 2,
+        ease: "easeOut"
+      });
+      return controls.stop;
+    }
   }, [totalCommits, count]);
 
   useEffect(() => {
@@ -80,7 +82,7 @@ export default function GitHubActivity() {
 
   return (
     <section className="github-activity-section">
-      <div className="github-activity-container">
+      <div className="github-activity-container" style={{ willChange: "transform, opacity" }}>
         
         {/* Header with Stats (Aligned with Image) */}
         <div className="github-stats-header">
@@ -100,9 +102,9 @@ export default function GitHubActivity() {
             transformData={(data) => {
               const total = data.reduce((sum, day) => sum + day.count, 0);
               
-              if (total !== totalCommits) {
-                // Optimization: Use requestAnimationFrame or just avoid multiple updates
-                setTimeout(() => setTotalCommits(total), 0);
+              // Move total count calculation to a side-effect to avoid React warning
+              if (totalCommits === 0 && total > 0) {
+                Promise.resolve().then(() => setTotalCommits(total));
               }
 
               // Pad future days until a perfect 52-week (364 day) span
@@ -146,7 +148,7 @@ export default function GitHubActivity() {
         {/* Right-aligned Footer Activity (Tight) */}
         {lastPush && (
           <div className="github-activity-footer">
-             <div className="activity-last-pushed">
+             <div className="activity-last-pushed" style={{ willChange: "transform" }}>
                 <span className="activity-dot"></span>
                 Pushed <span className="activity-highlight">commits</span> to <span className="activity-highlight">{lastPush.repo}</span> • {lastPush.time}
              </div>

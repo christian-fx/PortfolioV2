@@ -2,7 +2,7 @@ import { motion } from 'framer-motion';
 
 export default function Reveal({ children, delay = 0, width = "fit-content" }) {
   const MotionDiv = motion.div;
-  
+
   return (
     <div style={{ position: "relative", overflow: "hidden", width }}>
       <MotionDiv
