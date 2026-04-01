@@ -11,7 +11,7 @@
 }
 
 .case-hero-image {
-  filter: grayscale(100%);
+  filter: grayscale(20%);
   transition: filter 0.3s ease;
 }
 
@@ -347,7 +347,7 @@
 }
 
 .gallery-item img {
-  filter: grayscale(100%);
+  filter: grayscale(20%);
   transition: all 0.3s ease;
 }
 

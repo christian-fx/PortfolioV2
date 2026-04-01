@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
 import { Icon } from '@iconify/react';
 import { useTheme } from '../hooks/useTheme';
@@ -15,9 +16,33 @@ const MotionDiv = motion.div;
 export default function Navbar() {
   const { isDark, toggleTheme } = useTheme();
   const location = useLocation();
+  const [isVisible, setIsVisible] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+      
+      if (currentScrollY > lastScrollY && currentScrollY > 100) {
+        setIsVisible(false); // Scrolling down - hide
+      } else {
+        setIsVisible(true); // Scrolling up - show
+      }
+      
+      setLastScrollY(currentScrollY);
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [lastScrollY]);
 
   return (
-    <div className="header-fixed-wrapper">
+    <MotionDiv 
+      className="header-fixed-wrapper"
+      initial={{ y: 0 }}
+      animate={{ y: isVisible ? 0 : '-100%' }}
+      transition={{ duration: 0.3, ease: 'easeInOut' }}
+    >
       <div className="container">
         <header className="header">
           <button className="theme-toggle" onClick={toggleTheme} aria-label="Toggle dark mode">
@@ -39,14 +64,6 @@ export default function Navbar() {
                     className={`nav-link${isActive ? ' active' : ''}`}
                   >
                     {link.label}
-                    {isActive && (
-                      <MotionDiv 
-                        layoutId="nav-active-pill" 
-                        className="active-pill"
-                        transition={{ type: 'spring', bounce: 0.2, duration: 0.6 }}
-                        style={{ bottom: '-4px' }}
-                      />
-                    )}
                   </NavLink>
                 );
               })}
@@ -54,6 +71,6 @@ export default function Navbar() {
           </nav>
         </header>
       </div>
-    </div>
+    </MotionDiv>
   );
 }

@@ -94,17 +94,16 @@ export default function GitHubActivity() {
         </div>
 
         {/* The Grid (Restored & Aligned) */}
-        <div className="github-calendar-inner">
+        <div className="github-calendar-inner" style={{ transform: 'translateZ(0)', willChange: 'transform' }}>
           <GitHubCalendar 
             username={username}
             transformData={(data) => {
-              // Calculate total for the standard 1-year fetched data
               const total = data.reduce((sum, day) => sum + day.count, 0);
               
-              // Defer state update to avoid React's "update during render" warning
-              setTimeout(() => setTotalCommits(total), 0);
-
-
+              if (total !== totalCommits) {
+                // Optimization: Use requestAnimationFrame or just avoid multiple updates
+                setTimeout(() => setTotalCommits(total), 0);
+              }
 
               // Pad future days until a perfect 52-week (364 day) span
               const targetLength = 52 * 7;
@@ -132,7 +131,6 @@ export default function GitHubActivity() {
             showWeekdayLabels={false}
             colorScheme={isDark ? 'dark' : 'light'}
             tooltips={{
-
               activity: {
                 text: (activity) => {
                   const date = new Date(activity.date);
@@ -143,6 +141,7 @@ export default function GitHubActivity() {
             }}
           />
         </div>
+
 
         {/* Right-aligned Footer Activity (Tight) */}
         {lastPush && (
