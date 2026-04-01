@@ -31,22 +31,6 @@
   gap: 20px;
 }
 
-.footer-nav-link {
-  font-size: 11px;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  color: var(--muted-foreground);
-  text-decoration: none;
-  transition: all 0.3s ease;
-  position: relative;
-  padding-bottom: 2px;
-}
-
-.footer-nav-link:hover,
-.footer-nav-link.active {
-  color: var(--foreground);
-}
-
 
 
 .footer-socials {
