@@ -353,6 +353,86 @@ export const PROJECTS = [
     }
   },
   {
+    id: 'skillswap-hub',
+    title: 'SkillSwap Hub',
+    category: 'Community Platform',
+    image: '/images/case-studies/skillswapHero.png',
+    description: 'A full-stack web application built with Next.js and Firebase that empowers users to discover, connect, and exchange skills with mentors and learners worldwide.',
+    tags: [
+      { icon: 'skill-icons:nextjs-dark', label: 'Next.js' },
+      { icon: 'skill-icons:react-dark', label: 'React' },
+      { icon: 'skill-icons:typescript', label: 'TypeScript' },
+      { icon: 'skill-icons:tailwindcss-dark', label: 'Tailwind CSS' },
+      { icon: 'skill-icons:firebase-dark', label: 'Firebase' }
+    ],
+    status: 'in-development',
+    github: 'https://github.com/christian-fx/studio',
+    live: '#',
+    hasCaseStudy: true,
+    meta: {
+      project_type: 'Fullstack Web App',
+      year: '2026',
+      role: 'Fullstack Developer',
+      duration: '2-3 Months'
+    },
+    caseStudy: {
+      overview: [
+        'SkillSwap Hub is a modern community platform designed to connect individuals looking to trade skills, learn new talents, and mentor others in a collaborative environment.',
+        'Built utilizing the Next.js 15 App Router, the platform relies on Firebase for robust authentication and real-time database management to facilitate secure user profiles, notifications, and seamless messaging.',
+        'Users can easily browse a marketplace of featured skills, arrange digital "swaps", and chat with prospective partners through an intuitive, accessible UI built with Tailwind CSS and Radix UI primitives.'
+      ],
+      challenges: [
+        {
+          icon: 'lucide:message-circle',
+          title: 'Real-time Messaging Architecture',
+          desc: 'Building a reliable, instant chat interface for users to negotiate skill swaps required implementing precise real-time listeners and state management using Firebase Firestore.'
+        },
+        {
+          icon: 'lucide:route',
+          title: 'Complex Next.js Routing',
+          desc: 'Orchestrating distinct experiences—a public marketing landing page alongside a secure, Sidebar-driven application dashboard—without causing layout conflicts or performance hits.'
+        },
+        {
+          icon: 'lucide:shield-check',
+          title: 'Secure Authentication Flows',
+          desc: 'Implementing seamless onboarding pathways, including integrated email verification modals and secure session persistence, directly within the client layout using Firebase Auth.'
+        },
+        {
+          icon: 'lucide:sparkles',
+          title: 'AI Feature Integration',
+          desc: 'Incorporating Google Genkit AI capabilities securely into the Node.js server environment to power intelligent matchmaking and backend capabilities.'
+        }
+      ],
+      solution: [
+        {
+          title: 'Next.js App Router Architecture',
+          desc: 'Leveraged Next.js Server Components and advanced route grouping to completely separate public-facing pages from the authenticated dashboard, ensuring clean URLs and optimal caching.'
+        },
+        {
+          title: 'Firebase Backend Integration',
+          desc: 'Utilized Firebase Authentication and Cloud Firestore to provide a highly scalable serverless backend, handling real-time data syncing for user profiles and chat rooms.'
+        },
+        {
+          title: 'Component-Driven UI Design',
+          desc: 'Employed Radix UI headless components styled with native Tailwind CSS to build deeply accessible, robust features like the slide-out navigation, dynamic badges, and customizable modals.'
+        },
+        {
+          title: 'Google Genkit Implementation',
+          desc: 'Integrated the newly released @genkit-ai library to handle AI interactions asynchronously on the server, safely keeping API keys out of the client bundle.'
+        }
+      ],
+      techStack: [
+        { icon: 'skill-icons:nextjs-dark', label: 'Next.js 15' },
+        { icon: 'skill-icons:react-dark', label: 'React 19' },
+        { icon: 'skill-icons:typescript', label: 'TypeScript' },
+        { icon: 'skill-icons:tailwindcss-dark', label: 'Tailwind CSS' },
+        { icon: 'skill-icons:firebase-light', label: 'Firebase' },
+        { icon: 'lucide:bot', label: 'Genkit AI' },
+        { icon: 'lucide:box', label: 'Radix UI' }
+      ]
+    }
+  },
+  {
     id: 'academiatrack',
     title: 'AcademiaTrack',
     category: 'Educational',
