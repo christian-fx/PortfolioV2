@@ -367,7 +367,7 @@ export const PROJECTS = [
     ],
     status: 'in-development',
     github: 'https://github.com/christian-fx/studio',
-    live: '#',
+    live: 'https://skillswaphub-bice.vercel.app',
     hasCaseStudy: true,
     meta: {
       project_type: 'Fullstack Web App',
