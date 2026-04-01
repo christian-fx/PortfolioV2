@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Icon } from '@iconify/react';
+import { ArrowRight, ArrowLeft, Check, Copy, Send, ExternalLink, X as XIcon } from 'lucide-react';
 import './ContactModal.css';
 
 const CONTACT_OPTIONS = [
@@ -73,7 +74,7 @@ export default function ContactModal({ isOpen, onClose }) {
                 >
                   <Icon icon={opt.icon} width={18} style={{ color: opt.id === 'twitter' || opt.id === 'email' ? 'currentColor' : opt.color }} />
                   <span style={{ flex: 1, textAlign: 'left' }}>{opt.label}</span>
-                  <Icon icon="lucide:arrow-right" width={16} />
+                  <ArrowRight width={16} />
                 </button>
               </div>
             ))}
@@ -93,14 +94,14 @@ export default function ContactModal({ isOpen, onClose }) {
         >
           <div className="btn-tray" style={{ alignSelf: 'flex-start', marginBottom: '20px' }}>
             <button className="btn" onClick={() => setActiveView('menu')} style={{ padding: '8px 12px' }}>
-              <Icon icon="lucide:arrow-left" width={14} /> Back
+              <ArrowLeft width={14} /> Back
             </button>
           </div>
           <h2 className="modal-title">WhatsApp</h2>
           <div className="modal-copy-box">
             <span className="modal-copy-text">{PHONENUMBER}</span>
             <button className="modal-copy-icon" onClick={() => handleCopy(PHONENUMBER)}>
-              <Icon icon={copied ? "lucide:check" : "lucide:copy"} width={16} color={copied ? "var(--success)" : "currentColor"} />
+              {copied ? <Check width={16} color="var(--success)" /> : <Copy width={16} color="currentColor" />}
             </button>
           </div>
           <textarea 
@@ -111,7 +112,7 @@ export default function ContactModal({ isOpen, onClose }) {
           />
           <div className="btn-tray" style={{ width: '100%', marginTop: 'auto' }}>
             <button className="btn btn-primary" style={{ width: '100%', padding: '12px' }} onClick={handleWaSend} disabled={!waMessage.trim()}>
-              Send on WhatsApp <Icon icon="lucide:send" width={16} />
+              Send on WhatsApp <Send width={16} />
             </button>
           </div>
         </MotionDiv>
@@ -129,19 +130,19 @@ export default function ContactModal({ isOpen, onClose }) {
         >
           <div className="btn-tray" style={{ alignSelf: 'flex-start', marginBottom: '20px' }}>
             <button className="btn" onClick={() => setActiveView('menu')} style={{ padding: '8px 12px' }}>
-              <Icon icon="lucide:arrow-left" width={14} /> Back
+              <ArrowLeft width={14} /> Back
             </button>
           </div>
           <h2 className="modal-title">Email</h2>
           <div className="modal-copy-box">
             <span className="modal-copy-text">{EMAIL}</span>
             <button className="modal-copy-icon" onClick={() => handleCopy(EMAIL)}>
-              <Icon icon={copied ? "lucide:check" : "lucide:copy"} width={16} color={copied ? "var(--success)" : "currentColor"} />
+              {copied ? <Check width={16} color="var(--success)" /> : <Copy width={16} color="currentColor" />}
             </button>
           </div>
           <div className="btn-tray" style={{ width: '100%', marginTop: 'auto' }}>
             <button className="btn btn-primary" style={{ width: '100%', padding: '12px' }} onClick={() => window.location.href = `mailto:${EMAIL}`}>
-              Open Mail App <Icon icon="lucide:external-link" width={16} />
+              Open Mail App <ExternalLink width={16} />
             </button>
           </div>
         </MotionDiv>
@@ -161,7 +162,7 @@ export default function ContactModal({ isOpen, onClose }) {
         >
           <div className="modal-container" onClick={(e) => e.stopPropagation()}>
             <button className="close-modal-btn outside" onClick={onClose} aria-label="Close modal">
-              <Icon icon="lucide:x" width={18} />
+              <XIcon width={18} />
             </button>
             <MotionDiv 
               className="contact-modal"

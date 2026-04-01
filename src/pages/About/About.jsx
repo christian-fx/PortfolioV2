@@ -1,9 +1,11 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Icon } from '@iconify/react';
+import { MousePointerClick, FlipHorizontal, Hand, FileText, MousePointer2 } from 'lucide-react';
 import SEO from '../../components/SEO';
 import Reveal from '../../components/Reveal';
 import CallToAction from '../../components/CallToAction';
+import Footer from '../../components/Footer';
 import { motion } from 'framer-motion';
 import { useModal } from '../../context/ModalContext';
 import './About.css';
@@ -78,12 +80,12 @@ function FlipCard({ num, question, answer, flipped, showHint, onFlip }) {
         <div className="question-card-front">
           {showHint && (
             <div className="card-hint-badge">
-              <Icon icon="lucide:mouse-pointer-click" width={16} /> Tap to flip
+              <MousePointerClick width={16} /> Tap to flip
             </div>
           )}
           <div className="question-number">{num}</div>
           <div className="question-text">{question}</div>
-          <div className="question-icon"><Icon icon="lucide:flip-horizontal" width={20} /></div>
+          <div className="question-icon"><FlipHorizontal width={20} /></div>
         </div>
         <div className="question-card-back">
           <div className="question-answer-label">Why I Ask</div>
@@ -127,7 +129,7 @@ export default function About() {
         <div className="hero-actions-about">
           <div className="btn-tray">
             <button className="btn btn-primary" onClick={openContactModal}>
-              Say Hello <Icon icon="lucide:hand" width={16} />
+              Say Hello <Hand width={16} />
             </button>
           </div>
           <div className="btn-tray">
@@ -137,7 +139,7 @@ export default function About() {
               rel="noopener noreferrer"
               className="btn"
             >
-              Resume <Icon icon="lucide:file-text" width={16} />
+              Resume <FileText width={16} />
             </a>
           </div>
         </div>
@@ -209,7 +211,7 @@ export default function About() {
           ))}
         </div>
         <div className="question-hint">
-          <Icon icon="lucide:mouse-pointer-2" width={16} />
+          <MousePointer2 width={16} />
           <span>Click any card to flip and reveal</span>
         </div>
       </section>
@@ -231,6 +233,8 @@ export default function About() {
 
       {/* CTA */}
       <CallToAction />
+      
+      <Footer />
     </>
   );
 }

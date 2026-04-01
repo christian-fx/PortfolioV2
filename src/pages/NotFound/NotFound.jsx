@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
-import { Icon } from '@iconify/react';
+import { Home, FolderOpen } from 'lucide-react';
 import SEO from '../../components/SEO';
+import Footer from '../../components/Footer';
 import { motion } from 'framer-motion';
 import './NotFound.css';
 
@@ -31,13 +32,14 @@ export default function NotFound() {
         </p>
         <div className="not-found-actions">
           <Link to="/" className="btn btn-primary">
-            <Icon icon="lucide:home" width={16} /> Back to Home
+            <Home width={16} /> Back to Home
           </Link>
           <Link to="/works" className="btn">
-            View Projects <Icon icon="lucide:folder-open" width={16} />
+            View Projects <FolderOpen width={16} />
           </Link>
         </div>
       </MotionSection>
+      <Footer />
     </>
   );
 }

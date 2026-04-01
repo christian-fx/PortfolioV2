@@ -1,8 +1,10 @@
 import { useParams, Link } from 'react-router-dom';
+import { ArrowLeft, Construction, ExternalLink, ArrowRight } from 'lucide-react';
 import { Icon } from '@iconify/react';
 import SEO from '../../components/SEO';
 import ProjectCard from '../../components/ProjectCard';
 import Reveal from '../../components/Reveal';
+import Footer from '../../components/Footer';
 import { PROJECTS } from '../../data/projects';
 import './CaseStudy.css';
 
@@ -48,7 +50,7 @@ export default function CaseStudy() {
           </p>
           <div className="btn-tray">
             <Link to="/works" className="btn btn-primary">
-              <Icon icon="lucide:arrow-left" width={16} /> Back to Works
+              <ArrowLeft width={16} /> Back to Works
             </Link>
           </div>
         </section>
@@ -70,14 +72,14 @@ export default function CaseStudy() {
         keywords={project.tags?.map(t => t.label).join(', ')}
       />
         <nav className="breadcrumb">
-          <Link to="/works"><Icon icon="lucide:arrow-left" width={16} />Works</Link>
+          <Link to="/works"><ArrowLeft width={16} />Works</Link>
           <span className="separator">/</span>
           <span style={{ color: 'var(--muted-foreground)' }}>{project.title}</span>
         </nav>
 
         <section className="case-hero" style={{ textAlign: 'center', padding: '80px 0 120px' }}>
           <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '24px' }}>
-            <Icon icon="lucide:construction" width={48} style={{ color: 'var(--muted-foreground)' }} />
+            <Construction width={48} style={{ color: 'var(--muted-foreground)' }} />
           </div>
           <h1 className="case-title">Case Study Coming Soon</h1>
           <p className="case-subtitle" style={{ margin: '0 auto 32px' }}>
@@ -88,7 +90,7 @@ export default function CaseStudy() {
             {project.live && project.live !== '#' && (
               <div className="btn-tray">
                 <a href={project.live} target="_blank" rel="noopener noreferrer" className="btn btn-primary">
-                  <Icon icon="lucide:external-link" width={16} /> Live Site
+                  <ExternalLink width={16} /> Live Site
                 </a>
               </div>
             )}
@@ -150,7 +152,7 @@ export default function CaseStudy() {
 
       {/* Breadcrumb */}
       <nav className="breadcrumb">
-        <Link to="/works"><Icon icon="lucide:arrow-left" width={16} />Works</Link>
+        <Link to="/works"><ArrowLeft width={16} />Works</Link>
         <span className="separator">/</span>
         <span style={{ color: 'var(--muted-foreground)' }}>{project.title}</span>
       </nav>
@@ -207,7 +209,7 @@ export default function CaseStudy() {
           {project.live && project.live !== '#' && (
             <div className="btn-tray">
               <a href={project.live} target="_blank" rel="noopener noreferrer" className="btn btn-primary" aria-label={`Visit ${project.title} Live Site`}>
-                <Icon icon="lucide:external-link" width={16} /> Live Site
+                <ExternalLink width={16} /> Live Site
               </a>
             </div>
           )}
@@ -263,13 +265,15 @@ export default function CaseStudy() {
               <h2 className="next-title">{nextProject.title}</h2>
               <div className="btn-tray">
                 <Link to={`/case-study/${nextProject.id}`} className="btn btn-primary">
-                  View Project <Icon icon="lucide:arrow-right" width={16} />
+                  View Project <ArrowRight width={16} />
                 </Link>
               </div>
             </Reveal>
           </section>
         );
       })()}
+      
+      <Footer />
     </>
   );
 }

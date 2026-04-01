@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { Icon } from '@iconify/react';
+import { ExternalLink, ArrowUpRight } from 'lucide-react';
 import SkeletonImage from './SkeletonImage';
 
 import { motion } from 'framer-motion';
@@ -52,7 +53,7 @@ export default function ProjectCard({ id, title, description, tags, image, githu
             <div className="work-links">
               {live && live !== '#' && (
                 <a href={live} target="_blank" rel="noopener noreferrer" className="btn-icon" aria-label={`Visit ${title} Live Site`}>
-                  <Icon icon="lucide:external-link" width={16} />
+                  <ExternalLink width={16} />
                 </a>
               )}
               {github && github !== '#' && (
@@ -78,7 +79,7 @@ export default function ProjectCard({ id, title, description, tags, image, githu
               {formattedStatus}
             </div>
             <Link to={caseStudyLink} className="view-details">
-              View Details<Icon icon="lucide:arrow-up-right" width={16} />
+              View Details<ArrowUpRight width={16} />
             </Link>
           </div>
         </div>

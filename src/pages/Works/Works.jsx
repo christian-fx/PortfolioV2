@@ -1,9 +1,10 @@
 import { Link } from 'react-router-dom';
-import { Icon } from '@iconify/react';
+import { ArrowLeft } from 'lucide-react';
 import SEO from '../../components/SEO';
 import ProjectCard from '../../components/ProjectCard';
 import Reveal from '../../components/Reveal';
 import CallToAction from '../../components/CallToAction';
+import Footer from '../../components/Footer';
 import { PROJECTS } from '../../data/projects';
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -29,7 +30,7 @@ export default function Works() {
         description="Explore the project portfolio of Christian Akabueze, featuring modern web applications, e-commerce platforms, and high-performance digital products."
       />
       <nav className="breadcrumb">
-        <Link to="/"><Icon icon="lucide:arrow-left" width={16} />Back to Home</Link>
+        <Link to="/"><ArrowLeft width={16} />Back to Home</Link>
         <span className="separator">/</span>
         <span style={{ color: 'var(--muted-foreground)' }}>Works</span>
       </nav>
@@ -92,6 +93,7 @@ export default function Works() {
       </section>
 
       <CallToAction withReveal={true} />
+      <Footer />
     </>
   );
 }

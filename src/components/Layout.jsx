@@ -1,15 +1,9 @@
-import { useLocation } from 'react-router-dom';
-import { Icon } from '@iconify/react';
+import { ArrowUp } from 'lucide-react';
 import { useScrollProgress } from '../hooks/useScrollProgress';
 import Navbar from '../components/Navbar';
-import Footer from '../components/Footer';
 
 export default function Layout({ children }) {
   const { progress, showBackToTop, scrollToTop } = useScrollProgress();
-  const location = useLocation();
-
-  const showFooter = location.pathname !== '/contact';
-
 
   return (
     <>
@@ -26,12 +20,11 @@ export default function Layout({ children }) {
         onClick={scrollToTop}
         aria-label="Back to top"
       >
-        <Icon icon="lucide:arrow-up" width={24} />
+        <ArrowUp width={24} />
       </button>
       <Navbar />
       <div className="container">
         {children}
-        {showFooter && <Footer />}
       </div>
     </>
   );

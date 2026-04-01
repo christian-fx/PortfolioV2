@@ -1,11 +1,13 @@
 import { Link } from 'react-router-dom';
 import { Icon } from '@iconify/react';
+import { Mail, Hand, FileText, ArrowRight } from 'lucide-react';
 import SEO from '../../components/SEO';
 import ProjectCard from '../../components/ProjectCard';
 import Reveal from '../../components/Reveal';
 import { PROJECTS } from '../../data/projects';
 import CallToAction from '../../components/CallToAction';
 import GitHubActivity from '../../components/GitHubActivity';
+import Footer from '../../components/Footer';
 import { useModal } from '../../context/ModalContext';
 import './Home.css';
 
@@ -61,7 +63,9 @@ export default function Home() {
               {SOCIAL_LINKS.map(({ href, label, icon, name }) => (
                 <div key={label} className="btn-tray">
                   <a href={href} className="social-item" aria-label={label}>
-                    <Icon icon={icon} width={16} />
+                    <span style={{ width: 16, height: 16, display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }}>
+                      {icon === 'lucide:mail' ? <Mail width={16} /> : <Icon icon={icon} width={16} />}
+                    </span>
                     <span className="social-name">{name}</span>
                   </a>
                 </div>
@@ -70,7 +74,7 @@ export default function Home() {
             <div className="hero-actions">
               <div className="btn-tray">
                 <button className="btn btn-primary" onClick={openContactModal}>
-                  <Icon icon="lucide:hand" width={16} /> Say Hello
+                  <Hand width={16} /> Say Hello
                 </button>
               </div>
               <div className="btn-tray">
@@ -80,7 +84,7 @@ export default function Home() {
                   rel="noopener noreferrer" 
                   className="btn"
                 >
-                  Resume <Icon icon="lucide:file-text" width={16} />
+                  Resume <FileText width={16} />
                 </a>
               </div>
             </div>
@@ -99,7 +103,7 @@ export default function Home() {
         </div>
         <div className="view-more-wrap">
           <div className="btn-tray">
-            <Link to="/works" className="btn">View More <Icon icon="lucide:arrow-right" width={16} /></Link>
+            <Link to="/works" className="btn">View More <ArrowRight width={16} /></Link>
           </div>
         </div>
       </section>
@@ -119,6 +123,8 @@ export default function Home() {
 
       {/* CTA */}
       <CallToAction />
+      
+      <Footer />
     </>
   );
 }

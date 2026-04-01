@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
-import { NavLink, useLocation } from 'react-router-dom';
-import { Icon } from '@iconify/react';
+import { useLocation, NavLink } from 'react-router-dom';
+import { Sun, MoonStar } from 'lucide-react';
 import { useTheme } from '../hooks/useTheme';
 import { motion, AnimatePresence } from 'framer-motion';
 
@@ -25,8 +25,10 @@ export default function Navbar() {
       
       if (currentScrollY > lastScrollY && currentScrollY > 100) {
         setIsVisible(false); // Scrolling down - hide
+        document.documentElement.classList.add('header-hidden');
       } else {
         setIsVisible(true); // Scrolling up - show
+        document.documentElement.classList.remove('header-hidden');
       }
       
       setLastScrollY(currentScrollY);
@@ -45,9 +47,9 @@ export default function Navbar() {
     >
       <div className="container">
         <header className="header">
-          <button className="theme-toggle" onClick={toggleTheme} aria-label="Toggle dark mode">
-            <Icon icon={isDark ? 'lucide:sun' : 'lucide:moon-star'} width={22} height={22} />
-          </button>
+            <button className="theme-toggle" onClick={toggleTheme} aria-label="Toggle dark mode">
+              {isDark ? <Sun width={22} height={22} /> : <MoonStar width={22} height={22} />}
+            </button>
           <nav className="header-nav">
             <AnimatePresence>
               {NAV_LINKS.map(link => {

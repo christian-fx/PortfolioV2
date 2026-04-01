@@ -1,5 +1,6 @@
 import { NavLink } from 'react-router-dom';
 import { Icon } from '@iconify/react';
+import { Mail } from 'lucide-react';
 import './Footer.css';
 
 const SOCIAL_LINKS = [
@@ -9,11 +10,7 @@ const SOCIAL_LINKS = [
   { href: 'mailto:akabuezechris432@gmail.com', label: 'Email', icon: 'lucide:mail' },
 ];
 
-const NAV_LINKS = [
-  { path: '/', label: 'Home' },
-  { path: '/works', label: 'Works' },
-  { path: '/about', label: 'About' },
-];
+
 
 function getRomanYear(year) {
   const romanMap = {
@@ -40,43 +37,32 @@ export default function Footer() {
   return (
     <footer className="footer-main">
       <div className="footer-content">
-        
-        {/* Left: Brand / Roman Year */}
-        <div className="footer-left">
-          <p className="copyright-text">
-            © {romanYear} • <span className="footer-brand">CHRISTIAN AKABUEZE</span>
-          </p>
-        </div>
-
-        {/* Center: Quick Nav */}
-        <nav className="footer-nav">
-          {NAV_LINKS.map(link => (
-            <NavLink 
-              key={link.path} 
-              to={link.path} 
-              className={({ isActive }) => `footer-nav-link${isActive ? ' active' : ''}`}
-            >
-              {link.label}
-            </NavLink>
-          ))}
-        </nav>
 
         {/* Right: Socials */}
         <div className="footer-right">
           <div className="footer-socials">
             {SOCIAL_LINKS.map(({ href, label, icon }) => (
-              <a 
-                key={label} 
-                href={href} 
-                target="_blank" 
-                rel="noopener noreferrer" 
+              <a
+                key={label}
+                href={href}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="footer-social-item"
                 aria-label={label}
               >
-                <Icon icon={icon} width={18} />
+                <span style={{ width: 18, height: 18, display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }}>
+                  {icon === 'lucide:mail' ? <Mail width={18} /> : <Icon icon={icon} width={18} />}
+                </span>
               </a>
             ))}
           </div>
+        </div>
+
+        {/* Left: Brand / Roman Year */}
+        <div className="footer-left">
+          <p className="copyright-text">
+            © {romanYear} • <span className="footer-brand">CHRISTIAN AKABUEZE</span>
+          </p>
         </div>
 
       </div>

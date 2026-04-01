@@ -1,5 +1,5 @@
 import { motion, AnimatePresence } from 'framer-motion';
-import { Icon } from '@iconify/react';
+import { X } from 'lucide-react';
 import { useEffect } from 'react';
 
 const MotionDiv = motion.div;
@@ -73,7 +73,7 @@ export default function Lightbox({ isOpen, onClose, src, alt }) {
               letterSpacing: '0.05em'
             }}
           >
-             CLOSE <Icon icon="lucide:x" width={24} />
+             CLOSE <X width={24} />
           </MotionButton>
 
           <MotionDiv

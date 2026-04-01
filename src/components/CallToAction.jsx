@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { Icon } from '@iconify/react';
+import { ArrowRight } from 'lucide-react';
 import Reveal from './Reveal';
 
 export default function CallToAction({ withReveal = false }) {
@@ -15,7 +15,7 @@ export default function CallToAction({ withReveal = false }) {
       </div>
       <div className="btn-tray">
         <Link to="/contact" className="btn btn-inverse">
-          Start a Project <Icon icon="lucide:arrow-right" width={18} />
+          Start a Project <ArrowRight width={18} />
         </Link>
       </div>
     </div>

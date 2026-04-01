@@ -2,6 +2,7 @@ import { useState, useRef } from 'react';
 import emailjs from '@emailjs/browser';
 import { Link } from 'react-router-dom';
 import { Icon } from '@iconify/react';
+import { Mail, Loader2, CheckCircle, Send, Check, Copy } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import SEO from '../../components/SEO';
 import Reveal from '../../components/Reveal';
@@ -161,9 +162,9 @@ export default function Contact() {
                     {status === 'success' && 'Sent Successfully'}
                     {status === 'idle' && 'Send message'}
                     {status === 'error' && 'Send message'}
-                    {status === 'sending' && <Icon icon="lucide:loader-2" width={16} className="btn-spinner" />}
-                    {status === 'success' && <Icon icon="lucide:check-circle" width={16} />}
-                    {(status === 'idle' || status === 'error') && <Icon icon="lucide:send" width={16} />}
+                    {status === 'sending' && <Loader2 width={16} className="btn-spinner" />}
+                    {status === 'success' && <CheckCircle width={16} />}
+                    {(status === 'idle' || status === 'error') && <Send width={16} />}
                   </button>
                 </div>
                 {status === 'error' && <p style={{ color: '#ef4444', fontSize: '14px', marginTop: '12px' }}>Failed to send. Please try again or email me directly.</p>}
@@ -201,7 +202,10 @@ export default function Contact() {
                   visible: { opacity: 1, y: 0 }
                 }}
               >
-                <Icon icon={icon} width={18} />{label}
+                <span style={{ width: 18, height: 18, display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }}>
+                  <Icon icon={icon} width={18} />
+                </span>
+                {label}
               </motion.a>
             </div>
           ))}
@@ -212,10 +216,10 @@ export default function Contact() {
               visible: { opacity: 1, x: 0 }
             }}
           >
-            <Icon icon="lucide:mail" width={18} />
+            <Mail width={18} />
             <span className="email-text">{EMAIL}</span>
             <button className="copy-email" onClick={copyEmail} aria-label="Copy email">
-              <Icon icon={toast ? "lucide:check" : "lucide:copy"} width={16} color={toast ? "var(--success)" : "currentColor"} />
+              {toast ? <Check width={16} color="var(--success)" /> : <Copy width={16} color="currentColor" />}
             </button>
           </motion.div>
         </motion.div>
